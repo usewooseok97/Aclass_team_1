@@ -1,9 +1,11 @@
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from "react"
-import Search from './Component/Search';
-import List from './Component/List';
 import './App.css'
+
+
+import Weather from './Component/Weather';
+
 
 function App() {
     const [users , setUsers] = useState([]);
@@ -12,7 +14,7 @@ function App() {
     useEffect(() => {
         FetchUserInfo()
     },[])
-
+  
     const FetchUserInfo = () => {
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
@@ -34,13 +36,12 @@ function App() {
       const copy = users.filter((item) => item.name != name)
       setUsers([...copy])
     }
-    
+
 //검색을 JsonSearch에서 받아서 list에 넘겨줌
   return(
     // ThemeProvider는 변환형
     <ThemeProvider breakpoints={['xxxl','xxl', 'xl', 'lg', 'md', 'sm', 'xs']} minBreakpoint="xxs" >
-      <Search setSearchQuery={setSearchQuery}/>
-      <List users={users} onDelete={onDelete} searchQuery={searchQuery}/>
+      <Weather/>
     </ThemeProvider>
   )
 }
