@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { Card, Row, Col, Spinner } from "react-bootstrap";
 import weatherIconMap from "../dataset/weatherIcon";
 import axios from "axios";
-import { WiRefresh } from "react-icons/wi"; // 이거 빠져 있었으면 꼭 import 해줘!
+import { WiRefresh } from "react-icons/wi";
+
+const baseURL = import.meta.env.VITE_WEATHER_KEY
 
 function Weather() {
   const [weatherData, setWeatherData] = useState({
@@ -28,16 +30,14 @@ function Weather() {
           const lon = position.coords.longitude;
 
           // 1. 프록시 서버 통해 위치 정보 요청
-          const locationRes = await axios.get("http://localhost:5001/api/location", {
-            params: { lat, lon },
-          });
+          const locationRes = await axios.get(`${baseURL}/api/location`, { params: { lat, lon } });
 
           const locationData = locationRes.data;
           const cityName = locationData.LocalizedName;
           const locationKey = locationData.ParentCity?.Key || locationData.Key;
 
           // 2. 프록시 서버 통해 날씨 정보 요청
-          const weatherRes = await axios.get(`http://localhost:5001/api/weather/${locationKey}`);
+          const weatherRes = await axios.get(`${baseURL}/api/weather/${locationKey}`);
 
           const current = weatherRes.data.current;
           const forecast = weatherRes.data.forecast;
