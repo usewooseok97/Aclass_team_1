@@ -83,50 +83,55 @@ function Weather() {
   }
 
   return (
-    <Card style={cardStyle}>
-      <Row className="align-items-center">
-        <Col xs="auto">{icon}</Col>
-        <Col>
-          <div style={{ fontWeight: "bold", fontSize: "20px" }}>{city}</div>
-          <div style={{ color: "#666", fontSize: "14px" }}>{condition}</div>
-          <div style={{ color: "#666", fontSize: "14px" }}>
-            비 올 확률: {rainProbability}%
-          </div>
-        </Col>
-        <Col xs="auto" className="text-end">
-          <div style={{ fontSize: "32px", fontWeight: 300 }}>{temperature}°</div>
-          <div style={{ fontSize: "14px", color: "#888" }}>
-            {maxTemp}° / {minTemp}°
-          </div>
-        </Col>
-        {error && (
-          <Col xs={12} className="text-center mt-3">
-            <WiRefresh
-              size={32}
-              color="#888"
-              style={{ cursor: "pointer" }}
-              onClick={fetchWeather}
-              title="다시 시도"
-            />
-            <div style={{ fontSize: "14px", color: "#888" }}>데이터 불러오기 실패. 다시 시도하세요.</div>
+      <Card style={cardStyle}>
+        <Row className="d-flex justify-content-between align-items-center flex-nowrap">
+          {/* 날씨 아이콘 */}
+          <Col
+            xs="auto"
+            className="d-flex flex-column align-items-center"
+            style={{ flexShrink: 0  , maxWidth : 120}}
+          >
+            {icon}
           </Col>
-        )}
-      </Row>
-    </Card>
+
+          {/* 도시명, 상태, 비올 확률 */}
+          <Col
+            className="d-flex flex-column justify-content-center"
+            style={{ minWidth: 120 }} // 줄바꿈 방지 + 내부 텍스트 overflow 대응
+          >
+            <div style={{ fontWeight: "bold", fontSize: "18px" }}>{city}</div>
+            <div style={{ color: "#666", fontSize: "14px" }}>{condition}</div>
+            <div style={{ color: "#666", fontSize: "14px" }}>
+              비 올 확률: {rainProbability}%
+            </div>
+          </Col>
+
+          {/* 온도, 최고/최저 */}
+          <Col
+            xs="auto"
+            className="d-flex flex-column align-items-end justify-content-center"
+            style={{ flexShrink: 0, maxWidth : 100}}
+          >
+            <div style={{ fontSize: "28px", fontWeight: 300 }}>{temperature}°</div>
+            <div style={{ fontSize: "14px", color: "#888" }}>
+              {maxTemp}° / {minTemp}°
+            </div>
+          </Col>
+        </Row>
+      </Card>
   );
 }
 
 const cardStyle = {
   width: "100%",
   maxWidth: "400px",
-  backgroundColor: "rgba(255, 255, 255, 0.15)",
+  height: "100%",
+  backgroundColor: "transparent",
   backdropFilter: "blur(12px)",
   WebkitBackdropFilter: "blur(12px)",
   borderRadius: "20px",
-  padding: "20px",
-  border: "1px solid rgba(255, 255, 255, 0.3)",
-  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-  color: "#000",
+  padding: "5px",
+  border: "0px",
 };
 
 export default Weather;
