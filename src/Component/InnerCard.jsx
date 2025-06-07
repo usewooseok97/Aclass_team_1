@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Button ,Form } from "react-bootstrap";
 import { InnerList } from "./InnerList";
 
-
 // ✅ 축제 리스트 + 페이지네이션 렌더링 컴포넌트
 // props:
 // - festivals: 축제 데이터 배열 (필터링된 결과)
@@ -53,6 +52,7 @@ export default function InnerCard({ festivals , currentSeason }) {
     return pageNumbers;
   };
 
+  // const globalIndex = startIndex + idx; // 전체 데이터 기준 인덱스 계산
   return (
     <div className="w-100 text-start mb-3" style={{ flexGrow: 1, overflowY: 'auto', backgroundColor:"#FDFDFD" , borderRadius:20 ,padding:20, boxSizing:"border-box" }}>
             {/* 🔹 검색 입력창 */}

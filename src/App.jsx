@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 import { Route, Routes } from "react-router";
-import MainPage from "./pages/mainPage";
+import MainPage from "./pages/MainPage";
+import DetailPage from "./pages/DetailPage";
 
 // ✅ 전역 상태 공유용 Context 생성
 export const FestivalContext = createContext();
@@ -47,16 +48,16 @@ function App() {
         const randomRating = Math.floor(Math.random() * 5) * 0.5 + 3;
         return {
           season,
-          GUNAME: item.GUNAME,
-          TITLE: item.TITLE,
-          DATE: item.DATE,
-          PLACE: item.PLACE,
-          ORG_NAME: item.ORG_NAME,
-          USE_TRGT: item.USE_TRGT,
-          MAIN_IMG: item.MAIN_IMG,
-          IS_FREE: item.IS_FREE,
-          HMPG_ADDR: item.HMPG_ADDR,
-          rating: randomRating, // ✅ 추가된 부분
+          GUNAME: item.GUNAME,       // 구 이름
+          TITLE: item.TITLE,         // 축제 이름
+          DATE: item.DATE,           // 축제 기간
+          PLACE: item.PLACE,         // 축제 장소
+          ORG_NAME: item.ORG_NAME,   // 주체 기관?
+          USE_TRGT: item.USE_TRGT,   // 참여자 기준
+          MAIN_IMG: item.MAIN_IMG,   // 메인 이미지
+          IS_FREE: item.IS_FREE,     // 무/유료 여부
+          HMPG_ADDR: item.HMPG_ADDR, // 홈페이지 주소
+          Rating: randomRating
         };
       });
 
@@ -102,6 +103,7 @@ function App() {
         {/* ✅ 라우팅 설정: 현재는 메인 페이지만 존재 */}
         <Routes>
           <Route path="/" element={<MainPage />}/>
+          <Route path="/detail/:index" element={<DetailPage />}/> {/*yesol추가*/}
         </Routes>
       </FestivalContext.Provider>
     </ThemeProvider>
