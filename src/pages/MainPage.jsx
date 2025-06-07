@@ -1,6 +1,6 @@
 import { FestivalContext } from "../App"
 import Footer from "../Component/Footer"
-import  { MainHeader } from "../Component/Header"
+import { MainHeader } from "../Component/Header"
 import SeoulMap from "../Component/SeoulMap"
 import Sidebar from "../Component/SideBar"
 import background from "../assets/mainBackground.png"
@@ -74,4 +74,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default MainPage

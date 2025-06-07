@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 
-
 // ✅ 축제 리스트 + 페이지네이션 렌더링 컴포넌트
 // props:
 // - festivals: 축제 데이터 배열 (필터링된 결과)
@@ -47,28 +46,9 @@ export default function InnerCard({ festivals }) {
     return pageNumbers;
   };
 
+  // const globalIndex = startIndex + idx; // 전체 데이터 기준 인덱스 계산
   return (
     <div className="w-100 text-start mb-3" style={{ flexGrow: 1, overflowY: 'auto' }}>
-      {/* ✅ 축제 항목이 없을 경우 */}
-      {currentItems.length === 0 ? (
-        <p>축제가 없습니다.</p>
-      ) : (
-        <>
-          {/* ✅ 현재 페이지에 해당하는 축제 항목 렌더링 */}
-          {currentItems.map((festival, idx) => (
-            <div key={idx} className="mb-3">
-              <span style={{ marginRight: '6px', color: 'black' }}>■</span>
-              {festival.TITLE}
-              <span style={{ marginLeft: '6px' }}>🌳</span>
-              <span style={{ marginLeft: '8px', color: '#666' }}>
-                ({festival.rating || '평점없음'})
-              </span>
-              <span style={{ marginLeft: '4px', color: '#ffa500' }}>★★★★☆</span>
-            </div>
-          ))}
-        </>
-      )}
-
       {/* ✅ 페이지네이션 영역 */}
       {totalPages > 1 && (
         <div className="d-flex align-items-center justify-content-center gap-2 mt-3">
