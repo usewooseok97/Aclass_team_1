@@ -1,27 +1,30 @@
-import { useState, useEffect, createContext } from "react"
-import ThemeProvider from 'react-bootstrap/ThemeProvider'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState, createContext, useEffect } from "react";
+import ThemeProvider from 'react-bootstrap/ThemeProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
-import FestivalList from './Component/Festivallist';
+import { Route, Routes } from "react-router";
+import MainPage from "./pages/MainPage";
+import DetailPage from "./pages/DetailPage";
 
-// ✅ Context 생성: 하위 컴포넌트에서 축제 데이터 접근 가능
+// ✅ 전역 상태 공유용 Context 생성
 export const FestivalContext = createContext();
 
+// ✅ API 기본 주소 (환경변수)
 const baseURL = import.meta.env.VITE_SEOUL_KEY;
 
 function App() {
-  // 축제 데이터 전체 / 계절별 분류
+  // ✅ 전체 축제 데이터 / 계절별 분류 데이터 상태
   const [festivalData, setFestivalData] = useState({
-    all: [],
-    bySeason: { 봄: [], 여름: [], 가을: [], 겨울: [] },
+    all: [],                             // 전체 축제 데이터
+    bySeason: { 봄: [], 여름: [], 가을: [], 겨울: [] }, // 계절별 축제 데이터
   });
 
-  const [isLoading, setIsLoading] = useState(true);         // 로딩 상태
-  const [currentSeason, setCurrentSeason] = useState('');    // 현재 계절
-  const [selectedDistrict, setSelectedDistrict] = useState(''); // 선택된 자치구
+  const [isLoading, setIsLoading] = useState(true);         // 로딩 중 여부
+  const [currentSeason, setCurrentSeason] = useState('');   // 현재 선택된 계절
+  const [selectedDistrict, setSelectedDistrict] = useState(''); // 현재 선택된 자치구
 
-  // ✅ 월을 계절로 변환
+  // ✅ 월을 기반으로 계절 문자열 반환
   const getSeason = (month) => {
     if ([3, 4, 5].includes(month)) return '봄';
     if ([6, 7, 8].includes(month)) return '여름';
@@ -29,16 +32,16 @@ function App() {
     return '겨울';
   };
 
-  // ✅ 축제 데이터 가져오기
+  // ✅ API 호출 → 축제 데이터 가져오기 + 계절별 정리
   const fetchFestivalData = async () => {
     try {
       const res = await axios.get(`${baseURL}/api/festivals`);
       const allRows = res.data;
       console.log("📦 응답 데이터 확인:", res.data);
 
-      // 축제 데이터 간소화 + 계절 분류
+      // ✅ 축제 데이터 가공: 필요한 항목만 추출 + 계절 구분
       const simplified = allRows.map((item) => {
-        const startMonth = parseInt(item.STRTDATE.slice(5, 7));
+        const startMonth = parseInt(item.STRTDATE.slice(5, 7)); // 시작 월 추출
         const season = getSeason(startMonth);
         return {
           season,
@@ -54,51 +57,51 @@ function App() {
         };
       });
 
-      // 계절별로 분류된 배열에 저장
+      // ✅ 계절별로 축제 정리
       const sorted = { 봄: [], 여름: [], 가을: [], 겨울: [] };
       simplified.forEach((item) => {
         sorted[item.season].push(item);
       });
 
-      // 상태 업데이트
+      // ✅ 상태 반영
       setFestivalData({
         all: simplified,
         bySeason: sorted,
       });
 
-      // 현재 계절 자동 설정
+      // ✅ 현재 날짜 기준으로 초기 계절 설정
       setCurrentSeason(getSeason(new Date().getMonth() + 1));
     } catch (err) {
-      console.error("축제 데이터 불러오기 실패:", err);
+      console.error("❌ 축제 데이터 불러오기 실패:", err);
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // ✅ 로딩 완료
     }
   };
 
-  // ✅ 최초 렌더링 시 데이터 fetch
+  // ✅ 컴포넌트 최초 마운트 시 축제 데이터 불러오기
   useEffect(() => {
     fetchFestivalData();
   }, []);
 
   return (
-    // ✅ 반응형 설정 포함한 부트스트랩 테마 적용
+    // ✅ 부트스트랩 반응형 테마 적용 + Context Provider 설정
     <ThemeProvider breakpoints={['xxxl','xxl', 'xl', 'lg', 'md', 'sm', 'xs']} minBreakpoint="xxs">
       <FestivalContext.Provider value={{
-        festivalData,
-        isLoading,
-        currentSeason,
-        setCurrentSeason,
-        selectedDistrict,
-        setSelectedDistrict
+        festivalData,          // 축제 데이터 (전체/계절별)
+        isLoading,             // 로딩 상태
+        currentSeason,         // 선택된 계절
+        setCurrentSeason,      // 계절 변경 함수
+        selectedDistrict,      // 선택된 자치구
+        setSelectedDistrict    // 자치구 변경 함수
       }}>
-        {/* 하위 컴포넌트에서 context 사용 가능 */}
-        <div className="container py-4">
-          <h1>서울 계절별 축제</h1>
-          <FestivalList /> {/* 축제 목록 출력 컴포넌트 */}
-        </div>
+        {/* ✅ 라우팅 설정: 현재는 메인 페이지만 존재 */}
+        <Routes>
+          <Route path="/" element={<MainPage />}/>
+          <Route path="/detail/:index" element={<DetailPage />}/> {/*yesol추가*/}
+        </Routes>
       </FestivalContext.Provider>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App;
