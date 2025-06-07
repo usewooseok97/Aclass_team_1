@@ -57,7 +57,7 @@ function App() {
           MAIN_IMG: item.MAIN_IMG,   // 메인 이미지
           IS_FREE: item.IS_FREE,     // 무/유료 여부
           HMPG_ADDR: item.HMPG_ADDR, // 홈페이지 주소
-          Rating: randomRating
+          rating: randomRating
         };
       });
 
