@@ -3,6 +3,7 @@ import Footer from "../Component/Footer"
 import  { MainHeader } from "../Component/Header"
 import SeoulMap from "../Component/SeoulMap"
 import Sidebar from "../Component/SideBar"
+import { Extercard } from "../Component/EXCard"
 import background from "../assets/mainBackground.png"
 import { useContext, useState } from "react"
 
@@ -13,7 +14,9 @@ function MainPage() {
     currentSeason,          // 현재 선택된 계절
     selectedDistrict,       // 현재 선택된 자치구
     setSelectedDistrict,    // 자치구 설정 함수
-    setCurrentSeason        // 계절 설정 함수
+    setCurrentSeason,        // 계절 설정 함수
+    setSelectedFestival,
+    selectedFestival
   } = useContext(FestivalContext);
 
   // ✅ 사이드바 보이기 여부 관리
@@ -43,8 +46,13 @@ function MainPage() {
 
   return (
     <div style={{
-      width: "100vw", height: "100vh", overflow: "hidden",
-      backgroundImage: `url(${background})`,        // ✅ 전체 배경 이미지
+      display: "flex",
+      flexDirection: "column",      // 세로 배치
+      justifyContent: "space-between", // 헤더-본문-푸터 간 간격 확보
+      width: "100vw",
+      height: "100vh",
+      overflowX: "hidden",
+      backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -52,19 +60,28 @@ function MainPage() {
       <MainHeader />
 
       {/* ✅ 지도와 사이드바를 좌우로 배치 */}
-      <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", minWidth: "1490px" }}>
+      <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", minWidth: "1490px" ,position: "relative" }}>
         {/* ✅ 지도 (구 클릭 + 계절 선택 가능) */}
-        <SeoulMap
-          onDistrictClick={handleDistrictClick}
-          currentSeason={currentSeason}
-          setCurrentSeason={setCurrentSeason}
-        />
-
+        {!selectedFestival && (
+          <SeoulMap
+            onDistrictClick={handleDistrictClick}
+            currentSeason={currentSeason}
+            setCurrentSeason={setCurrentSeason}
+          />
+        )}
+        {selectedFestival && (
+          <Extercard
+            festival={selectedFestival}
+            currentSeason={currentSeason}
+            onClose={() => setSelectedFestival(null)}
+          />
+        )}
         {/* ✅ 사이드바: 구 클릭 시 나타나며 해당 축제 리스트 출력 */}
         <Sidebar
           visible={sidebarVisible}
           district={selectedDistrict}
           festivals={filteredFestivals}
+          currentSeason={currentSeason}
           onClose={handleCloseSidebar}
         />
       </div>

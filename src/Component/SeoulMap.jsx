@@ -28,7 +28,7 @@ export default function SeoulMap({ onDistrictClick, currentSeason, setCurrentSea
       <ImageMapper
         src={seoulImage}                  // 배경 이미지
         map={dynamicMap}                 // hover 상태 반영된 영역 정보
-        width={900}                      // 고정 너비
+        width={800}                   // 고정 너비
         responsive                       // 반응형 유지
         useCanvas={true}                 // canvas 사용 (외곽선 강조)
         onMouseEnter={area => setHoveredId(area.id)}       // hover 시작 시 ID 저장

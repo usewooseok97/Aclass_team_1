@@ -11,10 +11,6 @@ export default function Footer({ centerContent }) {
     return (
         <footer
         style={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
             minWidth: '900px',
             width: '100%',
             height: '60px',

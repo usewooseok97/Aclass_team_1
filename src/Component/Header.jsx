@@ -28,22 +28,9 @@ export function MainHeader(){
             >
                 서울 페스타 
             </div>
-
-            {/* 오른쪽: 메뉴 (비워두거나 확장용) */}
-            <div>
-                <Navbar.Collapse id="basic-navbar-nav">
-                {/* 오른쪽 메뉴 자리 */}
-                </Navbar.Collapse>
-            </div>
             </Container>
         </Navbar>
         </div>
 
         )
-}
-export function DetailedHeader(){
-
-    return(
-        <></>
-    )
 }

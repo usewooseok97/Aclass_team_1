@@ -22,6 +22,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);         // 로딩 중 여부
   const [currentSeason, setCurrentSeason] = useState('');   // 현재 선택된 계절
   const [selectedDistrict, setSelectedDistrict] = useState(''); // 현재 선택된 자치구
+  const [selectedFestival, setSelectedFestival] = useState(null);
 
   // ✅ 월을 기반으로 계절 문자열 반환
   const getSeason = (month) => {
@@ -42,6 +43,8 @@ function App() {
       const simplified = allRows.map((item) => {
         const startMonth = parseInt(item.STRTDATE.slice(5, 7)); // 시작 월 추출
         const season = getSeason(startMonth);
+          // ✅ 3.0 ~ 5.0 사이 랜덤 평점 (0.5 단위)
+        const randomRating = Math.floor(Math.random() * 5) * 0.5 + 3;
         return {
           season,
           GUNAME: item.GUNAME,
@@ -53,6 +56,7 @@ function App() {
           MAIN_IMG: item.MAIN_IMG,
           IS_FREE: item.IS_FREE,
           HMPG_ADDR: item.HMPG_ADDR,
+          rating: randomRating, // ✅ 추가된 부분
         };
       });
 
@@ -91,7 +95,9 @@ function App() {
         currentSeason,         // 선택된 계절
         setCurrentSeason,      // 계절 변경 함수
         selectedDistrict,      // 선택된 자치구
-        setSelectedDistrict    // 자치구 변경 함수
+        setSelectedDistrict,    // 자치구 변경 함수
+        setSelectedFestival,
+        selectedFestival
       }}>
         {/* ✅ 라우팅 설정: 현재는 메인 페이지만 존재 */}
         <Routes>

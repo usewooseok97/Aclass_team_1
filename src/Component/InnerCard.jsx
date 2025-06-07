@@ -1,14 +1,20 @@
-import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Button ,Form } from "react-bootstrap";
+import { InnerList } from "./InnerList";
 
 
 // ✅ 축제 리스트 + 페이지네이션 렌더링 컴포넌트
 // props:
 // - festivals: 축제 데이터 배열 (필터링된 결과)
 
-export default function InnerCard({ festivals }) {
+export default function InnerCard({ festivals , currentSeason }) {
+
   const itemsPerPage = 8; // ✅ 페이지당 항목 수
   const [currentPage, setCurrentPage] = useState(1); // ✅ 현재 페이지 번호 상태
+
+    useEffect(() => {
+    setCurrentPage(1);
+  }, [festivals , currentSeason]);
 
   // ✅ 전체 페이지 수 계산
   const totalPages = Math.ceil(festivals.length / itemsPerPage);
@@ -48,23 +54,44 @@ export default function InnerCard({ festivals }) {
   };
 
   return (
-    <div className="w-100 text-start mb-3" style={{ flexGrow: 1, overflowY: 'auto' }}>
+    <div className="w-100 text-start mb-3" style={{ flexGrow: 1, overflowY: 'auto', backgroundColor:"#FDFDFD" , borderRadius:20 ,padding:20, boxSizing:"border-box" }}>
+            {/* 🔹 검색 입력창 */}
+      <Form.Control
+        type="text"
+        placeholder="Search"
+        style={{ borderRadius: '10px' , backgroundColor : "#EEEEEE", maxWidth: "400px",margin:"auto",marginTop:10,marginBottom:10  }}
+      />
+
+      {/* 🔹 정렬 라디오 버튼 (제목순 / 평점순) */}
+      <div className="d-flex justify-content-end w-100 mb-2" style={{ fontSize: '14px' }}>
+        <Form.Check
+          inline
+          label="제목순"
+          name="sort"
+          type="radio"
+          id="sort-title"
+          defaultChecked
+        />
+        <Form.Check
+          inline
+          label="평점순 ↑"
+          name="sort"
+          type="radio"
+          id="sort-rating"
+        />
+      </div>
       {/* ✅ 축제 항목이 없을 경우 */}
       {currentItems.length === 0 ? (
         <p>축제가 없습니다.</p>
       ) : (
         <>
-          {/* ✅ 현재 페이지에 해당하는 축제 항목 렌더링 */}
           {currentItems.map((festival, idx) => (
-            <div key={idx} className="mb-3">
-              <span style={{ marginRight: '6px', color: 'black' }}>■</span>
-              {festival.TITLE}
-              <span style={{ marginLeft: '6px' }}>🌳</span>
-              <span style={{ marginLeft: '8px', color: '#666' }}>
-                ({festival.rating || '평점없음'})
-              </span>
-              <span style={{ marginLeft: '4px', color: '#ffa500' }}>★★★★☆</span>
-            </div>
+            <InnerList
+              key={idx}
+              idx={idx}
+              festival={festival}
+              currentSeason={currentSeason}
+            />
           ))}
         </>
       )}
