@@ -9,7 +9,7 @@ export default function FestivalList() {
 
   const filteredFestivals = festivalData.bySeason[currentSeason]?.filter(item =>
     selectedDistrict === '' || item.GUNAME === selectedDistrict
-  );
+  ); // 현재 계절에서 선택된 자치구가 있다면 필터링하고 아니면 전체 데이터 출력
 
   return (
     <>

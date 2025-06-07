@@ -1,4 +1,4 @@
-function MainPage() {
+function testPage() {
 
     return(
         <>
@@ -7,4 +7,4 @@ function MainPage() {
     )
 }
 
-export default MainPage
+export default testPage

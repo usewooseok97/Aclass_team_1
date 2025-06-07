@@ -42,15 +42,15 @@ function App() {
         const season = getSeason(startMonth);
         return {
           season,
-          GUNAME: item.GUNAME,
-          TITLE: item.TITLE,
-          DATE: item.DATE,
-          PLACE: item.PLACE,
-          ORG_NAME: item.ORG_NAME,
-          USE_TRGT: item.USE_TRGT,
-          MAIN_IMG: item.MAIN_IMG,
-          IS_FREE: item.IS_FREE,
-          HMPG_ADDR: item.HMPG_ADDR,
+          GUNAME: item.GUNAME,       // 구 이름
+          TITLE: item.TITLE,         // 축제 이름
+          DATE: item.DATE,           // 축제 기간
+          PLACE: item.PLACE,         // 축제 장소
+          ORG_NAME: item.ORG_NAME,   // 주체 기관?
+          USE_TRGT: item.USE_TRGT,   // 참여자 기준
+          MAIN_IMG: item.MAIN_IMG,   // 메인 이미지
+          IS_FREE: item.IS_FREE,     // 무/유료 여부
+          HMPG_ADDR: item.HMPG_ADDR, // 홈페이지 주소
         };
       });
 
