@@ -1,11 +1,14 @@
 import { ArrowUp, ArrowLeft } from "lucide-react";
 
-export default function Button({ type }) {
+export default function Button({ type  , clickEvent}) {
     const handleClick = () => {
         if (type === "top") {
             window.scrollTo({ top: 0, behavior: "smooth" });
         } else if (type === "back") {
             window.history.back();
+        }
+         else if (type === "behind") {
+            clickEvent()
         }
     };
 

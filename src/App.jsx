@@ -1,17 +1,15 @@
 import { useState, createContext, useEffect } from "react";
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import axios from 'axios';
 import { Route, Routes } from "react-router";
 import MainPage from "./pages/MainPage";
-import DetailPage from "./pages/DetailPage";
+import { getFestivalData } from "./services/axiosServices";
+import { calculateTopDistricts, getSeason, simplifyFestivalData, sortBySeason } from "./utilFunction/festivalUtils";
+import Test from "./pages/Test";
+import NotFoundPage from "./pages/NotFound";
 
 // ✅ 전역 상태 공유용 Context 생성
 export const FestivalContext = createContext();
-
-// ✅ API 기본 주소 (환경변수)
-const baseURL = import.meta.env.VITE_SEOUL_KEY;
 
 function App() {
   // ✅ 전체 축제 데이터 / 계절별 분류 데이터 상태
@@ -20,91 +18,70 @@ function App() {
     bySeason: { 봄: [], 여름: [], 가을: [], 겨울: [] }, // 계절별 축제 데이터
   });
 
-  const [isLoading, setIsLoading] = useState(true);         // 로딩 중 여부
-  const [currentSeason, setCurrentSeason] = useState('');   // 현재 선택된 계절
-  const [selectedDistrict, setSelectedDistrict] = useState(''); // 현재 선택된 자치구
-  const [selectedFestival, setSelectedFestival] = useState(null);
-
-  // ✅ 월을 기반으로 계절 문자열 반환
-  const getSeason = (month) => {
-    if ([3, 4, 5].includes(month)) return '봄';
-    if ([6, 7, 8].includes(month)) return '여름';
-    if ([9, 10, 11].includes(month)) return '가을';
-    return '겨울';
-  };
-
-  // ✅ API 호출 → 축제 데이터 가져오기 + 계절별 정리
+  const [isLoading, setIsLoading] = useState(true);         // 데이터 로딩 상태 여부
+  const [currentSeason, setCurrentSeason] = useState('');   // 사용자가 선택한 현재 계절
+  const [selectedDistrict, setSelectedDistrict] = useState(''); // 현재 선택된 서울 자치구
+  const [selectedFestival, setSelectedFestival] = useState(null); // 현재 상세보기를 눌러 선택된 축제
+  const [topDistricts, setTopDistricts] = useState([]);      // 평점 평균 기준 상위 3개 자치구
+  const [sidebarVisible, setSidebarVisible] = useState(false); // 사이드바 표시 여부
+// ✅ 축제 데이터를 비동기로 fetch하여 상태에 저장하는 함수
   const fetchFestivalData = async () => {
     try {
-      const res = await axios.get(`${baseURL}/api/festivals`);
-      const allRows = res.data;
-      console.log("📦 응답 데이터 확인:", res.data);
+      const rawData = await getFestivalData();                  // 원본 API 데이터 요청
+      const simplified = simplifyFestivalData(rawData);         // 필요한 필드만 남긴 간단화 처리
+      const sorted = sortBySeason(simplified);                  // 계절별로 축제를 분류
 
-      // ✅ 축제 데이터 가공: 필요한 항목만 추출 + 계절 구분
-      const simplified = allRows.map((item) => {
-        const startMonth = parseInt(item.STRTDATE.slice(5, 7)); // 시작 월 추출
-        const season = getSeason(startMonth);
-          // ✅ 3.0 ~ 5.0 사이 랜덤 평점 (0.5 단위)
-        const randomRating = Math.floor(Math.random() * 5) * 0.5 + 3;
-        return {
-          season,
-          GUNAME: item.GUNAME,       // 구 이름
-          TITLE: item.TITLE,         // 축제 이름
-          DATE: item.DATE,           // 축제 기간
-          PLACE: item.PLACE,         // 축제 장소
-          ORG_NAME: item.ORG_NAME,   // 주체 기관?
-          USE_TRGT: item.USE_TRGT,   // 참여자 기준
-          MAIN_IMG: item.MAIN_IMG,   // 메인 이미지
-          IS_FREE: item.IS_FREE,     // 무/유료 여부
-          HMPG_ADDR: item.HMPG_ADDR, // 홈페이지 주소
-          rating: randomRating
-        };
-      });
-
-      // ✅ 계절별로 축제 정리
-      const sorted = { 봄: [], 여름: [], 가을: [], 겨울: [] };
-      simplified.forEach((item) => {
-        sorted[item.season].push(item);
-      });
-
-      // ✅ 상태 반영
       setFestivalData({
         all: simplified,
         bySeason: sorted,
       });
 
-      // ✅ 현재 날짜 기준으로 초기 계절 설정
+      // 현재 월 기준으로 계절을 자동 설정 (앱 시작 시)
       setCurrentSeason(getSeason(new Date().getMonth() + 1));
     } catch (err) {
       console.error("❌ 축제 데이터 불러오기 실패:", err);
     } finally {
-      setIsLoading(false); // ✅ 로딩 완료
+      setIsLoading(false); // 로딩 상태 해제
     }
   };
 
-  // ✅ 컴포넌트 최초 마운트 시 축제 데이터 불러오기
+  // ✅ 컴포넌트 마운트 시 축제 데이터를 최초로 불러옴
   useEffect(() => {
     fetchFestivalData();
   }, []);
+
+  // ✅ 축제 데이터 또는 계절이 바뀔 때마다 상위 자치구(topDistricts) 계산
+  useEffect(() => {
+    const top = calculateTopDistricts(festivalData, currentSeason);
+    setTopDistricts(top);
+  }, [festivalData, currentSeason]);
 
   return (
     // ✅ 부트스트랩 반응형 테마 적용 + Context Provider 설정
     <ThemeProvider breakpoints={['xxxl','xxl', 'xl', 'lg', 'md', 'sm', 'xs']} minBreakpoint="xxs">
       <FestivalContext.Provider value={{
-        festivalData,          // 축제 데이터 (전체/계절별)
-        isLoading,             // 로딩 상태
+        festivalData,          // 전체 및 계절별 축제 데이터
+        isLoading,             // 로딩 여부
         currentSeason,         // 선택된 계절
         setCurrentSeason,      // 계절 변경 함수
         selectedDistrict,      // 선택된 자치구
-        setSelectedDistrict,    // 자치구 변경 함수
-        setSelectedFestival,
-        selectedFestival
+        setSelectedDistrict,   // 자치구 변경 함수
+        selectedFestival,      // 선택된 축제 정보
+        setSelectedFestival,   // 축제 선택/해제 함수
+        topDistricts,          // 상위 자치구 리스트
+        setTopDistricts,       // 상위 자치구 설정 함수
+        sidebarVisible,        // 사이드바 표시 여부
+        setSidebarVisible      // 사이드바 열기/닫기 제어
       }}>
+
         {/* ✅ 라우팅 설정: 현재는 메인 페이지만 존재 */}
         <Routes>
           <Route path="/" element={<MainPage />}/>
-          <Route path="/detail/:index" element={<DetailPage />}/> {/*yesol추가*/}
+          {/* <Route path="/detail/:index" element={<DetailPage />}/> yesol추가 */}
+          <Route path="/detail/:index" element={<Test />}/>
+          <Route path="*" element={<NotFoundPage />}/>
         </Routes>
+
       </FestivalContext.Provider>
     </ThemeProvider>
   );

@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react";
 import { Card, Row, Col, Spinner } from "react-bootstrap";
 import weatherIconMap from "../dataset/weatherIcon";
-import axios from "axios";
-import { WiRefresh } from "react-icons/wi";
+import { getLocationFromCoords, getWeatherByLocationKey } from "../services/axiosServices";
 
-const baseURL = import.meta.env.VITE_WEATHER_KEY
+const INITIAL_DATA = {
+  city: "Loading...",
+  condition: "Sunny",
+  temperature: 0,
+  maxTemp: 0,
+  minTemp: 0,
+  rainProbability: 0,
+};
 
 function Weather() {
-  const [weatherData, setWeatherData] = useState({
-    city: "Loading...",
-    condition: "Sunny",
-    temperature: 0,
-    maxTemp: 0,
-    minTemp: 0,
-    rainProbability: 0,
-  });
+  const [weatherData, setWeatherData] = useState(INITIAL_DATA);
 
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -24,46 +23,39 @@ function Weather() {
     setError(false);
 
     try {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
+      // ✅ 위치 정보를 가져오는 비동기 작업을 Promise로 감싸서 await할 수 있도록 처리
+      // 성공 시 → resolve 함수 호출 실패 시 → reject 함수 호출
+      
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
 
-          // 1. 프록시 서버 통해 위치 정보 요청
-          const locationRes = await axios.get(`${baseURL}/api/location`, { params: { lat, lon } });
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
 
-          const locationData = locationRes.data;
-          const cityName = locationData.LocalizedName;
-          const locationKey = locationData.ParentCity?.Key || locationData.Key;
+      const locationData = await getLocationFromCoords(lat, lon);
+      const cityName = locationData.LocalizedName;
+      const locationKey = locationData.ParentCity?.Key || locationData.Key;
 
-          // 2. 프록시 서버 통해 날씨 정보 요청
-          const weatherRes = await axios.get(`${baseURL}/api/weather/${locationKey}`);
+      const weatherDataRes = await getWeatherByLocationKey(locationKey);
+      const current = weatherDataRes.current;
+      const forecast = weatherDataRes.forecast;
 
-          const current = weatherRes.data.current;
-          const forecast = weatherRes.data.forecast;
+      setWeatherData({
+        city: cityName,
+        condition: current.WeatherText,
+        temperature: current.Temperature.Metric.Value,
+        maxTemp: forecast.Temperature.Maximum.Value,
+        minTemp: forecast.Temperature.Minimum.Value,
+        rainProbability: forecast.Day.PrecipitationProbability,
+      });
 
-          // 3. 상태 저장
-          setWeatherData({
-            city: cityName,
-            condition: current.WeatherText,
-            temperature: current.Temperature.Metric.Value,
-            maxTemp: forecast.Temperature.Maximum.Value,
-            minTemp: forecast.Temperature.Minimum.Value,
-            rainProbability: forecast.Day.PrecipitationProbability,
-          });
-
-          setLoading(false);
-        },
-        (err) => {
-          console.error("위치 권한 거부 또는 오류:", err);
-          setError(true);
-          setLoading(false);
-        }
-      );
-    } catch (err) {
-      console.error("날씨 데이터 호출 실패:", err);
-      setError(true);
       setLoading(false);
+    } catch (err) {
+      console.error("❌ 위치 또는 날씨 데이터 오류:", err);
+      setError(true);
+      setWeatherData(INITIAL_DATA);
+      setLoading(false); // ✅ 여기까지 반드시 도달하게 됨
     }
   };
 

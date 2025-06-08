@@ -1,13 +1,27 @@
-import { Button } from "react-bootstrap";
+import Button from "./MyButton";
 import { InnerList } from "./InnerList";
+import { useNavigate } from "react-router";
+import { useFestivalUI } from "../Hooks/FestivalHooks";
+import FestivalInfo from "./FestivalInfo";
 
-export function Extercard({ festival, currentSeason, onClose }) {
+
+
+export function Extercard() {
+  const navigate = useNavigate();
+  const {
+    selectedFestival: festival,
+    currentSeason,
+    setSelectedFestival
+  } = useFestivalUI();
+
   if (!festival) return null;
 
+  console.log(festival)
   return (
     <div
+      className="card mx-auto mb-4"
       style={{
-        width: "900px", // SeoulMap과 동일 너비
+        width: "900px",
         backgroundColor: "#fff",
         borderRadius: "20px",
         boxShadow: "0 0 15px rgba(0,0,0,0.25)",
@@ -15,40 +29,59 @@ export function Extercard({ festival, currentSeason, onClose }) {
         paddingBottom: "20px",
       }}
     >
-      <div style={{ marginBottom: "10px" }}>
-        <Button variant="light" size="sm" onClick={onClose}>
-          ←
-        </Button>
+      {/* 뒤로가기 버튼 */}
+      <div style={{ margin: "20px" }}>
+        <Button type="behind" clickEvent={() => setSelectedFestival(null)} />
       </div>
+
       {/* 상단 이미지 */}
       <img
         src={festival.MAIN_IMG}
         alt={festival.TITLE}
-        style={{ width: "50%", height: "auto", objectFit: "cover" }}
+        className="card-img-top"
+        style={{
+          width: "100%",
+          height: "auto",
+          objectFit: "cover",
+        }}
       />
 
-      <div style={{ padding: "20px" }}>
-        {/* 뒤로가기 버튼 (Sidebar와 동일 스타일) */}
-
-        {/* 제목 영역: InnerList 재사용 */}
+      {/* 내부 콘텐츠 */}
+      <div className="card-body" style={{ padding: "20px" }}>
+        {/* 제목, 평점 등 */}
         <InnerList
-          idx={0}
+          idx={festival.TITLE}
           festival={festival}
           currentSeason={currentSeason}
         />
 
-        {/* 상세 설명 예시 */}
-        <ul style={{ paddingLeft: "0", listStyle: "none", marginTop: "20px", fontSize: "14px", lineHeight: "1.6" }}>
-          <li>📍 <strong>위치:</strong> 서울시 {festival.GUNAME} 방이 21</li>
-          <li>📅 <strong>기간:</strong> {festival.DATE || '3월 ~ 4월'}</li>
-          <li>🍜 <strong>대표 먹거리:</strong> 명가들깨칼국수 본점</li>
-          <li>
-            🎵 동작구는 다음 달 초 전문 심사위원들의 영상 심사를 거쳐 분야당 10팀 내외로 출전팀을 선정할 계획이다. 
-            최종 선정된 팀은 페스티벌 당일에 5분 내외의 공연을 펼치게 되며, 소정의 활동비도 지원받을 수 있다.
-          </li>
-        </ul>
+        {/* 아이콘 정보 목록 */}
+        <FestivalInfo
+          infoItems={[
+            { icon: "🚩", text: festival.PLACE, copy: festival.PLACE },
+            { icon: "🕒", text: festival.DATE },
+          ]}
+        />
 
-        <div className="text-end mt-2" style={{ fontSize: '12px', color: '#999' }}>
+        {/* 프로그램 설명 */}
+        <p
+          className="card-text"
+          style={{
+            whiteSpace: "pre-line",
+            fontSize: "14px",
+            color: "#333",
+            marginTop: "15px",
+          }}
+        >
+          프로그램 설명 : {festival.PROGRAM == "" ? "설명생략" : festival.PROGRAM}
+        </p>
+
+        {/* 상세 페이지 링크 */}
+        <div
+          className="text-end"
+          style={{ fontSize: "12px", color: "#999", marginTop: "10px", cursor: "pointer" }}
+          onClick={() => navigate(`/detail/${encodeURIComponent(festival.TITLE)}`)}
+        >
           상세 페이지 →
         </div>
       </div>

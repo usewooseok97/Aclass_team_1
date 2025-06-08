@@ -4,6 +4,7 @@ import fallIcon from '../assets/fall.png';
 import winterIcon from '../assets/winter.png';
 import { useContext } from 'react';
 import { FestivalContext } from '../App';
+import { RatingStars } from './RatingStars';
 
 export function InnerList({ idx, festival, currentSeason }) {
 
@@ -30,7 +31,7 @@ export function InnerList({ idx, festival, currentSeason }) {
         <span style={{ marginLeft: '8px', color: '#666' }}>
             ({festival.rating || '평점없음'})
         </span>
-        <span style={{ marginLeft: '4px', color: '#ffa500' }}>★★★★☆</span>
+        <RatingStars rating={festival.rating} />
       </div>
     </div>
   );

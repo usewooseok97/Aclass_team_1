@@ -1,29 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 export default function ImageMapper({
-  src,              // 이미지 경로
-  map,              // 지도 좌표 데이터 (areas 포함)
-  width,            // 이미지 너비
-  imgWidth,         // 원본 이미지 너비
-  onClick,          // 클릭 이벤트 콜백
-  onMouseEnter,     // 마우스 진입 이벤트 콜백
-  onMouseLeave,     // 마우스 이탈 이벤트 콜백
-  responsive = false, // 반응형 설정 여부
+  src,
+  map,
+  width,
+  imgWidth,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+  responsive = false,
 }) {
-  const imgRef = useRef(null);        // 이미지 요소 참조
-  const canvasRef = useRef(null);     // 캔버스 요소 참조
-  const [naturalWidth, setNaturalWidth] = useState(0);        // 이미지 원본 너비 저장
-  const [containerWidth, setContainerWidth] = useState(width || 0); // 컨테이너 너비
-  const [hovered, setHovered] = useState(false);              // hover 여부 상태
+  const imgRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [naturalWidth, setNaturalWidth] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(width || 0);
+  const [hovered, setHovered] = useState(false);
+  const rainbowOffsetRef = useRef(0); // 🌈 애니메이션 offset 저장
+  const animationRef = useRef(null);  // requestAnimationFrame id 저장
 
-  // 이미지 로딩 후 원본 너비 가져오기
   useEffect(() => {
     const img = new Image();
     img.onload = () => setNaturalWidth(img.width);
     img.src = src;
   }, [src]);
 
-  // 반응형일 경우 창 크기 변화 감지하여 containerWidth 갱신
   useEffect(() => {
     if (responsive && imgRef.current) {
       const handleResize = () => {
@@ -37,29 +37,24 @@ export default function ImageMapper({
     }
   }, [responsive]);
 
-  // 좌표 비율을 현재 이미지 크기에 맞게 스케일링
   const scaleCoords = coords => {
     const scale = (containerWidth || width) / (imgWidth || naturalWidth);
     return coords.map(coord => coord * scale);
   };
 
-  // canvas에 외곽선을 그림
   const drawCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas || !map || !map.areas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // 초기화
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     map.areas.forEach(area => {
       const coords = scaleCoords(area.coords);
-      const strokeColor = area.active ? area.fillColor : area.preFillColor;
       const shape = area.shape.toLowerCase();
-
       ctx.beginPath();
 
-      // 도형 그리기
       if (shape === 'circle') {
         ctx.arc(coords[0], coords[1], coords[2], 0, 2 * Math.PI);
       } else if (shape === 'rect') {
@@ -76,22 +71,41 @@ export default function ImageMapper({
         ctx.closePath();
       }
 
-      // 외곽선 스타일 적용
+      // 🎨 기본 색상
+      let strokeColor = area.active ? area.fillColor : area.preFillColor;
+
+      // 🌈 topDistricts일 경우 무지개 stroke 적용
+      if (area.isTop) {
+        const offset = rainbowOffsetRef.current;
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+        gradient.addColorStop((0 + offset) % 1, "red");
+        gradient.addColorStop((0.25 + offset) % 1, "orange");
+        gradient.addColorStop((0.5 + offset) % 1, "yellow");
+        gradient.addColorStop((0.75 + offset) % 1, "green");
+        strokeColor = gradient;
+      }
+
       ctx.strokeStyle = strokeColor || 'rgba(0, 0, 255, 0.8)';
-      ctx.lineWidth = area.active ? 8 : 1;
-      ctx.setLineDash(area.active ? [10, 0] : []); // hover 시 점선
-      ctx.shadowColor = area.active ? 'rgba(255, 0, 0, 0.4)' : 'transparent'; // hover 시 그림자
+      ctx.lineWidth = area.active || area.isTop ? 8 : 1;
+      ctx.setLineDash(area.active ? [10, 0] : []);
+      ctx.shadowColor = area.active ? 'rgba(255, 0, 0, 0.4)' : 'transparent';
       ctx.shadowBlur = area.active ? 8 : 0;
-      ctx.stroke(); // 선만 그림
+      ctx.stroke();
     });
   };
 
-  // map, width가 바뀔 때마다 캔버스 다시 그림
-  useEffect(() => {
+  const animate = () => {
+    rainbowOffsetRef.current += 0.005; // ← 🌈 여기서 속도 조절 (작을수록 느림)
+    if (rainbowOffsetRef.current > 1) rainbowOffsetRef.current = 0;
     drawCanvas();
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    animate();
+    return () => cancelAnimationFrame(animationRef.current);
   }, [map, containerWidth]);
 
-  // <map> 태그 내의 <area> 요소 렌더링
   const renderAreas = () => {
     if (!map || !map.areas || !Array.isArray(map.areas)) return null;
 
@@ -106,13 +120,13 @@ export default function ImageMapper({
           coords={coords.join(',')}
           href={area.href}
           alt={area.name}
-          onClick={e => onClick && onClick(area, e)} // 클릭 시 콜백 호출
+          onClick={e => onClick && onClick(area, e)}
           onMouseEnter={e => {
-            setHovered(true);                     // hover 상태 true
+            setHovered(true);
             onMouseEnter && onMouseEnter(area, e);
           }}
           onMouseLeave={e => {
-            setHovered(false);                    // hover 상태 false
+            setHovered(false);
             onMouseLeave && onMouseLeave(area, e);
           }}
         />
@@ -120,10 +134,8 @@ export default function ImageMapper({
     });
   };
 
-  // 전체 이미지맵 구조 렌더링
   return (
     <div style={{ position: 'relative', width: width || '100%' }}>
-      {/* canvas는 hover 시 zIndex: 3으로 위에 올라오고, 외곽선만 그림 */}
       <canvas
         ref={canvasRef}
         width={containerWidth || width || 900}
@@ -132,13 +144,10 @@ export default function ImageMapper({
           position: 'absolute',
           top: 0,
           left: 0,
-          zIndex: hovered ? 3 : 0,
-          transition: 'all 0.3s ease-in-out',
-          opacity: hovered ? 1 : 0.5,
+          zIndex: 3,
           pointerEvents: 'none'
         }}
       />
-      {/* 실제 지도 이미지 */}
       <img
         ref={imgRef}
         src={src}
@@ -152,7 +161,6 @@ export default function ImageMapper({
           display: 'block'
         }}
       />
-      {/* 이미지맵 정의 */}
       <map name={map.name}>
         {renderAreas()}
       </map>
