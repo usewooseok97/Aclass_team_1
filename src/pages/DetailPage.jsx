@@ -33,46 +33,50 @@ export default function DetailPage() {
     const mockFoodList = foodList;
 
     return (
-        <div className="max-w-[1200px] mx-auto px-4 py-6 flex flex-col gap-8">
-            <div className="flex justify-left mt-2">
-                <MyButton type="back" />
-            </div>
-
-            {/*제목*/}
-            <h1 className="text-center text-2xl font-bold bg-purple-200 py-3 rounded">
-                {festival.TITLE}
-            </h1>
-
-            {/* 대표 이미지 슬라이더 */}
-            <FestivalSlider images={images} title={festival.TITLE} />
-
-            {/* 축제 정보 */}
-            <FestivalInfo
-                infoItems={[
-                    { icon: "🚩", text: festival.PLACE, copy: festival.PLACE },
-                    { icon: "⭐", text: "4.5", rating: 4.5 },
-                    { icon: "🕒", text: festival.DATE },
-                    { icon: "🔗", text: festival.HMPG_ADDR, isLink: true }
-                ]}
-            />
-
-            {/* 리뷰 게시판 + 먹거리 병렬로로 */}
-            <div className="flex flex-col lg:flex-row gap-8">
-                {/* 리뷰 게시판 (좌측) */}
-                <div className="lg:w-2/3">
-                    <ReviewBoard initialReviews={reviews} />
+        <div className="relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${festival.MAIN_IMG})` }}>
+            {/* bg-white/70 숫자변경으로 흐림 조절*/}
+            <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-0"></div>
+            <div className="relative z-10 max-w-[1200px] mx-auto px-4 py-6 flex flex-col gap-8 ">
+                <div className="flex justify-left mt-2">
+                    <MyButton type="back" />
                 </div>
 
-                {/* 먹거리 컴포넌트 (우측) */}
-                <div className="lg:w-1/3 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin">
-                    <FoodNearby mockFoodList={mockFoodList}/>
-                </div>
-            </div>
+                {/*제목*/}
+                <h1 className="text-center text-2xl font-bold bg-purple-200 py-3 rounded ">
+                    {festival.TITLE}
+                </h1>
 
-            <div className="flex justify-center mt-4">
-                <MyButton type="top" />
+                {/* 대표 이미지 슬라이더 */}
+                <FestivalSlider images={images} title={festival.TITLE} />
+
+                {/* 축제 정보 */}
+                <FestivalInfo 
+                    infoItems={[
+                        { icon: "🚩", text: festival.PLACE, copy: festival.PLACE },
+                        { icon: "⭐", text: "4.5", rating: 4.5 },
+                        { icon: "🕒", text: festival.DATE },
+                        { icon: "🔗", text: festival.HMPG_ADDR, isLink: true }
+                    ]}
+                />
+
+                {/* 리뷰 게시판 + 먹거리 병렬로로 */}
+                <div className="flex flex-col lg:flex-row gap-8">
+                    {/* 리뷰 게시판 (좌측) */}
+                    <div className="lg:w-2/3">
+                        <ReviewBoard initialReviews={reviews} />
+                    </div>
+
+                    {/* 먹거리 컴포넌트 (우측) */}
+                    <div className="lg:w-1/3 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin">
+                        <FoodNearby mockFoodList={mockFoodList}/>
+                    </div>
+                </div>
+
+                <div className="flex justify-center mt-4">
+                    <MyButton type="top" />
+                </div>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 }
