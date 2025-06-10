@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 push 될 때마다 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22  # 너가 쓰는 Node 버전에 맞춰도 돼
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        run: npx gh-pages -d dist  # CRA면 dist → build로 바꿔
