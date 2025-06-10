@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:  # ✅ 추가
+  contents: write  # ✅ Actions가 gh-pages 브랜치에 push 가능하도록 함
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -24,7 +27,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy index.html to 404.html for SPA fallback
+      - name: Copy index.html to 404.html
         run: cp dist/index.html dist/404.html
 
       - name: Deploy to GitHub Pages
@@ -32,5 +35,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx gh-pages -d dist \
-            --repo "https://x-access-token:${GH_TOKEN}@github.com/usewooseok97/Aclass_team_1" \
+            --repo "https://x-access-token:${GH_TOKEN}@github.com/usewooseok97/Aclass_team_1.git" \
             --user "GitHub Actions <actions@github.com>"
