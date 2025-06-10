@@ -2,42 +2,59 @@ import { useState } from "react";
 import { Card, Button, Form, Container, Row, Col } from "react-bootstrap";
 import { Star } from "lucide-react";
 
+// 리뷰 게시판 컴포넌트트
 function ReviewBoard({ initialReviews = [] }) {
-    // 최신 리뷰 9개만 보이도록 설정 
+    // 초기값 -> props로 가져온 리뷰 리스트 + 최대 9개만 보이도록 설정
     const [reviews, setReviews] = useState(
         initialReviews.slice(-9).map((text) => ({ text, isMine: false, rating: 0 }))
     );
     const [input, setInput] = useState("");
     const [rating, setRating] = useState(0);
-    const [editingIdx, setEditingIdx] = useState(null); // 수정 중인 인덱스
-    const [editInput, setEditInput] = useState("");     // 수정 입력값
 
-    // 등록 버튼 핸들러
+    const [editingIdx, setEditingIdx] = useState(null); // 현재 수정 중인 리뷰 인덱스
+    const [editInput, setEditInput] = useState("");     // 수정 입력 값(텍스트)
+
+
+    // 리뷰 등록 버튼 핸들러
     const handleAddReview = () => {
-        const trimmed = input.trim();
-        if (!trimmed || rating === 0) return;
+        const trimmed = input.trim();           // 입력값에서 앞뒤 공백 제거
+        if (!trimmed || rating === 0) return;   // 내용이 없거나 별점이 없으면 등록 X
+
+        // 기존 리뷰 + 새로운 리뷰 객체 생성하여 추가 {}, 최신 9개만 보이도록 설정 {내용,본인작성여부,별점}
         const newReviews = [...reviews, { text: trimmed, isMine: true, rating }].slice(-9);
-        setReviews(newReviews);
-        setInput("");
-        setRating(0);
+
+        setReviews(newReviews);  // 새로운 리뷰 리스트 setting
+        setInput("");            // 입력 필드 초기화
+        setRating(0);            // 평점 초기화
     };
 
-    // 삭제 버튼 핸들러
+
+    // 리뷰 삭제 버튼 핸들러
     const handleDelete = (idx) => {
-        if (!reviews[idx].isMine) return;
+        if (!reviews[idx].isMine) return; // 내가 쓴 리뷰만 삭제 가능능
+        // 해당하는 idx 제외하고 새로운 리스트 생성
         const newReviews = reviews.filter((_, i) => i !== idx);
         setReviews(newReviews);
     };
 
-    // 수정 버튼 핸들러
+
+    // 리뷰 수정 후 저장 버튼 핸들러
     const handleSaveEdit = (idx) => {
+
+          // 수정 필드 입력값 공백 제거 후 빈 값이면 저장하지 않음
         if (editInput.trim() === "") return;
+
+          // 기존 리뷰 updated에 저장하여 초기화
         const updated = [...reviews];
+
+          // 있는 리뷰 리스트 중 현재 index의 값을 수정된 값으로 변경경
         updated[idx].text = editInput.trim();
+
         setReviews(updated);
-        setEditingIdx(null);
-        setEditInput("");
+        setEditingIdx(null);  // 수정중이 아닌 상태로 변경 -> 삭제,수정 버튼 나타나도록
+        setEditInput("");     // 수정 입력 필드의 값 초기화
     };
+
 
     return (
         <Container className="my-4">
@@ -63,6 +80,7 @@ function ReviewBoard({ initialReviews = [] }) {
                             }}
                             className="p-2"
                         >
+                            {/* 카드 상단 장식 css */}
                             <div
                                 style={{
                                     position: "absolute",
@@ -77,6 +95,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                 }}
                             ></div>
 
+                            {/* 카드 내부 내용 */}
                             <Card.Body className="pt-4 px-2 d-flex flex-column justify-between"
                                 style={{
                                     fontSize: "0.875rem",
@@ -87,7 +106,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                     whiteSpace: "normal",
                                 }}>
 
-                                {/* 내용 영역 (스크롤) ,내가 작성한 리뷰 별점 표시 */}
+                                {/* 내용 스크롤 부분분 */}
                                 <div
                                     className="flex-grow-1 overflow-auto pe-2"
                                     style={{
@@ -97,7 +116,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                 >
                                     <Card.Text className="fw-bold mb-1"># {idx + 1}</Card.Text>
 
-                                    {/* 수정 */}
+                                    {/* 수정중일 경우 입력창 표시 아니면 리뷰 글 보여주기 */}
                                     {editingIdx === idx ? (
                                         <Form.Control
                                             type="text"
@@ -110,6 +129,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                         <Card.Text>{review.text}</Card.Text>
                                     )}
 
+                                    {/* 별점 설정 부분 */}
                                     {review.rating > 0 && (
                                         <div className="mt-2 d-flex">
                                             {[...Array(5)].map((_, i) => (
@@ -128,7 +148,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                 {/* 내가 작성한 리뷰 버튼 영역 */}
                                 {review.isMine && (
                                     <div className="text-end mt-2 d-flex justify-content-end gap-1">
-                                        {editingIdx === idx ? (
+                                        {editingIdx === idx ? ( // 수정중일 경우 저장, 취소 버튼 표시 | 아닐경우 삭제, 수정 버튼 표시
                                             <>
                                                 <Button
                                                     variant="success"
@@ -142,6 +162,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                                 >
                                                     저장
                                                 </Button>
+
                                                 <Button
                                                     variant="secondary"
                                                     size="sm"
@@ -214,7 +235,7 @@ function ReviewBoard({ initialReviews = [] }) {
                 ))}
             </Row>
 
-            {/* 하단 입력창 */}
+            {/* 하단 리뷰 등록 입력창 */}
             <div className="mt-5 d-flex justify-content-center">
                 <Form
                     className="d-flex flex-column flex-sm-row flex-wrap align-items-center justify-content-center gap-2"

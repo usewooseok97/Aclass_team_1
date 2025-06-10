@@ -32,10 +32,12 @@ export default function DetailPage() {
 
     return (
         <div className="max-w-[1200px] mx-auto px-4 py-6 flex flex-col gap-8">
-            <MyButton type="back" />
+            <div className="flex justify-left mt-2">
+                <MyButton type="back" />
+            </div>
 
             {/*제목*/}
-            <h1 className="text-center text-2xl font-bold bg-purple-200 py-2 rounded">
+            <h1 className="text-center text-2xl font-bold bg-purple-200 py-3 rounded">
                 {festival.TITLE}
             </h1>
 
