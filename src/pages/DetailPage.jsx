@@ -7,6 +7,7 @@ import { useFestivalUI } from "../Hooks/FestivalHooks";
 import { Spinner } from "react-bootstrap";
 import FoodNearby from "../Component/FoodNearby";
 import FestivalSlider from "../Component/FestivalSlider";
+import { foodList } from "../dataset/foodList";
 
 export default function DetailPage() {
 
@@ -28,7 +29,7 @@ export default function DetailPage() {
 
     const images = [festival.MAIN_IMG];
     const reviews = ["재밌어요", "사람이 많아요", "가격이 저렴해요", "가족과 함께 오면 더 좋을 것 같아요~", "다음에 또 오고 싶어요!!!"]; // 기존에 존재하는 리뷰 예시 
-    // const restaurants = []; // 먹거리 예시
+    const mockFoodList = foodList;
 
     return (
         <div className="max-w-[1200px] mx-auto px-4 py-6 flex flex-col gap-8">
@@ -63,7 +64,7 @@ export default function DetailPage() {
 
                 {/* 먹거리 컴포넌트 (우측) */}
                 <div className="lg:w-1/3 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin">
-                    <FoodNearby />
+                    <FoodNearby mockFoodList={mockFoodList}/>
                 </div>
             </div>
 

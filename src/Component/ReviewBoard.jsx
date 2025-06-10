@@ -38,7 +38,7 @@ function ReviewBoard({ initialReviews = [] }) {
     };
 
 
-    // 리뷰 수정 후 저장 버튼 핸들러
+    // 리뷰 수정저장 버튼 핸들러
     const handleSaveEdit = (idx) => {
 
           // 수정 필드 입력값 공백 제거 후 빈 값이면 저장하지 않음
@@ -51,8 +51,8 @@ function ReviewBoard({ initialReviews = [] }) {
         updated[idx].text = editInput.trim();
 
         setReviews(updated);
-        setEditingIdx(null);  // 수정중이 아닌 상태로 변경 -> 삭제,수정 버튼 나타나도록
-        setEditInput("");     // 수정 입력 필드의 값 초기화
+        setEditingIdx(null);  // 수정중이 아닌 상태로 변경 -> 삭제,수정 버튼 활성화
+        setEditInput("");     // 저장후 수정 입력 필드의 값 초기화
     };
 
 
@@ -172,8 +172,8 @@ function ReviewBoard({ initialReviews = [] }) {
                                                         borderRadius: "4px",
                                                     }}
                                                     onClick={() => {
-                                                        setEditingIdx(null);
-                                                        setEditInput("");
+                                                        setEditingIdx(null); // 수정 상태 확인 state 초기화
+                                                        setEditInput("");    // 수정 필드의 값 초기화
                                                     }}
                                                 >
                                                     취소
@@ -219,8 +219,8 @@ function ReviewBoard({ initialReviews = [] }) {
                                                         borderRadius: "4px"
                                                     }}
                                                     onClick={() => {
-                                                        setEditingIdx(idx);
-                                                        setEditInput(review.text);
+                                                        setEditingIdx(idx);         // 수정 중으로 변경 -> 저장,취소 버튼 활성화
+                                                        setEditInput(review.text);  // 수정 필드의 값을 리뷰의 텍스트로 변경 
                                                     }}
                                                 >
                                                     수정
