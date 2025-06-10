@@ -3,6 +3,7 @@ import { RatingStars } from "./RatingStars";
 
 export default function InfoItem({ icon, text, isLink, rating, copy }) {
 
+  // 부모 컴포넌트가 리렌더링 되어도 copy가 바뀌지 않으면 copyToClipboard 함수 객체 생성X (함수 재생성 방지)
   const copyToClipboard = useCallback(() => {
     if (!copy) return;
     navigator.clipboard.writeText(copy)

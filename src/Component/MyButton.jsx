@@ -18,7 +18,7 @@ export default function Button({ type  , clickEvent}) {
             className="px-3 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition flex items-center gap-1 text-sm"
         >
             {type === "top" ? <ArrowUp size={16} /> : <ArrowLeft size={16} />}
-            {type === "top" ? "🔝" : "⬅️"}
+            {/* {type === "top" ? "🔝" : "⬅️"} */}
         </button>
     );
 };

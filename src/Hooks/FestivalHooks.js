@@ -45,6 +45,7 @@ export function useFestivalUI() {
 
   // 🔸 외부에서 사용할 상태와 함수들을 반환
   return {
+    festivalData,
     sidebarVisible,
     setSidebarVisible,
     handleDistrictClick,

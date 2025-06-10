@@ -9,6 +9,8 @@ function ReviewBoard({ initialReviews = [] }) {
     );
     const [input, setInput] = useState("");
     const [rating, setRating] = useState(0);
+    const [editingIdx, setEditingIdx] = useState(null); // 수정 중인 인덱스
+    const [editInput, setEditInput] = useState("");     // 수정 입력값
 
     // 등록 버튼 핸들러
     const handleAddReview = () => {
@@ -22,26 +24,42 @@ function ReviewBoard({ initialReviews = [] }) {
 
     // 삭제 버튼 핸들러
     const handleDelete = (idx) => {
-        const review = reviews[idx];
-        if (!review.isMine) return;
+        if (!reviews[idx].isMine) return;
         const newReviews = reviews.filter((_, i) => i !== idx);
         setReviews(newReviews);
+    };
+
+    // 수정 버튼 핸들러
+    const handleSaveEdit = (idx) => {
+        if (editInput.trim() === "") return;
+        const updated = [...reviews];
+        updated[idx].text = editInput.trim();
+        setReviews(updated);
+        setEditingIdx(null);
+        setEditInput("");
     };
 
     return (
         <Container className="my-4">
             {/* 3x3으로만 보이도록 설정 */}
-            <Row xs={1} sm={2} md={3} className="g-3 justify-content-center">
+            <Row className="g-3 justify-content-center">
                 {reviews.map((review, idx) => (
-                    <Col key={idx}>
+                    <Col key={idx}
+                        style={{
+                            flex: '0 0 auto',
+                            width: 'calc(100% / 3 - 1rem)', // 정확히 3열로 고정 (gap 고려)
+                            maxWidth: '300px',
+                        }}>
                         <Card
                             style={{
                                 backgroundColor: "#FFF066",
                                 border: "none",
                                 minHeight: "140px",
+                                maxHeight: "200px",
                                 boxShadow: "2px 2px 6px rgba(0,0,0,0.2)",
                                 borderRadius: "5px",
                                 position: "relative",
+                                overflow: "hidden"
                             }}
                             className="p-2"
                         >
@@ -59,34 +77,137 @@ function ReviewBoard({ initialReviews = [] }) {
                                 }}
                             ></div>
 
-                            <Card.Body className="pt-4 px-2">
-                                <Card.Text className="fw-bold mb-1"># {idx + 1}</Card.Text>
-                                <Card.Text className="small">{review.text}</Card.Text>
+                            <Card.Body className="pt-4 px-2 d-flex flex-column justify-between"
+                                style={{
+                                    fontSize: "0.875rem",
+                                    lineHeight: "1.4",
+                                    overflow: "hidden",
+                                    position: "relative",
+                                    wordBreak: "break-word",
+                                    whiteSpace: "normal",
+                                }}>
 
-                                {review.rating > 0 && (
-                                    <div className="mt-2">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star
-                                                key={i}
-                                                size={12}
-                                                className="me-1"
-                                                fill={i < review.rating ? "#FFA500" : "none"}
-                                                color={i < review.rating ? "#FFA500" : "#ccc"}
-                                            />
-                                        ))}
-                                    </div>
-                                )} {/* 내가 작성한 리뷰 별점 표시 */}
+                                {/* 내용 영역 (스크롤) ,내가 작성한 리뷰 별점 표시 */}
+                                <div
+                                    className="flex-grow-1 overflow-auto pe-2"
+                                    style={{
+                                        scrollbarWidth: "none",      // Firefox
+                                        msOverflowStyle: "none",     // IE/Edge
+                                    }}
+                                >
+                                    <Card.Text className="fw-bold mb-1"># {idx + 1}</Card.Text>
 
+                                    {/* 수정 */}
+                                    {editingIdx === idx ? (
+                                        <Form.Control
+                                            type="text"
+                                            size="sm"
+                                            value={editInput}
+                                            onChange={(e) => setEditInput(e.target.value)}
+                                            className="mb-2"
+                                        />
+                                    ) : (
+                                        <Card.Text>{review.text}</Card.Text>
+                                    )}
+
+                                    {review.rating > 0 && (
+                                        <div className="mt-2 d-flex">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star
+                                                    key={i}
+                                                    size={12}
+                                                    className="me-1"
+                                                    fill={i < review.rating ? "#FFA500" : "none"}
+                                                    color={i < review.rating ? "#FFA500" : "#ccc"}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* 내가 작성한 리뷰 버튼 영역 */}
                                 {review.isMine && (
-                                    <Button
-                                        variant="outline-danger"
-                                        size="sm"
-                                        onClick={() => handleDelete(idx)}
-                                        style={{ position: "absolute", bottom: "8px", right: "8px" }}
-                                    >
-                                        삭제
-                                    </Button>
-                                )} {/* 내가 작성한 리뷰 삭제버튼 */}
+                                    <div className="text-end mt-2 d-flex justify-content-end gap-1">
+                                        {editingIdx === idx ? (
+                                            <>
+                                                <Button
+                                                    variant="success"
+                                                    size="sm"
+                                                    style={{
+                                                        fontSize: "10px",
+                                                        padding: "1px 6px",
+                                                        borderRadius: "4px",
+                                                    }}
+                                                    onClick={() => handleSaveEdit(idx)}
+                                                >
+                                                    저장
+                                                </Button>
+                                                <Button
+                                                    variant="secondary"
+                                                    size="sm"
+                                                    style={{
+                                                        fontSize: "10px",
+                                                        padding: "1px 6px",
+                                                        borderRadius: "4px",
+                                                    }}
+                                                    onClick={() => {
+                                                        setEditingIdx(null);
+                                                        setEditInput("");
+                                                    }}
+                                                >
+                                                    취소
+                                                </Button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Button
+                                                    variant="outline-danger"
+                                                    size="sm"
+                                                    onClick={() => handleDelete(idx)}
+                                                    style={{
+                                                        fontSize: "10px",
+                                                        padding: "1px 4px",
+                                                        backgroundColor: "#FFF066",
+                                                        border: "1px solid red",
+                                                        color: "red",
+                                                        fontWeight: "bold",
+                                                        borderRadius: "4px",
+                                                        lineHeight: "1.2",
+                                                        cursor: "pointer",
+                                                        transition: "all 0.2s ease",
+                                                    }}
+                                                    onMouseOver={(e) => {
+                                                        e.currentTarget.style.backgroundColor = "#FFD4D4";
+                                                        e.currentTarget.style.borderColor = "#cc0000";
+                                                    }}
+                                                    onMouseOut={(e) => {
+                                                        e.currentTarget.style.backgroundColor = "#FFF066";
+                                                        e.currentTarget.style.borderColor = "red";
+                                                    }}
+                                                >
+                                                    삭제
+                                                </Button>
+
+                                                <Button
+                                                    variant="outline-primary"
+                                                    size="sm"
+                                                    style={{
+                                                        fontSize: "10px",
+                                                        padding: "1px 4px",
+                                                        fontWeight: "bold",
+                                                        borderRadius: "4px"
+                                                    }}
+                                                    onClick={() => {
+                                                        setEditingIdx(idx);
+                                                        setEditInput(review.text);
+                                                    }}
+                                                >
+                                                    수정
+                                                </Button>
+                                            </>
+                                        )}
+                                    </div>
+                                )}
                             </Card.Body>
                         </Card>
                     </Col>
@@ -96,7 +217,7 @@ function ReviewBoard({ initialReviews = [] }) {
             {/* 하단 입력창 */}
             <div className="mt-5 d-flex justify-content-center">
                 <Form
-                    className="d-flex flex-wrap align-items-center gap-2 justify-content-center"
+                    className="d-flex flex-column flex-sm-row flex-wrap align-items-center justify-content-center gap-2"
                     style={{ width: "100%" }}
                 >
                     <Form.Control
@@ -104,15 +225,16 @@ function ReviewBoard({ initialReviews = [] }) {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="짧은 후기를 남겨보세요."
+                        className="w-auto"
                         style={{ maxWidth: 250 }}
                     />
 
-                    <div className="d-flex align-items-center gap-1">
+                    <div className="d-flex align-items-center gap-2">
                         <span className="me-1">평점:</span>
                         {[1, 2, 3, 4, 5].map((val) => (
                             <Star
                                 key={val}
-                                size={20}
+                                size={18}
                                 fill={val <= rating ? "#FFA500" : "none"}
                                 color={val <= rating ? "#FFA500" : "#ccc"}
                                 onClick={() => setRating(val)}
@@ -122,11 +244,9 @@ function ReviewBoard({ initialReviews = [] }) {
                         <span className="text-muted small ms-2">{rating}점</span>
                     </div>
 
-                    <div className="d-flex align-items-center">
-                        <Button variant="warning" onClick={handleAddReview}>
-                            등록
-                        </Button>
-                    </div>
+                    <Button variant="warning" onClick={handleAddReview}>
+                        등록
+                    </Button>
                 </Form>
             </div>
         </Container>
