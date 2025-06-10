@@ -3,5 +3,6 @@ export const imagesList = [
     "/assets/artist.jpg",
     "/assets/canvars.jpg",
     "/assets/sitting.jpg",
-    "/assets/sale.jpg"
+    "/assets/sale.jpg",
+    "/assets/hanyang_soloists.jpg",
 ];

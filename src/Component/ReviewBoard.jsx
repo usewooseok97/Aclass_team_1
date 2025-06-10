@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Card, Button, Form, Container, Row, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Card, Button, Form, Container, Row, Col, Alert } from "react-bootstrap";
 import { Star } from "lucide-react";
 
 // 리뷰 게시판 컴포넌트트
@@ -14,11 +14,26 @@ function ReviewBoard({ initialReviews = [] }) {
     const [editingIdx, setEditingIdx] = useState(null); // 현재 수정 중인 리뷰 인덱스
     const [editInput, setEditInput] = useState("");     // 수정 입력 값(텍스트)
 
+    const [alertMsg, setAlertMsg] = useState("");      // 알림 메세지
+    const [showAlert, setShowAlert] = useState(false); // alert 창 출력 여부
+
+    // alert이 보이게 되면 동작 -> 5초 뒤 자동 숨김처리
+    useEffect(() => {
+        if (showAlert) {
+            const timer = setTimeout(() => setShowAlert(false), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [showAlert]);
 
     // 리뷰 등록 버튼 핸들러
     const handleAddReview = () => {
         const trimmed = input.trim();           // 입력값에서 앞뒤 공백 제거
-        if (!trimmed || rating === 0) return;   // 내용이 없거나 별점이 없으면 등록 X
+
+        if (!trimmed || rating === 0) { // 내용이 없는(공백) 경우 || 별점이 없는 경우 등록 X
+            setAlertMsg(!trimmed ? "리뷰 내용을 입력해주세요!" : "별점을 선택해주세요! (별점은 수정 불가입니다.)");
+            setShowAlert(true);
+            return;
+        }
 
         // 기존 리뷰 + 새로운 리뷰 객체 생성하여 추가 {}, 최신 9개만 보이도록 설정 {내용,본인작성여부,별점}
         const newReviews = [...reviews, { text: trimmed, isMine: true, rating }].slice(-9);
@@ -31,7 +46,7 @@ function ReviewBoard({ initialReviews = [] }) {
 
     // 리뷰 삭제 버튼 핸들러
     const handleDelete = (idx) => {
-        if (!reviews[idx].isMine) return; // 내가 쓴 리뷰만 삭제 가능능
+        if (!reviews[idx].isMine) return; // 내가 쓴 리뷰만 삭제 가능
         // 해당하는 idx 제외하고 새로운 리스트 생성
         const newReviews = reviews.filter((_, i) => i !== idx);
         setReviews(newReviews);
@@ -41,13 +56,13 @@ function ReviewBoard({ initialReviews = [] }) {
     // 리뷰 수정저장 버튼 핸들러
     const handleSaveEdit = (idx) => {
 
-          // 수정 필드 입력값 공백 제거 후 빈 값이면 저장하지 않음
+        // 수정 필드 입력값 공백 제거 후 빈 값이면 저장하지 않음
         if (editInput.trim() === "") return;
 
-          // 기존 리뷰 updated에 저장하여 초기화
+        // 기존 리뷰 updated에 저장하여 초기화
         const updated = [...reviews];
 
-          // 있는 리뷰 리스트 중 현재 index의 값을 수정된 값으로 변경경
+        // 있는 리뷰 리스트 중 현재 index의 값을 수정된 값으로 변경
         updated[idx].text = editInput.trim();
 
         setReviews(updated);
@@ -69,7 +84,7 @@ function ReviewBoard({ initialReviews = [] }) {
                         }}>
                         <Card
                             style={{
-                                backgroundColor: "#FFF066",
+                                backgroundColor: "rgb(247, 220, 104)",
                                 border: "none",
                                 minHeight: "140px",
                                 maxHeight: "200px",
@@ -235,9 +250,22 @@ function ReviewBoard({ initialReviews = [] }) {
                 ))}
             </Row>
 
+            {/* alter 메세지 보여주기 */}
+            {showAlert && (
+                <div className="d-flex justify-content-center mt-3">
+                    <Alert
+                        variant="danger"
+                        className="border-0 rounded px-4 py-2 text-sm fw-semibold text-red-800 bg-red-100 shadow-sm"
+                    >
+                        {alertMsg}
+                    </Alert>
+                </div>
+            )}
+
             {/* 하단 리뷰 등록 입력창 */}
-            <div className="mt-5 d-flex justify-content-center">
+            <div className="mt-2 d-flex justify-content-center">
                 <Form
+                    onSubmit={(e) => e.preventDefault()} // 기본 제출 막기 (엔터치면 새로고침되어 추가)
                     className="d-flex flex-column flex-sm-row flex-wrap align-items-center justify-content-center gap-2"
                     style={{ width: "100%" }}
                 >
@@ -245,11 +273,16 @@ function ReviewBoard({ initialReviews = [] }) {
                         type="text"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {     // 엔터 입력시에도 등록 되도록 설정
+                                e.preventDefault();
+                                handleAddReview();
+                            }
+                        }}
                         placeholder="짧은 후기를 남겨보세요."
                         className="w-auto"
                         style={{ maxWidth: 250 }}
                     />
-
                     <div className="d-flex align-items-center gap-2">
                         <span className="me-1">평점:</span>
                         {[1, 2, 3, 4, 5].map((val) => (

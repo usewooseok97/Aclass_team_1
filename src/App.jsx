@@ -7,6 +7,7 @@ import { getFestivalData } from "./services/axiosServices";
 import { calculateTopDistricts, getSeason, simplifyFestivalData, sortBySeason } from "./utilFunction/festivalUtils";
 import NotFoundPage from "./pages/NotFound";
 import DetailPage from "./pages/DetailPage";
+import GalleryPage from "./pages/GalleryPage";
 
 // ✅ 전역 상태 공유용 Context 생성
 export const FestivalContext = createContext();
@@ -78,6 +79,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />}/>
           <Route path="/detail/:title" element={<DetailPage />}/>
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="*" element={<NotFoundPage />}/>
         </Routes>
 
