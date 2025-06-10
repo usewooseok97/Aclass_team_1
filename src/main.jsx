@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router'
 import './index.css';
 
 createRoot(document.getElementById('root')).render(
-    <BrowserRouter basename={import.meta.env.DEV ? '/Aclass_team_1' : '/'}>
+    <BrowserRouter basename={import.meta.env.VITE_BASE_URL}>
     <App />
     </BrowserRouter>
 )
