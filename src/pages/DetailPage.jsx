@@ -8,6 +8,7 @@ import { Spinner } from "react-bootstrap";
 import FoodNearby from "../Component/FoodNearby";
 import FestivalSlider from "../Component/FestivalSlider";
 import { foodList } from "../dataset/foodList";
+import { imagesList } from "../dataset/imagesList";
 
 export default function DetailPage() {
 
@@ -27,7 +28,7 @@ export default function DetailPage() {
         );
     }
 
-    const images = [festival.MAIN_IMG];
+    const images = [festival.MAIN_IMG, ...imagesList];
     const reviews = ["재밌어요", "사람이 많아요", "가격이 저렴해요", "가족과 함께 오면 더 좋을 것 같아요~", "다음에 또 오고 싶어요!!!"]; // 기존에 존재하는 리뷰 예시 
     const mockFoodList = foodList;
 

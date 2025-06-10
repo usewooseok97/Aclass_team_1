@@ -5,7 +5,6 @@ import { Route, Routes } from "react-router";
 import MainPage from "./pages/MainPage";
 import { getFestivalData } from "./services/axiosServices";
 import { calculateTopDistricts, getSeason, simplifyFestivalData, sortBySeason } from "./utilFunction/festivalUtils";
-import Test from "./pages/Test";
 import NotFoundPage from "./pages/NotFound";
 import DetailPage from "./pages/DetailPage";
 
@@ -78,7 +77,6 @@ function App() {
         {/* ✅ 라우팅 설정: 현재는 메인 페이지만 존재 */}
         <Routes>
           <Route path="/" element={<MainPage />}/>
-          {/* <Route path="/detail/:index" element={<DetailPage />}/> yesol추가 */}
           <Route path="/detail/:title" element={<DetailPage />}/>
           <Route path="*" element={<NotFoundPage />}/>
         </Routes>

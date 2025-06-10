@@ -1,3 +1,4 @@
+// 먹거리 예시
 export const foodList = [
     {
         name: "명가들깨칼국수 본점",
@@ -20,4 +21,4 @@ export const foodList = [
         rating: 4.6,
         image: "/assets/starbucks.jpeg"
     }
-]; // 먹거리 예시
+];
