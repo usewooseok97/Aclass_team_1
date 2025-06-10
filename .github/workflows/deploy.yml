@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # main 브랜치에 push 될 때마다 실행
+      - main
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22  # 너가 쓰는 Node 버전에 맞춰도 돼
+          node-version: 22
 
       - name: Install dependencies
         run: npm install
@@ -28,5 +28,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx gh-pages -d dist --user "GitHub Actions <actions@github.com>"
-
+          npx gh-pages -d dist \
+            --repo "https://x-access-token:${GH_TOKEN}@github.com/usewooseok97/Aclass_team_1.git" \
+            --user "GitHub Actions <actions@github.com>"
