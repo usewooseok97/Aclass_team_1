@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:  # ✅ 추가
+  contents: write  # ✅ Actions가 gh-pages 브랜치에 push 가능하도록 함
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages -d dist \
+            --repo "https://x-access-token:${GH_TOKEN}@github.com/usewooseok97/Aclass_team_1.git" \
+            --user "GitHub Actions <actions@github.com>"
