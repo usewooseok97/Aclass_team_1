@@ -28,4 +28,5 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx gh-pages -d dist -u "github-actions[bot] <actions@github.com>"
+          npx gh-pages -d dist --user "GitHub Actions <actions@github.com>"
+
