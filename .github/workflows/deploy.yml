@@ -25,4 +25,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        run: npx gh-pages -d dist  # CRA면 dist → build로 바꿔
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages -d dist -u "github-actions[bot] <actions@github.com>"
