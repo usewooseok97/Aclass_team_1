@@ -41,6 +41,7 @@ function ReviewBoard({ initialReviews = [] }) {
         setReviews(newReviews);  // 새로운 리뷰 리스트 setting
         setInput("");            // 입력 필드 초기화
         setRating(0);            // 평점 초기화
+        setShowAlert(false);     // 등록 버튼 눌러도 alert창 숨김처리
     };
 
 
