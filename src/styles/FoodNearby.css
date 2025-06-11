@@ -23,36 +23,36 @@
 
 .food-card {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   background: #f3f2f2;
   border-radius: 12px;
-  overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
   padding: 0.5rem;
   gap: 0.75rem;
-  flex-direction: row;
   width: 100%;
-  height: 120px;
-  max-height: 120;
-  align-items: center;
+  min-height: 110px;
+  max-height: 120px;
+  transition: transform 0.2s ease;
 }
 
 .food-card img {
-  aspect-ratio: 1 / 1;
   width: 100px;
   height: 100px;
   object-fit: cover;
-  object-position: center;
   border-radius: 8px;
   flex-shrink: 0;
 }
 
 .food-info {
-  padding: 0.75rem 1rem;
   flex: 1;
-  flex-grow: 1;
-  text-align: left;
-  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+  word-break: keep-all;
+  overflow: hidden;
 }
 
 .food-info h3 {
@@ -67,7 +67,6 @@
   }
 
   .food-card {
-    /* width: calc(33% - 0.67rem); */
     width: 100%;
     flex-direction: row;
   }
@@ -76,4 +75,22 @@
     width: 100px;
     height: 100px;
   }
+
+  @media (max-width: 600px) {
+    .food-card {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .food-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .food-info {
+      text-align: center;
+      padding: 0.5rem 0;
+    }
+  }
+
 }
