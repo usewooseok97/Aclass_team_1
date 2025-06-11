@@ -34,27 +34,35 @@ function reducer(state, action) {
   }
 }
 
-export default function InnerCard({ festivals, currentSeason, selectedDistrict }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortOption, setSortOption] = useState("rating-desc");
+export default function InnerCard({ festivals, currentSeason, selectedDistrict,isFavorite }) {
+  const [state, dispatch] = useReducer(reducer, initialState);              // 페이지네이션 상태
+  const [searchQuery, setSearchQuery] = useState("");                       // 검색어
+  const [sortOption, setSortOption] = useState("rating-desc");              // 정렬 옵션
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);        // 찜 필터 여부
 
   // 🔁 지역 또는 계절 변경 시 검색어 초기화
   useEffect(() => {
     setSearchQuery("");
   }, [selectedDistrict, currentSeason]);
 
-  // 🔁 검색/정렬 변경 시 페이지 초기화
+  // 🔁 검색어나 정렬 방식이 바뀔 때 페이지를 1페이지로 초기화
   useEffect(() => {
     dispatch({ type: "GO_PAGE", payload: 1 });
   }, [searchQuery, sortOption]);
 
-  // 🔍 필터링 및 정렬
+  // 🔍 필터링 및 정렬된 축제 목록 계산
   const finalFestivals = useMemo(() => {
+    // 🔍 1. 검색어 필터링
     let result = festivals.filter((festival) =>
       festival.TITLE.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    // ❤️ 2. 찜한 것만 보기 옵션이 켜져 있을 경우 추가 필터링
+    if (showOnlyFavorites) {
+      result = result.filter((festival) => isFavorite(festival.TITLE));
+    }
+
+    // 🔀 3. 정렬 방식 적용
     switch (sortOption) {
       case "title-asc":
         result.sort((a, b) => a.TITLE.localeCompare(b.TITLE));
@@ -70,9 +78,8 @@ export default function InnerCard({ festivals, currentSeason, selectedDistrict }
         break;
     }
 
-    return [...result]; // ✅ 방어적 복제
-  }, [festivals, searchQuery, sortOption]);
-
+    return [...result]; // ✅ 방어적 복사
+  }, [festivals, searchQuery, sortOption, showOnlyFavorites, isFavorite]);
   // 📦 페이지 계산
   useEffect(() => {
     dispatch({ type: "SET_TOTAL", payload: finalFestivals.length });
@@ -152,6 +159,14 @@ export default function InnerCard({ festivals, currentSeason, selectedDistrict }
           value="rating-desc"
           checked={sortOption === "rating-desc"}
           onChange={(e) => setSortOption(e.target.value)}
+        />
+        <Form.Check
+          inline
+          label="찜"
+          type="checkbox"
+          id="show-only-favorites"
+          checked={showOnlyFavorites}
+          onChange={(e) => setShowOnlyFavorites(e.target.checked)}
         />
       </div>
 

@@ -13,76 +13,110 @@ import GalleryPage from "./pages/GalleryPage";
 export const FestivalContext = createContext();
 
 function App() {
-  // ✅ 전체 축제 데이터 / 계절별 분류 데이터 상태
+  // ----------------------- ✅ 상태 정의 -----------------------
+
+  // 🎉 축제 데이터 상태
   const [festivalData, setFestivalData] = useState({
-    all: [],                             // 전체 축제 데이터
+    all: [],                                      // 전체 축제 데이터
     bySeason: { 봄: [], 여름: [], 가을: [], 겨울: [] }, // 계절별 축제 데이터
   });
 
-  const [isLoading, setIsLoading] = useState(true);         // 데이터 로딩 상태 여부
-  const [currentSeason, setCurrentSeason] = useState('');   // 사용자가 선택한 현재 계절
-  const [selectedDistrict, setSelectedDistrict] = useState(''); // 현재 선택된 서울 자치구
-  const [selectedFestival, setSelectedFestival] = useState(null); // 현재 상세보기를 눌러 선택된 축제
-  const [topDistricts, setTopDistricts] = useState([]);      // 평점 평균 기준 상위 3개 자치구
-  const [sidebarVisible, setSidebarVisible] = useState(false); // 사이드바 표시 여부
-// ✅ 축제 데이터를 비동기로 fetch하여 상태에 저장하는 함수
+  // 🔍 UI 상태
+  const [isLoading, setIsLoading] = useState(true);         // 데이터 로딩 상태
+  const [currentSeason, setCurrentSeason] = useState('');   // 현재 선택된 계절
+  const [selectedDistrict, setSelectedDistrict] = useState(''); // 현재 선택된 자치구
+  const [selectedFestival, setSelectedFestival] = useState(null); // 상세보기 중인 축제
+  const [sidebarVisible, setSidebarVisible] = useState(false);   // 사이드바 표시 여부
+
+  // 🏆 통계 상태
+  const [topDistricts, setTopDistricts] = useState([]);      // 상위 평점 자치구
+
+  // ❤️ 찜 기능 트리거 상태 (렌더링 유도용)
+  const [favoriteTrigger, setFavoriteTrigger] = useState(0);
+
+  // ----------------------- ✅ 찜 관련 로직 -----------------------
+
+  const isFavorite = (title) => {
+    return localStorage.getItem(title) !== null;
+  };
+
+  const toggleFavorite = (title) => {
+    const exists = isFavorite(title);
+
+    if (exists) {
+      localStorage.removeItem(title);
+    } else {
+      localStorage.setItem(title, title); // key도 value도 TITLE
+    }
+
+    // 🔁 리렌더링 유도
+    setFavoriteTrigger(prev => prev + 1);
+  };
+
+  // ----------------------- ✅ 데이터 요청 -----------------------
+
   const fetchFestivalData = async () => {
     try {
-      const rawData = await getFestivalData();                  // 원본 API 데이터 요청
-      const simplified = simplifyFestivalData(rawData);         // 필요한 필드만 남긴 간단화 처리
-      const sorted = sortBySeason(simplified);                  // 계절별로 축제를 분류
+      const rawData = await getFestivalData();             // 원본 API 호출
+      const simplified = simplifyFestivalData(rawData);    // 필드 정제
+      const sorted = sortBySeason(simplified);             // 계절별 분류
 
       setFestivalData({
         all: simplified,
         bySeason: sorted,
       });
 
-      // 현재 월 기준으로 계절을 자동 설정 (앱 시작 시)
+      // 현재 월에 해당하는 계절 자동 설정
       setCurrentSeason(getSeason(new Date().getMonth() + 1));
     } catch (err) {
       console.error("❌ 축제 데이터 불러오기 실패:", err);
     } finally {
-      setIsLoading(false); // 로딩 상태 해제
+      setIsLoading(false);
     }
   };
 
-  // ✅ 컴포넌트 마운트 시 축제 데이터를 최초로 불러옴
+  // ----------------------- ✅ 사이드 효과 -----------------------
+
   useEffect(() => {
-    fetchFestivalData();
+    fetchFestivalData(); // 앱 최초 실행 시 데이터 요청
   }, []);
 
-  // ✅ 축제 데이터 또는 계절이 바뀔 때마다 상위 자치구(topDistricts) 계산
   useEffect(() => {
     const top = calculateTopDistricts(festivalData, currentSeason);
-    setTopDistricts(top);
+    setTopDistricts(top); // 계절이 바뀔 때마다 top 3 구 갱신
   }, [festivalData, currentSeason]);
 
+  // ----------------------- ✅ 렌더링 -----------------------
+
   return (
-    // ✅ 부트스트랩 반응형 테마 적용 + Context Provider 설정
     <ThemeProvider breakpoints={['xxxl','xxl', 'xl', 'lg', 'md', 'sm', 'xs']} minBreakpoint="xxs">
       <FestivalContext.Provider value={{
-        festivalData,          // 전체 및 계절별 축제 데이터
-        isLoading,             // 로딩 여부
-        currentSeason,         // 선택된 계절
-        setCurrentSeason,      // 계절 변경 함수
-        selectedDistrict,      // 선택된 자치구
-        setSelectedDistrict,   // 자치구 변경 함수
-        selectedFestival,      // 선택된 축제 정보
-        setSelectedFestival,   // 축제 선택/해제 함수
-        topDistricts,          // 상위 자치구 리스트
-        setTopDistricts,       // 상위 자치구 설정 함수
-        sidebarVisible,        // 사이드바 표시 여부
-        setSidebarVisible      // 사이드바 열기/닫기 제어
+        // 🎉 축제 데이터
+        festivalData,
+        isLoading,
+        // 🔍 UI 제어
+        currentSeason,
+        setCurrentSeason,
+        selectedDistrict,
+        setSelectedDistrict,
+        selectedFestival,
+        setSelectedFestival,
+        sidebarVisible,
+        setSidebarVisible,
+        // 🏆 통계 데이터
+        topDistricts,
+        setTopDistricts,
+        // ❤️ 찜 기능
+        isFavorite,
+        toggleFavorite,
+        favoriteTrigger,
       }}>
-
-        {/* ✅ 라우팅 설정: 현재는 메인 페이지만 존재 */}
         <Routes>
-          <Route path="/" element={<MainPage />}/>
-          <Route path="/detail/:title" element={<DetailPage />}/>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/detail/:title" element={<DetailPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="*" element={<NotFoundPage />}/>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-
       </FestivalContext.Provider>
     </ThemeProvider>
   );

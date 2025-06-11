@@ -1,8 +1,11 @@
 import { Container, Button } from 'react-bootstrap';
 import { FaMapSigns } from 'react-icons/fa';
 import background from '../assets/question-background.png'
+import { usePageTitle } from '../Hooks/FestivalHooks';
 
 export default function NotFoundPage() {
+  usePageTitle("페이지를 찾을 수 없습니다");
+  const base = import.meta.env.BASE_URL;
 
   return (
     <div
@@ -35,7 +38,7 @@ export default function NotFoundPage() {
         <Button
           variant="dark"
           size="lg"
-          onClick={() => window.location.href = '/'}
+          onClick={() => window.location.href = `${base}`}
           style={{ padding: '10px 30px', fontWeight: 'bold' }}
         >
           GO HOME

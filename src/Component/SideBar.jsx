@@ -13,6 +13,7 @@ export default function Sidebar() {
     filteredFestivals: festivals,
     currentSeason,
     handleCloseSidebar: onClose,
+    isFavorite, 
   } = useFestivalUI();
 
   if (!visible) return null;
@@ -21,17 +22,12 @@ export default function Sidebar() {
     <Card
       style={{
         width: "100%",
-        maxWidth: '600px',
-        borderTopLeftRadius: '10px',
-        borderBottomLeftRadius: '10px',
-        borderLeft: 'none',
-        backgroundColor: 'transparent',
-        padding: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        boxShadow: '0 0 10px rgba(0,0,0,0.15)',
-        marginLeft: "10%"
+        maxWidth: "600px",
+        flex: "1 1 400px", // ✅ 반응형 flex
+        borderRadius: "10px",
+        backgroundColor: "white",
+        boxShadow: "0 0 10px rgba(0,0,0,0.15)",
+        padding: "20px",
       }}
     >
       <div style={{ alignSelf: 'flex-start' }}>
@@ -44,6 +40,7 @@ export default function Sidebar() {
         festivals={festivals}
         currentSeason={currentSeason}
         selectedDistrict={selectedDistrict}
+        isFavorite={isFavorite}
       />
     </Card>
   );

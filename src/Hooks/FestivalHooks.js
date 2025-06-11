@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { FestivalContext } from "../App";
 
 
@@ -15,7 +15,10 @@ export function useFestivalUI() {
     topDistricts,              // 평점 기준 상위 자치구 3개
     setTopDistricts,           // 상위 자치구 설정 함수
     sidebarVisible,            // 사이드바 표시 여부
-    setSidebarVisible          // 사이드바 열기/닫기 함수
+    setSidebarVisible ,         // 사이드바 열기/닫기 함수
+    isFavorite,
+    toggleFavorite,
+    favoriteTrigger,
   } = useContext(FestivalContext);
 
   // 🔸 자치구 이름 비교 필터 조건 함수
@@ -58,5 +61,14 @@ export function useFestivalUI() {
     setCurrentSeason,
     topDistricts,
     setTopDistricts,
+    isFavorite,
+    toggleFavorite,
+    favoriteTrigger,
   };
 }
+
+export const usePageTitle = (titleText) => {
+  useEffect(() => {
+    document.title = `${titleText}` || "서울 페스타";
+  }, [titleText]);
+};

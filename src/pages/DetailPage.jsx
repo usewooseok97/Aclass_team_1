@@ -3,7 +3,7 @@ import ReviewBoard from "../Component/ReviewBoard";
 import MyButton from "../Component/MyButton";
 import FestivalInfo from "../Component/FestivalInfo";
 import { useNavigate, useParams } from "react-router";
-import { useFestivalUI } from "../Hooks/FestivalHooks";
+import { useFestivalUI, usePageTitle } from "../Hooks/FestivalHooks";
 import { Spinner } from "react-bootstrap";
 import FoodNearby from "../Component/FoodNearby";
 import FestivalSlider from "../Component/FestivalSlider";
@@ -12,12 +12,13 @@ import { getImagesList } from "../dataset/imagesList"
 import { getFoodList } from "../dataset/foodList"
 
 export default function DetailPage() {
-
+    
     const { festivalData, currentSeason } = useFestivalUI(); // 축제 데이터
     const { title } = useParams(); // URL에서 넘겨 받음
     const titles = decodeURIComponent(title);
     const nav = useNavigate();
-
+    
+    usePageTitle("상세보기");
     const festival = festivalData?.all?.find(f => f.TITLE === titles);
 
     // 유효하지 않은 인덱스 처리

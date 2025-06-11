@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import MyButton from "../Component/MyButton";
 import Footer from "../Component/Footer";
 import { useLocation } from "react-router";
+import { usePageTitle } from "../Hooks/FestivalHooks";
 
 export default function GalleryPage() {
     // location에서 state 받아오기
     const location = useLocation();
+    usePageTitle("갤러리");
     const { title = "갤러리", images = [] } = location.state || {};
 
     // 이미지가 배열이 아니어서 map에러가 나는 것을 방지하기 위한 안전장치

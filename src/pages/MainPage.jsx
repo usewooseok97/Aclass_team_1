@@ -5,28 +5,34 @@ import SeoulMap from "../Component/SeoulMap"
 import Sidebar from "../Component/SideBar"
 import { Extercard } from "../Component/EXCard"
 import background from "../assets/mainBackground.png"
-import { useFestivalUI } from "../Hooks/FestivalHooks"
+import { useFestivalUI, usePageTitle } from "../Hooks/FestivalHooks"
 
 function MainPage() {
 
   const { selectedFestival } = useFestivalUI();
+  usePageTitle("서울 페스타");
 
   return (
     <div style={{
-      display: "flex",
-      flexDirection: "column",      // 세로 배치
-      justifyContent: "space-between", // 헤더-본문-푸터 간 간격 확보
-      width: "100vw",
-      height: "100vh",
-      overflowX: "hidden",
-      backgroundImage: `url(${background})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh", // ✅ 최소 높이 확보
+    backgroundImage: `url(${background})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
     }}>
       <MainHeader />
       {/* 지도와 사이드바를 좌우로 배치 */}
-      <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", minWidth: "1490px" ,position: "relative" }}>
+      <div style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap", // ✅ 줄바꿈 허용
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: "20px",
+            gap: "20px",
+          }}>
         {/* 지도 (구 클릭 + 계절 선택 가능) */}
         {!selectedFestival && (
           <SeoulMap/>

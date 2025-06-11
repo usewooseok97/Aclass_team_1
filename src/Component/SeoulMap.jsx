@@ -38,7 +38,14 @@ export default function SeoulMap() {
   };
   
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ 
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minWidth: "300px",
+        maxWidth: "100%",
+        flex: "1 1 800px", // ✅ 반응형 flex
+    }}>
       <ImageMapper
         src={seoulImage}
         map={dynamicMap}
