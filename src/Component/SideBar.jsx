@@ -35,7 +35,7 @@ export default function Sidebar() {
       }}
     >
       <div style={{ alignSelf: 'flex-start' }}>
-        <Button type={"behind"} clickEvent={onClose} />
+        <Button type={"behind"} clickEvent={onClose} currentSeason="null"/>
       </div>
 
       <h4 className="mt-2 mb-3">{selectedDistrict} 축제</h4>

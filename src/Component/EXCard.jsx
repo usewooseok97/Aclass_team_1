@@ -31,7 +31,7 @@ export function Extercard() {
     >
       {/* 뒤로가기 버튼 */}
       <div style={{ margin: "20px" }}>
-        <Button type="behind" clickEvent={() => setSelectedFestival(null)} />
+        <Button type="behind" clickEvent={() => setSelectedFestival(null)} currentSeason="null" />
       </div>
 
       {/* 상단 이미지 */}

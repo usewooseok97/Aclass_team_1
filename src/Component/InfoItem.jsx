@@ -16,9 +16,13 @@ export default function InfoItem({ icon, text, isLink, rating, copy }) {
       <div className="flex items-center gap-1">
         <span>{icon}</span>   {/*icon 보이기*/}
         {isLink ? (           // isLink가 있다면 text 보이고 클릭시 링크되게 설정
-          <a href={text} className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">
-            {text}
-          </a>
+          <a href={text}
+            className="text-blue-600 underline hover:text-blue-800 break-words break-all whitespace-pre-wrap max-w-full"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {new URL(text).hostname}
+          </a> // url 너무 길어서 도메인만 보여지도록 설정
         ) : rating ? (        // isLink가 없고 rating가 있다면 text 보이고 별점 보이게 설정
           <>
             <span>({text})</span>

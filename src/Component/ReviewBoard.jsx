@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, Button, Form, Container, Row, Col, Alert } from "react-bootstrap";
 import { Star } from "lucide-react";
 
-// 리뷰 게시판 컴포넌트트
+// 리뷰 게시판 컴포넌트
 function ReviewBoard({ initialReviews = [] }) {
     // 초기값 -> props로 가져온 리뷰 리스트 + 최대 9개만 보이도록 설정
     const [reviews, setReviews] = useState(
@@ -16,6 +16,8 @@ function ReviewBoard({ initialReviews = [] }) {
 
     const [alertMsg, setAlertMsg] = useState("");      // 알림 메세지
     const [showAlert, setShowAlert] = useState(false); // alert 창 출력 여부
+
+    const inputRef = useRef(null); // 리뷰 입력창에 포커싱 설정을 위한 ref
 
     // alert이 보이게 되면 동작 -> 5초 뒤 자동 숨김처리
     useEffect(() => {
@@ -271,6 +273,7 @@ function ReviewBoard({ initialReviews = [] }) {
                     style={{ width: "100%" }}
                 >
                     <Form.Control
+                        ref={inputRef}
                         type="text"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
@@ -292,8 +295,12 @@ function ReviewBoard({ initialReviews = [] }) {
                                 size={18}
                                 fill={val <= rating ? "#FFA500" : "none"}
                                 color={val <= rating ? "#FFA500" : "#ccc"}
-                                onClick={() => setRating(val)}
-                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                    setRating(val);
+                                    inputRef.current?.focus();
+                                }}
+                                style={{ cursor: "pointer" }
+                                }
                             />
                         ))}
                         <span className="text-muted small ms-2">{rating}점</span>

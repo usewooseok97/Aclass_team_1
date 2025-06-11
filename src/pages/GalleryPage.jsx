@@ -56,7 +56,7 @@ export default function GalleryPage() {
 
             <div className="relative z-10 max-w-[1200px] mx-auto py-10 px-4 flex flex-col gap-8">
                 <div className="flex justify-start">
-                    <MyButton type="back" />
+                    <MyButton type="back" currentSeason="null"/>
                 </div>
 
                 <h1 className="text-center text-3xl font-bold text-white bg-gradient-to-r from-pink-500 via-yellow-400 to-orange-500 bg-clip-text text-transparent drop-shadow-lg animate-pulse">
@@ -91,7 +91,7 @@ export default function GalleryPage() {
 
                 {/* TOP 버튼 */}
                 <div className="flex justify-center mt-6">
-                    <MyButton type="top" />
+                    <MyButton type="top" currentSeason="null"/>
                 </div>
 
                 <Footer />

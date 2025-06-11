@@ -25,16 +25,16 @@ function MainPage() {
       backgroundRepeat: 'no-repeat',
     }}>
       <MainHeader />
-      {/* ✅ 지도와 사이드바를 좌우로 배치 */}
+      {/* 지도와 사이드바를 좌우로 배치 */}
       <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", minWidth: "1490px" ,position: "relative" }}>
-        {/* ✅ 지도 (구 클릭 + 계절 선택 가능) */}
+        {/* 지도 (구 클릭 + 계절 선택 가능) */}
         {!selectedFestival && (
           <SeoulMap/>
         )}
         {selectedFestival && (
           <Extercard/>
         )}
-        {/* ✅ 사이드바: 구 클릭 시 나타나며 해당 축제 리스트 출력 */}
+        {/* 사이드바: 구 클릭 시 나타나며 해당 축제 리스트 출력 */}
         <Sidebar/>
       </div>
       <Footer />

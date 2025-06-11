@@ -30,7 +30,7 @@ export default function Test() {
 
     return (
         <div className="p-6 space-y-6">
-            <MyButton type="back" />
+            <MyButton type="back" currentSeason="null"/>
 
             {/*제목*/}
             <h1 className="text-center text-2xl font-bold bg-purple-200 py-2 rounded">
@@ -59,7 +59,7 @@ export default function Test() {
             {/* 리뷰 게시판 */}
             <ReviewBoard initialReviews={reviews} />
 
-            <MyButton type="top" />
+            <MyButton type="top" currentSeason="null"/>
             <Footer />
         </div>
     );

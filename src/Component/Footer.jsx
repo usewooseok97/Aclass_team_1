@@ -11,7 +11,6 @@ export default function Footer({ centerContent }) {
     return (
         <footer
         style={{
-            minWidth: '900px',
             width: '100%',
             height: '60px',
             padding: '20px',
@@ -19,6 +18,8 @@ export default function Footer({ centerContent }) {
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)',
             display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
             zIndex: 1000,
