@@ -7,9 +7,9 @@ import { useFestivalUI } from "../Hooks/FestivalHooks";
 import { Spinner } from "react-bootstrap";
 import FoodNearby from "../Component/FoodNearby";
 import FestivalSlider from "../Component/FestivalSlider";
-import { foodList } from "../dataset/foodList";
-import { imagesList } from "../dataset/imagesList";
 import { reviewsList } from "../dataset/reviewsList";
+import {getImagesList} from "../dataset/imagesList"
+import { getFoodList } from "../dataset/foodList"
 
 export default function DetailPage() {
 
@@ -30,9 +30,9 @@ export default function DetailPage() {
         );
     }
 
-    const images = [festival.MAIN_IMG, ...imagesList]; // 이미지 예시시
+    const images = [festival.MAIN_IMG, ...getImagesList()]; // 이미지 예시시
     const reviews = reviewsList // 기존에 존재하는 리뷰 예시 
-    const mockFoodList = foodList; // 먹거리 예시시
+    const mockFoodList = getFoodList(); // 먹거리 예시시
 
     // 이미지 클릭 핸들러
     const handleImageClick = () => {
