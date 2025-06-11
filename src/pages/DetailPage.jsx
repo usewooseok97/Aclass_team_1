@@ -95,7 +95,7 @@ export default function DetailPage() {
 
                     {/* 먹거리 컴포넌트 (우측) */}
                     <div className="lg:w-2/5 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin">
-                        <FoodNearby mockFoodList={mockFoodList} />
+                        <FoodNearby mockFoodList={mockFoodList} gName={festival.GUNAME}/>
                     </div>
                 </div>
 

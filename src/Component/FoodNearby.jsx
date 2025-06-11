@@ -1,7 +1,7 @@
 import '../styles/FoodNearby.css';
 import InfoItem from './InfoItem';
 
-export default function FoodNearby ({mockFoodList}) {
+export default function FoodNearby ({mockFoodList , gName}) {
     return (
         <div className="food-wrapper">
             <h2 className="food-title">주변 먹거리</h2>
@@ -11,7 +11,7 @@ export default function FoodNearby ({mockFoodList}) {
                         <img src={food.image} alt={food.name} />
                         <div className="food-info">
                             <h3>{food.name}</h3>
-                            <InfoItem icon="📍" text={food.desc} />
+                            <InfoItem icon="📍" text={`${food.desc}${gName}${food.desc2}`} />
                             <InfoItem icon="⭐" text={food.rating} rating={food.rating} />
                             <InfoItem icon="🕒" text={food.hours} />
                         </div>
