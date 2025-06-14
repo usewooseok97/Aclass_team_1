@@ -1,7 +1,7 @@
 import { useState, createContext, useEffect } from "react";
 import ThemeProvider from 'react-bootstrap/ThemeProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import MainPage from "./pages/MainPage";
 import { getFestivalData } from "./services/axiosServices";
 import { calculateTopDistricts, getSeason, simplifyFestivalData, sortBySeason } from "./utilFunction/festivalUtils";
@@ -33,6 +33,8 @@ function App() {
 
   // ❤️ 찜 기능 트리거 상태 (렌더링 유도용)
   const [favoriteTrigger, setFavoriteTrigger] = useState(0);
+  // pathname 감지하는 함수
+  const location = useLocation();
 
   // ----------------------- ✅ 찜 관련 로직 -----------------------
 
@@ -85,6 +87,15 @@ function App() {
     const top = calculateTopDistricts(festivalData, currentSeason);
     setTopDistricts(top); // 계절이 바뀔 때마다 top 3 구 갱신
   }, [festivalData, currentSeason]);
+  useEffect(() => {
+
+  },)
+
+
+  // 🔽 pathname 바뀔 때마다 스크롤 맨 위로 이동
+    useEffect(() => {
+      window.scrollTo(0, 0); // 페이지 전환 시 항상 최상단으로 이동
+    }, [location.pathname]);
 
   // ----------------------- ✅ 렌더링 -----------------------
 

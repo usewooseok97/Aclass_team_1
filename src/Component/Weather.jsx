@@ -4,91 +4,108 @@ import weatherIconMap from "../dataset/weatherIcon";
 import { getLocationFromCoords, getWeatherByLocationKey } from "../services/axiosServices";
 
 const INITIAL_DATA = {
-  city: "구로구",
-  condition: "Sunny",
-  temperature: 27,
-  maxTemp: 29,
-  minTemp: 20,
+  city: " ",
+  condition: " ",
+  temperature: 0 ,
+  maxTemp: 0,
+  minTemp: 0,
   rainProbability: 0,
 };
 
 function Weather() {
-  // 📦 상태 정의
-  const [weatherData, setWeatherData] = useState(INITIAL_DATA); // 날씨 데이터
-  const [error, setError] = useState(false);                    // 오류 상태
-  const [loading, setLoading] = useState(true);                 // 로딩 상태
+    // 📦 상태 정의
+    const [weatherData, setWeatherData] = useState(INITIAL_DATA);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-  // ⏳ 캐시 설정
-  const CACHE_KEY = "weatherData";                // localStorage 키
-  const CACHE_DURATION = 20 * 60 * 1000;          // 20분 (ms)
+    // 캐시 설정
+    const CACHE_KEY = "weatherData";
+    const CACHE_DURATION = 12 * 60 * 60 * 1000; // 12시간
 
-  // 🌤️ 날씨 데이터 가져오기
-  const fetchWeather = async () => {
-    setLoading(true);   // 로딩 시작
-    setError(false);    // 에러 초기화
+    // 🌤️ 날씨 API 호출
+    const fetchWeather = async () => {
+      setLoading(true);
+      setError(false);
 
-    try {
-      // 📍 현재 위치 좌표 가져오기 (비동기)
-      const position = await new Promise((resolve, reject) =>
-        navigator.geolocation.getCurrentPosition(resolve, reject)
-      );
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+      try {
+        // 📍 현재 위치 가져오기
+        const position = await new Promise((resolve, reject) =>
+          navigator.geolocation.getCurrentPosition(resolve, reject)
+        );
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
 
-      // 💾 localStorage 캐시 확인
-      const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
-      const now = Date.now();
+        // 💾 위치 기반 캐시 확인
+        const now = Date.now();
+        const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+        if (cached && now - cached.timestamp < CACHE_DURATION) {
+          setWeatherData(cached.data);
+          setLoading(false);
+          return;
+        }
 
-      // ✅ 캐시가 유효하면 API 호출 생략
-      if (cached && now - cached.timestamp < CACHE_DURATION) {
-        setWeatherData(cached.data);
+        // 📌 위치 → 도시명 및 키 조회
+        const locationData = await getLocationFromCoords(lat, lon);
+        const cityName = locationData.LocalizedName;
+        const locationKey = locationData.ParentCity?.Key || locationData.Key;
+
+        // 위치 캐싱 (선택적, 추후 사용 가능)
+        localStorage.setItem(
+          "lastLocation",
+          JSON.stringify({ lat, lon, cityName })
+        );
+
+        // 🌦️ 날씨 데이터 요청
+        const weatherDataRes = await getWeatherByLocationKey(locationKey);
+        const current = weatherDataRes.current;
+        const forecast = weatherDataRes.forecast;
+
+        // 결과 정리
+        const newData = {
+          city: cityName,
+          condition: current.WeatherText,
+          temperature: current.Temperature.Metric.Value,
+          maxTemp: forecast.Temperature.Maximum.Value,
+          minTemp: forecast.Temperature.Minimum.Value,
+          rainProbability: forecast.Day.PrecipitationProbability,
+        };
+
+        // 캐시 저장
+        localStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({ timestamp: now, data: newData })
+        );
+
+        setWeatherData(newData);
         setLoading(false);
-        return;
+      } catch (err) {
+        console.error("❌ 날씨 불러오기 실패:", err);
+        setError(true);
+        setWeatherData(INITIAL_DATA);
+        setLoading(false);
+      }
+    };
+
+    // ✅ 첫 진입 시 캐시가 있다면 먼저 보여주고, 비동기로 최신 fetch
+    useEffect(() => {
+      const cachedWeather = localStorage.getItem(CACHE_KEY);
+      const cachedLocation = localStorage.getItem("lastLocation");
+
+      if (cachedWeather && cachedLocation) {
+        const weather = JSON.parse(cachedWeather);
+        setWeatherData(weather.data);
+        setLoading(false);
       }
 
-      // 📌 위치 키 조회
-      const locationData = await getLocationFromCoords(lat, lon);
-      const cityName = locationData.LocalizedName;
-      const locationKey = locationData.ParentCity?.Key || locationData.Key;
+      // 위치 요청은 렌더링 이후 실행
+      setTimeout(() => {
+        fetchWeather();
+      }, 0);
+    }, []);
 
-      // 🌦️ 날씨 데이터 호출
-      const weatherDataRes = await getWeatherByLocationKey(locationKey);
-      const current = weatherDataRes.current;
-      const forecast = weatherDataRes.forecast;
-
-      // 📊 날씨 정보 정리
-      const newData = {
-        city: cityName,
-        condition: current.WeatherText,
-        temperature: current.Temperature.Metric.Value,
-        maxTemp: forecast.Temperature.Maximum.Value,
-        minTemp: forecast.Temperature.Minimum.Value,
-        rainProbability: forecast.Day.PrecipitationProbability,
-      };
-
-      // 💽 캐시 저장
-      localStorage.setItem(
-        CACHE_KEY,
-        JSON.stringify({ timestamp: now, data: newData })
-      );
-
-      setWeatherData(newData);
-      setLoading(false);
-    } catch (err) {
-      console.error("❌ 날씨 불러오기 실패:", err);
-      setError(true);
-      setWeatherData(INITIAL_DATA);
-      setLoading(false); // 에러 발생해도 로딩 종료
-    }
-  };
-
-  // 🚀 컴포넌트 마운트 시 한 번만 실행
-  useEffect(() => {
-    fetchWeather();
-  }, []);
-
-  const { city, condition, temperature, maxTemp, minTemp, rainProbability } = weatherData;
-  const icon = weatherIconMap[condition] || weatherIconMap["Sunny"];
+    // 🌤️ 날씨 데이터 구조 분해
+    const { city, condition, temperature, maxTemp, minTemp, rainProbability } = weatherData;
+    const icon = weatherIconMap[condition] || weatherIconMap["Sunny"];
 
   if (loading) {
     return (

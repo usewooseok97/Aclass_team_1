@@ -1,6 +1,6 @@
 import Footer from "../Component/Footer";
 import ReviewBoard from "../Component/ReviewBoard";
-import MyButton from "../Component/MyButton";
+import Button from "../Component/MyButton";
 import FestivalInfo from "../Component/FestivalInfo";
 import { useNavigate, useParams } from "react-router";
 import { useFestivalUI, usePageTitle } from "../Hooks/FestivalHooks";
@@ -57,7 +57,7 @@ export default function DetailPage() {
 
                     <div className="relative z-10 max-w-[1200px] mx-auto px-4 py-6 flex flex-col gap-8 ">
                         <div className="flex justify-left mt-2">
-                            <MyButton type="back" currentSeason={currentSeason}/>
+                            <Button type="back" currentSeason={currentSeason}/>
                         </div>
 
                         {/*제목*/}  {/* 제목이 긴 경우 ...으로 표시 + hover시 두줄로 전체 표시*/}
@@ -105,7 +105,7 @@ export default function DetailPage() {
                         </div>
 
                         <div className="flex justify-center mt-4">
-                            <MyButton type="top" currentSeason={currentSeason}/>
+                            <Button type="top" currentSeason={currentSeason}/>
                         </div>
                     </div>
                 </div>

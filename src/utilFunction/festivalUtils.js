@@ -39,6 +39,18 @@ export const sortBySeason = (simplifiedData) => {
   return sorted;
 };
 
+// 시즌별로 컬러 설정
+export  const getSeasonColor = (season) => {
+      switch (season) {
+          case '봄': return 'rgba(246,167,249,0.25)';
+          case '여름': return 'rgba(96,201,57,0.25)';
+          case '가을': return 'rgba(239,142,0,0.25)';
+          case '겨울': return 'rgba(229, 231, 235, 0.25)';
+          default: return '#D1D5DB';
+      }
+  };
+
+
 //페이지 번호 관련 함수
 export function generatePageNumbers(currentPage, totalPages, maxVisible = 5) {
   const pageNumbers = [];

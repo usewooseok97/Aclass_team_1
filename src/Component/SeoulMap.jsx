@@ -63,7 +63,9 @@ export default function SeoulMap() {
             key={season}
             season={season}
             currentSeason={currentSeason}
-            setCurrentSeason={setCurrentSeason}
+            setCurrentSeason={(s) => {
+              setCurrentSeason(s);
+            }}
           />
         ))}
       </div>
