@@ -83,9 +83,6 @@ function App() {
     const top = calculateTopDistricts(festivalData, currentSeason);
     setTopDistricts(top); // 계절이 바뀔 때마다 top 3 구 갱신
   }, [festivalData, currentSeason]);
-  useEffect(() => {
-
-  },)
 
 
   // 🔽 pathname 바뀔 때마다 스크롤 맨 위로 이동
