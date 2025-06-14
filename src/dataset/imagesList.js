@@ -14,8 +14,8 @@ export const getImagesList = () => {
 };
 
 export const seasonImageMap = {
-  봄: `${base}springs.png`,
-  여름: `${base}summers.png`,
-  가을: `${base}falls.png`,
-  겨울: `${base}winters.png`
+  봄: `${base}assets/springs.png`,
+  여름: `${base}assets/summers.png`,
+  가을: `${base}assets/falls.png`,
+  겨울: `${base}assets/winters.png`
 };
