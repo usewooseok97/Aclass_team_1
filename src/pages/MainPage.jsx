@@ -9,6 +9,7 @@ import { useFestivalUI, usePageTitle } from "../Hooks/FestivalHooks"
 import { getSeasonColor } from "../utilFunction/festivalUtils"
 import { useEffect, useRef } from "react"
 import "../styles/changeSeason.css"
+import { seasonImageMap } from "../dataset/imagesList"
 
 function MainPage() {
   const { selectedFestival, currentSeason } = useFestivalUI();
@@ -18,12 +19,7 @@ function MainPage() {
   const containerRef = useRef();
   const lastSeasonRef = useRef(null); // 🔸 마지막 실행된 계절 기억용
 
-  const seasonImageMap = {
-    봄: "/springs.png",
-    여름: "/summers.png",
-    가을: "/falls.png",
-    겨울: "/winters.png",
-  };
+
   // 애니메이션 발동 함수
   const triggerSeasonEffect = (season) => {
     const container = containerRef.current;
