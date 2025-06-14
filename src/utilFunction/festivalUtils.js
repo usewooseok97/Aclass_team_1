@@ -7,13 +7,16 @@ export const getSeason = (month) => {
 };
 
 // 데이터를 간단화하고 평점, 계절 추가
-export const simplifyFestivalData = (rawData) => {
-  return rawData.map((item) => {
+export const simplifyAndSortFestivalData = (rawData) => {
+  const bySeason = { 봄: [], 여름: [], 가을: [], 겨울: [] };
+  const all = [];
+
+  rawData.forEach((item) => {
     const startMonth = parseInt(item.STRTDATE.slice(5, 7));
     const season = getSeason(startMonth);
     const randomRating = Math.floor(Math.random() * 5) * 0.5 + 3;
 
-    return {
+    const simplified = {
       season,
       GUNAME: item.GUNAME,
       TITLE: item.TITLE,
@@ -27,18 +30,13 @@ export const simplifyFestivalData = (rawData) => {
       PROGRAM: item.PROGRAM,
       rating: randomRating,
     };
-  });
-};
 
-// 계절별로 분류
-export const sortBySeason = (simplifiedData) => {
-  const sorted = { 봄: [], 여름: [], 가을: [], 겨울: [] };
-  simplifiedData.forEach((item) => {
-    sorted[item.season].push(item);
+    all.push(simplified);
+    bySeason[season].push(simplified);
   });
-  return sorted;
-};
 
+  return { all, bySeason };
+};
 // 시즌별로 컬러 설정
 export  const getSeasonColor = (season) => {
       switch (season) {

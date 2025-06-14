@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes, useLocation } from "react-router";
 import MainPage from "./pages/MainPage";
 import { getFestivalData } from "./services/axiosServices";
-import { calculateTopDistricts, getSeason, simplifyFestivalData, sortBySeason } from "./utilFunction/festivalUtils";
+import { calculateTopDistricts, getSeason, simplifyAndSortFestivalData} from "./utilFunction/festivalUtils";
 import NotFoundPage from "./pages/NotFound";
 import DetailPage from "./pages/DetailPage";
 import GalleryPage from "./pages/GalleryPage";
@@ -60,13 +60,9 @@ function App() {
   const fetchFestivalData = async () => {
     try {
       const rawData = await getFestivalData();             // 원본 API 호출
-      const simplified = simplifyFestivalData(rawData);    // 필드 정제
-      const sorted = sortBySeason(simplified);             // 계절별 분류
+    const { all, bySeason } = simplifyAndSortFestivalData(rawData);
 
-      setFestivalData({
-        all: simplified,
-        bySeason: sorted,
-      });
+    setFestivalData({ all, bySeason });
 
       // 현재 월에 해당하는 계절 자동 설정
       setCurrentSeason(getSeason(new Date().getMonth() + 1));
