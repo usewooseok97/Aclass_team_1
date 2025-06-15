@@ -2,7 +2,6 @@ import { WiDaySunny, WiCloudy, WiRain, WiSnow, WiThunderstorm, WiFog } from "rea
 
 const weatherIconMap = {
   "맑음": <WiDaySunny size={64} color="#FFD700" />,
-  "조금 흐림": <WiCloudy size={64} color="#ccc" />,
   "흐림": <WiCloudy size={64} color="#aaa" />,
   "비": <WiRain size={64} color="#4a90e2" />,
   "눈": <WiSnow size={64} color="#00d4ff" />,

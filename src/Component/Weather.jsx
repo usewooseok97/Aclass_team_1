@@ -105,7 +105,7 @@ function Weather() {
 
     // 🌤️ 날씨 데이터 구조 분해
     const { city, condition, temperature, maxTemp, minTemp } = weatherData;
-    const icon = weatherIconMap[condition] || weatherIconMap["Sunny"];
+    const icon = weatherIconMap[condition] || weatherIconMap["맑음"];
 
   if (loading) {
     return (
