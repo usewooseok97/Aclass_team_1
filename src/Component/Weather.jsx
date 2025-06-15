@@ -104,7 +104,7 @@ function Weather() {
     }, []);
 
     // 🌤️ 날씨 데이터 구조 분해
-    const { city, condition, temperature, maxTemp, minTemp, rainProbability } = weatherData;
+    const { city, condition, temperature, maxTemp, minTemp } = weatherData;
     const icon = weatherIconMap[condition] || weatherIconMap["Sunny"];
 
   if (loading) {
@@ -134,9 +134,6 @@ function Weather() {
           >
             <div style={{ fontWeight: "bold", fontSize: "18px" }}>{city}</div>
             <div style={{ color: "#666", fontSize: "14px" }}>{condition}</div>
-            <div style={{ color: "#666", fontSize: "14px" }}>
-              비 올 확률: {rainProbability}%
-            </div>
           </Col>
 
           {/* 온도, 최고/최저 */}
@@ -146,7 +143,7 @@ function Weather() {
             style={{ flexShrink: 0, maxWidth : 100}}
           >
             <div style={{ fontSize: "28px", fontWeight: 300 }}>{temperature}°</div>
-            <div style={{ fontSize: "14px", color: "#888" }}>
+            <div style={{ fontSize: "12px", color: "#888" }}>
               {maxTemp}° / {minTemp}°
             </div>
           </Col>
