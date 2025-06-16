@@ -125,16 +125,6 @@ export default function InnerCard({ festivals, currentSeason, selectedDistrict,i
           label="제목순 ↓"
           name="sort"
           type="radio"
-          id="sort-title-asc"
-          value="title-asc"
-          checked={sortOption === "title-asc"}
-          onChange={(e) => setSortOption(e.target.value)}
-        />
-        <Form.Check
-          inline
-          label="제목순 ↑"
-          name="sort"
-          type="radio"
           id="sort-title-desc"
           value="title-desc"
           checked={sortOption === "title-desc"}
@@ -142,12 +132,22 @@ export default function InnerCard({ festivals, currentSeason, selectedDistrict,i
         />
         <Form.Check
           inline
+          label="제목순 ↑"
+          name="sort"
+          type="radio"
+          id="sort-title-asc"
+          value="title-asc"
+          checked={sortOption === "title-asc"}
+          onChange={(e) => setSortOption(e.target.value)}
+        />
+        <Form.Check
+          inline
           label="평점순 ↓"
           name="sort"
           type="radio"
-          id="sort-rating-asc"
-          value="rating-asc"
-          checked={sortOption === "rating-asc"}
+          id="sort-rating-desc"
+          value="rating-desc"
+          checked={sortOption === "rating-desc"}
           onChange={(e) => setSortOption(e.target.value)}
         />
         <Form.Check
@@ -155,9 +155,9 @@ export default function InnerCard({ festivals, currentSeason, selectedDistrict,i
           label="평점순 ↑"
           name="sort"
           type="radio"
-          id="sort-rating-desc"
-          value="rating-desc"
-          checked={sortOption === "rating-desc"}
+          id="sort-rating-asc"
+          value="rating-asc"
+          checked={sortOption === "rating-asc"}
           onChange={(e) => setSortOption(e.target.value)}
         />
         <Form.Check
