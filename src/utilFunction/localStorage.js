@@ -1,15 +1,15 @@
 // ✅ 로컬스토리지에 찜 추가
-export const saveFavorite = (title) => {
+const saveFavorite = (title) => {
   localStorage.setItem(title, title);
 };
 
 // ✅ 로컬스토리지에서 찜 제거
-export const removeFavorite = (title) => {
+const removeFavorite = (title) => {
   localStorage.removeItem(title);
 };
 
 // ✅ 해당 title이 찜되어 있는지 여부 확인
-export const isInFavorites = (title) => {
+const isInFavorites = (title) => {
   return localStorage.getItem(title) !== null;
 };
 

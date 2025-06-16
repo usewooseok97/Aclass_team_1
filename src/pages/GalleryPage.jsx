@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 import { usePageTitle } from "../Hooks/FestivalHooks";
 
 export default function GalleryPage() {
-    // location에서 state 받아오기
+    // location에서 state 받아오기 (라우터에 접근)
     const location = useLocation();
     usePageTitle("갤러리");
     const { title = "갤러리", images = [] } = location.state || {};
@@ -13,7 +13,7 @@ export default function GalleryPage() {
     // 이미지가 배열이 아니어서 map에러가 나는 것을 방지하기 위한 안전장치
     const safeImages = Array.isArray(images) ? images : [];
 
-    const [visibleCount, setVisibleCount] = useState(2); // 렌더링시 보여줄 이미지 수 지정 (~무한증가가)
+    const [visibleCount, setVisibleCount] = useState(2); // 렌더링시 보여줄 이미지 수 지정 (~무한증가)
     const loaderRef = useRef(null);
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -31,7 +31,7 @@ export default function GalleryPage() {
 
     // ▶ 무한 스크롤 IntersectionObserver 나중에 사진 수가 많아져도 문제없이 구현가능, 초기 렌더링 빠르게해줌
     useEffect(() => {
-        const observer = new IntersectionObserver( // 특정 dom요소가 화면에 보이는지 감지하는 브라우저 기능능
+        const observer = new IntersectionObserver( // 특정 dom요소가 화면에 보이는지 감지하는 브라우저 기능
             ([entry]) => {
                 // loader가 화면에 보이고 && 아직 이미지가 남아 있으면 2장씩 추가 로드
                 if (entry.isIntersecting && visibleCount < safeImages.length) {

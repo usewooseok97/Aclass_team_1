@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, Button, Form, Container, Row, Col, Alert } from "react-bootstrap";
 import { Star } from "lucide-react";
+import { RatingStars } from "./RatingStars";
 
 // 리뷰 게시판 컴포넌트
 function ReviewBoard({ initialReviews = [] }) {
@@ -150,15 +151,7 @@ function ReviewBoard({ initialReviews = [] }) {
                                     {/* 별점 설정 부분 */}
                                     {review.rating > 0 && (
                                         <div className="mt-2 d-flex">
-                                            {[...Array(5)].map((_, i) => (
-                                                <Star
-                                                    key={i}
-                                                    size={12}
-                                                    className="me-1"
-                                                    fill={i < review.rating ? "#FFA500" : "none"}
-                                                    color={i < review.rating ? "#FFA500" : "#ccc"}
-                                                />
-                                            ))}
+                                            <RatingStars rating={review.rating}/>
                                         </div>
                                     )}
                                 </div>

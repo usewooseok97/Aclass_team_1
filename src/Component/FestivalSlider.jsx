@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function FestivalSlider({ images = [], title = "", onClick= {handleImageClick} }) {
+export default function FestivalSlider({ images = [], onClick= {handleImageClick} }) {
     const [current, setCurrent] = useState(0);
 
     const prev = () => setCurrent((current - 1 + images.length) % images.length);

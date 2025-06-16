@@ -45,7 +45,6 @@ export default function DetailPage() {
         })
     }
 
-
     return (
         <div className="min-h-screen flex flex-col bg-gray-100">
             {/* 메인 영역 */}

@@ -9,7 +9,7 @@ const initialState = {
   totalPages: 1,
 };
 
-function reducer(state, action) {
+function reducer(state, action) {   // 페이지 상태관리 reducer
   switch (action.type) {
     case "SET_TOTAL":
       return {
