@@ -95,10 +95,8 @@ function App() {
   return (
     <ThemeProvider breakpoints={['xxxl','xxl', 'xl', 'lg', 'md', 'sm', 'xs']} minBreakpoint="xxs">
       <FestivalContext.Provider value={{
-        // 🎉 축제 데이터
         festivalData,
         isLoading,
-        // 🔍 UI 제어
         currentSeason,
         setCurrentSeason,
         selectedDistrict,
@@ -107,10 +105,8 @@ function App() {
         setSelectedFestival,
         sidebarVisible,
         setSidebarVisible,
-        // 🏆 통계 데이터
         topDistricts,
         setTopDistricts,
-        // ❤️ 찜 기능
         isFavorite,
         toggleFavorite,
         favoriteTrigger,

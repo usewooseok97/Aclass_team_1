@@ -37,6 +37,7 @@ export const simplifyAndSortFestivalData = (rawData) => {
 
   return { all, bySeason };
 };
+
 // 시즌별로 컬러 설정
 export  const getSeasonColor = (season) => {
       switch (season) {

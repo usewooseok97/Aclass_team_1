@@ -13,7 +13,6 @@ export default function Button({ type, clickEvent, currentSeason = { currentSeas
         }
     };
 
-
     const seasonColor = getSeasonColor(currentSeason);
 
     return (

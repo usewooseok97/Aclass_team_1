@@ -110,7 +110,7 @@ export default function DetailPage() {
                 </div>
             </main>
 
-            <Footer className="bg-gray-100 border-t border-gray-200 text-center text-sm text-gray-600 py-4"/>
+            <Footer type={true}/>
         </div>
     );
 }
