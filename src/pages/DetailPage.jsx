@@ -110,7 +110,7 @@ export default function DetailPage() {
                 </div>
             </main>
 
-            <Footer type={true}/>
+            <Footer />
         </div>
     );
 }

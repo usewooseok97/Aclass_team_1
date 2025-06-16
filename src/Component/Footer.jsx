@@ -1,11 +1,5 @@
-export default function Footer({ type }) {
-    return type ? (
-        <footer className="bg-gray-100 border-t border-gray-200 text-center text-sm text-gray-600 py-4">
-            <div className="text-center text-gray-500 text-xs">
-                © 2025 Seoul Festa @ Aclass_team
-            </div>
-        </footer>
-    ) : (
+export default function Footer() {
+    return (
         <footer
             style={{
                 width: '100%',
