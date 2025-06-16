@@ -1,4 +1,4 @@
-// ✅ Vite 환경에서 안전하게 동작
+// Vite 환경에서 안전하게 동작
 const base = import.meta.env.BASE_URL;
 
 export const getImagesList = () => {
