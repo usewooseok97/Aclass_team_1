@@ -1,7 +1,12 @@
-// import { useState } from 'react'
+import Containers from "./Component/Containers";
+
 
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <Containers>
+      <h1>dd</h1>
+    </Containers>
+  )
 }
 
 export default App;
