@@ -18,7 +18,7 @@ const SeoulMap = ({ districtData = [], onDistrictClick }: SeoulMapProps) => {
     <object
       data={seoulMapSvg}
       type="image/svg+xml"
-      className="w-[50%] h-full max-w-[995px] max-h-[834px]"
+      className="w-[60%] h-full max-w-[995px] max-h-[834px]"
       aria-label="서울시 행정구역 지도"
     >
       서울시 지도를 불러올 수 없습니다.
