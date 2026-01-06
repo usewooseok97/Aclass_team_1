@@ -1,19 +1,21 @@
 import LeftCardComponent from "./Component/LeftCardComponent";
 import LeftCardContainer from "./Component/LeftCardContainer";
-import MainContainer from "./Component/MainContainer";
 import RightCardComponent from "./Component/RightCardComponent";
 import SeoulMap from "./Item/SeoulMap";
 import SeasonButton from "./Item/SeasonButton";
 import GridButtonContainer from "./Component/GridButtonContainer";
 import HeaderComponent from "./Component/HeaderComponent";
+import FooterComponent from "./Component/FooterComponent";
 
 function App() {
   return (
-    <MainContainer>
+    <body className="max-w-7xl mx-auto flex flex-col">
       <HeaderComponent>
         <h2>dd</h2>
+        <h2>dd</h2>
+        <h2>dd</h2>
       </HeaderComponent>
-      <div className="flex flex-row justify-between w-full">
+      <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
         <LeftCardContainer>
           <LeftCardComponent>
             <SeoulMap />
@@ -26,8 +28,12 @@ function App() {
         <RightCardComponent>
           <h1>dd</h1>
         </RightCardComponent>
-      </div>
-    </MainContainer>
+      </main>
+      <FooterComponent>
+        <h2>dd</h2>
+        <h2>dd</h2>
+      </FooterComponent>
+    </body>
   );
 }
 

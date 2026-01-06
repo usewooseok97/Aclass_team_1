@@ -2,7 +2,7 @@ interface HeaderProps {
   children: React.ReactNode;
 }
 
-const HeaderComponent = ({ children }: HeaderProps) => {
+const FooterComponent = ({ children }: HeaderProps) => {
   return (
     <header className="w-full h-12 lg:h-25 px-4 bg-transparent flex flex-row justify-between items-center">
       {/* 데스크톱 컨텐츠 */}
@@ -13,4 +13,4 @@ const HeaderComponent = ({ children }: HeaderProps) => {
   );
 };
 
-export default HeaderComponent;
+export default FooterComponent;
