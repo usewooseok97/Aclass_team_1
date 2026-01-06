@@ -4,6 +4,7 @@ import MainContainer from "./Component/MainContainer";
 import RightCardComponent from "./Component/RightCardComponent";
 import SeoulMap from "./Item/SeoulMap";
 import SeasonButton from "./Item/SeasonButton";
+import GridButtonContainer from "./Component/GridButtonContainer";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <SeasonButton />
         </LeftCardComponent>
         <LeftCardComponent>
-          
+          <GridButtonContainer />
         </LeftCardComponent>
       </LeftCardContainer>
       <RightCardComponent>
