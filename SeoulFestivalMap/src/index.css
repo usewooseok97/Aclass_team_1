@@ -1,54 +1,74 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* 폰트 ------------------------------------------------------- */
+
 
 :root {
- 
+    /* 라이트 모드 (기본) */
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --accent-color: #0066cc;
 }
 
-a {
- 
+[data-theme="dark"] {
+    /* 다크 모드 */
+    --background-color: #222222;
+    --text-color: #f0f0f0;
+    --accent-color: #4d9fff;
 }
-a:hover {
- 
+
+html {
+    font-size: 16px; /* Tailwind 기본값 (1rem = 16px) */
 }
 
 body {
- 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    color: #333;
+    font-size: 1rem; /* 16px */
 }
 
-h1 {
- 
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* ===== 링크 ===== */
+a {
+    text-decoration: none;
+    color: inherit;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+a:hover {
+    text-decoration: underline;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* ====== 리스트 ===== */
+ul,
+ol {
+    list-style: none;
+}
+
+/* button reset은 Tailwind의 preflight에 맡김 */
+
+/* ===== 접근성 ===== */
+.sr-only {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* 요소의 크기를 넘친 텍스트를 말줄임 처리합니다. */
+}
+
+.multi-ellipsis {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }

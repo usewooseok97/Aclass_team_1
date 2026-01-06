@@ -4,10 +4,7 @@ interface ContainerProps {
 
 const MainContainer = ({ children }: ContainerProps) => {
   return (
-    <main
-      className="flex flex-row flex-wrap "
-      style={{ gap: 'clamp(80px, 118px)' }}
-    >
+    <main className="max-w-7xl mx-auto flex flex-col">
       {children}
     </main>
   );
