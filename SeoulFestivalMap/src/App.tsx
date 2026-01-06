@@ -2,16 +2,19 @@ import LeftCardComponent from "./Component/LeftCardComponent";
 import LeftCardContainer from "./Component/LeftCardContainer";
 import MainContainer from "./Component/MainContainer";
 import RightCardComponent from "./Component/RightCardComponent";
+import SeoulMap from "./Item/SeoulMap";
+import SeasonButton from "./Item/SeasonButton";
 
 function App() {
   return (
     <MainContainer>
       <LeftCardContainer>
         <LeftCardComponent>
-          <h1>dd</h1>
+          <SeoulMap />
+          <SeasonButton />
         </LeftCardComponent>
         <LeftCardComponent>
-          <h1>dd</h1>
+          
         </LeftCardComponent>
       </LeftCardContainer>
       <RightCardComponent>
