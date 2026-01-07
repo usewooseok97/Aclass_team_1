@@ -6,6 +6,12 @@ import SeasonButton from "./Item/SeasonButton";
 import GridButtonContainer from "./Component/GridButtonContainer";
 import HeaderComponent from "./Component/HeaderComponent";
 import FooterComponent from "./Component/FooterComponent";
+import TitleText from "./Item/TitleText";
+import ContentsText from "./Item/ContentsText";
+import Pictures from "./Item/Pictures";
+import GridPictures from "./Component/GridPictures";
+import seoularea from './assets/seoularea.png';
+import { TEXT_LIST } from "./Constants/textConstants";
 
 function App() {
   return (
@@ -26,7 +32,11 @@ function App() {
           </LeftCardComponent>
         </LeftCardContainer>
         <RightCardComponent>
-          <h1>dd</h1>
+          <TitleText text={TEXT_LIST.TITLE.MAIN} />
+          <ContentsText text={TEXT_LIST.CONTENTS.INTRO} className="mt-12.5" />
+          <GridPictures />
+          <ContentsText text={TEXT_LIST.CONTENTS.FEATURES} className="mt-10" />
+          <Pictures backgroundImg={seoularea} />
         </RightCardComponent>
       </main>
       <FooterComponent>
