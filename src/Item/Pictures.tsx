@@ -5,13 +5,8 @@ interface PicturesProps {
 const Pictures = ({ backgroundImg }: PicturesProps) => {
     return (
         <div
-            className="w-[229px] h-32.5 left-[247px] top-0 rounded-[20px]"
-            style={{
-                backgroundImage: `url(${backgroundImg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-            }}
+            className="w-[229px] h-32.5 rounded-[20px] bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${backgroundImg})` }}
         />
     );
 };
