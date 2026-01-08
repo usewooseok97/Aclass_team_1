@@ -32,34 +32,36 @@ function App() {
   };
 
   return (
-    <div className={`max-w-7xl mx-auto flex flex-col transition-colors duration-1000 ${getBackgroundClass(phase)}`}>
-      <HeaderComponent>
-        <h2>dd</h2>
-        <TimetoScrolling />
-        <h2>dd</h2>
-      </HeaderComponent>
-      <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
-        <LeftCardContainer>
-          <LeftCardComponent>
-            <SeoulMap />
-            <SeasonButton />
-          </LeftCardComponent>
-          <LeftCardComponent>
-            <GridButtonContainer />
-          </LeftCardComponent>
-        </LeftCardContainer>
-        <RightCardComponent>
-          <TitleText text={TEXT_LIST.TITLE.MAIN} />
-          <ContentsText text={TEXT_LIST.CONTENTS.INTRO} className="mt-12.5" />
-          <GridPictures />
-          <ContentsText text={TEXT_LIST.CONTENTS.FEATURES} className="mt-10" />
-          <Pictures backgroundImg={seoularea} />
-        </RightCardComponent>
-      </main>
-      <FooterComponent>
-        <h2>dd</h2>
-        <h2>dd</h2>
-      </FooterComponent>
+    <div className={`w-full min-h-screen transition-colors duration-1000 ${getBackgroundClass(phase)}`}>
+      <div className="max-w-7xl mx-auto flex flex-col">
+        <HeaderComponent>
+          <h2>dd</h2>
+          <TimetoScrolling />
+          <h2>dd</h2>
+        </HeaderComponent>
+        <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
+          <LeftCardContainer>
+            <LeftCardComponent>
+              <SeoulMap />
+              <SeasonButton />
+            </LeftCardComponent>
+            <LeftCardComponent>
+              <GridButtonContainer />
+            </LeftCardComponent>
+          </LeftCardContainer>
+          <RightCardComponent>
+            <TitleText text={TEXT_LIST.TITLE.MAIN} />
+            <ContentsText text={TEXT_LIST.CONTENTS.INTRO} className="mt-12.5" />
+            <GridPictures />
+            <ContentsText text={TEXT_LIST.CONTENTS.FEATURES} className="mt-10" />
+            <Pictures backgroundImg={seoularea} />
+          </RightCardComponent>
+        </main>
+        <FooterComponent>
+          <h2>dd</h2>
+          <h2>dd</h2>
+        </FooterComponent>
+      </div>
     </div>
   );
 }
