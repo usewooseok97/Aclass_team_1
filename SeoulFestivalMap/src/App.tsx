@@ -12,13 +12,14 @@ import Pictures from "./Item/Pictures";
 import GridPictures from "./Component/GridPictures";
 import seoularea from './assets/seoularea.png';
 import { TEXT_LIST } from "./Constants/textConstants";
+import TimetoScrolling from "./Item/TimetoScrolling";
 
 function App() {
   return (
-    <body className="max-w-7xl mx-auto flex flex-col">
+    <div className="max-w-7xl mx-auto flex flex-col">
       <HeaderComponent>
         <h2>dd</h2>
-        <h2>dd</h2>
+        <TimetoScrolling />
         <h2>dd</h2>
       </HeaderComponent>
       <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
@@ -43,7 +44,7 @@ function App() {
         <h2>dd</h2>
         <h2>dd</h2>
       </FooterComponent>
-    </body>
+    </div>
   );
 }
 
