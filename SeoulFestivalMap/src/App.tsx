@@ -14,6 +14,8 @@ import seoularea from './assets/seoularea.png';
 import { TEXT_LIST } from "./Constants/textConstants";
 import TimetoScrolling from "./Item/TimetoScrolling";
 import { useTimePhase } from './hooks/useTimePhase';
+import WeatherIconMap from "./Constants/WeatherIcons";
+
 
 function App() {
   const { phase } = useTimePhase();
@@ -35,7 +37,7 @@ function App() {
     <div className={`w-full min-h-screen transition-colors duration-1000 ${getBackgroundClass(phase)}`}>
       <div className="max-w-7xl mx-auto flex flex-col">
         <HeaderComponent>
-          <h2>dd</h2>
+          <WeatherIconMap />
           <TimetoScrolling />
           <h2>dd</h2>
         </HeaderComponent>
