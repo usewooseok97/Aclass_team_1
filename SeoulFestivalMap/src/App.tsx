@@ -13,10 +13,26 @@ import GridPictures from "./Component/GridPictures";
 import seoularea from './assets/seoularea.png';
 import { TEXT_LIST } from "./Constants/textConstants";
 import TimetoScrolling from "./Item/TimetoScrolling";
+import { useTimePhase } from './hooks/useTimePhase';
 
 function App() {
+  const { phase } = useTimePhase();
+
+  const getBackgroundClass = (phase: string): string => {
+    switch (phase) {
+      case 'day':
+        return 'bg-gradient-to-b from-sky-100 to-sky-50';
+      case 'sunset':
+        return 'bg-gradient-to-b from-orange-100 to-pink-50';
+      case 'night':
+        return 'bg-gradient-to-b from-indigo-950 to-purple-950 text-white';
+      default:
+        return 'bg-white';
+    }
+  };
+
   return (
-    <div className="max-w-7xl mx-auto flex flex-col">
+    <div className={`max-w-7xl mx-auto flex flex-col transition-colors duration-1000 ${getBackgroundClass(phase)}`}>
       <HeaderComponent>
         <h2>dd</h2>
         <TimetoScrolling />
