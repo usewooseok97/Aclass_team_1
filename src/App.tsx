@@ -14,7 +14,9 @@ import seoularea from './assets/seoularea.png';
 import { TEXT_LIST } from "./Constants/textConstants";
 import TimetoScrolling from "./Item/TimetoScrolling";
 import { useTimePhase } from './hooks/useTimePhase';
-import WeatherIconMap from "./Constants/WeatherIcons";
+import WeatherLocation from "./Item/WeatherLocation";
+import SearchInput from "./Item/SearchInput";
+import img from "./assets/mainBackground.png"
 
 
 function App() {
@@ -34,12 +36,24 @@ function App() {
   };
 
   return (
-    <div className={`w-full min-h-screen transition-colors duration-1000 ${getBackgroundClass(phase)}`}>
-      <div className="max-w-7xl mx-auto flex flex-col">
+    <div className="relative w-full min-h-screen">
+      {/* 이미지 레이어 - 맨 뒤 */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${img})` }}
+      />
+
+      {/* Gradient 오버레이 - 이미지 위 */}
+      <div
+        className={`absolute inset-0 transition-colors duration-1000 ${getBackgroundClass(phase)} opacity-70`}
+      />
+
+      {/* 컨텐츠 - 맨 앞 */}
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col">
         <HeaderComponent>
-          <WeatherIconMap />
+          <WeatherLocation />
           <TimetoScrolling />
-          <h2>dd</h2>
+          <SearchInput />
         </HeaderComponent>
         <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
           <LeftCardContainer>

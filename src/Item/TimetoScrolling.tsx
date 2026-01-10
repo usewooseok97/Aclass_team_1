@@ -1,4 +1,5 @@
 import { useTimePhase } from '../hooks/useTimePhase';
+import WeatherIconMap from '../Constants/WeatherIcons';
 
 const TimetoScrolling = () => {
   const { phase, iconPosition } = useTimePhase();
@@ -17,8 +18,11 @@ const TimetoScrolling = () => {
     }
   };
 
+  // 현재 phase에 맞는 아이콘 컴포넌트 가져오기
+  const IconComponent = WeatherIconMap[phase as keyof typeof WeatherIconMap];
+
   return (
-    <div
+    <article
       className={`relative rounded-full overflow-hidden transition-colors duration-1000 ${getBackgroundClass(phase)}`}
       style={{ width: '180px', height: '50px' }}
     >
@@ -40,20 +44,27 @@ const TimetoScrolling = () => {
         </>
       )}
 
-      {/* 태양/달/석양 아이콘 (이모지) */}
+      {/* 태양/달/석양 아이콘 */}
       <div
-        className="absolute top-1/2 text-2xl"
+        className="absolute top-1/2"
         style={{
           left: `${iconPosition}%`,
           transform: 'translate(-50%, -50%)',
           transition: 'left 0.1s linear'
         }}
       >
-        {phase === 'day' && <span>☀️</span>}
-        {phase === 'sunset' && <span>🌅</span>}
-        {phase === 'night' && <span>🌙</span>}
+        {IconComponent && (
+          <IconComponent
+            size={32}
+            className={
+              phase === 'day' ? 'text-yellow-400' :
+              phase === 'sunset' ? 'text-orange-300' :
+              'text-blue-100'
+            }
+          />
+        )}
       </div>
-    </div>
+    </article>
   );
 };
 
