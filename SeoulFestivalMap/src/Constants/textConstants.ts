@@ -10,4 +10,6 @@ export const TEXT_LIST = {
 공유 — 다녀온 축제, 별점과 후기로 기록하세요
 추천 — 지금 계절에 딱 맞는 축제를 만나보세요`,
   },
+  FOOTER : 'Copyright © 2025 Made by Seoul_Festa '
+  
 } as const;

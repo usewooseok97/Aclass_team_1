@@ -17,6 +17,8 @@ import { useTimePhase } from './hooks/useTimePhase';
 import WeatherLocation from "./Item/WeatherLocation";
 import SearchInput from "./Item/SearchInput";
 import img from "./assets/mainBackground.png"
+import ChamgesButton from "./Item/ChamgesButton";
+import FooterText from "./Item/FooterText";
 
 
 function App() {
@@ -74,8 +76,8 @@ function App() {
           </RightCardComponent>
         </main>
         <FooterComponent>
-          <h2>dd</h2>
-          <h2>dd</h2>
+          <ChamgesButton />
+          <FooterText text={TEXT_LIST.FOOTER}/>
         </FooterComponent>
       </div>
     </div>
