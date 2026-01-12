@@ -1,7 +1,7 @@
-import { useFestivalContext } from '../contexts/FestivalContext';
-import PlaceCard from '../Item/PlaceCard';
+import { useFestivalContext } from '../hooks/useFestivalContext';
+import { PlaceCard } from '../atoms/PlaceCard';
 
-const PlaceList = () => {
+const PlaceListContainer = () => {
   const { selectedFestival, nearbyPlaces } = useFestivalContext();
 
   // Don't show anything if no festival is selected
@@ -43,4 +43,4 @@ const PlaceList = () => {
   );
 };
 
-export default PlaceList;
+export { PlaceListContainer };

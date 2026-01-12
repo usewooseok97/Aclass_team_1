@@ -11,4 +11,4 @@ const Pictures = ({ backgroundImg }: PicturesProps) => {
     );
 };
 
-export default Pictures;
+export { Pictures };

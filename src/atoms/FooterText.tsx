@@ -10,4 +10,4 @@ const FooterText = ({ text }: TitleTextProps) => {
     );
 };
 
-export default FooterText;
+export { FooterText };

@@ -1,5 +1,5 @@
 import { useTimePhase } from '../hooks/useTimePhase';
-import WeatherIconMap from '../Constants/WeatherIcons';
+import WeatherIconMap from '../constants/WeatherIcons';
 
 const TimetoScrolling = () => {
   const { phase, iconPosition } = useTimePhase();
@@ -68,4 +68,4 @@ const TimetoScrolling = () => {
   );
 };
 
-export default TimetoScrolling;
+export { TimetoScrolling };

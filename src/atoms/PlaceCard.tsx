@@ -58,4 +58,4 @@ const PlaceCard = ({ place }: PlaceCardProps) => {
   );
 };
 
-export default PlaceCard;
+export { PlaceCard };

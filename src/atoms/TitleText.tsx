@@ -10,4 +10,4 @@ const TitleText = ({ text }: TitleTextProps) => {
     );
 };
 
-export default TitleText;
+export { TitleText };

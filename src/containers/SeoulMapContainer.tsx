@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import seoulMapSvg from "../assets/seoul-map.svg";
-import { useFestivalContext } from "../contexts/FestivalContext";
+import { useFestivalContext } from "../hooks/useFestivalContext";
 
 interface DistrictData {
   id: string; // 구 ID (예: 'guro', 'gangnam')
@@ -9,12 +9,12 @@ interface DistrictData {
   color?: string; // 선택적 색상
 }
 
-interface SeoulMapProps {
+interface SeoulMapContainerProps {
   districtData?: DistrictData[]; // 향후 데이터를 받을 수 있도록
   onDistrictClick?: (district: DistrictData) => void;
 }
 
-const SeoulMap = ({ districtData = [], onDistrictClick }: SeoulMapProps) => {
+const SeoulMapContainer = ({ districtData: _districtData = [], onDistrictClick: _onDistrictClick }: SeoulMapContainerProps) => {
   const svgRef = useRef<HTMLObjectElement>(null);
   const { setSelectedDistrict } = useFestivalContext();
 
@@ -76,25 +76,4 @@ const SeoulMap = ({ districtData = [], onDistrictClick }: SeoulMapProps) => {
   );
 };
 
-export default SeoulMap;
-
-// 사용 예시:
-//
-// const App = () => {
-//     const sampleData: DistrictData[] = [
-//         { id: 'guro', name: '구로구', value: 100 },
-//         { id: 'gangnam', name: '강남구', value: 50 },
-//         { id: 'jongno', name: '종로구', value: 30 },
-//     ];
-//
-//     const handleClick = (district: DistrictData) => {
-//         console.log('클릭한 구:', district);
-//     };
-//
-//     return (
-//         <SeoulMap
-//             districtData={sampleData}
-//             onDistrictClick={handleClick}
-//         />
-//     );
-// };
+export { SeoulMapContainer };

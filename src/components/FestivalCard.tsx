@@ -81,4 +81,4 @@ const FestivalCard = ({ festival, onClick }: FestivalCardProps) => {
   );
 };
 
-export default FestivalCard;
+export { FestivalCard };

@@ -1,4 +1,4 @@
-import Pictures from '../Item/Pictures';
+import { Pictures } from '../atoms/Pictures';
 import seoularea from '../assets/seoularea.png';
 
 const GridPictures = () => {
@@ -13,4 +13,4 @@ const GridPictures = () => {
     );
 };
 
-export default GridPictures;
+export { GridPictures };

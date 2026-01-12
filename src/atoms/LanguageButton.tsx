@@ -1,8 +1,8 @@
-interface ChamgesButtonProps {
+interface LanguageButtonProps {
     onLanguageChange?: (language: string) => void;
 }
 
-const ChamgesButton = ({ onLanguageChange }: ChamgesButtonProps) => {
+const LanguageButton = ({ onLanguageChange }: LanguageButtonProps) => {
     const handleClick = () => {
         const newLanguage = 'EN'; // 나중에 toggle 로직으로 변경 예정
         console.log(`언어 변경: ${newLanguage}`);
@@ -24,4 +24,4 @@ const ChamgesButton = ({ onLanguageChange }: ChamgesButtonProps) => {
     );
 };
 
-export default ChamgesButton;
+export { LanguageButton };
