@@ -36,4 +36,4 @@ const SearchInput = ({ className = "", onSearch }: SearchInputProps) => {
   );
 };
 
-export default SearchInput;
+export { SearchInput };

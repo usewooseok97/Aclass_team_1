@@ -1,5 +1,5 @@
 import { useState } from "react";
-import WeatherIconMap from "../Constants/WeatherIcons";
+import WeatherIconMap from "../constants/WeatherIcons";
 
 interface WeatherData {
   current: {
@@ -54,4 +54,4 @@ const WeatherLocation = () => {
   );
 };
 
-export default WeatherLocation;
+export { WeatherLocation };

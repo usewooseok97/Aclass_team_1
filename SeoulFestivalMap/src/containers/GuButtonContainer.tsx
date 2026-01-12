@@ -1,10 +1,10 @@
-import { useFestivalContext } from "../contexts/FestivalContext";
+import { useFestivalContext } from "../hooks/useFestivalContext";
 
-interface GuButtonProps {
+interface GuButtonContainerProps {
     guName: string;
 }
 
-const GuButton = ({ guName }: GuButtonProps) => {
+const GuButtonContainer = ({ guName }: GuButtonContainerProps) => {
     const { selectedDistrict, setSelectedDistrict } = useFestivalContext();
 
     const handleClick = () => {
@@ -27,4 +27,4 @@ const GuButton = ({ guName }: GuButtonProps) => {
     )
 }
 
-export default GuButton
+export { GuButtonContainer };

@@ -11,4 +11,4 @@ const ContentsText = ({ text , className }: ContentsTextProps) => {
     );
 };
 
-export default ContentsText;
+export { ContentsText };

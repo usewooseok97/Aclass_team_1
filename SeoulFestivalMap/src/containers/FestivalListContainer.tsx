@@ -1,7 +1,7 @@
-import { useFestivalContext } from '../contexts/FestivalContext';
-import FestivalCard from '../Item/FestivalCard';
+import { useFestivalContext } from '../hooks/useFestivalContext';
+import { FestivalCard } from '../components/FestivalCard';
 
-const FestivalList = () => {
+const FestivalListContainer = () => {
   const { filteredFestivals, setSelectedFestival, selectedDistrict } = useFestivalContext();
 
   if (!selectedDistrict) {
@@ -53,4 +53,4 @@ const FestivalList = () => {
   );
 };
 
-export default FestivalList;
+export { FestivalListContainer };
