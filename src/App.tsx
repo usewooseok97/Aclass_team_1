@@ -1,9 +1,5 @@
-import { CardLayout } from "@atoms/CardLayout";
 import { LeftSectionContainer } from "@containers/LeftSectionContainer";
 import { RightSectionContainer } from "@containers/RightSectionContainer";
-import { SeoulMapContainer } from "@containers/SeoulMapContainer";
-import { SeasonButton } from "@atoms/SeasonButton";
-import { GridButtonGroup } from "@components/GridButtonGroup";
 import { HeaderContainer } from "@containers/HeaderContainer";
 import { FooterContainer } from "@containers/FooterContainer";
 import { TEXT_LIST } from "@constants/textConstants";
@@ -16,6 +12,7 @@ import { LanguageButton } from "@atoms/LanguageButton";
 import { FooterText } from "@atoms/FooterText";
 import { FestivalProvider } from "@contexts/FestivalContext";
 import RightContent from "@containers/RightContent";
+import LeftContent from "@containers/LeftContent";
  
 function App() {
   const { phase } = useTimePhase();
@@ -51,13 +48,7 @@ function App() {
           </HeaderContainer>
           <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
             <LeftSectionContainer>
-              <CardLayout>
-                <SeoulMapContainer />
-                <SeasonButton />
-              </CardLayout>
-              <CardLayout>
-                <GridButtonGroup />
-              </CardLayout>
+              <LeftContent />
             </LeftSectionContainer>
             <RightSectionContainer>
               <RightContent />
