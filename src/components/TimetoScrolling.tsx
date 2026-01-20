@@ -2,7 +2,13 @@ import { useTimePhase } from '../hooks/useTimePhase';
 import { Sun, Moon } from 'lucide-react';
 
 const TimetoScrolling = () => {
-  const { phase, arcPosition, isDaytime } = useTimePhase();
+  const {
+    phase,
+    sunPosition,
+    moonPosition,
+    isSunVisible,
+    isMoonVisible
+  } = useTimePhase();
 
   // 시간대별 그라데이션
   const getGradient = (phase: string): string => {
@@ -57,16 +63,16 @@ const TimetoScrolling = () => {
         </>
       )}
 
-      {/* 해/달 아이콘 - 반원 궤도 */}
-      <div
-        className="absolute transition-all duration-100 ease-linear"
-        style={{
-          left: `${arcPosition.x}%`,
-          top: `${arcPosition.y}%`,
-          transform: 'translate(-50%, -50%)'
-        }}
-      >
-        {isDaytime ? (
+      {/* 해 - 지평선 위에 있을 때만 표시 */}
+      {isSunVisible && (
+        <div
+          className="absolute transition-all duration-100 ease-linear"
+          style={{
+            left: `${sunPosition.x}%`,
+            top: `${sunPosition.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
           <Sun
             size={40}
             className={`drop-shadow-lg ${
@@ -78,14 +84,26 @@ const TimetoScrolling = () => {
             }`}
             fill="currentColor"
           />
-        ) : (
+        </div>
+      )}
+
+      {/* 달 - 지평선 위에 있을 때만 표시 */}
+      {isMoonVisible && (
+        <div
+          className="absolute transition-all duration-100 ease-linear"
+          style={{
+            left: `${moonPosition.x}%`,
+            top: `${moonPosition.y}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
+        >
           <Moon
             size={36}
             className="text-yellow-100 drop-shadow-lg"
             fill="currentColor"
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

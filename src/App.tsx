@@ -39,9 +39,21 @@ function App() {
     }
   };
 
+  /**
+   * 시간대(phase)에 따른 테마 색상 CSS 변수 반환
+   */
+  const getThemeColors = (phase: string): React.CSSProperties => ({
+    '--text-primary': phase === 'night' ? '#f1f5f9' : phase === 'sunset' ? '#581c87' : '#1e293b',
+    '--text-secondary': phase === 'night' ? '#94a3b8' : phase === 'sunset' ? '#a855f7' : '#64748b',
+    '--btn-primary': phase === 'morning' ? '#f97316' : phase === 'night' ? '#818cf8' : phase === 'sunset' ? '#7c3aed' : '#6750A4',
+    '--btn-hover': phase === 'morning' ? '#ea580c' : phase === 'night' ? '#6366f1' : phase === 'sunset' ? '#6d28d9' : '#5b3f9a',
+    '--card-bg': phase === 'night' ? 'rgba(30,27,75,0.7)' : 'rgba(255,255,255,0.85)',
+    '--card-border': phase === 'morning' ? '#fdba74' : phase === 'night' ? '#4c1d95' : phase === 'sunset' ? '#c084fc' : '#93c5fd',
+  } as React.CSSProperties);
+
   return (
     <FestivalProvider>
-      <div className="relative w-full min-h-screen">
+      <div className="relative w-full min-h-screen" style={getThemeColors(phase)}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${img})` }}
