@@ -40,15 +40,18 @@ const WeatherLocation = () => {
   const WeatherIcon = WeatherIconMap[iconKey];
 
   return (
-    <article className=" min-w-36 h-10 flex items-center gap-2 px-3 py-2 rounded-full shadow-md transition-all duration-300 ">
+    <article
+      className="min-w-36 h-10 flex items-center gap-2 px-3 py-2 rounded-full shadow-md transition-all duration-300"
+      style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)', borderWidth: '1px' }}
+    >
       <WeatherIcon className="text-yellow-500 shrink-0" size={24} />
 
       <div className="flex items-center gap-1.5 whitespace-nowrap">
         <div className="flex flex-col items-start text-xs leading-tight">
-          <span className="font-semibold text-gray-800">{temperature}°C</span>
-          <span className="text-gray-800">{weatherData.current.sky}</span>
+          <span className="font-semibold" style={{ color: 'var(--text-primary)' }}>{temperature}°C</span>
+          <span style={{ color: 'var(--text-secondary)' }}>{weatherData.current.sky}</span>
         </div>
-        <span className="text-gray-800 font-medium">{location}</span>
+        <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{location}</span>
       </div>
     </article>
   );

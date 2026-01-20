@@ -4,7 +4,10 @@ interface TitleTextProps {
 
 const FooterText = ({ text }: TitleTextProps) => {
     return (
-        <div className="h-8 flex items-center text-black font-semibold text-[14px] font-['Roboto']">
+        <div
+            className="h-8 flex items-center font-semibold text-[14px] font-['Roboto']"
+            style={{ color: 'var(--text-primary)' }}
+        >
             {text}
         </div>
     );

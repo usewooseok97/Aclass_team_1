@@ -46,10 +46,10 @@ const LeftContent = () => {
 
           {/* 제목 + 평점 */}
           <div className="flex items-center gap-2 mb-4">
-            <h2 className="text-lg font-bold text-black">
+            <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
               {selectedFestival.TITLE}
             </h2>
-            <span className="text-sm text-gray-500">({rating})</span>
+            <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>({rating})</span>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star
@@ -67,25 +67,25 @@ const LeftContent = () => {
           </div>
 
           {/* 정보 리스트 */}
-          <div className="flex flex-col gap-2 text-sm text-gray-700">
+          <div className="flex flex-col gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
             <div className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+              <MapPin className="w-4 h-4 shrink-0 mt-0.5" style={{ color: 'var(--btn-primary)' }} />
               <span>위치 : {selectedFestival.PLACE}</span>
             </div>
             <div className="flex items-start gap-2">
-              <Calendar className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+              <Calendar className="w-4 h-4 shrink-0 mt-0.5" style={{ color: 'var(--btn-primary)' }} />
               <span>기간 : {selectedFestival.DATE}</span>
             </div>
             {representativePlace && (
               <div className="flex items-start gap-2">
-                <Utensils className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
+                <Utensils className="w-4 h-4 shrink-0 mt-0.5" style={{ color: 'var(--btn-primary)' }} />
                 <span>대표 먹거리 : {representativePlace.name}</span>
               </div>
             )}
           </div>
 
           {/* 설명 */}
-          <div className="mt-4 text-sm text-gray-600 leading-relaxed">
+          <div className="mt-4 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             <p className="line-clamp-4">{selectedFestival.PROGRAM}</p>
           </div>
 
@@ -95,7 +95,8 @@ const LeftContent = () => {
               href={selectedFestival.HMPG_ADDR}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 text-right text-sm text-purple-600 hover:underline"
+              className="mt-4 text-right text-sm hover:underline"
+              style={{ color: 'var(--btn-primary)' }}
             >
               상세 페이지 &gt;
             </a>
@@ -106,8 +107,8 @@ const LeftContent = () => {
       {/* 주변 먹거리 카드 */}
       <CardLayout>
         <div className="flex flex-col p-4 w-full">
-          <h3 className="text-lg font-bold text-black mb-4 flex items-center gap-2">
-            <Utensils className="w-5 h-5 text-purple-600" />
+          <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+            <Utensils className="w-5 h-5" style={{ color: 'var(--btn-primary)' }} />
             주변 먹거리
           </h3>
           {nearbyPlaces.length > 0 ? (
@@ -115,20 +116,21 @@ const LeftContent = () => {
               {nearbyPlaces.map((place, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                  className="flex items-center justify-between p-3 rounded-lg"
+                  style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)', borderWidth: '1px' }}
                 >
                   <div className="flex flex-col">
-                    <span className="font-medium text-black">{place.name}</span>
-                    <span className="text-xs text-gray-500">{place.category}</span>
+                    <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{place.name}</span>
+                    <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{place.category}</span>
                   </div>
                   {place.telephone && (
-                    <span className="text-xs text-gray-400">{place.telephone}</span>
+                    <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{place.telephone}</span>
                   )}
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-sm text-center" style={{ color: 'var(--text-secondary)' }}>
               주변 먹거리 정보가 없습니다.
             </p>
           )}

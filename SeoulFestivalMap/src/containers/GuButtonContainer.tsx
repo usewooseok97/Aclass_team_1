@@ -25,11 +25,18 @@ const GuButtonContainer = ({ guName }: GuButtonContainerProps) => {
         "relative w-[93px] min-w-12 h-14 rounded-lg cursor-pointer",
         "transition-all duration-200",
         isActive
-          ? "bg-[#6750A4] text-white font-semibold shadow-lg scale-105"
-          : "bg-[#E8DEF8] hover:bg-[#D0BCFF] hover:shadow-md"
+          ? "text-white font-semibold shadow-lg scale-105"
+          : "hover:shadow-md"
       )}
+      style={{
+        backgroundColor: isActive ? 'var(--btn-primary)' : 'var(--card-bg)',
+        borderColor: 'var(--card-border)',
+        borderWidth: '1px',
+      }}
     >
-      {guName}
+      <span style={{ color: isActive ? 'white' : 'var(--text-primary)' }}>
+        {guName}
+      </span>
     </motion.button>
   );
 };

@@ -18,7 +18,8 @@ const SearchInput = ({ className = "", onSearch }: SearchInputProps) => {
 
   return (
     <article
-      className={`flex flex-row items-center p-2 w-[233px] h-9 bg-white rounded-[10px] ${className}`}
+      className={`flex flex-row items-center p-2 w-[233px] h-9 rounded-[10px] ${className}`}
+      style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)', borderWidth: '1px' }}
     >
       <form onSubmit={handleSubmit} className="flex items-center w-full">
         <input
@@ -26,7 +27,8 @@ const SearchInput = ({ className = "", onSearch }: SearchInputProps) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="검색어를 입력하세요"
-          className="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400"
+          className="flex-1 outline-none text-sm bg-transparent placeholder-gray-400"
+          style={{ color: 'var(--text-primary)' }}
         />
         <button type="submit" className="sr-only">
           검색

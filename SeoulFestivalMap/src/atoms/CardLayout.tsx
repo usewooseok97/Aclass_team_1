@@ -39,7 +39,13 @@ const CardLayout = ({
   className = "",
 }: CardLayoutProps) => {
   return (
-    <section className={cn(cardVariants({ variant, hover }), className)}>
+    <section
+      className={cn(cardVariants({ variant, hover }), className)}
+      style={{
+        backgroundColor: 'var(--card-bg)',
+        borderColor: 'var(--card-border)',
+      }}
+    >
       {children}
     </section>
   );
