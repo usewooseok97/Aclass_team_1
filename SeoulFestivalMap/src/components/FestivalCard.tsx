@@ -1,4 +1,6 @@
+import { motion } from "motion/react";
 import { type Festival } from "../types/festival";
+import { PartyPopper, Star } from "lucide-react";
 
 interface FestivalCardProps {
   festival: Festival;
@@ -12,12 +14,15 @@ const FestivalCard = ({ festival, onClick }: FestivalCardProps) => {
   const hasHalfStar = Number(rating) - fullStars >= 0.5;
 
   return (
-    <div
+    <motion.div
       onClick={onClick}
-      className="w-114 h-12.5 bg-[#FDFDFD] rounded-[20px] flex items-center px-4 cursor-pointer hover:shadow-md transition-shadow"
+      whileHover={{ scale: 1.02, y: -3 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2 }}
+      className="w-114 h-12.5 bg-[#FDFDFD] rounded-[20px] flex items-center px-4 cursor-pointer hover:shadow-lg transition-shadow"
     >
       {/* Icon */}
-      <span className="text-xl mr-3">🎪</span>
+      <PartyPopper className="w-5 h-5 text-purple-600 mr-3" />
 
       {/* Title */}
       <span className="flex-1 text-sm font-medium text-black truncate">
@@ -29,22 +34,20 @@ const FestivalCard = ({ festival, onClick }: FestivalCardProps) => {
         <span className="text-xs text-gray-500">({rating})</span>
         <div className="flex">
           {[...Array(5)].map((_, i) => (
-            <span
+            <Star
               key={i}
-              className={`text-sm ${
+              className={`w-3.5 h-3.5 ${
                 i < fullStars
-                  ? "text-yellow-400"
+                  ? "text-yellow-400 fill-yellow-400"
                   : i === fullStars && hasHalfStar
-                  ? "text-yellow-400"
+                  ? "text-yellow-400 fill-yellow-400"
                   : "text-gray-300"
               }`}
-            >
-              ★
-            </span>
+            />
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
