@@ -17,16 +17,25 @@ import LeftContent from "@containers/LeftContent";
 function App() {
   const { phase } = useTimePhase();
 
-  const getBackgroundClass = (phase: string): string => {
+  /**
+   * 시간대(phase)에 따른 배경 그라데이션 반환
+   * TimetoScrolling 컴포넌트와 동일한 그라데이션 사용
+   *
+   * @param phase - 현재 시간대 ('morning' | 'day' | 'sunset' | 'night')
+   * @returns CSS linear-gradient 문자열
+   */
+  const getGradient = (phase: string): string => {
     switch (phase) {
-      case 'day':
-        return 'bg-gradient-to-b from-sky-100 to-sky-50';
-      case 'sunset':
-        return 'bg-gradient-to-b from-orange-100 to-pink-50';
-      case 'night':
-        return 'bg-gradient-to-b from-indigo-950 to-purple-950 text-white';
+      case 'morning':  // 아침 (06:00~09:00): 분홍 → 주황 → 노랑
+        return 'linear-gradient(to right, #fda4af, #fdba74, #fef08a)';
+      case 'day':      // 낮 (09:00~16:00): 하늘색 그라데이션
+        return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
+      case 'sunset':   // 노을 (16:00~18:00): 주황 → 분홍 → 보라
+        return 'linear-gradient(to right, #f97316, #db2777, #7c3aed)';
+      case 'night':    // 밤 (18:00~06:00): 딥 네이비/보라
+        return 'linear-gradient(to right, #1e1b4b, #312e81, #1e3a5f)';
       default:
-        return 'bg-white';
+        return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
     }
   };
 
@@ -38,12 +47,12 @@ function App() {
           style={{ backgroundImage: `url(${img})` }}
         />
         <div
-          className={`absolute inset-0 transition-colors duration-1000 ${getBackgroundClass(phase)} opacity-70`}
+          className="absolute inset-0 transition-all duration-1000"
+          style={{ background: getGradient(phase) }}
         />
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col">
-          <HeaderContainer>
+          <HeaderContainer backgroundElement={<TimetoScrolling />}>
             <WeatherLocation />
-            <TimetoScrolling />
             <SearchInput />
           </HeaderContainer>
           <main className="flex flex-row flex-wrap justify-center gap-20 w-full">

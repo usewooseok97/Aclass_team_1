@@ -24,6 +24,7 @@ export default defineConfig({
       "@constants": path.resolve(__dirname, "./src/constants"),
       "@types": path.resolve(__dirname, "./src/types"),
       "@assets": path.resolve(__dirname, "./src/assets"),
+      "@lib": path.resolve(__dirname, "./src/lib"),
     },
   },
 });

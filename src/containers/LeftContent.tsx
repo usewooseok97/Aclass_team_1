@@ -3,6 +3,7 @@ import { CardLayout } from "@atoms/CardLayout";
 import { SeoulMapContainer } from "@containers/SeoulMapContainer";
 import { SeasonButton } from "@atoms/SeasonButton";
 import { GridButtonGroup } from "@components/GridButtonGroup";
+import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 
 const LeftContent = () => {
   const { selectedFestival, nearbyPlaces } = useFestivalContext();
@@ -51,18 +52,16 @@ const LeftContent = () => {
             <span className="text-sm text-gray-500">({rating})</span>
             <div className="flex">
               {[...Array(5)].map((_, i) => (
-                <span
+                <Star
                   key={i}
-                  className={`text-sm ${
+                  className={`w-3 h-3 ${
                     i < fullStars
-                      ? "text-yellow-400"
+                      ? "text-yellow-400 fill-yellow-400"
                       : i === fullStars && hasHalfStar
-                      ? "text-yellow-400"
+                      ? "text-yellow-400 fill-yellow-400"
                       : "text-gray-300"
                   }`}
-                >
-                  ★
-                </span>
+                />
               ))}
             </div>
           </div>
@@ -70,16 +69,16 @@ const LeftContent = () => {
           {/* 정보 리스트 */}
           <div className="flex flex-col gap-2 text-sm text-gray-700">
             <div className="flex items-start gap-2">
-              <span className="text-purple-600">📍</span>
+              <MapPin className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
               <span>위치 : {selectedFestival.PLACE}</span>
             </div>
             <div className="flex items-start gap-2">
-              <span className="text-purple-600">📅</span>
+              <Calendar className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
               <span>기간 : {selectedFestival.DATE}</span>
             </div>
             {representativePlace && (
               <div className="flex items-start gap-2">
-                <span className="text-purple-600">🍽</span>
+                <Utensils className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
                 <span>대표 먹거리 : {representativePlace.name}</span>
               </div>
             )}
@@ -107,7 +106,10 @@ const LeftContent = () => {
       {/* 주변 먹거리 카드 */}
       <CardLayout>
         <div className="flex flex-col p-4 w-full">
-          <h3 className="text-lg font-bold text-black mb-4">🍽 주변 먹거리</h3>
+          <h3 className="text-lg font-bold text-black mb-4 flex items-center gap-2">
+            <Utensils className="w-5 h-5 text-purple-600" />
+            주변 먹거리
+          </h3>
           {nearbyPlaces.length > 0 ? (
             <div className="flex flex-col gap-3">
               {nearbyPlaces.map((place, index) => (

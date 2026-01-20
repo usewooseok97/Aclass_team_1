@@ -1,25 +1,25 @@
 import {
-  WiDaySunny,
-  WiCloudy,
-  WiRain,
-  WiSnow,
-  WiThunderstorm,
-  WiFog,
-  WiSunset,
-  WiNightClear,
-} from "react-icons/wi";
-import type { IconType } from "react-icons";
+  Sun,
+  Cloud,
+  CloudRain,
+  Snowflake,
+  CloudLightning,
+  CloudFog,
+  Sunset,
+  Moon,
+  type LucideIcon,
+} from "lucide-react";
 
-const WeatherIconMap: Record<string, IconType> = {
-  sunny: WiDaySunny,
-  cloudy: WiCloudy,
-  rain: WiRain,
-  snow: WiSnow,
-  thunderstorm: WiThunderstorm,
-  fog: WiFog,
-  day: WiDaySunny,
-  sunset: WiSunset,
-  night: WiNightClear,
+const WeatherIconMap: Record<string, LucideIcon> = {
+  sunny: Sun,
+  cloudy: Cloud,
+  rain: CloudRain,
+  snow: Snowflake,
+  thunderstorm: CloudLightning,
+  fog: CloudFog,
+  day: Sun,
+  sunset: Sunset,
+  night: Moon,
 };
 
 export default WeatherIconMap;
