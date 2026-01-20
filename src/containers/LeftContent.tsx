@@ -3,10 +3,11 @@ import { CardLayout } from "@atoms/CardLayout";
 import { SeoulMapContainer } from "@containers/SeoulMapContainer";
 import { SeasonButton } from "@atoms/SeasonButton";
 import { GridButtonGroup } from "@components/GridButtonGroup";
+import { BackButton } from "@atoms/backButton";
 import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 
 const LeftContent = () => {
-  const { selectedFestival, nearbyPlaces } = useFestivalContext();
+  const { selectedFestival, setSelectedFestival, nearbyPlaces } = useFestivalContext();
 
   // 카드 클릭 안했으면 기존 지도/버튼 화면
   if (!selectedFestival) {
@@ -35,6 +36,7 @@ const LeftContent = () => {
     <>
       <CardLayout>
         <div className="flex flex-col p-4">
+          <BackButton onClick={() => setSelectedFestival(null)} className="mb-3" />
           {/* 축제 이미지 */}
           <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
             <img

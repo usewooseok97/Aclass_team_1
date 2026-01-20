@@ -5,11 +5,12 @@ import { ContentsText } from "@atoms/ContentsText";
 import { Pictures } from "@atoms/Pictures";
 import { GridPictures } from "@components/GridPictures";
 import { LoadingState, ErrorState } from "@components/LoadingState";
+import { BackButton } from "@atoms/backButton";
 import { TEXT_LIST } from "@constants/textConstants";
 import seoularea from "@assets/seoularea.png";
 
 const RightContent = () => {
-  const { selectedDistrict, isLoading, error } = useFestivalContext();
+  const { selectedDistrict, setSelectedDistrict, isLoading, error } = useFestivalContext();
 
   // Show loading state
   if (isLoading) {
@@ -37,6 +38,7 @@ const RightContent = () => {
   // District selected: Show festival list
   return (
     <>
+      <BackButton onClick={() => setSelectedDistrict(null)} className="mb-4" />
       <TitleText text={selectedDistrict} />
       <div className="mt-6 w-full">
         <FestivalListContainer />
