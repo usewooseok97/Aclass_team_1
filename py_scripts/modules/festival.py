@@ -76,7 +76,7 @@ def get_buzz_score(festival_title):
             return min(70 + int(math.log10(total) * 10), 100)
 
     except Exception as e:
-        print(f"  ⚠️ 검색량 조회 실패 ({festival_title}): {e}")
+        print(f"  [WARN] 검색량 조회 실패 ({festival_title}): {e}")
         return 50  # 기본값
 
 
@@ -85,7 +85,7 @@ def fetch_festivals():
 
     # API 키 확인
     if not SEOUL_API_KEY:
-        print("⚠️ 서울시 API 키가 설정되지 않았습니다.")
+        print("[WARN] 서울시 API 키가 설정되지 않았습니다.")
         print(".env 파일에서 SEOUL_API_KEY를 설정해주세요.")
         return []
 
@@ -104,7 +104,7 @@ def fetch_festivals():
     all_festivals = []
 
     try:
-        print(f"  📅 필터 기간: {filter_start.strftime('%Y-%m-%d')} ~ {filter_end.strftime('%Y-%m-%d')}")
+        print(f"  [DATE] 필터 기간: {filter_start.strftime('%Y-%m-%d')} ~ {filter_end.strftime('%Y-%m-%d')}")
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
@@ -114,16 +114,16 @@ def fetch_festivals():
             code = data["RESULT"]["CODE"]
             msg = data["RESULT"].get("MESSAGE", "")
             if code == "INFO-200":
-                print(f"  ⚠️ 데이터 없음: {msg}")
+                print(f"  [WARN] 데이터 없음: {msg}")
             else:
-                print(f"  ⚠️ API 오류 ({code}): {msg}")
+                print(f"  [WARN] API 오류 ({code}): {msg}")
             return []
 
         # API 응답 구조 확인
         if "culturalEventInfo" in data:
             result = data["culturalEventInfo"]
             total_count = result.get("list_total_count", 0)
-            print(f"  📊 전체 데이터: {total_count}건")
+            print(f"  [INFO] 전체 데이터: {total_count}건")
 
             # 데이터 추출
             rows = result.get("row", [])
@@ -141,14 +141,14 @@ def fetch_festivals():
                     # 날짜 파싱 실패 시 포함
                     all_festivals.append(row)
 
-            print(f"  ✅ 필터 후 {len(all_festivals)}개 축제 수집 완료")
+            print(f"  [OK] 필터 후 {len(all_festivals)}개 축제 수집 완료")
         else:
-            print(f"  ⚠️ 예상치 못한 응답 구조: {data.keys()}")
+            print(f"  [WARN] 예상치 못한 응답 구조: {data.keys()}")
 
     except requests.exceptions.RequestException as e:
-        print(f"  ❌ 축제 데이터 수집 실패: {e}")
+        print(f"  [ERROR] 축제 데이터 수집 실패: {e}")
     except Exception as e:
-        print(f"  ❌ 데이터 처리 오류: {e}")
+        print(f"  [ERROR] 데이터 처리 오류: {e}")
 
     return all_festivals
 
@@ -179,7 +179,7 @@ def process_festivals(raw_festivals):
 
             # 관심도 점수 계산
             title = item.get("TITLE", "")
-            print(f"  🔍 [{idx}/{total}] {title} 검색량 조회 중...")
+            print(f"  [{idx}/{total}] {title} 검색량 조회 중...")
             buzz_score = get_buzz_score(title)
 
             # 데이터 정제
@@ -205,7 +205,7 @@ def process_festivals(raw_festivals):
                 time.sleep(0.1)
 
         except Exception as e:
-            print(f"  ⚠️ 데이터 처리 오류 (항목 {idx}): {e}")
+            print(f"  [WARN] 데이터 처리 오류 (항목 {idx}): {e}")
             continue
 
     return processed
@@ -214,20 +214,20 @@ def process_festivals(raw_festivals):
 def fetch_and_save():
     """전체 프로세스 실행: 수집 → 처리 → 저장"""
     print("\n" + "="*60)
-    print("📅 축제 데이터 수집 시작")
+    print("[FESTIVAL] 축제 데이터 수집 시작")
     print("="*60)
 
     # 1. 데이터 수집
     raw = fetch_festivals()
     if not raw:
-        print("  ⚠️ 수집된 데이터가 없습니다.")
-        print("  💡 generate_sample_data.py를 실행하여 샘플 데이터를 생성하세요.")
+        print("  [WARN] 수집된 데이터가 없습니다.")
+        print("  generate_sample_data.py를 실행하여 샘플 데이터를 생성하세요.")
         return
 
-    print(f"\n✅ 총 {len(raw)}개 축제 수집 완료\n")
+    print(f"\n[OK] 총 {len(raw)}개 축제 수집 완료\n")
 
     # 2. 관심도 점수 계산
-    print("🔍 관심도 점수 계산 중...")
+    print("[INFO] 관심도 점수 계산 중...")
     processed = process_festivals(raw)
 
     # 3. 저장
@@ -237,8 +237,8 @@ def fetch_and_save():
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(processed, f, ensure_ascii=False, indent=2)
 
-    print(f"\n💾 저장 완료: {output_file}")
-    print(f"📊 총 {len(processed)}개 축제 데이터 저장")
+    print(f"\n[SAVED] {output_file}")
+    print(f"[INFO] 총 {len(processed)}개 축제 데이터 저장")
     print("="*60 + "\n")
 
 

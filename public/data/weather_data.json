@@ -1,14 +1,8 @@
 {
-  "lastUpdated": "2025-01-11T14:30:00+09:00",
+  "lastUpdated": "2026-01-21T23:20:11.633651",
   "current": {
-    "temperature": 5,
-    "sky": "맑음",
-    "humidity": 45,
-    "windSpeed": 2.3
-  },
-  "forecast": {
-    "maxTemp": 8,
-    "minTemp": -2,
-    "sky": "구름 조금"
+    "temperature": 10,
+    "sky": "알 수 없음",
+    "humidity": 50
   }
 }

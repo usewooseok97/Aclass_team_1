@@ -58,7 +58,7 @@ def fetch_weather():
 
     # API 키 확인
     if KMA_API_KEY == "여기에_기상청_API_키_입력":
-        print("  ⚠️ 기상청 API 키가 설정되지 않았습니다.")
+        print("  [WARN] 기상청 API 키가 설정되지 않았습니다.")
         return None
 
     now = datetime.now()
@@ -93,12 +93,12 @@ def fetch_weather():
 
         # 응답 구조 확인
         if "response" not in data:
-            print(f"  ⚠️ 예상치 못한 응답 구조: {data.keys()}")
+            print(f"  [WARN] 예상치 못한 응답 구조: {data.keys()}")
             return None
 
         header = data["response"]["header"]
         if header["resultCode"] != "00":
-            print(f"  ⚠️ API 오류: {header['resultMsg']}")
+            print(f"  [WARN] API 오류: {header['resultMsg']}")
             return None
 
         items = data["response"]["body"]["items"]["item"]
@@ -141,20 +141,20 @@ def fetch_weather():
         return weather_data
 
     except Exception as e:
-        print(f"  ❌ 날씨 데이터 수집 실패: {e}")
+        print(f"  [ERROR] 날씨 데이터 수집 실패: {e}")
         return None
 
 
 def fetch_and_save():
     """전체 프로세스 실행: 날씨 데이터 수집 → 저장"""
     print("\n" + "="*60)
-    print("🌤️ 날씨 데이터 수집 시작")
+    print("[WEATHER] 날씨 데이터 수집 시작")
     print("="*60)
 
     # API 키 확인
     if KMA_API_KEY == "여기에_기상청_API_키_입력":
-        print("  💡 config.py 파일에서 KMA_API_KEY를 설정해주세요.")
-        print("  💡 또는 generate_sample_data.py를 실행하여 샘플 데이터를 생성하세요.")
+        print("  config.py 파일에서 KMA_API_KEY를 설정해주세요.")
+        print("  또는 generate_sample_data.py를 실행하여 샘플 데이터를 생성하세요.")
 
         # 기본 데이터 생성
         weather_data = {
@@ -175,7 +175,7 @@ def fetch_and_save():
         weather_data = fetch_weather()
 
         if not weather_data:
-            print("  ⚠️ 날씨 데이터 수집 실패. 기본값 사용")
+            print("  [WARN] 날씨 데이터 수집 실패. 기본값 사용")
             weather_data = {
                 "lastUpdated": datetime.now().isoformat(),
                 "current": {
@@ -192,9 +192,9 @@ def fetch_and_save():
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(weather_data, f, ensure_ascii=False, indent=2)
 
-    print(f"\n💾 저장 완료: {output_file}")
-    print(f"🌡️ 현재 온도: {weather_data['current'].get('temperature', 'N/A')}°C")
-    print(f"☁️ 날씨: {weather_data['current'].get('sky', 'N/A')}")
+    print(f"\n[SAVED] {output_file}")
+    print(f"[INFO] 현재 온도: {weather_data['current'].get('temperature', 'N/A')}C")
+    print(f"[INFO] 날씨: {weather_data['current'].get('sky', 'N/A')}")
     print("="*60 + "\n")
 
 

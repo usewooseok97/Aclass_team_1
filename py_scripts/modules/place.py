@@ -80,7 +80,7 @@ def fetch_places_for_festival(festival_title, gu_name):
             time.sleep(0.1)
 
         except Exception as e:
-            print(f"  ⚠️ 장소 검색 실패 ({query}): {e}")
+            print(f"  [WARN] 장소 검색 실패 ({query}): {e}")
 
     # 중복 제거 (이름 기준)
     seen = set()
@@ -96,14 +96,14 @@ def fetch_places_for_festival(festival_title, gu_name):
 def fetch_and_save():
     """전체 프로세스 실행: 축제 데이터 읽기 → 맛집 검색 → 저장"""
     print("\n" + "="*60)
-    print("🍽️ 맛집 데이터 수집 시작")
+    print("[PLACE] 맛집 데이터 수집 시작")
     print("="*60)
 
     # API 키 확인
     if NAVER_CLIENT_ID == "여기에_네이버_클라이언트_ID_입력":
-        print("  ⚠️ 네이버 API 키가 설정되지 않았습니다.")
-        print("  💡 config.py 파일에서 NAVER_CLIENT_ID와 NAVER_CLIENT_SECRET을 설정해주세요.")
-        print("  💡 또는 generate_sample_data.py를 실행하여 샘플 데이터를 생성하세요.")
+        print("  [WARN] 네이버 API 키가 설정되지 않았습니다.")
+        print("  config.py 파일에서 NAVER_CLIENT_ID와 NAVER_CLIENT_SECRET을 설정해주세요.")
+        print("  또는 generate_sample_data.py를 실행하여 샘플 데이터를 생성하세요.")
         print("="*60 + "\n")
         return
 
@@ -111,15 +111,15 @@ def fetch_and_save():
     festival_file = SAVE_PATH / "festival_data.json"
 
     if not festival_file.exists():
-        print("  ⚠️ festival_data.json 파일이 없습니다.")
-        print("  💡 먼저 festival.py를 실행하여 축제 데이터를 수집해주세요.")
+        print("  [WARN] festival_data.json 파일이 없습니다.")
+        print("  먼저 festival.py를 실행하여 축제 데이터를 수집해주세요.")
         print("="*60 + "\n")
         return
 
     with open(festival_file, "r", encoding="utf-8") as f:
         festivals = json.load(f)
 
-    print(f"  📂 {len(festivals)}개 축제 데이터 로드 완료\n")
+    print(f"  [INFO] {len(festivals)}개 축제 데이터 로드 완료\n")
 
     place_data = {}
     total = len(festivals)
@@ -128,16 +128,16 @@ def fetch_and_save():
         title = festival["TITLE"]
         gu_name = festival["GUNAME"]
 
-        print(f"  🔍 [{idx}/{total}] {title} ({gu_name}) 검색 중...")
+        print(f"  [{idx}/{total}] {title} ({gu_name}) 검색 중...")
 
         places = fetch_places_for_festival(title, gu_name)
 
         if places:
             place_data[title] = places
-            print(f"      ✅ {len(places)}개 장소 발견")
+            print(f"      [OK] {len(places)}개 장소 발견")
         else:
             place_data[title] = []
-            print(f"      ⚠️ 검색 결과 없음")
+            print(f"      [WARN] 검색 결과 없음")
 
     # 저장
     output_file = SAVE_PATH / "place_data.json"
@@ -145,8 +145,8 @@ def fetch_and_save():
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(place_data, f, ensure_ascii=False, indent=2)
 
-    print(f"\n💾 저장 완료: {output_file}")
-    print(f"📊 총 {len(place_data)}개 축제의 맛집 데이터 저장")
+    print(f"\n[SAVED] {output_file}")
+    print(f"[INFO] 총 {len(place_data)}개 축제의 맛집 데이터 저장")
     print("="*60 + "\n")
 
 
