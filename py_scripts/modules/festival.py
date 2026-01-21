@@ -84,45 +84,64 @@ def fetch_festivals():
     """서울시 축제 API 호출하여 데이터 수집"""
 
     # API 키 확인
-    if SEOUL_API_KEY == "여기에_서울시_API_키_입력":
+    if not SEOUL_API_KEY:
         print("⚠️ 서울시 API 키가 설정되지 않았습니다.")
-        print("config.py 파일에서 SEOUL_API_KEY를 설정해주세요.")
+        print(".env 파일에서 SEOUL_API_KEY를 설정해주세요.")
         return []
 
-    # 현재 날짜 기준 1년 데이터 수집
+    # 현재 날짜 기준 필터링 범위
     today = datetime.now()
-    start_date = (today - timedelta(days=30)).strftime("%Y%m%d")  # 1개월 전부터
-    end_date = (today + timedelta(days=365)).strftime("%Y%m%d")   # 1년 후까지
+    filter_start = today - timedelta(days=30)   # 1개월 전부터
+    filter_end = today + timedelta(days=365)    # 1년 후까지
 
+    # 전체 데이터 수집 (1~1000건)
     url = SEOUL_FESTIVAL_URL.format(
         key=SEOUL_API_KEY,
-        start_date=start_date,
-        end_date=end_date
+        start=1,
+        end=1000
     )
 
     all_festivals = []
 
     try:
-        print(f"  📅 기간: {start_date} ~ {end_date}")
+        print(f"  📅 필터 기간: {filter_start.strftime('%Y-%m-%d')} ~ {filter_end.strftime('%Y-%m-%d')}")
         response = requests.get(url)
         response.raise_for_status()
         data = response.json()
 
+        # 최상위 RESULT 키 처리 (데이터 없음 또는 에러)
+        if "RESULT" in data and "culturalEventInfo" not in data:
+            code = data["RESULT"]["CODE"]
+            msg = data["RESULT"].get("MESSAGE", "")
+            if code == "INFO-200":
+                print(f"  ⚠️ 데이터 없음: {msg}")
+            else:
+                print(f"  ⚠️ API 오류 ({code}): {msg}")
+            return []
+
         # API 응답 구조 확인
         if "culturalEventInfo" in data:
             result = data["culturalEventInfo"]
-
-            # RESULT 코드 확인
-            if "RESULT" in result:
-                result_code = result["RESULT"]["CODE"]
-                if result_code != "INFO-000":
-                    print(f"  ⚠️ API 오류: {result['RESULT']['MESSAGE']}")
-                    return []
+            total_count = result.get("list_total_count", 0)
+            print(f"  📊 전체 데이터: {total_count}건")
 
             # 데이터 추출
             rows = result.get("row", [])
-            all_festivals.extend(rows)
-            print(f"  ✅ {len(rows)}개 축제 수집 완료")
+
+            # 날짜 필터링 (Python에서 처리)
+            for row in rows:
+                try:
+                    # STRTDATE 형식: "2026-01-20 00:00:00.0"
+                    start_str = row.get("STRTDATE", "")
+                    if start_str:
+                        start_dt = datetime.strptime(start_str[:10], "%Y-%m-%d")
+                        if filter_start <= start_dt <= filter_end:
+                            all_festivals.append(row)
+                except:
+                    # 날짜 파싱 실패 시 포함
+                    all_festivals.append(row)
+
+            print(f"  ✅ 필터 후 {len(all_festivals)}개 축제 수집 완료")
         else:
             print(f"  ⚠️ 예상치 못한 응답 구조: {data.keys()}")
 
