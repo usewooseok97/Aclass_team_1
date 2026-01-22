@@ -11,45 +11,56 @@ import img from "@assets/mainBackground.png"
 import { LanguageButton } from "@atoms/LanguageButton";
 import { FooterText } from "@atoms/FooterText";
 import { FestivalProvider } from "@contexts/FestivalContext";
+import { useFestivalContext } from "@hooks/useFestivalContext";
 import RightContent from "@containers/RightContent";
 import LeftContent from "@containers/LeftContent";
+import { FestivalDetailPage } from "@pages/FestivalDetailPage";
  
+const getGradient = (phase: string): string => {
+  switch (phase) {
+    case 'morning':
+      return 'linear-gradient(to right, #fda4af, #fdba74, #fef08a)';
+    case 'day':
+      return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
+    case 'sunset':
+      return 'linear-gradient(to right, #f97316, #db2777, #7c3aed)';
+    case 'night':
+      return 'linear-gradient(to right, #1e1b4b, #312e81, #1e3a5f)';
+    default:
+      return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
+  }
+};
+
+const getThemeColors = (phase: string): React.CSSProperties => ({
+  '--text-primary': phase === 'night' ? '#f1f5f9' : phase === 'sunset' ? '#581c87' : '#1e293b',
+  '--text-secondary': phase === 'night' ? '#94a3b8' : phase === 'sunset' ? '#a855f7' : '#64748b',
+  '--btn-primary': phase === 'morning' ? '#f97316' : phase === 'night' ? '#818cf8' : phase === 'sunset' ? '#7c3aed' : '#6750A4',
+  '--btn-hover': phase === 'morning' ? '#ea580c' : phase === 'night' ? '#6366f1' : phase === 'sunset' ? '#6d28d9' : '#5b3f9a',
+  '--card-bg': phase === 'night' ? 'rgba(30,27,75,0.7)' : 'rgba(255,255,255,0.85)',
+  '--card-border': phase === 'morning' ? '#fdba74' : phase === 'night' ? '#4c1d95' : phase === 'sunset' ? '#c084fc' : '#93c5fd',
+} as React.CSSProperties);
+
+const MainContent = () => {
+  const { viewMode } = useFestivalContext();
+
+  if (viewMode === 'detail') {
+    return <FestivalDetailPage />;
+  }
+
+  return (
+    <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
+      <LeftSectionContainer>
+        <LeftContent />
+      </LeftSectionContainer>
+      <RightSectionContainer>
+        <RightContent />
+      </RightSectionContainer>
+    </main>
+  );
+};
+
 function App() {
   const { phase } = useTimePhase();
-
-  /**
-   * 시간대(phase)에 따른 배경 그라데이션 반환
-   * TimetoScrolling 컴포넌트와 동일한 그라데이션 사용
-   *
-   * @param phase - 현재 시간대 ('morning' | 'day' | 'sunset' | 'night')
-   * @returns CSS linear-gradient 문자열
-   */
-  const getGradient = (phase: string): string => {
-    switch (phase) {
-      case 'morning':  // 아침 (06:00~09:00): 분홍 → 주황 → 노랑
-        return 'linear-gradient(to right, #fda4af, #fdba74, #fef08a)';
-      case 'day':      // 낮 (09:00~16:00): 하늘색 그라데이션
-        return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
-      case 'sunset':   // 노을 (16:00~18:00): 주황 → 분홍 → 보라
-        return 'linear-gradient(to right, #f97316, #db2777, #7c3aed)';
-      case 'night':    // 밤 (18:00~06:00): 딥 네이비/보라
-        return 'linear-gradient(to right, #1e1b4b, #312e81, #1e3a5f)';
-      default:
-        return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
-    }
-  };
-
-  /**
-   * 시간대(phase)에 따른 테마 색상 CSS 변수 반환
-   */
-  const getThemeColors = (phase: string): React.CSSProperties => ({
-    '--text-primary': phase === 'night' ? '#f1f5f9' : phase === 'sunset' ? '#581c87' : '#1e293b',
-    '--text-secondary': phase === 'night' ? '#94a3b8' : phase === 'sunset' ? '#a855f7' : '#64748b',
-    '--btn-primary': phase === 'morning' ? '#f97316' : phase === 'night' ? '#818cf8' : phase === 'sunset' ? '#7c3aed' : '#6750A4',
-    '--btn-hover': phase === 'morning' ? '#ea580c' : phase === 'night' ? '#6366f1' : phase === 'sunset' ? '#6d28d9' : '#5b3f9a',
-    '--card-bg': phase === 'night' ? 'rgba(30,27,75,0.7)' : 'rgba(255,255,255,0.85)',
-    '--card-border': phase === 'morning' ? '#fdba74' : phase === 'night' ? '#4c1d95' : phase === 'sunset' ? '#c084fc' : '#93c5fd',
-  } as React.CSSProperties);
 
   return (
     <FestivalProvider>
@@ -67,14 +78,7 @@ function App() {
             <WeatherLocation />
             <SearchInput />
           </HeaderContainer>
-          <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
-            <LeftSectionContainer>
-              <LeftContent />
-            </LeftSectionContainer>
-            <RightSectionContainer>
-              <RightContent />
-            </RightSectionContainer>
-          </main>
+          <MainContent />
           <FooterContainer>
             <LanguageButton />
             <FooterText text={TEXT_LIST.FOOTER}/>

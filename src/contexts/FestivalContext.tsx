@@ -5,6 +5,7 @@ import type {
   PlaceData,
   Weather,
   FestivalContextValue,
+  ViewMode,
 } from '../types/festival';
  
 export const FestivalContext = createContext<FestivalContextValue | undefined>(undefined);
@@ -17,7 +18,8 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [weather, setWeather] = useState<Weather | null>(null);
 
   const [selectedDistrict, setSelectedDistrictState] = useState<string | null>(null);
-  const [selectedFestival, setSelectedFestival] = useState<Festival | null>(null);
+  const [selectedFestival, setSelectedFestivalState] = useState<Festival | null>(null);
+  const [viewMode, setViewMode] = useState<ViewMode>('map');
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +67,31 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
  
   const setSelectedDistrict = (district: string | null) => {
     setSelectedDistrictState(district);
-    setSelectedFestival(null); // Reset festival when district changes
+    setSelectedFestivalState(null);
+    if (district) {
+      setViewMode('list');
+    } else {
+      setViewMode('map');
+    }
+  };
+
+  const setSelectedFestival = (festival: Festival | null) => {
+    setSelectedFestivalState(festival);
+  };
+
+  const navigateToDetail = (festival: Festival) => {
+    setSelectedFestivalState(festival);
+    setViewMode('detail');
+  };
+
+  const navigateBack = () => {
+    if (viewMode === 'detail') {
+      setViewMode(selectedDistrict ? 'list' : 'map');
+    } else if (viewMode === 'list') {
+      setSelectedDistrictState(null);
+      setSelectedFestivalState(null);
+      setViewMode('map');
+    }
   };
 
  
@@ -91,12 +117,16 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     selectedDistrict,
     selectedFestival,
+    viewMode,
 
     filteredFestivals,
     nearbyPlaces,
 
     setSelectedDistrict,
     setSelectedFestival,
+    setViewMode,
+    navigateToDetail,
+    navigateBack,
 
     isLoading,
     error,

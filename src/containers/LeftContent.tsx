@@ -7,7 +7,7 @@ import { BackButton } from "@atoms/backButton";
 import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 
 const LeftContent = () => {
-  const { selectedFestival, setSelectedFestival, nearbyPlaces } = useFestivalContext();
+  const { selectedFestival, setSelectedFestival, nearbyPlaces, navigateToDetail } = useFestivalContext();
 
   // 카드 클릭 안했으면 기존 지도/버튼 화면
   if (!selectedFestival) {
@@ -37,14 +37,17 @@ const LeftContent = () => {
       <CardLayout>
         <div className="flex flex-col p-4">
           <BackButton onClick={() => setSelectedFestival(null)} className="mb-3" />
-          {/* 축제 이미지 */}
-          <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
+          {/* 축제 이미지 - 클릭 시 상세 페이지로 이동 */}
+          <button
+            onClick={() => navigateToDetail(selectedFestival)}
+            className="w-full h-48 rounded-lg overflow-hidden mb-4 cursor-pointer"
+          >
             <img
               src={selectedFestival.MAIN_IMG}
               alt={selectedFestival.TITLE}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
-          </div>
+          </button>
 
           {/* 제목 + 평점 */}
           <div className="flex items-center gap-2 mb-4">
@@ -91,18 +94,14 @@ const LeftContent = () => {
             <p className="line-clamp-4">{selectedFestival.PROGRAM}</p>
           </div>
 
-          {/* 상세 페이지 링크 */}
-          {selectedFestival.HMPG_ADDR && (
-            <a
-              href={selectedFestival.HMPG_ADDR}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 text-right text-sm hover:underline"
-              style={{ color: 'var(--btn-primary)' }}
-            >
-              상세 페이지 &gt;
-            </a>
-          )}
+          {/* 상세 페이지 버튼 */}
+          <button
+            onClick={() => navigateToDetail(selectedFestival)}
+            className="mt-4 text-right text-sm hover:underline w-full"
+            style={{ color: 'var(--btn-primary)' }}
+          >
+            상세 페이지 &gt;
+          </button>
         </div>
       </CardLayout>
 
