@@ -28,7 +28,8 @@
       "@constants/*": ["src/constants/*"],
       "@types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
-      "@lib/*": ["src/lib/*"]
+      "@lib/*": ["src/lib/*"],
+      "@pages/*": ["src/pages/*"]
     },
 
     /* Linting */

@@ -1,3 +1,6 @@
+// View mode type for page navigation
+export type ViewMode = 'map' | 'list' | 'detail';
+
 // Festival data interface matching Python script output
 export interface Festival {
   season: "봄" | "여름" | "가을" | "겨울";
@@ -60,6 +63,9 @@ export interface FestivalContextValue {
   selectedDistrict: string | null;
   selectedFestival: Festival | null;
 
+  // View mode
+  viewMode: ViewMode;
+
   // Computed values
   filteredFestivals: Festival[];  // Festivals filtered by selectedDistrict
   nearbyPlaces: Place[];          // Places filtered by selectedFestival
@@ -67,6 +73,9 @@ export interface FestivalContextValue {
   // Actions
   setSelectedDistrict: (district: string | null) => void;
   setSelectedFestival: (festival: Festival | null) => void;
+  setViewMode: (mode: ViewMode) => void;
+  navigateToDetail: (festival: Festival) => void;
+  navigateBack: () => void;
 
   // Loading/Error state
   isLoading: boolean;
