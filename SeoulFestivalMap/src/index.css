@@ -2,21 +2,6 @@
 
 /* 폰트 ------------------------------------------------------- */
 
-
-:root {
-    /* 라이트 모드 (기본) */
-    --background-color: #ffffff;
-    --text-color: #333333;
-    --accent-color: #0066cc;
-}
-
-[data-theme="dark"] {
-    /* 다크 모드 */
-    --background-color: #222222;
-    --text-color: #f0f0f0;
-    --accent-color: #4d9fff;
-}
-
 html {
     font-size: 16px; /* Tailwind 기본값 (1rem = 16px) */
 }

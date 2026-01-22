@@ -29,7 +29,8 @@
       "@types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
       "@lib/*": ["src/lib/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"]
     },
 
     /* Linting */
