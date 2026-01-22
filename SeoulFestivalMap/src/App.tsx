@@ -40,51 +40,50 @@ const getThemeColors = (phase: string): React.CSSProperties => ({
   '--card-border': phase === 'morning' ? '#fdba74' : phase === 'night' ? '#4c1d95' : phase === 'sunset' ? '#c084fc' : '#93c5fd',
 } as React.CSSProperties);
 
-const MainContent = () => {
+const AppContent = () => {
   const { viewMode } = useFestivalContext();
+  const { phase } = useTimePhase();
 
   if (viewMode === 'detail') {
     return <FestivalDetailPage />;
   }
 
   return (
-    <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
-      <LeftSectionContainer>
-        <LeftContent />
-      </LeftSectionContainer>
-      <RightSectionContainer>
-        <RightContent />
-      </RightSectionContainer>
-    </main>
+    <div className="relative w-full min-h-screen" style={getThemeColors(phase)}>
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${img})` }}
+      />
+      <div
+        className="absolute inset-0 transition-all duration-1000"
+        style={{ background: getGradient(phase) }}
+      />
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col">
+        <HeaderContainer backgroundElement={<TimetoScrolling />}>
+          <WeatherLocation />
+          <SearchInput />
+        </HeaderContainer>
+        <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
+          <LeftSectionContainer>
+            <LeftContent />
+          </LeftSectionContainer>
+          <RightSectionContainer>
+            <RightContent />
+          </RightSectionContainer>
+        </main>
+        <FooterContainer>
+          <LanguageButton />
+          <FooterText text={TEXT_LIST.FOOTER}/>
+        </FooterContainer>
+      </div>
+    </div>
   );
 };
 
 function App() {
-  const { phase } = useTimePhase();
-
   return (
     <FestivalProvider>
-      <div className="relative w-full min-h-screen" style={getThemeColors(phase)}>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${img})` }}
-        />
-        <div
-          className="absolute inset-0 transition-all duration-1000"
-          style={{ background: getGradient(phase) }}
-        />
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col">
-          <HeaderContainer backgroundElement={<TimetoScrolling />}>
-            <WeatherLocation />
-            <SearchInput />
-          </HeaderContainer>
-          <MainContent />
-          <FooterContainer>
-            <LanguageButton />
-            <FooterText text={TEXT_LIST.FOOTER}/>
-          </FooterContainer>
-        </div>
-      </div>
+      <AppContent />
     </FestivalProvider>
   );
 }
