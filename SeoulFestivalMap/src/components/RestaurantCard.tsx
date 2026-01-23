@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Star } from "lucide-react";
 import { Badge } from "@atoms/Badge";
 import type { Place } from "@/types/festival";
+import { getPhotoUrl, getCategoryImage } from "@/utils/googlePlaces";
 
 interface RestaurantCardProps {
   place: Place;
@@ -17,6 +19,14 @@ const getCategoryVariant = (category: string) => {
 
 export const RestaurantCard = ({ place }: RestaurantCardProps) => {
   const rating = (Math.random() * 1 + 4).toFixed(1);
+  const [imageError, setImageError] = useState(false);
+
+  // Google Places 사진 URL 또는 카테고리 기본 이미지
+  const photoUrl = place.photos?.[0]?.name
+    ? getPhotoUrl(place.photos[0].name, 200)
+    : "";
+  const fallbackImage = getCategoryImage(place.category);
+  const imageSource = !imageError && photoUrl ? photoUrl : fallbackImage;
 
   return (
     <div
@@ -28,12 +38,21 @@ export const RestaurantCard = ({ place }: RestaurantCardProps) => {
       }}
     >
       <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-200 shrink-0">
-        <div
-          className="w-full h-full flex items-center justify-center text-2xl"
-          style={{ backgroundColor: "var(--card-border)" }}
-        >
-          🍽️
-        </div>
+        {imageSource ? (
+          <img
+            src={imageSource}
+            alt={place.name}
+            className="w-full h-full object-cover"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center text-2xl"
+            style={{ backgroundColor: "var(--card-border)" }}
+          >
+            🍽️
+          </div>
+        )}
       </div>
 
       <div className="flex-1 min-w-0">

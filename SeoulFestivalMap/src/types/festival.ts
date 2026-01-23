@@ -19,6 +19,13 @@ export interface Festival {
   buzz_score: number;       // Interest score 0-100
 }
 
+// Google Places photo reference
+export interface PlacePhoto {
+  name: string;             // Photo reference (e.g., "places/xxx/photos/xxx")
+  widthPx: number;          // Photo width
+  heightPx: number;         // Photo height
+}
+
 // Place (restaurant/cafe) data interface
 export interface Place {
   name: string;             // Place name
@@ -29,6 +36,8 @@ export interface Place {
   mapy: string;             // Latitude (Naver coordinate)
   link: string;             // Naver link
   telephone: string;        // Phone number
+  googlePlaceId?: string;   // Google Places ID
+  photos?: PlacePhoto[];    // Google Places photos
 }
 
 // Place data structure - keyed by festival title
