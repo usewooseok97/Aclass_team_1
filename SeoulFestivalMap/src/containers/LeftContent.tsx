@@ -35,7 +35,7 @@ const LeftContent = () => {
   return (
     <>
       <CardLayout>
-        <div className="flex flex-col items-center justify-center p-4 w-full h-full overflow-y-auto">
+        <div className="flex flex-col items-center justify-center p-12 w-full h-full overflow-y-auto">
           <BackButton onClick={() => setSelectedFestival(null)} className="mb-3" />
           {/* 축제 이미지 - 클릭 시 상세 페이지로 이동 */}
           <button
