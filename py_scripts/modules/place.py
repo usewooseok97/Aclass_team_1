@@ -15,8 +15,75 @@ from config import (
     NAVER_CLIENT_ID,
     NAVER_CLIENT_SECRET,
     NAVER_LOCAL_SEARCH_URL,
+    GOOGLE_PLACES_API_KEY,
+    GOOGLE_PLACES_TEXT_SEARCH_URL,
     SAVE_PATH
 )
+
+
+def fetch_google_photos(place_name, address):
+    """
+    Google Places API를 사용하여 장소 사진 정보 가져오기
+
+    Args:
+        place_name (str): 장소 이름
+        address (str): 장소 주소
+
+    Returns:
+        dict: googlePlaceId와 photos 정보
+    """
+    if not GOOGLE_PLACES_API_KEY:
+        return {"googlePlaceId": None, "photos": []}
+
+    headers = {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": GOOGLE_PLACES_API_KEY,
+        "X-Goog-FieldMask": "places.id,places.displayName,places.photos"
+    }
+
+    # 검색 쿼리: 이름 + 주소
+    query = f"{place_name} {address}"
+
+    payload = {
+        "textQuery": query,
+        "languageCode": "ko"
+    }
+
+    try:
+        response = requests.post(
+            GOOGLE_PLACES_TEXT_SEARCH_URL,
+            headers=headers,
+            json=payload
+        )
+        response.raise_for_status()
+        data = response.json()
+
+        places = data.get("places", [])
+        if not places:
+            return {"googlePlaceId": None, "photos": []}
+
+        place = places[0]
+        place_id = place.get("id", "")
+
+        # photos 배열에서 최대 5개 추출
+        photos_raw = place.get("photos", [])[:5]
+        photos = [
+            {
+                "name": p.get("name", ""),
+                "widthPx": p.get("widthPx", 0),
+                "heightPx": p.get("heightPx", 0)
+            }
+            for p in photos_raw
+        ]
+
+        return {
+            "googlePlaceId": place_id,
+            "photos": photos
+        }
+
+    except Exception as e:
+        print(f"      [WARN] Google Places 검색 실패 ({place_name}): {e}")
+        return {"googlePlaceId": None, "photos": []}
 
 
 def fetch_places_for_festival(festival_title, gu_name):
@@ -64,8 +131,9 @@ def fetch_places_for_festival(festival_title, gu_name):
             for item in items:
                 # HTML 태그 제거
                 name = item["title"].replace("<b>", "").replace("</b>", "")
+                address = item.get("roadAddress", "") or item.get("address", "")
 
-                places.append({
+                place_data = {
                     "name": name,
                     "category": item.get("category", ""),
                     "address": item.get("address", ""),
@@ -73,8 +141,19 @@ def fetch_places_for_festival(festival_title, gu_name):
                     "mapx": item.get("mapx", ""),
                     "mapy": item.get("mapy", ""),
                     "link": item.get("link", ""),
-                    "telephone": item.get("telephone", "")
-                })
+                    "telephone": item.get("telephone", ""),
+                    "googlePlaceId": None,
+                    "photos": []
+                }
+
+                # Google Places API로 사진 정보 가져오기
+                if GOOGLE_PLACES_API_KEY:
+                    google_data = fetch_google_photos(name, address)
+                    place_data["googlePlaceId"] = google_data["googlePlaceId"]
+                    place_data["photos"] = google_data["photos"]
+                    time.sleep(0.1)  # API 호출 제한 준수
+
+                places.append(place_data)
 
             # API 호출 제한 준수
             time.sleep(0.1)

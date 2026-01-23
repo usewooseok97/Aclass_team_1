@@ -107,7 +107,7 @@ const LeftContent = () => {
 
       {/* 주변 먹거리 카드 */}
       <CardLayout>
-        <div className="flex flex-col items-center justify-center p-4 w-full h-full overflow-y-auto">
+        <div className="flex flex-col p-4 w-full h-full overflow-y-auto">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
             <Utensils className="w-5 h-5" style={{ color: 'var(--btn-primary)' }} />
             주변 먹거리
