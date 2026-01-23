@@ -17,6 +17,7 @@ export const BackButton = ({ onClick, className }: BackButtonProps) => {
         "flex items-center justify-center",
         "w-8 h-8 rounded-full cursor-pointer",
         "transition-colors duration-200",
+        "absolute top-4 left-4 z-10",
         className
       )}
       style={{

@@ -42,7 +42,6 @@ const CardLayout = ({
     <section
       className={cn(cardVariants({ variant, hover }), className)}
       style={{
-        backgroundColor: 'var(--card-bg)',
         borderColor: 'var(--card-border)',
       }}
     >
