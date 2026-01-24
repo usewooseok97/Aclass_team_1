@@ -19,15 +19,15 @@ export function getPhotoUrl(photoName: string, maxHeight = 400): string {
 }
 
 /**
- * 카테고리별 기본 이미지
+ * 카테고리별 기본 이미지 (Unsplash 무료 이미지)
  */
 export const categoryImages: Record<string, string> = {
-  "한식": "/images/korean-food.jpg",
-  "카페": "/images/cafe.jpg",
-  "중식": "/images/chinese-food.jpg",
-  "일식": "/images/japanese-food.jpg",
-  "양식": "/images/western-food.jpg",
-  "default": "/images/restaurant-default.jpg",
+  "한식": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&h=400&fit=crop",
+  "카페": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop",
+  "중식": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop",
+  "일식": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400&h=400&fit=crop",
+  "양식": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=400&fit=crop",
+  "default": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop",
 };
 
 /**

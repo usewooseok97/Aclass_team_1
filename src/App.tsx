@@ -14,8 +14,8 @@ import { FestivalProvider } from "@contexts/FestivalContext";
 import { useFestivalContext } from "@hooks/useFestivalContext";
 import RightContent from "@containers/RightContent";
 import LeftContent from "@containers/LeftContent";
-import DetailLeftContent from "@containers/DetailLeftContent";
-import DetailRightContent from "@containers/DetailRightContent";
+import LeftContentDetail from "./containers/LeftContentDetail";
+import RightContentDetail from "./containers/RightContentDetail";
 import { FestivalLocationMap } from "@pages/FestivalDetailPage/FestivalLocationMap";
 import { FullWidthCard } from "@atoms/FullWidthCard";
 import { getGradient, getThemeColors } from "@utils/theme";
@@ -41,10 +41,10 @@ const AppContent = () => {
         </HeaderContainer>
         <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
           <LeftSectionContainer>
-            {viewMode === "detail" ? <DetailLeftContent /> : <LeftContent />}
+            {viewMode === "detail" ? <LeftContentDetail /> : <LeftContent />}
           </LeftSectionContainer>
           <RightSectionContainer>
-            {viewMode === "detail" ? <DetailRightContent /> : <RightContent />}
+            {viewMode === "detail" ? <RightContentDetail /> : <RightContent />}
           </RightSectionContainer>
         </main>
 

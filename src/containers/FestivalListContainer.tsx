@@ -47,7 +47,7 @@ const FestivalListContainer = () => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col items-center gap-4 max-h-150 overflow-y-auto pr-2">
+      <div className="flex flex-col items-center gap-4 max-h-150 overflow-y-auto scrollbar-hide pr-2">
         {sortedFestivals.map((festival, index) => (
           <motion.div
             key={`${festival.TITLE}-${festival.STRTDATE}`}
