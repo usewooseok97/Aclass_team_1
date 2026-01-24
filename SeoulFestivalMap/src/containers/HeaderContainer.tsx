@@ -5,7 +5,7 @@ interface HeaderProps {
 
 const HeaderContainer = ({ children, backgroundElement }: HeaderProps) => {
   return (
-    <header className="w-full h-24 lg:h-32 relative overflow-hidden">
+    <header className="w-full h-24 lg:h-32 relative">
       {/* 배경 (TimetoScrolling) */}
       {backgroundElement && (
         <div className="absolute inset-0">
