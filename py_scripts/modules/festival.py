@@ -36,6 +36,61 @@ def get_season(month):
         return "겨울"
 
 
+def get_venue_cache_key(place_name: str, gu_name: str) -> str:
+    """장소 캐시 키 생성 (구명_장소명)"""
+    return f"{gu_name.strip()}_{place_name.strip()}"
+
+
+def fill_missing_coordinates(festivals: list) -> tuple:
+    """
+    같은 PLACE의 좌표를 활용해 누락된 좌표 채우기
+
+    Args:
+        festivals: 처리된 축제 리스트
+
+    Returns:
+        tuple: (수정된 축제 리스트, 보완된 개수)
+    """
+    venue_coords = {}
+
+    # 1단계: 장소별 좌표 수집
+    for fest in festivals:
+        place = fest.get("PLACE", "").strip()
+        if place and fest.get("mapx") and fest.get("mapy"):
+            venue_coords[place] = (fest["mapx"], fest["mapy"])
+
+    # 2단계: 누락된 좌표 채우기
+    filled = 0
+    for fest in festivals:
+        place = fest.get("PLACE", "").strip()
+        if place and (not fest.get("mapx") or not fest.get("mapy")):
+            if place in venue_coords:
+                fest["mapx"], fest["mapy"] = venue_coords[place]
+                filled += 1
+                print(f"  → 좌표 보완: {fest['TITLE'][:25]}... ({place[:15]})")
+
+    return festivals, filled
+
+
+def print_coordinate_stats(festivals: list, cache_hits: int, api_calls: int, filled: int):
+    """좌표 조회 결과 통계 출력"""
+    total = len(festivals)
+    with_coords = sum(1 for f in festivals if f.get("mapx") and f.get("mapy"))
+    without_coords = total - with_coords
+
+    print("\n" + "=" * 50)
+    print("📊 좌표 조회 결과")
+    print("=" * 50)
+    print(f"  총 축제: {total}개")
+    print(f"  좌표 있음: {with_coords}개")
+    print(f"  좌표 없음: {without_coords}개")
+    print("-" * 50)
+    print(f"  API 호출: {api_calls}회")
+    print(f"  캐시 적중: {cache_hits}회")
+    print(f"  좌표 보완: {filled}개")
+    print("=" * 50)
+
+
 def get_festival_coordinates(place_name: str, gu_name: str) -> tuple:
     """
     네이버 Local Search API로 축제 장소 좌표 수집
@@ -207,6 +262,11 @@ def process_festivals(raw_festivals):
     processed = []
     total = len(raw_festivals)
 
+    # 좌표 캐시 및 통계
+    venue_cache = {}
+    cache_hits = 0
+    api_calls = 0
+
     for idx, item in enumerate(raw_festivals, 1):
         try:
             # 시작 날짜에서 월 추출
@@ -228,13 +288,24 @@ def process_festivals(raw_festivals):
             buzz_score = get_buzz_score(title)
             time.sleep(0.1)  # API 호출 제한 준수
 
-            # 좌표 수집
+            # 좌표 수집 (캐시 사용)
+            cache_key = get_venue_cache_key(place_name, gu_name)
             print(f"           좌표 조회 중... ({place_name})")
-            mapx, mapy = get_festival_coordinates(place_name, gu_name)
-            if mapx and mapy:
-                print(f"           → 좌표: ({mapx}, {mapy})")
+
+            if cache_key in venue_cache:
+                # 캐시에서 가져오기
+                mapx, mapy = venue_cache[cache_key]
+                cache_hits += 1
+                print(f"           → 캐시: ({mapx}, {mapy})")
             else:
-                print(f"           → 좌표 없음")
+                # API 호출
+                mapx, mapy = get_festival_coordinates(place_name, gu_name)
+                api_calls += 1
+                if mapx and mapy:
+                    venue_cache[cache_key] = (mapx, mapy)
+                    print(f"           → 좌표: ({mapx}, {mapy})")
+                else:
+                    print(f"           → 좌표 없음")
 
             # 데이터 정제
             processed.append({
@@ -263,6 +334,13 @@ def process_festivals(raw_festivals):
         except Exception as e:
             print(f"  [WARN] 데이터 처리 오류 (항목 {idx}): {e}")
             continue
+
+    # 후처리: 좌표 검증 및 보완
+    print("\n🔍 좌표 검증 및 보완 중...")
+    processed, filled = fill_missing_coordinates(processed)
+
+    # 통계 출력
+    print_coordinate_stats(processed, cache_hits, api_calls, filled)
 
     return processed
 

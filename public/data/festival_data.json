@@ -13,7 +13,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-07-01 00:00:00.0",
     "END_DATE": "2026-07-03 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -29,7 +31,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-05-28 00:00:00.0",
     "END_DATE": "2026-05-28 00:00:00.0",
-    "buzz_score": 30
+    "buzz_score": 30,
+    "mapx": "1270375081",
+    "mapy": "375022971"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[세종문화회관] In the Bamboo Forest",
+    "DATE": "2026-05-15~2026-05-17",
+    "PLACE": "세종M씨어터",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=1f6d8ad0d1ac4643a7df58c9037ccf21&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156602&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-05-15 00:00:00.0",
+    "END_DATE": "2026-05-17 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -45,7 +67,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-05-15 00:00:00.0",
     "END_DATE": "2026-05-15 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -61,7 +85,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-05-01 00:00:00.0",
     "END_DATE": "2026-05-03 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -77,7 +103,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-25 00:00:00.0",
     "END_DATE": "2026-04-26 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -93,7 +121,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-17 00:00:00.0",
     "END_DATE": "2026-04-18 00:00:00.0",
-    "buzz_score": 93
+    "buzz_score": 93,
+    "mapx": "1269455693",
+    "mapy": "375498418"
   },
   {
     "season": "겨울",
@@ -109,7 +139,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-16 00:00:00.0",
     "END_DATE": "2026-04-16 00:00:00.0",
-    "buzz_score": 55
+    "buzz_score": 55,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -125,7 +157,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-16 00:00:00.0",
     "END_DATE": "2026-04-16 00:00:00.0",
-    "buzz_score": 98
+    "buzz_score": 98,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -141,7 +175,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-09 00:00:00.0",
     "END_DATE": "2026-04-12 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -157,7 +193,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-05 00:00:00.0",
     "END_DATE": "2026-04-06 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270845855",
+    "mapy": "375654567"
   },
   {
     "season": "겨울",
@@ -173,7 +211,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-01 00:00:00.0",
     "END_DATE": "2026-12-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -189,7 +229,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-01 00:00:00.0",
     "END_DATE": "2026-12-06 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -205,7 +247,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-04-01 00:00:00.0",
     "END_DATE": "2026-12-04 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -221,7 +265,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-30 00:00:00.0",
     "END_DATE": "2026-04-26 00:00:00.0",
-    "buzz_score": 94
+    "buzz_score": 94,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -237,7 +283,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-28 00:00:00.0",
     "END_DATE": "2026-11-15 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -253,7 +301,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-27 00:00:00.0",
     "END_DATE": "2026-06-30 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "1270375081",
+    "mapy": "375022971"
   },
   {
     "season": "겨울",
@@ -269,7 +319,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-24 00:00:00.0",
     "END_DATE": "2026-05-07 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -285,7 +337,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-19 00:00:00.0",
     "END_DATE": "2026-03-19 00:00:00.0",
-    "buzz_score": 98
+    "buzz_score": 98,
+    "mapx": "1271041742",
+    "mapy": "375134970"
   },
   {
     "season": "겨울",
@@ -301,7 +355,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-18 00:00:00.0",
     "END_DATE": "2026-06-23 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270004414",
+    "mapy": "375820707"
   },
   {
     "season": "겨울",
@@ -317,7 +373,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-17 00:00:00.0",
     "END_DATE": "2026-03-17 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -333,7 +391,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-14 00:00:00.0",
     "END_DATE": "2026-03-21 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -349,7 +409,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-13 00:00:00.0",
     "END_DATE": "2026-03-13 00:00:00.0",
-    "buzz_score": 66
+    "buzz_score": 66,
+    "mapx": "1269001284",
+    "mapy": "375262451"
   },
   {
     "season": "겨울",
@@ -365,7 +427,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-12 00:00:00.0",
     "END_DATE": "2026-03-13 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -381,7 +445,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-10 00:00:00.0",
     "END_DATE": "2026-03-17 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -397,7 +463,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-10 00:00:00.0",
     "END_DATE": "2026-03-10 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[세종문화회관] 세종시즌 [THE WASP]",
+    "DATE": "2026-03-08~2026-04-26",
+    "PLACE": "세종S씨어터",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "16세 이상 관람 가능 (2010년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=7d42df331bae4446ba8461bcff19c7aa&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156604&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-03-08 00:00:00.0",
+    "END_DATE": "2026-04-26 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1269754217",
+    "mapy": "375725156"
   },
   {
     "season": "겨울",
@@ -413,7 +499,9 @@
     "PROGRAM": "예술이 지켜낸 풍경’에서 ‘기후가 바꾼 생태계’까지, 지구의 골든타임을 말하다.",
     "STRTDATE": "2026-03-06 00:00:00.0",
     "END_DATE": "2026-03-29 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269796700",
+    "mapy": "375839784"
   },
   {
     "season": "겨울",
@@ -429,7 +517,9 @@
     "PROGRAM": "오래된 다리, 꽃피다, 그때는 우리가, 별을 보게 되는 순간을 사랑합니다, 첼로의 숲, Sentimental Seoul, Tokyo Window 외 ",
     "STRTDATE": "2026-03-03 00:00:00.0",
     "END_DATE": "2026-03-03 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -445,7 +535,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-03-01 00:00:00.0",
     "END_DATE": "2026-03-01 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269704375",
+    "mapy": "375701433"
   },
   {
     "season": "겨울",
@@ -461,7 +553,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-28 00:00:00.0",
     "END_DATE": "2026-05-17 00:00:00.0",
-    "buzz_score": 55
+    "buzz_score": 55,
+    "mapx": "1270148961",
+    "mapy": "375659453"
   },
   {
     "season": "겨울",
@@ -477,7 +571,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-28 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 50
+    "buzz_score": 50,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -493,7 +589,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-28 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269757647",
+    "mapy": "375722464"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "연극 [나리]",
+    "DATE": "2026-02-27~2026-03-08",
+    "PLACE": "서울특별시 종로구 대학로 120 (동숭동) 지하 1층",
+    "ORG_NAME": "기타",
+    "USE_TRGT": "만 14세 이상 관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=cbeaa63ded85476aa43b06d58f4fe9d5&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156607&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-02-27 00:00:00.0",
+    "END_DATE": "2026-03-08 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -509,7 +625,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-25 00:00:00.0",
     "END_DATE": "2026-12-30 00:00:00.0",
-    "buzz_score": 90
+    "buzz_score": 90,
+    "mapx": "1269842154",
+    "mapy": "375974040"
   },
   {
     "season": "겨울",
@@ -525,7 +643,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-25 00:00:00.0",
     "END_DATE": "2026-02-25 00:00:00.0",
-    "buzz_score": 92
+    "buzz_score": 92,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "임현정 바이올린 독주회",
+    "DATE": "2026-02-23~2026-02-23",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=73116815bc1b41d1a0360a4e27722030&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156600&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-02-23 00:00:00.0",
+    "END_DATE": "2026-02-23 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -541,7 +679,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-21 00:00:00.0",
     "END_DATE": "2026-04-04 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270845855",
+    "mapy": "375654567"
   },
   {
     "season": "겨울",
@@ -557,7 +697,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-21 00:00:00.0",
     "END_DATE": "2026-02-21 00:00:00.0",
-    "buzz_score": 92
+    "buzz_score": 92,
+    "mapx": "1269448831",
+    "mapy": "374678313"
   },
   {
     "season": "겨울",
@@ -573,7 +715,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-21 00:00:00.0",
     "END_DATE": "2026-02-21 00:00:00.0",
-    "buzz_score": 56
+    "buzz_score": 56,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -589,7 +733,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-20 00:00:00.0",
     "END_DATE": "2026-03-09 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -605,7 +751,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-18 00:00:00.0",
     "END_DATE": "2026-02-18 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -621,7 +769,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-17 00:00:00.0",
     "END_DATE": "2026-02-17 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -637,7 +787,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-16 00:00:00.0",
     "END_DATE": "2026-02-16 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -653,7 +805,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-14 00:00:00.0",
     "END_DATE": "2026-03-14 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 97,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "마포구",
+    "TITLE": "[마포구립서강도서관] 2월/어린이 공연 (별여울) 개관 18주년 기념 어린이공연 [호호빵빵 달콤한 인생]",
+    "DATE": "2026-02-13~2026-02-13",
+    "PLACE": "마포구립서강도서관 4층 어린이자료실",
+    "ORG_NAME": "마포구청",
+    "USE_TRGT": "초등 1~2학년(2025년 기준) 30명 *보호자 동반 가능",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=b9d2d57221954fc483aca7ffe378beeb&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156605&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-02-13 00:00:00.0",
+    "END_DATE": "2026-02-13 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -669,7 +841,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-12 00:00:00.0",
     "END_DATE": "2026-02-13 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270117155",
+    "mapy": "374791837"
   },
   {
     "season": "겨울",
@@ -685,7 +859,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-12 00:00:00.0",
     "END_DATE": "2026-02-12 00:00:00.0",
-    "buzz_score": 64
+    "buzz_score": 64,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -701,7 +877,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-11 00:00:00.0",
     "END_DATE": "2026-02-11 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269975304",
+    "mapy": "375334158"
   },
   {
     "season": "겨울",
@@ -717,7 +895,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-11 00:00:00.0",
     "END_DATE": "2026-02-11 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269366028",
+    "mapy": "375631317"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "소프라노 송지선 독창회",
+    "DATE": "2026-02-11~2026-02-11",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "8세 이상 관람 가능 (2018년 이전 출생자)\t",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=4b1b69dacaeb48efaa6738e446ce4c0b&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156601&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-02-11 00:00:00.0",
+    "END_DATE": "2026-02-11 00:00:00.0",
+    "buzz_score": 53,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -733,7 +931,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-10 00:00:00.0",
     "END_DATE": "2026-02-10 00:00:00.0",
-    "buzz_score": 59
+    "buzz_score": 59,
+    "mapx": "1270265834",
+    "mapy": "375242580"
   },
   {
     "season": "겨울",
@@ -749,7 +949,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-09 00:00:00.0",
     "END_DATE": "2026-02-09 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -765,7 +967,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-08 00:00:00.0",
     "END_DATE": "2026-02-08 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1271066850",
+    "mapy": "375002807"
   },
   {
     "season": "겨울",
@@ -781,7 +985,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-07 00:00:00.0",
     "END_DATE": "2026-02-14 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -797,7 +1003,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-07 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -813,7 +1021,9 @@
     "PROGRAM": " [기획공연] 2026 금나래아트홀 ACC 공동기획 공연 <토끼전>",
     "STRTDATE": "2026-02-07 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1268960536",
+    "mapy": "374566038"
   },
   {
     "season": "겨울",
@@ -829,7 +1039,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-07 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 66
+    "buzz_score": 66,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -845,7 +1057,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-06 00:00:00.0",
     "END_DATE": "2026-02-25 00:00:00.0",
-    "buzz_score": 90
+    "buzz_score": 90,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -861,7 +1075,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-06 00:00:00.0",
     "END_DATE": "2026-02-08 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270801009",
+    "mapy": "376501097"
   },
   {
     "season": "겨울",
@@ -877,23 +1093,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-06 00:00:00.0",
     "END_DATE": "2026-02-06 00:00:00.0",
-    "buzz_score": 70
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "영등포구",
-    "TITLE": "[영등포문화재단] 후원 음악회 [포커스 나눔콘서트]",
-    "DATE": "2026-02-06~2026-02-06",
-    "PLACE": "영등포아트홀",
-    "ORG_NAME": "영등포문화재단",
-    "USE_TRGT": "초등학생이상 관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=cf39c29a41024a1598dc5e7e6a532836&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156538&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-02-06 00:00:00.0",
-    "END_DATE": "2026-02-06 00:00:00.0",
-    "buzz_score": 69
+    "buzz_score": 70,
+    "mapx": "1269366028",
+    "mapy": "375631317"
   },
   {
     "season": "겨울",
@@ -909,7 +1111,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-06 00:00:00.0",
     "END_DATE": "2026-02-06 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269756625",
+    "mapy": "375722417"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "영등포구",
+    "TITLE": "[영등포문화재단] 후원 음악회 [포커스 나눔콘서트]",
+    "DATE": "2026-02-06~2026-02-06",
+    "PLACE": "영등포아트홀",
+    "ORG_NAME": "영등포문화재단",
+    "USE_TRGT": "초등학생이상 관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=cf39c29a41024a1598dc5e7e6a532836&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156538&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-02-06 00:00:00.0",
+    "END_DATE": "2026-02-06 00:00:00.0",
+    "buzz_score": 69,
+    "mapx": "1269001284",
+    "mapy": "375262451"
   },
   {
     "season": "겨울",
@@ -925,7 +1147,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-06 00:00:00.0",
     "END_DATE": "2026-02-06 00:00:00.0",
-    "buzz_score": 63
+    "buzz_score": 63,
+    "mapx": "1269606110",
+    "mapy": "375051202"
   },
   {
     "season": "겨울",
@@ -941,23 +1165,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-05 00:00:00.0",
     "END_DATE": "2026-02-13 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "[대우재단 시민강좌] 위기미디어의 세 가지 국면",
-    "DATE": "2026-02-05~2026-02-05",
-    "PLACE": "아트선재센터 지하 아트홀",
-    "ORG_NAME": "기타",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=c9864e124fa1468ba18ff3e96fd51d22&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156544&menuNo=200011",
-    "PROGRAM": "대우재단 시민강좌",
-    "STRTDATE": "2026-02-05 00:00:00.0",
-    "END_DATE": "2026-02-05 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269760752",
+    "mapy": "375667770"
   },
   {
     "season": "겨울",
@@ -973,7 +1183,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-05 00:00:00.0",
     "END_DATE": "2026-02-05 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270265834",
+    "mapy": "375242580"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[대우재단 시민강좌] 위기미디어의 세 가지 국면",
+    "DATE": "2026-02-05~2026-02-05",
+    "PLACE": "아트선재센터 지하 아트홀",
+    "ORG_NAME": "기타",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=c9864e124fa1468ba18ff3e96fd51d22&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156544&menuNo=200011",
+    "PROGRAM": "대우재단 시민강좌",
+    "STRTDATE": "2026-02-05 00:00:00.0",
+    "END_DATE": "2026-02-05 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -989,7 +1219,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-04 00:00:00.0",
     "END_DATE": "2026-02-14 00:00:00.0",
-    "buzz_score": 66
+    "buzz_score": 67,
+    "mapx": "1269906861",
+    "mapy": "375772250"
   },
   {
     "season": "겨울",
@@ -1005,7 +1237,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-04 00:00:00.0",
     "END_DATE": "2026-02-04 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -1021,7 +1255,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-03 00:00:00.0",
     "END_DATE": "2026-02-14 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269156165",
+    "mapy": "375494152"
   },
   {
     "season": "겨울",
@@ -1037,7 +1273,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-03 00:00:00.0",
     "END_DATE": "2026-02-04 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1053,7 +1291,9 @@
     "PROGRAM": "실기시험은 단 한번의 무대. 세종대학교 미래교육원 피아노전공 교수진과 함께하는 입시 성공 레슨!! 입시, N수생, 편입 준비는 세종대 미래교육원에서 시작해보세요! ",
     "STRTDATE": "2026-02-03 00:00:00.0",
     "END_DATE": "2026-02-04 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1069,7 +1309,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-03 00:00:00.0",
     "END_DATE": "2026-02-03 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269448831",
+    "mapy": "374678313"
   },
   {
     "season": "겨울",
@@ -1085,7 +1327,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-03 00:00:00.0",
     "END_DATE": "2026-02-03 00:00:00.0",
-    "buzz_score": 58
+    "buzz_score": 58,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -1101,7 +1345,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-02 00:00:00.0",
     "END_DATE": "2026-02-27 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1117,7 +1363,9 @@
     "PROGRAM": "2026학년도 1학기 정규강좌를 미리 만나볼 수 있는 원데이 클래스 안내",
     "STRTDATE": "2026-02-02 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1133,7 +1381,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-02 00:00:00.0",
     "END_DATE": "2026-02-02 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -1149,7 +1399,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-02 00:00:00.0",
     "END_DATE": "2026-02-02 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270148961",
+    "mapy": "375659453"
   },
   {
     "season": "겨울",
@@ -1165,7 +1417,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-02-01 00:00:00.0",
     "END_DATE": "2026-04-28 00:00:00.0",
-    "buzz_score": 98
+    "buzz_score": 98,
+    "mapx": "1269911082",
+    "mapy": "375769411"
   },
   {
     "season": "겨울",
@@ -1181,7 +1435,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-31 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 55
+    "buzz_score": 56,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -1197,7 +1453,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-31 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270383440",
+    "mapy": "376218935"
   },
   {
     "season": "겨울",
@@ -1213,23 +1471,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-31 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 94
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "2026년 연극 [사의 찬미]",
-    "DATE": "2026-01-30~2026-03-02",
-    "PLACE": "세종문화회관 세종M씨어터",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "13세 이상 관람 가능 (2013년 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=812a9bd6c61b46c780be3fa41d8ddbc0&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156425&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-30 00:00:00.0",
-    "END_DATE": "2026-03-02 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 94,
+    "mapx": "1270801009",
+    "mapy": "376501097"
   },
   {
     "season": "겨울",
@@ -1245,7 +1489,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-03-02 00:00:00.0",
-    "buzz_score": 93
+    "buzz_score": 93,
+    "mapx": "1271576360",
+    "mapy": "375510680"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "2026년 연극 [사의 찬미]",
+    "DATE": "2026-01-30~2026-03-02",
+    "PLACE": "세종문화회관 세종M씨어터",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "13세 이상 관람 가능 (2013년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=812a9bd6c61b46c780be3fa41d8ddbc0&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156425&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-30 00:00:00.0",
+    "END_DATE": "2026-03-02 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -1261,39 +1525,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-02-01 00:00:00.0",
-    "buzz_score": 94
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "[서울돈화문국악당] 고금성 | 이희문컴퍼니 [高李 접어 부르는 완창 12雜歌(잡가)]",
-    "DATE": "2026-01-30~2026-01-31",
-    "PLACE": "서울돈화문국악당",
-    "ORG_NAME": "서울돈화문국악당",
-    "USE_TRGT": "만 8세 이상 관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=e3cf781d761741039c3dabd5b9065542&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156543&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-30 00:00:00.0",
-    "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 30
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "성동구",
-    "TITLE": "[성동문화재단] 연극 [만선]",
-    "DATE": "2026-01-30~2026-01-31",
-    "PLACE": "성수아트홀(월요일 휴관)",
-    "ORG_NAME": "성동문화재단",
-    "USE_TRGT": "구민 및 일반시민",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ca2e44264a364365bf4d6a9a698ef287&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156443&menuNo=200008",
-    "PROGRAM": "고요한 동해 먼 바다 위 통통배 한척에서 5인 가족이 웃고 울고 분노하고 사랑하며, 숨은 진실을 터뜨리는 희노애락 가족극",
-    "STRTDATE": "2026-01-30 00:00:00.0",
-    "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 53
+    "buzz_score": 94,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -1309,7 +1543,45 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1268960536",
+    "mapy": "374566038"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[서울돈화문국악당] 고금성 | 이희문컴퍼니 [高李 접어 부르는 완창 12雜歌(잡가)]",
+    "DATE": "2026-01-30~2026-01-31",
+    "PLACE": "서울돈화문국악당",
+    "ORG_NAME": "서울돈화문국악당",
+    "USE_TRGT": "만 8세 이상 관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=e3cf781d761741039c3dabd5b9065542&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156543&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-30 00:00:00.0",
+    "END_DATE": "2026-01-31 00:00:00.0",
+    "buzz_score": 30,
+    "mapx": "1269906861",
+    "mapy": "375772250"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "[성동문화재단] 연극 [만선]",
+    "DATE": "2026-01-30~2026-01-31",
+    "PLACE": "성수아트홀(월요일 휴관)",
+    "ORG_NAME": "성동문화재단",
+    "USE_TRGT": "구민 및 일반시민",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ca2e44264a364365bf4d6a9a698ef287&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156443&menuNo=200008",
+    "PROGRAM": "고요한 동해 먼 바다 위 통통배 한척에서 5인 가족이 웃고 울고 분노하고 사랑하며, 숨은 진실을 터뜨리는 희노애락 가족극",
+    "STRTDATE": "2026-01-30 00:00:00.0",
+    "END_DATE": "2026-01-31 00:00:00.0",
+    "buzz_score": 53,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1325,7 +1597,9 @@
     "PROGRAM": "소리를 찾은 청각장애인 아동·청소년으로 구성된 '옥탑방달팽이'의 네 번째 공연 <미로의 백화점>",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 90
+    "buzz_score": 90,
+    "mapx": "1268658718",
+    "mapy": "374983312"
   },
   {
     "season": "겨울",
@@ -1341,7 +1615,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-01-30 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 97,
+    "mapx": "1270117155",
+    "mapy": "374791837"
   },
   {
     "season": "겨울",
@@ -1357,7 +1633,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-01-30 00:00:00.0",
-    "buzz_score": 63
+    "buzz_score": 63,
+    "mapx": "1269569133",
+    "mapy": "375105545"
   },
   {
     "season": "겨울",
@@ -1373,7 +1651,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-30 00:00:00.0",
     "END_DATE": "2026-01-30 00:00:00.0",
-    "buzz_score": 92
+    "buzz_score": 92,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -1389,7 +1669,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-29 00:00:00.0",
     "END_DATE": "2026-03-29 00:00:00.0",
-    "buzz_score": 53
+    "buzz_score": 53,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1405,23 +1687,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-29 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "송파구",
-    "TITLE": "[서울시립교향악단] 2026 서울시향 필리프 조르당의 브루크너 교향곡 9번 ①",
-    "DATE": "2026-01-29~2026-01-29",
-    "PLACE": "롯데콘서트홀",
-    "ORG_NAME": "서울시립교향악단",
-    "USE_TRGT": "초등학생 이상 관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=05a407d446c8451abd476315e80fb17c&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156210&menuNo=200008",
-    "PROGRAM": "2026 시즌을 여는 첫 정기공연으로 파리 국립 오페라와 빈 국립 오페라 음악감독을 역임한 세계적인 지휘자 필리프 조르당과 서울시향이 선보이는 브루크너 교향곡 9번",
-    "STRTDATE": "2026-01-29 00:00:00.0",
-    "END_DATE": "2026-01-29 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1437,7 +1705,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-29 00:00:00.0",
     "END_DATE": "2026-01-29 00:00:00.0",
-    "buzz_score": 59
+    "buzz_score": 59,
+    "mapx": "1269756625",
+    "mapy": "375722417"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "송파구",
+    "TITLE": "[서울시립교향악단] 2026 서울시향 필리프 조르당의 브루크너 교향곡 9번 ①",
+    "DATE": "2026-01-29~2026-01-29",
+    "PLACE": "롯데콘서트홀",
+    "ORG_NAME": "서울시립교향악단",
+    "USE_TRGT": "초등학생 이상 관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=05a407d446c8451abd476315e80fb17c&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156210&menuNo=200008",
+    "PROGRAM": "2026 시즌을 여는 첫 정기공연으로 파리 국립 오페라와 빈 국립 오페라 음악감독을 역임한 세계적인 지휘자 필리프 조르당과 서울시향이 선보이는 브루크너 교향곡 9번",
+    "STRTDATE": "2026-01-29 00:00:00.0",
+    "END_DATE": "2026-01-29 00:00:00.0",
+    "buzz_score": 97,
+    "mapx": "1271041742",
+    "mapy": "375134970"
   },
   {
     "season": "겨울",
@@ -1453,55 +1741,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-28 00:00:00.0",
     "END_DATE": "2026-06-24 00:00:00.0",
-    "buzz_score": 90
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "CMS ROUND-TABLE의 친절한 클래식",
-    "DATE": "2026-01-28~2026-01-28",
-    "PLACE": "세종체임버홀",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "7세 이상 관람 가능 (2018년 이전 출생자)\t",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=33faef11516e494c9a1269c3119a9d4e&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156434&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-28 00:00:00.0",
-    "END_DATE": "2026-01-28 00:00:00.0",
-    "buzz_score": 70
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "서초구",
-    "TITLE": "[강남문화재단] 강남심포니오케스트라 제114회 정기연주회",
-    "DATE": "2026-01-28~2026-01-28",
-    "PLACE": "예술의전당 콘서트홀",
-    "ORG_NAME": "강남문화재단",
-    "USE_TRGT": "취학아동 이상",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=4d6cb3203d8d49a1a60f13331355aa30&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156462&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-28 00:00:00.0",
-    "END_DATE": "2026-01-28 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "서초구",
-    "TITLE": "[서초문화원] 2026 신년음악회 [서초, 국악 : 새 빛의 울림]",
-    "DATE": "2026-01-28~2026-01-28",
-    "PLACE": "서초문화예술회관 1층 아트홀",
-    "ORG_NAME": "서초문화원",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=3345837d9c604d4a8ad9e13f46798805&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156420&menuNo=200008",
-    "PROGRAM": "국악으로 여는 2026년의 시작 서초문화원 × KBS국악관현악단 신년음악회  남상일 명창, 국악밴드 AUX, 김덕수 사물놀이패가 함께하는 웅장한 국악의 울림과 희망의 무대. 2026년 1월 28일, 서초문화예술회관 아트홀에서 만납니다.",
-    "STRTDATE": "2026-01-28 00:00:00.0",
-    "END_DATE": "2026-01-28 00:00:00.0",
-    "buzz_score": 90
+    "buzz_score": 90,
+    "mapx": "1269606110",
+    "mapy": "375051202"
   },
   {
     "season": "겨울",
@@ -1517,39 +1759,81 @@
     "PROGRAM": "Brahms,Bach,Ravel,Schubert,Mendelssohn",
     "STRTDATE": "2026-01-28 00:00:00.0",
     "END_DATE": "2026-01-28 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "1270383440",
+    "mapy": "376218935"
   },
   {
     "season": "겨울",
     "GUNAME": "서초구",
-    "TITLE": "김정훈 바이올린 독주회",
-    "DATE": "2026-01-27~2026-01-27",
-    "PLACE": "예술의전당 인춘아트홀",
-    "ORG_NAME": "기타",
-    "USE_TRGT": "미취학아동 입장불가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=f04dabcedd1442579a0d2354e8b9a0b7&thumb=Y",
+    "TITLE": "[강남문화재단] 강남심포니오케스트라 제114회 정기연주회",
+    "DATE": "2026-01-28~2026-01-28",
+    "PLACE": "예술의전당 콘서트홀",
+    "ORG_NAME": "강남문화재단",
+    "USE_TRGT": "취학아동 이상",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=4d6cb3203d8d49a1a60f13331355aa30&thumb=Y",
     "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156476&menuNo=200008",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156462&menuNo=200008",
     "PROGRAM": "",
-    "STRTDATE": "2026-01-27 00:00:00.0",
-    "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 70
+    "STRTDATE": "2026-01-28 00:00:00.0",
+    "END_DATE": "2026-01-28 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1270117155",
+    "mapy": "374791837"
   },
   {
     "season": "겨울",
     "GUNAME": "종로구",
-    "TITLE": "권효진 피아노 독주회",
-    "DATE": "2026-01-27~2026-01-27",
+    "TITLE": "CMS ROUND-TABLE의 친절한 클래식",
+    "DATE": "2026-01-28~2026-01-28",
     "PLACE": "세종체임버홀",
     "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=c2008eafb0e94339b979701c59b5de87&thumb=Y",
+    "USE_TRGT": "7세 이상 관람 가능 (2018년 이전 출생자)\t",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=33faef11516e494c9a1269c3119a9d4e&thumb=Y",
     "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156437&menuNo=200008",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156434&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-28 00:00:00.0",
+    "END_DATE": "2026-01-28 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "서초구",
+    "TITLE": "[서초문화원] 2026 신년음악회 [서초, 국악 : 새 빛의 울림]",
+    "DATE": "2026-01-28~2026-01-28",
+    "PLACE": "서초문화예술회관 1층 아트홀",
+    "ORG_NAME": "서초문화원",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=3345837d9c604d4a8ad9e13f46798805&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156420&menuNo=200008",
+    "PROGRAM": "국악으로 여는 2026년의 시작 서초문화원 × KBS국악관현악단 신년음악회  남상일 명창, 국악밴드 AUX, 김덕수 사물놀이패가 함께하는 웅장한 국악의 울림과 희망의 무대. 2026년 1월 28일, 서초문화예술회관 아트홀에서 만납니다.",
+    "STRTDATE": "2026-01-28 00:00:00.0",
+    "END_DATE": "2026-01-28 00:00:00.0",
+    "buzz_score": 90,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "마포구",
+    "TITLE": "2026년 한국문화정보원 사업설명회",
+    "DATE": "2026-01-27~2026-01-27",
+    "PLACE": "한국문화정보원 7층 대회의실",
+    "ORG_NAME": "기타",
+    "USE_TRGT": "한국문화정보원 발주사업에 관심이 있는 기업 및 관계자",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=bc48808c2d734d539929ce295cb2c767&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156609&menuNo=200013",
     "PROGRAM": "",
     "STRTDATE": "2026-01-27 00:00:00.0",
     "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 56
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1565,7 +1849,9 @@
     "PROGRAM": "ARKO한국창작음악제(아창제)는 매년 공모를 통해 국악·양악 창작관현악 작품을 선정하여 동시대 작곡가들의 작품을 소개하는 연주회입니다.",
     "STRTDATE": "2026-01-27 00:00:00.0",
     "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270117155",
+    "mapy": "374791837"
   },
   {
     "season": "겨울",
@@ -1581,7 +1867,45 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-27 00:00:00.0",
     "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 63
+    "buzz_score": 63,
+    "mapx": "1269738346",
+    "mapy": "375678957"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "서초구",
+    "TITLE": "김정훈 바이올린 독주회",
+    "DATE": "2026-01-27~2026-01-27",
+    "PLACE": "예술의전당 인춘아트홀",
+    "ORG_NAME": "기타",
+    "USE_TRGT": "미취학아동 입장불가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=f04dabcedd1442579a0d2354e8b9a0b7&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156476&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-27 00:00:00.0",
+    "END_DATE": "2026-01-27 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "권효진 피아노 독주회",
+    "DATE": "2026-01-27~2026-01-27",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=c2008eafb0e94339b979701c59b5de87&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156437&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-27 00:00:00.0",
+    "END_DATE": "2026-01-27 00:00:00.0",
+    "buzz_score": 56,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -1597,7 +1921,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-26 00:00:00.0",
     "END_DATE": "2026-05-01 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1613,7 +1939,9 @@
     "PROGRAM": "세종대학교 미래교육원 성악전공 교수진관 함께하는 성악 무료레슨 Day! 노래와 함께 당신의 음악을 시작해보세요! 성인이상부터 아마추어까지 누구나 신청 가능!",
     "STRTDATE": "2026-01-26 00:00:00.0",
     "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1629,7 +1957,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-25 00:00:00.0",
     "END_DATE": "2026-01-26 00:00:00.0",
-    "buzz_score": 55
+    "buzz_score": 55,
+    "mapx": "1269760422",
+    "mapy": "375726952"
   },
   {
     "season": "겨울",
@@ -1645,7 +1975,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-24 00:00:00.0",
     "END_DATE": "2026-02-08 00:00:00.0",
-    "buzz_score": 30
+    "buzz_score": 50,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1661,7 +1993,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-24 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1677,39 +2011,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-24 00:00:00.0",
     "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "서울역사박물관 [버틴스키: 추출/추상] 전시 연계 영화 상영회 [인류세: 인간의 시대]",
-    "DATE": "2026-01-24~2026-01-24",
-    "PLACE": "서울역사박물관 야주개홀",
-    "ORG_NAME": "서울역사박물관",
-    "USE_TRGT": "전체관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=be09577430ec4dc98c376ea261cca255&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156484&menuNo=200013",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-24 00:00:00.0",
-    "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 70
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "피아니스트 박인혜의 베토벤 피아노 소나타 정주행 III",
-    "DATE": "2026-01-24~2026-01-24",
-    "PLACE": "세종체임버홀",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)\t",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=c84284039b4e454b861726b8f07ca53a&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156435&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-24 00:00:00.0",
-    "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 100,
+    "mapx": "1269297985",
+    "mapy": "376126998"
   },
   {
     "season": "겨울",
@@ -1725,23 +2029,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-24 00:00:00.0",
     "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "은평구",
-    "TITLE": "도봉 마을아카이브 연계 민주주의 · 인권 기획전 《기억×기록》전시연계워크숍 [정말 멋진 세상이에요]",
-    "DATE": "2026-01-24~2026-01-24",
-    "PLACE": "김근태기념도서관 2층 공간, 마루",
-    "ORG_NAME": "도봉구청",
-    "USE_TRGT": "관심 있는 누구나(단, 어린이는 보호자 동반 필수)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=0f230421c78b4c4abf14bede4beadf5e&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156417&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-24 00:00:00.0",
-    "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 98
+    "buzz_score": 100,
+    "mapx": "1269760422",
+    "mapy": "375726952"
   },
   {
     "season": "겨울",
@@ -1757,7 +2047,81 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-24 00:00:00.0",
     "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 91
+    "buzz_score": 91,
+    "mapx": "1269402892",
+    "mapy": "374992147"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "서울역사박물관 [버틴스키: 추출/추상] 전시 연계 영화 상영회 [인류세: 인간의 시대]",
+    "DATE": "2026-01-24~2026-01-24",
+    "PLACE": "서울역사박물관 야주개홀",
+    "ORG_NAME": "서울역사박물관",
+    "USE_TRGT": "전체관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=be09577430ec4dc98c376ea261cca255&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156484&menuNo=200013",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-24 00:00:00.0",
+    "END_DATE": "2026-01-24 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "1269704375",
+    "mapy": "375701433"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "피아니스트 박인혜의 베토벤 피아노 소나타 정주행 III",
+    "DATE": "2026-01-24~2026-01-24",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)\t",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=c84284039b4e454b861726b8f07ca53a&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156435&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-24 00:00:00.0",
+    "END_DATE": "2026-01-24 00:00:00.0",
+    "buzz_score": 52,
+    "mapx": "1269756625",
+    "mapy": "375722417"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "은평구",
+    "TITLE": "도봉 마을아카이브 연계 민주주의 · 인권 기획전 《기억×기록》전시연계워크숍 [정말 멋진 세상이에요]",
+    "DATE": "2026-01-24~2026-01-24",
+    "PLACE": "김근태기념도서관 2층 공간, 마루",
+    "ORG_NAME": "도봉구청",
+    "USE_TRGT": "관심 있는 누구나(단, 어린이는 보호자 동반 필수)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=0f230421c78b4c4abf14bede4beadf5e&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156417&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-24 00:00:00.0",
+    "END_DATE": "2026-01-24 00:00:00.0",
+    "buzz_score": 98,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "알리 20주년 단독 콘서트 - 용진(勇進) 서울",
+    "DATE": "2026-01-24~2026-01-24",
+    "PLACE": "세종M씨어터",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=3cd1f6a563b849d190b5ad3064a06672&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156603&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-24 00:00:00.0",
+    "END_DATE": "2026-01-24 00:00:00.0",
+    "buzz_score": 92,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -1773,7 +2137,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-23 00:00:00.0",
     "END_DATE": "2026-03-27 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1789,7 +2155,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-23 00:00:00.0",
     "END_DATE": "2026-02-01 00:00:00.0",
-    "buzz_score": 60
+    "buzz_score": 60,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1805,7 +2173,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-23 00:00:00.0",
     "END_DATE": "2026-01-23 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1821,7 +2191,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-22 00:00:00.0",
     "END_DATE": "2026-12-24 00:00:00.0",
-    "buzz_score": 91
+    "buzz_score": 91,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1837,7 +2209,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-22 00:00:00.0",
     "END_DATE": "2026-03-26 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1853,7 +2227,9 @@
     "PROGRAM": "창립 20주년의 서초구 잠원동 소재 재즈클럽 그루브가 재즈연주에 대한 저변확대와 뮤지션들의 커뮤니티 교류를 목적으로 매주 목요일에 개최되는 잼세션 공연으로 제1부는 재즈콘서트 제2부는 Jam Session으로 약 100분간 진행됩니다.",
     "STRTDATE": "2026-01-22 00:00:00.0",
     "END_DATE": "2026-02-26 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "1270184716",
+    "mapy": "375126692"
   },
   {
     "season": "겨울",
@@ -1869,7 +2245,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-22 00:00:00.0",
     "END_DATE": "2026-02-05 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 53,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1885,7 +2263,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-22 00:00:00.0",
     "END_DATE": "2026-01-23 00:00:00.0",
-    "buzz_score": 57
+    "buzz_score": 57,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1901,7 +2281,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-22 00:00:00.0",
     "END_DATE": "2026-01-22 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -1917,7 +2299,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-04-01 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1933,7 +2317,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-04-01 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1949,7 +2335,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-02-11 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1965,7 +2353,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-02-11 00:00:00.0",
-    "buzz_score": 94
+    "buzz_score": 94,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1981,7 +2371,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-01-22 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -1997,7 +2389,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-01-21 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2013,7 +2407,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-21 00:00:00.0",
     "END_DATE": "2026-01-21 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2029,7 +2425,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-20 00:00:00.0",
     "END_DATE": "2026-03-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2045,7 +2443,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-20 00:00:00.0",
     "END_DATE": "2026-02-24 00:00:00.0",
-    "buzz_score": 94
+    "buzz_score": 94,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2061,7 +2461,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-20 00:00:00.0",
     "END_DATE": "2026-02-24 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2077,7 +2479,9 @@
     "PROGRAM": "㈜디자인하우스 매거진을 대표하는 사진기자 4인과, 유럽 전역에서 수집한 하이엔드 빈티지 가구를 소개하는 브랜드 라보엘 빈티지(Laboel Vintage)가 함께하는 전시입니다. 전시는 매거진 지면에 실렸던 사진을 전시 공간으로 옮겨오는 동시에, 유럽 각지에서 바다를 건너온 빈티지 가구를 함께 배치합니다. 편집자의 시선으로 포착된 공간과 오브제, 그리고 수십 년의 시간을 품은 가구가 만나 새로운 집 안 풍경을 완성합니다. 매거진 속 이상적인 대상이 실제 오브제와 만나는 순간, 편집된 이미지는 경험 가능한 장소가 됩니다.",
     "STRTDATE": "2026-01-20 00:00:00.0",
     "END_DATE": "2026-02-21 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269829994",
+    "mapy": "375833834"
   },
   {
     "season": "겨울",
@@ -2093,7 +2497,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-20 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2109,23 +2515,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-20 00:00:00.0",
     "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 95
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "강동구",
-    "TITLE": "[강동문화재단] 문화예술아카데미 어린이 성인 발레 [클래식 스완: 작품반]",
-    "DATE": "2026-01-19~2026-04-06",
-    "PLACE": "강동아트센터 스튜디오#2",
-    "ORG_NAME": "강동문화재단",
-    "USE_TRGT": "성인",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=240a1fc67f6940f78231d471427a7a3b&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156507&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-19 00:00:00.0",
-    "END_DATE": "2026-04-06 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 95,
+    "mapx": "1270749915",
+    "mapy": "375324780"
   },
   {
     "season": "겨울",
@@ -2141,7 +2533,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-19 00:00:00.0",
     "END_DATE": "2026-04-06 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "강동구",
+    "TITLE": "[강동문화재단] 문화예술아카데미 어린이 성인 발레 [클래식 스완: 작품반]",
+    "DATE": "2026-01-19~2026-04-06",
+    "PLACE": "강동아트센터 스튜디오#2",
+    "ORG_NAME": "강동문화재단",
+    "USE_TRGT": "성인",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=240a1fc67f6940f78231d471427a7a3b&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156507&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-19 00:00:00.0",
+    "END_DATE": "2026-04-06 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2157,7 +2569,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-19 00:00:00.0",
     "END_DATE": "2026-03-22 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "1270604816",
+    "mapy": "375075923"
   },
   {
     "season": "겨울",
@@ -2173,7 +2587,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-19 00:00:00.0",
     "END_DATE": "2026-01-19 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "1269757647",
+    "mapy": "375722464"
   },
   {
     "season": "겨울",
@@ -2189,7 +2605,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-18 00:00:00.0",
     "END_DATE": "2026-01-18 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270349875",
+    "mapy": "375592666"
   },
   {
     "season": "겨울",
@@ -2205,7 +2623,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-17 00:00:00.0",
     "END_DATE": "2026-02-22 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "IAN KIM Piano Salon 2026",
+    "DATE": "2026-01-17~2026-02-21",
+    "PLACE": "서울숲 스튜디오301",
+    "ORG_NAME": "기타",
+    "USE_TRGT": "성인, 청소년, 예술인패스",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=139fcacc37064aa69bf157d4662dbd3a&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156418&menuNo=200008",
+    "PROGRAM": "IAN KIM Piano Salon 2026  피아니스트 김이안(Ian Kim)이 전하는 2026년 겨울의 음악 살롱. 난롯가의 온기에서 시작해, 격정과 서정, 그리고 고요한 밤의 별까지― 차이코프스키, 쇼팽, 라흐마니노프, 라벨, 조빔, 타케미츠의 음악이 한 흐름으로 이어집니다.  클래식 피아노의 깊이 있는 레퍼토리와 재즈·보사노바, 현대음악의 색채가 어우러진 70분간의 음악 여행. 연주자와 관객이 가까이 호흡하는 살롱 공간에서 겨울의 결을 따라 천천히 귀 기울여 보세요.",
+    "STRTDATE": "2026-01-17 00:00:00.0",
+    "END_DATE": "2026-02-21 00:00:00.0",
+    "buzz_score": 63,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2221,7 +2659,9 @@
     "PROGRAM": "2026년 겨울방학을 맞이하여 초등학생 4~6학년 학생을 대상으로 서울무형유산 전승자들이 직접 가르치는 무형유산 일일체험 프로그램 입니다.",
     "STRTDATE": "2026-01-17 00:00:00.0",
     "END_DATE": "2026-01-25 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2237,7 +2677,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-17 00:00:00.0",
     "END_DATE": "2026-01-22 00:00:00.0",
-    "buzz_score": 90
+    "buzz_score": 90,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2253,7 +2695,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-17 00:00:00.0",
     "END_DATE": "2026-01-18 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269760422",
+    "mapy": "375726952"
   },
   {
     "season": "겨울",
@@ -2269,7 +2713,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-17 00:00:00.0",
     "END_DATE": "2026-01-17 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2285,39 +2731,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-16 00:00:00.0",
     "END_DATE": "2026-02-01 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "[서울돈화문국악당] 예술 인생 60주년 기념[김운태傳]",
-    "DATE": "2026-01-16~2026-01-16",
-    "PLACE": "서울돈화문국악당",
-    "ORG_NAME": "서울돈화문국악당",
-    "USE_TRGT": "전체관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=48f438ef64c04cb999079d896831730e&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156352&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-16 00:00:00.0",
-    "END_DATE": "2026-01-16 00:00:00.0",
-    "buzz_score": 91
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "테너 최병준 귀국 독창회",
-    "DATE": "2026-01-16~2026-01-16",
-    "PLACE": "세종체임버홀",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "초등학생 이상 관람 가능 (2019년 포함 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ab8a2f4c6b70492bb7729dd63e23c767&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156375&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-16 00:00:00.0",
-    "END_DATE": "2026-01-16 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2333,23 +2749,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-16 00:00:00.0",
     "END_DATE": "2026-01-16 00:00:00.0",
-    "buzz_score": 70
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "구로구",
-    "TITLE": "[구로문화재단] 2026 구로문화재단 신년음악회",
-    "DATE": "2026-01-16~2026-01-16",
-    "PLACE": "구로아트밸리 예술극장",
-    "ORG_NAME": "구로문화재단",
-    "USE_TRGT": "8세 이상 관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=7093c522035342ac9fd1468355624eb0&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156224&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-16 00:00:00.0",
-    "END_DATE": "2026-01-16 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 70,
+    "mapx": "1269606110",
+    "mapy": "375051202"
   },
   {
     "season": "겨울",
@@ -2365,7 +2767,63 @@
     "PROGRAM": "한빛예술단과 라포엠이 함께하는 희망찬 새해를 위한 음악회",
     "STRTDATE": "2026-01-16 00:00:00.0",
     "END_DATE": "2026-01-16 00:00:00.0",
-    "buzz_score": 54
+    "buzz_score": 54,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "구로구",
+    "TITLE": "[구로문화재단] 2026 구로문화재단 신년음악회",
+    "DATE": "2026-01-16~2026-01-16",
+    "PLACE": "구로아트밸리 예술극장",
+    "ORG_NAME": "구로문화재단",
+    "USE_TRGT": "8세 이상 관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=7093c522035342ac9fd1468355624eb0&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156224&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-16 00:00:00.0",
+    "END_DATE": "2026-01-16 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1268888810",
+    "mapy": "374966724"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[서울돈화문국악당] 예술 인생 60주년 기념[김운태傳]",
+    "DATE": "2026-01-16~2026-01-16",
+    "PLACE": "서울돈화문국악당",
+    "ORG_NAME": "서울돈화문국악당",
+    "USE_TRGT": "전체관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=48f438ef64c04cb999079d896831730e&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156352&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-16 00:00:00.0",
+    "END_DATE": "2026-01-16 00:00:00.0",
+    "buzz_score": 91,
+    "mapx": "1269906861",
+    "mapy": "375772250"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "테너 최병준 귀국 독창회",
+    "DATE": "2026-01-16~2026-01-16",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "초등학생 이상 관람 가능 (2019년 포함 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ab8a2f4c6b70492bb7729dd63e23c767&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156375&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-16 00:00:00.0",
+    "END_DATE": "2026-01-16 00:00:00.0",
+    "buzz_score": 51,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -2381,7 +2839,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-15 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 97,
+    "mapx": "1268955105",
+    "mapy": "374568644"
   },
   {
     "season": "겨울",
@@ -2397,7 +2857,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-15 00:00:00.0",
     "END_DATE": "2026-02-05 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 97,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2413,23 +2875,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-15 00:00:00.0",
     "END_DATE": "2026-01-22 00:00:00.0",
-    "buzz_score": 97
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "송파구",
-    "TITLE": "[서울책보고] 북토크 [나로 살 결심] 문유석 작가",
-    "DATE": "2026-01-15~2026-01-15",
-    "PLACE": "서울책보고 라운지 (잠실나루역 1번 출구 도보 1분)",
-    "ORG_NAME": "서울책보고",
-    "USE_TRGT": "'나' 로 살고픈 모든 분들",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=e46ec010bd22436fb331401c8ab6776c&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156459&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-15 00:00:00.0",
-    "END_DATE": "2026-01-15 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 97,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2445,7 +2893,27 @@
     "PROGRAM": "<html lang=",
     "STRTDATE": "2026-01-15 00:00:00.0",
     "END_DATE": "2026-01-15 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269757647",
+    "mapy": "375722464"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "송파구",
+    "TITLE": "[서울책보고] 북토크 [나로 살 결심] 문유석 작가",
+    "DATE": "2026-01-15~2026-01-15",
+    "PLACE": "서울책보고 라운지 (잠실나루역 1번 출구 도보 1분)",
+    "ORG_NAME": "서울책보고",
+    "USE_TRGT": "'나' 로 살고픈 모든 분들",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=e46ec010bd22436fb331401c8ab6776c&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156459&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-15 00:00:00.0",
+    "END_DATE": "2026-01-15 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2461,7 +2929,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-14 00:00:00.0",
     "END_DATE": "2026-02-22 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1268955105",
+    "mapy": "374568644"
   },
   {
     "season": "겨울",
@@ -2477,7 +2947,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-14 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2493,7 +2965,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-14 00:00:00.0",
     "END_DATE": "2026-02-04 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269955461",
+    "mapy": "375886759"
   },
   {
     "season": "겨울",
@@ -2509,7 +2983,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-14 00:00:00.0",
     "END_DATE": "2026-01-14 00:00:00.0",
-    "buzz_score": 62
+    "buzz_score": 62,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -2525,7 +3001,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-13 00:00:00.0",
     "END_DATE": "2026-02-12 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270086173",
+    "mapy": "375729295"
   },
   {
     "season": "겨울",
@@ -2541,7 +3019,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-13 00:00:00.0",
     "END_DATE": "2026-01-30 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "1268376386",
+    "mapy": "375375528"
   },
   {
     "season": "겨울",
@@ -2557,7 +3037,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-13 00:00:00.0",
     "END_DATE": "2026-01-26 00:00:00.0",
-    "buzz_score": 30
+    "buzz_score": 30,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2573,7 +3055,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-13 00:00:00.0",
     "END_DATE": "2026-01-23 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2589,7 +3073,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-13 00:00:00.0",
     "END_DATE": "2026-01-20 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2605,7 +3091,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-13 00:00:00.0",
     "END_DATE": "2026-01-13 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -2621,7 +3109,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-12 00:00:00.0",
     "END_DATE": "2026-03-06 00:00:00.0",
-    "buzz_score": 67
+    "buzz_score": 68,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2637,7 +3127,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-12 00:00:00.0",
     "END_DATE": "2026-01-27 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2653,7 +3145,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-12 00:00:00.0",
     "END_DATE": "2026-01-25 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 99,
+    "mapx": "1270103391",
+    "mapy": "375662220"
   },
   {
     "season": "겨울",
@@ -2669,7 +3163,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-11 00:00:00.0",
     "END_DATE": "2026-02-01 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2685,7 +3181,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-10 00:00:00.0",
     "END_DATE": "2026-02-01 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269985075",
+    "mapy": "375904736"
   },
   {
     "season": "겨울",
@@ -2701,7 +3199,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-10 00:00:00.0",
     "END_DATE": "2026-01-18 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 97,
+    "mapx": "1270031764",
+    "mapy": "375820725"
   },
   {
     "season": "겨울",
@@ -2717,23 +3217,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-10 00:00:00.0",
     "END_DATE": "2026-01-10 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "성동구",
-    "TITLE": "[성동문화재단] 2026 성동구민과 함께하는  신년음악회",
-    "DATE": "2026-01-10~2026-01-10",
-    "PLACE": "소월아트홀  (월요일 휴관)",
-    "ORG_NAME": "성동문화재단",
-    "USE_TRGT": "구민 및  일반시민",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=d11403c365084add981da3c5151d61b8&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156368&menuNo=200008",
-    "PROGRAM": "2026년 병오년(丙午年), 희망과 도약을 상징하는 ‘붉은 말의 해’를 맞아 성동문화재단이 새해의 첫 무대를 선보입니다. 새해의 밝은 기운을 담은 이번 신년음악회는 오케스트라의 웅장한 울림과 풍성한 클래식 레퍼토리로 꾸며져 구민 여러분께 한 해의 시작을 축하하고 격려하는 시간을 선사하고자 합니다.",
-    "STRTDATE": "2026-01-10 00:00:00.0",
-    "END_DATE": "2026-01-10 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269692713",
+    "mapy": "376061660"
   },
   {
     "season": "겨울",
@@ -2749,7 +3235,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-10 00:00:00.0",
     "END_DATE": "2026-01-10 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "1269268471",
+    "mapy": "376137000"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "[성동문화재단] 2026 성동구민과 함께하는  신년음악회",
+    "DATE": "2026-01-10~2026-01-10",
+    "PLACE": "소월아트홀  (월요일 휴관)",
+    "ORG_NAME": "성동문화재단",
+    "USE_TRGT": "구민 및  일반시민",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=d11403c365084add981da3c5151d61b8&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156368&menuNo=200008",
+    "PROGRAM": "2026년 병오년(丙午年), 희망과 도약을 상징하는 ‘붉은 말의 해’를 맞아 성동문화재단이 새해의 첫 무대를 선보입니다. 새해의 밝은 기운을 담은 이번 신년음악회는 오케스트라의 웅장한 울림과 풍성한 클래식 레퍼토리로 꾸며져 구민 여러분께 한 해의 시작을 축하하고 격려하는 시간을 선사하고자 합니다.",
+    "STRTDATE": "2026-01-10 00:00:00.0",
+    "END_DATE": "2026-01-10 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2765,7 +3271,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-09 00:00:00.0",
     "END_DATE": "2026-12-31 00:00:00.0",
-    "buzz_score": 90
+    "buzz_score": 90,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2781,7 +3289,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-09 00:00:00.0",
     "END_DATE": "2026-02-27 00:00:00.0",
-    "buzz_score": 30
+    "buzz_score": 30,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2797,7 +3307,9 @@
     "PROGRAM": "배우 연우진이 소개하는 아버지 故김재명 작가 개인전",
     "STRTDATE": "2026-01-09 00:00:00.0",
     "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2813,55 +3325,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-09 00:00:00.0",
     "END_DATE": "2026-01-10 00:00:00.0",
-    "buzz_score": 97
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "송파구",
-    "TITLE": "[서울시립교향악단] 2026 서울시향 신년 음악회",
-    "DATE": "2026-01-09~2026-01-09",
-    "PLACE": "롯데콘서트홀",
-    "ORG_NAME": "서울시립교향악단",
-    "USE_TRGT": "초등학생 이상 관람가",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=f507845673bb4102bd1ae10e3632285c&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156209&menuNo=200008",
-    "PROGRAM": "지휘자 데이비드 이와 오스트리아 거장 피아니스트 루돌프 부흐빈더가 밝고 희망찬 선율로 가득 채우는 2026년 서울시향 신년 음악회",
-    "STRTDATE": "2026-01-09 00:00:00.0",
-    "END_DATE": "2026-01-09 00:00:00.0",
-    "buzz_score": 98
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "중구",
-    "TITLE": "국립국악관현악단 [2026 신년 음악회]",
-    "DATE": "2026-01-09~2026-01-09",
-    "PLACE": "국립극장 해오름극장",
-    "ORG_NAME": "국립극장",
-    "USE_TRGT": "초등학생 이상",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=06b61ef871bf47e2ba0f0412bd390467&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156190&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-09 00:00:00.0",
-    "END_DATE": "2026-01-09 00:00:00.0",
-    "buzz_score": 65
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "이다솜 피아노 독주회",
-    "DATE": "2026-01-09~2026-01-09",
-    "PLACE": "세종체임버홀",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=dcfeb39b759845fba291ac053910ccaa&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156438&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-09 00:00:00.0",
-    "END_DATE": "2026-01-09 00:00:00.0",
-    "buzz_score": 54
+    "buzz_score": 97,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2877,7 +3343,63 @@
     "PROGRAM": "F. Mendelssohn Violin Concerto e minor  Op.64  P. I. Tchaikovsky Symphony No.4 Op.36",
     "STRTDATE": "2026-01-09 00:00:00.0",
     "END_DATE": "2026-01-09 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "1269692713",
+    "mapy": "376061660"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "중구",
+    "TITLE": "국립국악관현악단 [2026 신년 음악회]",
+    "DATE": "2026-01-09~2026-01-09",
+    "PLACE": "국립극장 해오름극장",
+    "ORG_NAME": "국립극장",
+    "USE_TRGT": "초등학생 이상",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=06b61ef871bf47e2ba0f0412bd390467&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156190&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-09 00:00:00.0",
+    "END_DATE": "2026-01-09 00:00:00.0",
+    "buzz_score": 65,
+    "mapx": "1269998510",
+    "mapy": "375523134"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "송파구",
+    "TITLE": "[서울시립교향악단] 2026 서울시향 신년 음악회",
+    "DATE": "2026-01-09~2026-01-09",
+    "PLACE": "롯데콘서트홀",
+    "ORG_NAME": "서울시립교향악단",
+    "USE_TRGT": "초등학생 이상 관람가",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=f507845673bb4102bd1ae10e3632285c&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156209&menuNo=200008",
+    "PROGRAM": "지휘자 데이비드 이와 오스트리아 거장 피아니스트 루돌프 부흐빈더가 밝고 희망찬 선율로 가득 채우는 2026년 서울시향 신년 음악회",
+    "STRTDATE": "2026-01-09 00:00:00.0",
+    "END_DATE": "2026-01-09 00:00:00.0",
+    "buzz_score": 98,
+    "mapx": "1271041742",
+    "mapy": "375134970"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "이다솜 피아노 독주회",
+    "DATE": "2026-01-09~2026-01-09",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2019년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=dcfeb39b759845fba291ac053910ccaa&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156438&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-09 00:00:00.0",
+    "END_DATE": "2026-01-09 00:00:00.0",
+    "buzz_score": 54,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -2893,7 +3415,9 @@
     "PROGRAM": "<html lang=",
     "STRTDATE": "2026-01-08 00:00:00.0",
     "END_DATE": "2026-03-01 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "1269754217",
+    "mapy": "375725156"
   },
   {
     "season": "겨울",
@@ -2909,23 +3433,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-08 00:00:00.0",
     "END_DATE": "2026-02-08 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "중랑구",
-    "TITLE": "[중랑문화재단] 2026 창의융합 유아동 예술프로그램 [말랑말랑 중랑] 1월",
-    "DATE": "2026-01-08~2026-01-31",
-    "PLACE": "중랑아트센터 프로그램실",
-    "ORG_NAME": "중랑문화재단",
-    "USE_TRGT": "5세(22년생)~10세(17년생)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=3868f8c3c0ed46cdb55de0106695d099&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156337&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-08 00:00:00.0",
-    "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2941,7 +3451,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-08 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270860486",
+    "mapy": "375778002"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "중랑구",
+    "TITLE": "[중랑문화재단] 2026 창의융합 유아동 예술프로그램 [말랑말랑 중랑] 1월",
+    "DATE": "2026-01-08~2026-01-31",
+    "PLACE": "중랑아트센터 프로그램실",
+    "ORG_NAME": "중랑문화재단",
+    "USE_TRGT": "5세(22년생)~10세(17년생)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=3868f8c3c0ed46cdb55de0106695d099&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156337&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-08 00:00:00.0",
+    "END_DATE": "2026-01-31 00:00:00.0",
+    "buzz_score": 99,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2957,7 +3487,9 @@
     "PROGRAM": "순환과 연결을 체험하는 기후 실험실",
     "STRTDATE": "2026-01-08 00:00:00.0",
     "END_DATE": "2026-01-29 00:00:00.0",
-    "buzz_score": 95
+    "buzz_score": 95,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -2973,7 +3505,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-08 00:00:00.0",
     "END_DATE": "2026-01-20 00:00:00.0",
-    "buzz_score": 51
+    "buzz_score": 51,
+    "mapx": "1269276602",
+    "mapy": "375469780"
   },
   {
     "season": "겨울",
@@ -2989,23 +3523,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-07 00:00:00.0",
     "END_DATE": "2026-03-22 00:00:00.0",
-    "buzz_score": 98
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "구로구",
-    "TITLE": "[서울아트책보고] 독서모임 공간지원 프로그램",
-    "DATE": "2026-01-07~2026-02-28",
-    "PLACE": "워크숍룸, 아트북 열람실",
-    "ORG_NAME": "서울아트책보고",
-    "USE_TRGT": "시민 누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=1b12f8c4fa5c4a76ae82600b984548f3&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156452&menuNo=200013",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-07 00:00:00.0",
-    "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 98,
+    "mapx": "1270140849",
+    "mapy": "374793960"
   },
   {
     "season": "겨울",
@@ -3021,7 +3541,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-07 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "구로구",
+    "TITLE": "[서울아트책보고] 독서모임 공간지원 프로그램",
+    "DATE": "2026-01-07~2026-02-28",
+    "PLACE": "워크숍룸, 아트북 열람실",
+    "ORG_NAME": "서울아트책보고",
+    "USE_TRGT": "시민 누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=1b12f8c4fa5c4a76ae82600b984548f3&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156452&menuNo=200013",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-07 00:00:00.0",
+    "END_DATE": "2026-02-28 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3037,7 +3577,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-07 00:00:00.0",
     "END_DATE": "2026-01-18 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3053,23 +3595,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-07 00:00:00.0",
     "END_DATE": "2026-01-18 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "장인형 피아노 독주회",
-    "DATE": "2026-01-07~2026-01-07",
-    "PLACE": "세종체임버홀",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "7세 이상 관람 가능 (2018년 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=de8b1f54bcd74a34b01b933f755d621a&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156374&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-07 00:00:00.0",
-    "END_DATE": "2026-01-07 00:00:00.0",
-    "buzz_score": 55
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3085,7 +3613,45 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-07 00:00:00.0",
     "END_DATE": "2026-01-07 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269760422",
+    "mapy": "375726952"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "장인형 피아노 독주회",
+    "DATE": "2026-01-07~2026-01-07",
+    "PLACE": "세종체임버홀",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "7세 이상 관람 가능 (2018년 이전 출생자)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=de8b1f54bcd74a34b01b933f755d621a&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156374&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-07 00:00:00.0",
+    "END_DATE": "2026-01-07 00:00:00.0",
+    "buzz_score": 55,
+    "mapx": "1269756625",
+    "mapy": "375722417"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[서울생활문화센터 체부] 생활문화전시회 [체부에게 한 마디 : 캘리그라피 전]",
+    "DATE": "2026-01-06~2026-02-18",
+    "PLACE": "서울생활문화센터 체부 윈도우 갤러리",
+    "ORG_NAME": "서울생활문화센터-체부",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=7278f4eb851b4687ae3b4db16ea46476&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156606&menuNo=200009",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-06 00:00:00.0",
+    "END_DATE": "2026-02-18 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3101,7 +3667,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-06 00:00:00.0",
     "END_DATE": "2026-01-30 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3117,7 +3685,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-06 00:00:00.0",
     "END_DATE": "2026-01-24 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3133,7 +3703,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-06 00:00:00.0",
     "END_DATE": "2026-01-06 00:00:00.0",
-    "buzz_score": 56
+    "buzz_score": 56,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -3149,7 +3721,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-05 00:00:00.0",
     "END_DATE": "2026-01-26 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3165,39 +3739,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-04 00:00:00.0",
     "END_DATE": "2026-01-23 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "성동구",
-    "TITLE": "[청계천박물관] 2026년 주말가족교육 [타임머신 타고 떠나는 청계천 이야기]",
-    "DATE": "2026-01-03~2026-01-31",
-    "PLACE": "청계천박물관 지하 1층 교육실",
-    "ORG_NAME": "청계천박물관",
-    "USE_TRGT": "예비 초등학교4~6학년 어린이와 동반가족",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=5b3eefa5747b47d58cc4c17b9c3e1755&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156394&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-03 00:00:00.0",
-    "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "광진구",
-    "TITLE": "[서울상상나라] 히잉~말 빵",
-    "DATE": "2026-01-03~2026-01-31",
-    "PLACE": "서울상상나라 B1 요리놀이실",
-    "ORG_NAME": "서울상상나라",
-    "USE_TRGT": "4세 이상 어린이(보호자 1인 참여)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=4581b8065a2846dcac02e904e45bdd3f&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156501&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-03 00:00:00.0",
-    "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 100,
+    "mapx": "1270768892",
+    "mapy": "376199447"
   },
   {
     "season": "겨울",
@@ -3213,7 +3757,45 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-03 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "[청계천박물관] 2026년 주말가족교육 [타임머신 타고 떠나는 청계천 이야기]",
+    "DATE": "2026-01-03~2026-01-31",
+    "PLACE": "청계천박물관 지하 1층 교육실",
+    "ORG_NAME": "청계천박물관",
+    "USE_TRGT": "예비 초등학교4~6학년 어린이와 동반가족",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=5b3eefa5747b47d58cc4c17b9c3e1755&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156394&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-03 00:00:00.0",
+    "END_DATE": "2026-01-31 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "광진구",
+    "TITLE": "[서울상상나라] 히잉~말 빵",
+    "DATE": "2026-01-03~2026-01-31",
+    "PLACE": "서울상상나라 B1 요리놀이실",
+    "ORG_NAME": "서울상상나라",
+    "USE_TRGT": "4세 이상 어린이(보호자 1인 참여)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=4581b8065a2846dcac02e904e45bdd3f&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156501&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-03 00:00:00.0",
+    "END_DATE": "2026-01-31 00:00:00.0",
+    "buzz_score": 52,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3229,7 +3811,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-03 00:00:00.0",
     "END_DATE": "2026-01-25 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270801009",
+    "mapy": "376501097"
   },
   {
     "season": "겨울",
@@ -3245,7 +3829,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-03 00:00:00.0",
     "END_DATE": "2026-01-11 00:00:00.0",
-    "buzz_score": 93
+    "buzz_score": 93,
+    "mapx": "1270491707",
+    "mapy": "374827688"
   },
   {
     "season": "겨울",
@@ -3261,55 +3847,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-03 00:00:00.0",
     "END_DATE": "2026-01-03 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "성동구",
-    "TITLE": "[서울디자인재단] SUP 시민참여 프로그램 [자원순환 이야기]",
-    "DATE": "2026-01-02~2026-12-31",
-    "PLACE": "서울새활용플라자 1층 새활용하우스",
-    "ORG_NAME": "서울디자인재단",
-    "USE_TRGT": "만 7세 이상 전 연령(만 7세 미만은 아동 1명 당 보호자 1명 이상 동반 시 참여 가능)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=80e93c16fdef4ae49cf04b149dc2701f&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156557&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-02 00:00:00.0",
-    "END_DATE": "2026-12-31 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "성동구",
-    "TITLE": "[서울디자인재단] [해치와 나눔히어로] 장난감 기부, 나눔 체험",
-    "DATE": "2026-01-02~2026-12-31",
-    "PLACE": "서울새활용플라자 1층 새활용하우스",
-    "ORG_NAME": "서울디자인재단",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=0f77dbb41066453a9cf39fabf0b69b95&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156555&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-02 00:00:00.0",
-    "END_DATE": "2026-12-31 00:00:00.0",
-    "buzz_score": 90
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "성동구",
-    "TITLE": "[서울디자인재단] 2025 [Now for Zero-Waste Vol.2 : 새로제로] 展",
-    "DATE": "2026-01-02~2026-12-31",
-    "PLACE": "서울새활용플라자 1층 새활용하우스",
-    "ORG_NAME": "서울디자인재단",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6d22a5166ca244068a398ed32972e504&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156558&menuNo=200009",
-    "PROGRAM": "",
-    "STRTDATE": "2026-01-02 00:00:00.0",
-    "END_DATE": "2026-12-31 00:00:00.0",
-    "buzz_score": 94
+    "buzz_score": 100,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -3325,7 +3865,63 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-12-31 00:00:00.0",
-    "buzz_score": 94
+    "buzz_score": 94,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "[서울디자인재단] SUP 시민참여 프로그램 [자원순환 이야기]",
+    "DATE": "2026-01-02~2026-12-31",
+    "PLACE": "서울새활용플라자 1층 새활용하우스",
+    "ORG_NAME": "서울디자인재단",
+    "USE_TRGT": "만 7세 이상 전 연령(만 7세 미만은 아동 1명 당 보호자 1명 이상 동반 시 참여 가능)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=80e93c16fdef4ae49cf04b149dc2701f&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156557&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-02 00:00:00.0",
+    "END_DATE": "2026-12-31 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "[서울디자인재단] [해치와 나눔히어로] 장난감 기부, 나눔 체험",
+    "DATE": "2026-01-02~2026-12-31",
+    "PLACE": "서울새활용플라자 1층 새활용하우스",
+    "ORG_NAME": "서울디자인재단",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=0f77dbb41066453a9cf39fabf0b69b95&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156555&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-02 00:00:00.0",
+    "END_DATE": "2026-12-31 00:00:00.0",
+    "buzz_score": 90,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "성동구",
+    "TITLE": "[서울디자인재단] 2025 [Now for Zero-Waste Vol.2 : 새로제로] 展",
+    "DATE": "2026-01-02~2026-12-31",
+    "PLACE": "서울새활용플라자 1층 새활용하우스",
+    "ORG_NAME": "서울디자인재단",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6d22a5166ca244068a398ed32972e504&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156558&menuNo=200009",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-02 00:00:00.0",
+    "END_DATE": "2026-12-31 00:00:00.0",
+    "buzz_score": 94,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3341,7 +3937,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-03-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269562809",
+    "mapy": "374761370"
   },
   {
     "season": "겨울",
@@ -3357,7 +3955,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-03-30 00:00:00.0",
-    "buzz_score": 56
+    "buzz_score": 56,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3373,7 +3973,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3389,7 +3991,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3405,7 +4009,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-02-08 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3421,7 +4027,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-02-07 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3437,7 +4045,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 69
+    "buzz_score": 69,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3453,7 +4063,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-01-03 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269985075",
+    "mapy": "375904736"
   },
   {
     "season": "겨울",
@@ -3469,7 +4081,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-02 00:00:00.0",
     "END_DATE": "2026-01-02 00:00:00.0",
-    "buzz_score": 52
+    "buzz_score": 52,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -3485,7 +4099,27 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-01 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1269318706",
+    "mapy": "375476988"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[서울생활문화센터 체부] 금오재 상시 프로그램 [병오년(2026) 안녕!]",
+    "DATE": "2026-01-01~2026-02-28",
+    "PLACE": "서울생활문화센터 체부 금오재 마실",
+    "ORG_NAME": "서울생활문화센터-체부",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=761561663bc641608e2cccff8c73fafb&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156608&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2026-01-01 00:00:00.0",
+    "END_DATE": "2026-02-28 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1269713117",
+    "mapy": "375767266"
   },
   {
     "season": "겨울",
@@ -3501,7 +4135,9 @@
     "PROGRAM": "송파 청년아티스트센터는 풍납동 지역 특색에 맞는 프로그램을 기획 및 운영합니다. 월평균 20여 개의 예술 프로그램이 진행되며, 이를 통해 주민들이 예술 활동에 직접 참여할 수 있습니다.",
     "STRTDATE": "2026-01-01 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3517,7 +4153,9 @@
     "PROGRAM": "",
     "STRTDATE": "2026-01-01 00:00:00.0",
     "END_DATE": "2026-01-01 00:00:00.0",
-    "buzz_score": 91
+    "buzz_score": 91,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -3533,7 +4171,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-31 00:00:00.0",
     "END_DATE": "2026-02-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3549,39 +4189,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-31 00:00:00.0",
     "END_DATE": "2026-01-04 00:00:00.0",
-    "buzz_score": 68
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "2025 제야의 종 타종행사",
-    "DATE": "2025-12-31~2026-01-01",
-    "PLACE": "보신각 일대",
-    "ORG_NAME": "서울시청",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=d1c471ee11ba428aa9f2b3184fb472ed&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156247&menuNo=200010",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-31 00:00:00.0",
-    "END_DATE": "2026-01-01 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "서대문구",
-    "TITLE": "[서대문구] 2026 신촌카운트다운콘서트",
-    "DATE": "2025-12-31~2026-01-01",
-    "PLACE": "신촌 스타광장",
-    "ORG_NAME": "서대문구청",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a4ad501b24e54f74a9491495a6da45be&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156188&menuNo=200010",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-31 00:00:00.0",
-    "END_DATE": "2026-01-01 00:00:00.0",
-    "buzz_score": 65
+    "buzz_score": 68,
+    "mapx": "1269997130",
+    "mapy": "375868570"
   },
   {
     "season": "겨울",
@@ -3597,7 +4207,45 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-31 00:00:00.0",
     "END_DATE": "2026-01-01 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "2025 제야의 종 타종행사",
+    "DATE": "2025-12-31~2026-01-01",
+    "PLACE": "보신각 일대",
+    "ORG_NAME": "서울시청",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=d1c471ee11ba428aa9f2b3184fb472ed&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156247&menuNo=200010",
+    "PROGRAM": "",
+    "STRTDATE": "2025-12-31 00:00:00.0",
+    "END_DATE": "2026-01-01 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "서대문구",
+    "TITLE": "[서대문구] 2026 신촌카운트다운콘서트",
+    "DATE": "2025-12-31~2026-01-01",
+    "PLACE": "신촌 스타광장",
+    "ORG_NAME": "서대문구청",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a4ad501b24e54f74a9491495a6da45be&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156188&menuNo=200010",
+    "PROGRAM": "",
+    "STRTDATE": "2025-12-31 00:00:00.0",
+    "END_DATE": "2026-01-01 00:00:00.0",
+    "buzz_score": 65,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3613,7 +4261,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-31 00:00:00.0",
     "END_DATE": "2025-12-31 00:00:00.0",
-    "buzz_score": 95
+    "buzz_score": 95,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -3629,7 +4279,9 @@
     "PROGRAM": "<html lang=",
     "STRTDATE": "2025-12-31 00:00:00.0",
     "END_DATE": "2025-12-31 00:00:00.0",
-    "buzz_score": 98
+    "buzz_score": 98,
+    "mapx": "1269760422",
+    "mapy": "375726952"
   },
   {
     "season": "겨울",
@@ -3645,23 +4297,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-30 00:00:00.0",
     "END_DATE": "2026-01-29 00:00:00.0",
-    "buzz_score": 90
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "[세종문화회관] 정명훈 × KBS교향악단 [베토벤 9]",
-    "DATE": "2025-12-30~2025-12-30",
-    "PLACE": "세종대극장",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "2018년 이전 출생자 관람 가능 (2018년생 포함)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=53ac477d4a5e4909b16bba45677e4fa9&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156150&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-30 00:00:00.0",
-    "END_DATE": "2025-12-30 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 90,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3677,7 +4315,27 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-30 00:00:00.0",
     "END_DATE": "2025-12-30 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "종로구",
+    "TITLE": "[세종문화회관] 정명훈 × KBS교향악단 [베토벤 9]",
+    "DATE": "2025-12-30~2025-12-30",
+    "PLACE": "세종대극장",
+    "ORG_NAME": "세종문화회관",
+    "USE_TRGT": "2018년 이전 출생자 관람 가능 (2018년생 포함)",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=53ac477d4a5e4909b16bba45677e4fa9&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156150&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2025-12-30 00:00:00.0",
+    "END_DATE": "2025-12-30 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1269760422",
+    "mapy": "375726952"
   },
   {
     "season": "겨울",
@@ -3693,7 +4351,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-29 00:00:00.0",
     "END_DATE": "2026-01-01 00:00:00.0",
-    "buzz_score": 97
+    "buzz_score": 97,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3709,7 +4369,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-29 00:00:00.0",
     "END_DATE": "2025-12-29 00:00:00.0",
-    "buzz_score": 58
+    "buzz_score": 58,
+    "mapx": "1269756625",
+    "mapy": "375722417"
   },
   {
     "season": "겨울",
@@ -3725,23 +4387,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-28 00:00:00.0",
     "END_DATE": "2025-12-31 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "중구",
-    "TITLE": "2025 서울윈터페스타[ K-POP 댄스파티 1회차] with 서인, DJ ILLI",
-    "DATE": "2025-12-28~2025-12-28",
-    "PLACE": "서울특별시청 8층 다목적홀",
-    "ORG_NAME": "서울시청",
-    "USE_TRGT": "서울특별시 거주자 및 서울을 방문한 내/외국인 등 춤을 사랑하는 누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=94866898732d4e97b94087fafcb22788&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156367&menuNo=200010",
-    "PROGRAM": "올겨울, 원밀리언 안무가들과 함께 겨울잠 자던 몸도 바로 깨워버리는 실전 댄스 타임",
-    "STRTDATE": "2025-12-28 00:00:00.0",
-    "END_DATE": "2025-12-28 00:00:00.0",
-    "buzz_score": 70
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3757,7 +4405,27 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-28 00:00:00.0",
     "END_DATE": "2025-12-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "중구",
+    "TITLE": "2025 서울윈터페스타[ K-POP 댄스파티 1회차] with 서인, DJ ILLI",
+    "DATE": "2025-12-28~2025-12-28",
+    "PLACE": "서울특별시청 8층 다목적홀",
+    "ORG_NAME": "서울시청",
+    "USE_TRGT": "서울특별시 거주자 및 서울을 방문한 내/외국인 등 춤을 사랑하는 누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=94866898732d4e97b94087fafcb22788&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156367&menuNo=200010",
+    "PROGRAM": "올겨울, 원밀리언 안무가들과 함께 겨울잠 자던 몸도 바로 깨워버리는 실전 댄스 타임",
+    "STRTDATE": "2025-12-28 00:00:00.0",
+    "END_DATE": "2025-12-28 00:00:00.0",
+    "buzz_score": 70,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3773,7 +4441,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-27 00:00:00.0",
     "END_DATE": "2025-12-28 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1270031764",
+    "mapy": "375820725"
   },
   {
     "season": "겨울",
@@ -3789,55 +4459,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-27 00:00:00.0",
     "END_DATE": "2025-12-28 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "서대문구",
-    "TITLE": "MINDBOOM 마인드붐 서울 2025 : 잃어버린 행운 보관소 LOST AND LUCKY",
-    "DATE": "2025-12-27~2025-12-27",
-    "PLACE": "서울 서대문구 원앙아리(서대문구 천연동 13-13, 1층)",
-    "ORG_NAME": "기타",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=daa1e51f19814f64bdf7d9ea7608c050&thumb=Y",
-    "IS_FREE": "무료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156347&menuNo=200009",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-27 00:00:00.0",
-    "END_DATE": "2025-12-27 00:00:00.0",
-    "buzz_score": 61
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "은평구",
-    "TITLE": "문예북흥 No.52 - 『월든』 호수에 비친 나를 바라보는 시간, 김태훈과 함께하는 삶의 성찰과 노래.",
-    "DATE": "2025-12-27~2025-12-27",
-    "PLACE": "이호철북콘서트홀",
-    "ORG_NAME": "은평역사한옥박물관",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=81ae13105cfa476aa22aad07f76c106c&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156299&menuNo=200011",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-27 00:00:00.0",
-    "END_DATE": "2025-12-27 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "양천구",
-    "TITLE": "[양천문화재단] 박해미의 살롱콘서트 [라비앙로즈]",
-    "DATE": "2025-12-27~2025-12-27",
-    "PLACE": "양천문화회관 대극장",
-    "ORG_NAME": "양천문화재단",
-    "USE_TRGT": "초등학생 이상",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ff17b07286a74cdb80d16969cbe264d0&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156238&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-27 00:00:00.0",
-    "END_DATE": "2025-12-27 00:00:00.0",
-    "buzz_score": 99
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3853,7 +4477,27 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-27 00:00:00.0",
     "END_DATE": "2025-12-27 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "은평구",
+    "TITLE": "문예북흥 No.52 - 『월든』 호수에 비친 나를 바라보는 시간, 김태훈과 함께하는 삶의 성찰과 노래.",
+    "DATE": "2025-12-27~2025-12-27",
+    "PLACE": "이호철북콘서트홀",
+    "ORG_NAME": "은평역사한옥박물관",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=81ae13105cfa476aa22aad07f76c106c&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156299&menuNo=200011",
+    "PROGRAM": "",
+    "STRTDATE": "2025-12-27 00:00:00.0",
+    "END_DATE": "2025-12-27 00:00:00.0",
+    "buzz_score": 100,
+    "mapx": "1269268471",
+    "mapy": "376137000"
   },
   {
     "season": "겨울",
@@ -3869,7 +4513,45 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-27 00:00:00.0",
     "END_DATE": "2025-12-27 00:00:00.0",
-    "buzz_score": 100
+    "buzz_score": 100,
+    "mapx": "1268960536",
+    "mapy": "374566038"
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "서대문구",
+    "TITLE": "MINDBOOM 마인드붐 서울 2025 : 잃어버린 행운 보관소 LOST AND LUCKY",
+    "DATE": "2025-12-27~2025-12-27",
+    "PLACE": "서울 서대문구 원앙아리(서대문구 천연동 13-13, 1층)",
+    "ORG_NAME": "기타",
+    "USE_TRGT": "누구나",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=daa1e51f19814f64bdf7d9ea7608c050&thumb=Y",
+    "IS_FREE": "무료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156347&menuNo=200009",
+    "PROGRAM": "",
+    "STRTDATE": "2025-12-27 00:00:00.0",
+    "END_DATE": "2025-12-27 00:00:00.0",
+    "buzz_score": 61,
+    "mapx": "",
+    "mapy": ""
+  },
+  {
+    "season": "겨울",
+    "GUNAME": "양천구",
+    "TITLE": "[양천문화재단] 박해미의 살롱콘서트 [라비앙로즈]",
+    "DATE": "2025-12-27~2025-12-27",
+    "PLACE": "양천문화회관 대극장",
+    "ORG_NAME": "양천문화재단",
+    "USE_TRGT": "초등학생 이상",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=ff17b07286a74cdb80d16969cbe264d0&thumb=Y",
+    "IS_FREE": "유료",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156238&menuNo=200008",
+    "PROGRAM": "",
+    "STRTDATE": "2025-12-27 00:00:00.0",
+    "END_DATE": "2025-12-27 00:00:00.0",
+    "buzz_score": 99,
+    "mapx": "1268632600",
+    "mapy": "375162900"
   },
   {
     "season": "겨울",
@@ -3885,7 +4567,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-26 00:00:00.0",
     "END_DATE": "2026-01-31 00:00:00.0",
-    "buzz_score": 94
+    "buzz_score": 94,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3901,23 +4585,9 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-26 00:00:00.0",
     "END_DATE": "2025-12-31 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "중구",
-    "TITLE": "2025 국립국악관현악단 청년교육단원 결과 발표회 [청풍국악(靑風國樂)]",
-    "DATE": "2025-12-26~2025-12-26",
-    "PLACE": "국립극장 해오름",
-    "ORG_NAME": "국립극장",
-    "USE_TRGT": "초등학생 이상",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=f47e383eb9414ef7bed29f63b245bebd&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=155952&menuNo=200008",
-    "PROGRAM": "문화체육관광부는 ‘청년교육단원 육성’ 사업을 통해 국립국악관현악단과 함께한 45명의 청년교육단원의 결과 발표회",
-    "STRTDATE": "2025-12-26 00:00:00.0",
-    "END_DATE": "2025-12-26 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 100,
+    "mapx": "",
+    "mapy": ""
   },
   {
     "season": "겨울",
@@ -3933,102 +4603,26 @@
     "PROGRAM": "",
     "STRTDATE": "2025-12-26 00:00:00.0",
     "END_DATE": "2025-12-26 00:00:00.0",
-    "buzz_score": 60
+    "buzz_score": 60,
+    "mapx": "1269606110",
+    "mapy": "375051202"
   },
   {
     "season": "겨울",
-    "GUNAME": "강남구",
-    "TITLE": "서울일러스트레이션페어V.20",
-    "DATE": "2025-12-25~2025-12-28",
-    "PLACE": "코엑스 C홀",
-    "ORG_NAME": "기타",
-    "USE_TRGT": "누구나",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=5476f4ec37dc415b896902f1c6f4797b&thumb=Y",
+    "GUNAME": "중구",
+    "TITLE": "2025 국립국악관현악단 청년교육단원 결과 발표회 [청풍국악(靑風國樂)]",
+    "DATE": "2025-12-26~2025-12-26",
+    "PLACE": "국립극장 해오름",
+    "ORG_NAME": "국립극장",
+    "USE_TRGT": "초등학생 이상",
+    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=f47e383eb9414ef7bed29f63b245bebd&thumb=Y",
     "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156193&menuNo=200009",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-25 00:00:00.0",
-    "END_DATE": "2025-12-28 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "광진구",
-    "TITLE": "[광진문화재단] 가족무용극 고블린파티② [루돌프]",
-    "DATE": "2025-12-25~2025-12-26",
-    "PLACE": "광진어린이공연장",
-    "ORG_NAME": "광진문화재단",
-    "USE_TRGT": "36개월 이상 관람 권장",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=b06c3b01a0404c4e98744b7fdf9e65f7&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=155612&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-25 00:00:00.0",
+    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=155952&menuNo=200008",
+    "PROGRAM": "문화체육관광부는 ‘청년교육단원 육성’ 사업을 통해 국립국악관현악단과 함께한 45명의 청년교육단원의 결과 발표회",
+    "STRTDATE": "2025-12-26 00:00:00.0",
     "END_DATE": "2025-12-26 00:00:00.0",
-    "buzz_score": 70
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "라틴 키친 루나 단독 콘서트 [라키루의 크리스마스]",
-    "DATE": "2025-12-25~2025-12-25",
-    "PLACE": "세종S씨어터",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "8세 이상 관람 가능 (2017년 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=6ef4c8f0f5bf44bab5360a9090b69959&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156324&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-25 00:00:00.0",
-    "END_DATE": "2025-12-25 00:00:00.0",
-    "buzz_score": 69
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "관악구",
-    "TITLE": "[관악문화재단] 클래식 그림자극 [호두까기인형]",
-    "DATE": "2025-12-25~2025-12-25",
-    "PLACE": "관악문화재단 관악아트홀",
-    "ORG_NAME": "관악문화재단",
-    "USE_TRGT": "36개월 이상 관람가능",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=9bf8924918094e4fa787512724c910af&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=155853&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-25 00:00:00.0",
-    "END_DATE": "2025-12-25 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "종로구",
-    "TITLE": "2025 크리스마스 콘서트 - 서울브라스사운드",
-    "DATE": "2025-12-25~2025-12-25",
-    "PLACE": "세종문화회관 세종체임버홀",
-    "ORG_NAME": "세종문화회관",
-    "USE_TRGT": "5세 이상 관람 가능 (2020년 이전 출생자)",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a09b83d5b5084d63beec216f9f320317&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156218&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-25 00:00:00.0",
-    "END_DATE": "2025-12-25 00:00:00.0",
-    "buzz_score": 100
-  },
-  {
-    "season": "겨울",
-    "GUNAME": "강동구",
-    "TITLE": "[강동문화재단] 목요예술무대Ⅲ [제비씨의 크리스마스]",
-    "DATE": "2025-12-25~2025-12-25",
-    "PLACE": " 강동아트센터 소극장 드림",
-    "ORG_NAME": "강동문화재단",
-    "USE_TRGT": "36개월 이상 관람",
-    "MAIN_IMG": "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a9ecb12c702f4b3ca3e9fe7c26129dc0&thumb=Y",
-    "IS_FREE": "유료",
-    "HMPG_ADDR": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=156110&menuNo=200008",
-    "PROGRAM": "",
-    "STRTDATE": "2025-12-25 00:00:00.0",
-    "END_DATE": "2025-12-25 00:00:00.0",
-    "buzz_score": 96
+    "buzz_score": 96,
+    "mapx": "1269998510",
+    "mapy": "375523134"
   }
 ]

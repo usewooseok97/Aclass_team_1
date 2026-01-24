@@ -50,10 +50,10 @@ const AppContent = () => {
 
         {/* 지도: 좌우 컨테이너 아래, 푸터 위 */}
         {viewMode === "detail" && selectedFestival && (
-          <article className="w-full max-w-7xl mx-auto px-4 mb-4">
+          <article className="w-full max-w-7xl mt-10 mx-auto px-4 mb-4">
             <FullWidthCard>
               <div className="p-6">
-                <FestivalLocationMap place={selectedFestival.PLACE} />
+                <FestivalLocationMap />
               </div>
             </FullWidthCard>
           </article>
