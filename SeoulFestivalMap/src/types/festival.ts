@@ -17,6 +17,8 @@ export interface Festival {
   STRTDATE: string;         // Start date YYYYMMDD
   END_DATE: string;         // End date YYYYMMDD
   buzz_score: number;       // Interest score 0-100
+  mapx?: string;            // Longitude (Naver coordinate)
+  mapy?: string;            // Latitude (Naver coordinate)
 }
 
 // Google Places photo reference
