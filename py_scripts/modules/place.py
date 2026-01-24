@@ -6,6 +6,7 @@
 import requests
 import json
 import time
+import math
 import sys
 import os
 
@@ -19,6 +20,55 @@ from config import (
     GOOGLE_PLACES_TEXT_SEARCH_URL,
     SAVE_PATH
 )
+
+
+def naver_to_wgs84(mapx: str, mapy: str) -> tuple:
+    """
+    네이버 좌표를 WGS84 좌표로 변환
+
+    Args:
+        mapx (str): 네이버 경도 (예: "1270249425")
+        mapy (str): 네이버 위도 (예: "375193887")
+
+    Returns:
+        tuple: (lat, lng) - WGS84 좌표
+    """
+    if not mapx or not mapy:
+        return None, None
+    try:
+        lng = int(mapx) / 10000000  # 경도
+        lat = int(mapy) / 10000000  # 위도
+        return lat, lng
+    except:
+        return None, None
+
+
+def calculate_distance(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    """
+    Haversine 공식으로 두 좌표 간 거리 계산 (미터)
+
+    Args:
+        lat1, lng1: 첫 번째 좌표
+        lat2, lng2: 두 번째 좌표
+
+    Returns:
+        float: 거리 (미터)
+    """
+    if None in (lat1, lng1, lat2, lng2):
+        return float('inf')
+
+    R = 6371000  # 지구 반경 (미터)
+
+    d_lat = math.radians(lat2 - lat1)
+    d_lng = math.radians(lng2 - lng1)
+
+    a = (math.sin(d_lat / 2) ** 2 +
+         math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
+         math.sin(d_lng / 2) ** 2)
+
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
+    return R * c
 
 
 def fetch_google_photos(place_name, address):
@@ -86,16 +136,20 @@ def fetch_google_photos(place_name, address):
         return {"googlePlaceId": None, "photos": []}
 
 
-def fetch_places_for_festival(festival_title, gu_name):
+def fetch_places_for_festival(festival_title, gu_name, place_name="", festival_mapx="", festival_mapy="", max_distance=100):
     """
     특정 축제 주변 맛집/카페 검색
 
     Args:
         festival_title (str): 축제 제목
         gu_name (str): 자치구 이름 (예: "종로구")
+        place_name (str): 축제 장소명 (예: "코엑스")
+        festival_mapx (str): 축제 경도 (네이버 좌표)
+        festival_mapy (str): 축제 위도 (네이버 좌표)
+        max_distance (int): 최대 거리 (미터), 기본 100m
 
     Returns:
-        list: 맛집/카페 정보 리스트 (최대 10개)
+        list: 맛집/카페 정보 리스트 (거리 이내만)
     """
 
     # API 키 확인
@@ -107,19 +161,31 @@ def fetch_places_for_festival(festival_title, gu_name):
         "X-Naver-Client-Secret": NAVER_CLIENT_SECRET
     }
 
-    # 검색 쿼리: "구명 + 카페" 또는 "구명 + 맛집"
-    queries = [
-        f"{gu_name} 카페",
-        f"{gu_name} 맛집"
-    ]
+    # 축제 좌표를 WGS84로 변환
+    festival_lat, festival_lng = naver_to_wgs84(festival_mapx, festival_mapy)
+    has_festival_coords = festival_lat is not None and festival_lng is not None
+
+    # 검색 쿼리: 축제 장소명이 있으면 더 정확한 검색
+    if place_name:
+        queries = [
+            f"{place_name} 근처 카페",
+            f"{place_name} 근처 맛집",
+            f"{gu_name} {place_name} 카페",
+            f"{gu_name} {place_name} 맛집"
+        ]
+    else:
+        queries = [
+            f"{gu_name} 카페",
+            f"{gu_name} 맛집"
+        ]
 
     places = []
 
     for query in queries:
         params = {
             "query": query,
-            "display": 5,  # 각 카테고리당 5개
-            "sort": "random"  # 랜덤 정렬
+            "display": 10,  # 더 많이 검색 (필터링 후 줄어들 수 있음)
+            "sort": "random"
         }
 
         try:
@@ -132,14 +198,25 @@ def fetch_places_for_festival(festival_title, gu_name):
                 # HTML 태그 제거
                 name = item["title"].replace("<b>", "").replace("</b>", "")
                 address = item.get("roadAddress", "") or item.get("address", "")
+                place_mapx = item.get("mapx", "")
+                place_mapy = item.get("mapy", "")
+
+                # 거리 필터링: 축제 좌표가 있으면 100m 이내만
+                if has_festival_coords and place_mapx and place_mapy:
+                    place_lat, place_lng = naver_to_wgs84(place_mapx, place_mapy)
+                    if place_lat and place_lng:
+                        distance = calculate_distance(festival_lat, festival_lng, place_lat, place_lng)
+                        if distance > max_distance:
+                            continue  # 거리 초과 → 스킵
+                        print(f"      ✓ {name}: {distance:.0f}m")
 
                 place_data = {
                     "name": name,
                     "category": item.get("category", ""),
                     "address": item.get("address", ""),
                     "roadAddress": item.get("roadAddress", ""),
-                    "mapx": item.get("mapx", ""),
-                    "mapy": item.get("mapy", ""),
+                    "mapx": place_mapx,
+                    "mapy": place_mapy,
                     "link": item.get("link", ""),
                     "telephone": item.get("telephone", ""),
                     "googlePlaceId": None,
@@ -169,7 +246,7 @@ def fetch_places_for_festival(festival_title, gu_name):
             seen.add(p["name"])
             unique_places.append(p)
 
-    return unique_places[:10]  # 최대 10개
+    return unique_places
 
 
 def fetch_and_save():
@@ -206,17 +283,32 @@ def fetch_and_save():
     for idx, festival in enumerate(festivals, 1):
         title = festival["TITLE"]
         gu_name = festival["GUNAME"]
+        place_name = festival.get("PLACE", "")
+        festival_mapx = festival.get("mapx", "")
+        festival_mapy = festival.get("mapy", "")
 
-        print(f"  [{idx}/{total}] {title} ({gu_name}) 검색 중...")
+        print(f"  [{idx}/{total}] {title} ({gu_name})")
+        if festival_mapx and festival_mapy:
+            print(f"      축제 좌표: ({festival_mapx}, {festival_mapy})")
+            print(f"      100m 이내 맛집 검색 중...")
+        else:
+            print(f"      [WARN] 축제 좌표 없음 - 구 단위 검색")
 
-        places = fetch_places_for_festival(title, gu_name)
+        places = fetch_places_for_festival(
+            title,
+            gu_name,
+            place_name=place_name,
+            festival_mapx=festival_mapx,
+            festival_mapy=festival_mapy,
+            max_distance=100
+        )
 
         if places:
             place_data[title] = places
-            print(f"      [OK] {len(places)}개 장소 발견")
+            print(f"      [OK] {len(places)}개 장소 발견 (100m 이내)")
         else:
             place_data[title] = []
-            print(f"      [WARN] 검색 결과 없음")
+            print(f"      [WARN] 100m 이내 맛집 없음")
 
     # 저장
     output_file = SAVE_PATH / "place_data.json"

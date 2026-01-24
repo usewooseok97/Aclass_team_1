@@ -19,6 +19,7 @@ from config import (
     NAVER_CLIENT_SECRET,
     SEOUL_FESTIVAL_URL,
     NAVER_BLOG_SEARCH_URL,
+    NAVER_LOCAL_SEARCH_URL,
     SAVE_PATH
 )
 
@@ -33,6 +34,46 @@ def get_season(month):
         return "가을"
     else:
         return "겨울"
+
+
+def get_festival_coordinates(place_name: str, gu_name: str) -> tuple:
+    """
+    네이버 Local Search API로 축제 장소 좌표 수집
+
+    Args:
+        place_name (str): 축제 장소명 (예: "코엑스 A홀")
+        gu_name (str): 자치구명 (예: "강남구")
+
+    Returns:
+        tuple: (mapx, mapy) - 네이버 좌표 형식
+    """
+    if not NAVER_CLIENT_ID or NAVER_CLIENT_ID == "여기에_네이버_클라이언트_ID_입력":
+        return "", ""
+
+    query = f"서울 {gu_name} {place_name}"
+
+    headers = {
+        "X-Naver-Client-Id": NAVER_CLIENT_ID,
+        "X-Naver-Client-Secret": NAVER_CLIENT_SECRET
+    }
+    params = {
+        "query": query,
+        "display": 1
+    }
+
+    try:
+        response = requests.get(NAVER_LOCAL_SEARCH_URL, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+
+        if data.get("items"):
+            item = data["items"][0]
+            return item.get("mapx", ""), item.get("mapy", "")
+
+    except Exception as e:
+        print(f"  [WARN] 좌표 조회 실패 ({place_name}): {e}")
+
+    return "", ""
 
 
 def get_buzz_score(festival_title):
@@ -179,16 +220,29 @@ def process_festivals(raw_festivals):
 
             # 관심도 점수 계산
             title = item.get("TITLE", "")
-            print(f"  [{idx}/{total}] {title} 검색량 조회 중...")
+            place_name = item.get("PLACE", "")
+            gu_name = item.get("GUNAME", "")
+
+            print(f"  [{idx}/{total}] {title}")
+            print(f"           검색량 조회 중...")
             buzz_score = get_buzz_score(title)
+            time.sleep(0.1)  # API 호출 제한 준수
+
+            # 좌표 수집
+            print(f"           좌표 조회 중... ({place_name})")
+            mapx, mapy = get_festival_coordinates(place_name, gu_name)
+            if mapx and mapy:
+                print(f"           → 좌표: ({mapx}, {mapy})")
+            else:
+                print(f"           → 좌표 없음")
 
             # 데이터 정제
             processed.append({
                 "season": season,
-                "GUNAME": item.get("GUNAME", ""),
+                "GUNAME": gu_name,
                 "TITLE": title,
                 "DATE": item.get("DATE", ""),
-                "PLACE": item.get("PLACE", ""),
+                "PLACE": place_name,
                 "ORG_NAME": item.get("ORG_NAME", ""),
                 "USE_TRGT": item.get("USE_TRGT", ""),
                 "MAIN_IMG": item.get("MAIN_IMG", ""),
@@ -197,7 +251,9 @@ def process_festivals(raw_festivals):
                 "PROGRAM": item.get("PROGRAM", ""),
                 "STRTDATE": item.get("STRTDATE", ""),
                 "END_DATE": item.get("END_DATE", ""),
-                "buzz_score": buzz_score
+                "buzz_score": buzz_score,
+                "mapx": mapx,
+                "mapy": mapy
             })
 
             # API 호출 제한 준수 (QPS 10 = 0.1초 간격)
