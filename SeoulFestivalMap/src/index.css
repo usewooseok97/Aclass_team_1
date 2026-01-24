@@ -57,3 +57,12 @@ ol {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
 }
+
+/* 스크롤바 숨기기 (Tailwind v4 방식) */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
