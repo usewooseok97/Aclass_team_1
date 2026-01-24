@@ -1,38 +1,59 @@
-import { MapPin } from "lucide-react";
+import { MapPin, AlertCircle, Loader2 } from "lucide-react";
+import { useNaverMap } from "@hooks/useNaverMap";
+import { useFestivalContext } from "@hooks/useFestivalContext";
 
-interface FestivalLocationMapProps {
-  place: string;
-}
+export const FestivalLocationMap = () => {
+  const { selectedFestival, nearbyPlaces } = useFestivalContext();
 
-export const FestivalLocationMap = ({ place }: FestivalLocationMapProps) => {
+  const { containerRef, isLoading, error } = useNaverMap({
+    festival: selectedFestival,
+    places: nearbyPlaces,
+  });
+
   return (
     <div className="flex flex-col gap-3">
       <h3
-        className="text-base font-bold"
+        className="text-base font-bold flex items-center gap-2"
         style={{ color: "var(--text-primary)" }}
       >
+        <MapPin className="w-5 h-5" style={{ color: "var(--btn-primary)" }} />
         오시는 길
       </h3>
 
-      <div
-        className="w-full h-48 rounded-lg flex flex-col items-center justify-center gap-2"
-        style={{ backgroundColor: "rgba(0,0,0,0.05)" }}
-      >
-        <MapPin
-          className="w-8 h-8"
-          style={{ color: "var(--text-secondary)" }}
-        />
-        <span
-          className="text-sm"
-          style={{ color: "var(--text-secondary)" }}
+      {error ? (
+        <div
+          className="w-full h-48 rounded-lg flex flex-col items-center justify-center gap-2"
+          style={{ backgroundColor: "rgba(239, 68, 68, 0.1)" }}
         >
-          지도가 여기에 표시됩니다
-        </span>
-      </div>
+          <AlertCircle className="w-8 h-8 text-red-500" />
+          <span className="text-sm text-red-500">{error}</span>
+        </div>
+      ) : (
+        <div className="relative w-full h-80 rounded-lg overflow-hidden">
+          {isLoading && (
+            <div
+              className="absolute inset-0 flex items-center justify-center z-10"
+              style={{ backgroundColor: "rgba(0,0,0,0.05)" }}
+            >
+              <Loader2
+                className="w-8 h-8 animate-spin"
+                style={{ color: "var(--btn-primary)" }}
+              />
+            </div>
+          )}
+          <div
+            ref={containerRef}
+            className="w-full h-full"
+            style={{ backgroundColor: "rgba(0,0,0,0.05)" }}
+          />
+        </div>
+      )}
 
-      <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-        위치 : {place}
-      </p>
+      {selectedFestival && (
+        <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+          위치: {selectedFestival.PLACE}
+        </p>
+      )}
     </div>
   );
 };

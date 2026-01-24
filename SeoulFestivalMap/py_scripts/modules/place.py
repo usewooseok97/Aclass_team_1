@@ -290,7 +290,7 @@ def fetch_and_save():
         print(f"  [{idx}/{total}] {title} ({gu_name})")
         if festival_mapx and festival_mapy:
             print(f"      축제 좌표: ({festival_mapx}, {festival_mapy})")
-            print(f"      100m 이내 맛집 검색 중...")
+            print(f"      400m 이내 맛집 검색 중...")
         else:
             print(f"      [WARN] 축제 좌표 없음 - 구 단위 검색")
 
@@ -300,15 +300,15 @@ def fetch_and_save():
             place_name=place_name,
             festival_mapx=festival_mapx,
             festival_mapy=festival_mapy,
-            max_distance=100
+            max_distance=400
         )
 
         if places:
             place_data[title] = places
-            print(f"      [OK] {len(places)}개 장소 발견 (100m 이내)")
+            print(f"      [OK] {len(places)}개 장소 발견 (400m 이내)")
         else:
             place_data[title] = []
-            print(f"      [WARN] 100m 이내 맛집 없음")
+            print(f"      [WARN] 400m 이내 맛집 없음")
 
     # 저장
     output_file = SAVE_PATH / "place_data.json"
