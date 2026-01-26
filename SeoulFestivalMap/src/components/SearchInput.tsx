@@ -22,8 +22,10 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPlaceIndex, setSelectedPlaceIndex] = useState<number | null>(null);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Debounce 0.3초
   useEffect(() => {
@@ -127,7 +129,47 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
     setResults([]);
     setIsOpen(false);
     setSelectedPlaceIndex(null);
+    setHighlightedIndex(-1);
   };
+
+  // 키보드 네비게이션
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!isOpen) return;
+
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setHighlightedIndex((prev) =>
+          Math.min(prev + 1, results.length - 1)
+        );
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setHighlightedIndex((prev) => Math.max(prev - 1, 0));
+        break;
+      case "Enter":
+        e.preventDefault();
+        if (highlightedIndex >= 0 && highlightedIndex < results.length) {
+          const result = results[highlightedIndex];
+          if (result.type === "festival" && result.festival) {
+            handleFestivalClick(result.festival);
+          } else if (result.type === "place") {
+            handlePlaceClick(highlightedIndex);
+          }
+        }
+        break;
+      case "Escape":
+        setIsOpen(false);
+        setHighlightedIndex(-1);
+        inputRef.current?.blur();
+        break;
+    }
+  };
+
+  // 결과 변경 시 하이라이트 리셋
+  useEffect(() => {
+    setHighlightedIndex(-1);
+  }, [results]);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
@@ -145,13 +187,21 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
           style={{ color: "var(--text-secondary)" }}
         />
         <input
+          ref={inputRef}
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => results.length > 0 && setIsOpen(true)}
+          onKeyDown={handleKeyDown}
           placeholder="축제 또는 맛집 검색..."
           className="flex-1 outline-none text-sm bg-transparent placeholder-gray-400"
           style={{ color: "var(--text-primary)" }}
+          role="combobox"
+          aria-expanded={isOpen}
+          aria-haspopup="listbox"
+          aria-controls="search-results"
+          aria-activedescendant={highlightedIndex >= 0 ? `search-option-${highlightedIndex}` : undefined}
+          aria-label="축제 또는 맛집 검색"
         />
         {searchTerm && (
           <button
@@ -165,7 +215,10 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
 
       {/* 검색 결과 드롭다운 */}
       {isOpen && results.length > 0 && (
-        <div
+        <ul
+          id="search-results"
+          role="listbox"
+          aria-label="검색 결과"
           className="absolute top-full left-0 right-0 mt-1 rounded-lg shadow-lg overflow-hidden z-50 max-h-[400px] overflow-y-auto"
           style={{
             backgroundColor: "var(--card-bg)",
@@ -173,11 +226,16 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
           }}
         >
           {results.map((result, index) => (
-            <div key={index}>
+            <li key={index} role="presentation">
               {result.type === "festival" && result.festival && (
                 <button
+                  id={`search-option-${index}`}
+                  role="option"
+                  aria-selected={index === highlightedIndex}
                   onClick={() => handleFestivalClick(result.festival!)}
-                  className="w-full px-3 py-2 flex items-center gap-2 hover:bg-gray-100/10 text-left transition-colors"
+                  className={`w-full px-3 py-2 flex items-center gap-2 text-left transition-colors ${
+                    index === highlightedIndex ? "bg-gray-100/20" : "hover:bg-gray-100/10"
+                  }`}
                 >
                   <MapPin
                     className="w-4 h-4 flex-shrink-0"
@@ -212,8 +270,14 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
               {result.type === "place" && result.place && (
                 <div>
                   <button
+                    id={`search-option-${index}`}
+                    role="option"
+                    aria-selected={index === highlightedIndex}
+                    aria-expanded={selectedPlaceIndex === index}
                     onClick={() => handlePlaceClick(index)}
-                    className="w-full px-3 py-2 flex items-center gap-2 hover:bg-gray-100/10 text-left transition-colors"
+                    className={`w-full px-3 py-2 flex items-center gap-2 text-left transition-colors ${
+                      index === highlightedIndex ? "bg-gray-100/20" : "hover:bg-gray-100/10"
+                    }`}
                   >
                     <Utensils
                       className="w-4 h-4 flex-shrink-0"
@@ -279,9 +343,9 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
                   )}
                 </div>
               )}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {/* 검색 중 결과 없음 */}

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "motion/react";
 import { type Festival } from "../types/festival";
 import { PartyPopper, Star } from "lucide-react";
@@ -7,7 +8,7 @@ interface FestivalCardProps {
   onClick: () => void;
 }
 
-const FestivalCard = ({ festival, onClick }: FestivalCardProps) => {
+const FestivalCard = memo(({ festival, onClick }: FestivalCardProps) => {
   // Convert buzz_score (0-100) to star rating (0-5)
   const rating = (festival.buzz_score / 20).toFixed(1);
   const fullStars = Math.floor(Number(rating));
@@ -35,9 +36,13 @@ const FestivalCard = ({ festival, onClick }: FestivalCardProps) => {
       </span>
 
       {/* Rating */}
-      <div className="flex items-center gap-1">
+      <div
+        className="flex items-center gap-1"
+        role="img"
+        aria-label={`평점 ${rating}점`}
+      >
         <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>({rating})</span>
-        <div className="flex">
+        <div className="flex" aria-hidden="true">
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
@@ -54,6 +59,8 @@ const FestivalCard = ({ festival, onClick }: FestivalCardProps) => {
       </div>
     </motion.div>
   );
-};
+});
+
+FestivalCard.displayName = "FestivalCard";
 
 export { FestivalCard };
