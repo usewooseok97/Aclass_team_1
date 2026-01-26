@@ -1,6 +1,7 @@
-import { MapPin, AlertCircle, Loader2 } from "lucide-react";
+import { MapPin, AlertCircle, Loader2, ExternalLink } from "lucide-react";
 import { useNaverMap } from "@hooks/useNaverMap";
 import { useFestivalContext } from "@hooks/useFestivalContext";
+import { getNaverMapSearchUrl } from "@utils/naverMap";
 
 export const FestivalLocationMap = () => {
   const { selectedFestival, nearbyPlaces } = useFestivalContext();
@@ -50,9 +51,21 @@ export const FestivalLocationMap = () => {
       )}
 
       {selectedFestival && (
-        <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+        <a
+          href={getNaverMapSearchUrl(
+            selectedFestival.PLACE,
+            selectedFestival.GUNAME,
+            selectedFestival.mapx,
+            selectedFestival.mapy
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm flex items-center gap-1 hover:underline cursor-pointer"
+          style={{ color: "var(--btn-primary)" }}
+        >
+          <ExternalLink className="w-4 h-4" />
           위치: {selectedFestival.PLACE}
-        </p>
+        </a>
       )}
     </div>
   );
