@@ -20,6 +20,9 @@ const GuButtonContainer = ({ guName }: GuButtonContainerProps) => {
       onClick={handleClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      aria-label={`${guName} 지역 축제 보기`}
+      aria-pressed={isActive}
+      role="tab"
       className={cn(
         "flex flex-col justify-center items-center p-0 gap-px",
         "relative w-[93px] min-w-12 h-14 rounded-lg cursor-pointer",
@@ -34,7 +37,7 @@ const GuButtonContainer = ({ guName }: GuButtonContainerProps) => {
         borderWidth: '1px',
       }}
     >
-      <span style={{ color: isActive ? 'white' : 'var(--text-primary)' }}>
+      <span aria-hidden="true" style={{ color: isActive ? 'white' : 'var(--text-primary)' }}>
         {guName}
       </span>
     </motion.button>

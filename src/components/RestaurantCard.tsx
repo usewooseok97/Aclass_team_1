@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Star, Navigation } from "lucide-react";
+import { memo, useState } from "react";
+import { Navigation } from "lucide-react";
 import { Badge } from "@atoms/Badge";
 import type { Place, Festival } from "@/types/festival";
 import { getPhotoUrl, getCategoryImage } from "@/utils/googlePlaces";
@@ -19,8 +19,7 @@ const getCategoryVariant = (category: string) => {
   return "default";
 };
 
-export const RestaurantCard = ({ place, festival }: RestaurantCardProps) => {
-  const rating = (Math.random() * 1 + 4).toFixed(1);
+export const RestaurantCard = memo(({ place, festival }: RestaurantCardProps) => {
   const [imageError, setImageError] = useState(false);
 
   // Google Places 사진 URL 또는 카테고리 기본 이미지
@@ -95,16 +94,6 @@ export const RestaurantCard = ({ place, festival }: RestaurantCardProps) => {
           />
         </div>
 
-        <div className="flex items-center gap-1 mt-1">
-          <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-          <span
-            className="text-xs"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            {rating}
-          </span>
-        </div>
-
         {place.telephone && (
           <p
             className="text-xs mt-1 truncate"
@@ -126,4 +115,6 @@ export const RestaurantCard = ({ place, festival }: RestaurantCardProps) => {
       </div>
     </CardWrapper>
   );
-};
+});
+
+RestaurantCard.displayName = "RestaurantCard";

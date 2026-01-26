@@ -32,8 +32,12 @@ export const StarRating = ({
   const hasHalfStar = rating - fullStars >= 0.5;
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
-      <div className="flex">
+    <div
+      className={cn("flex items-center gap-1", className)}
+      role="img"
+      aria-label={`평점 ${rating.toFixed(1)}점`}
+    >
+      <div className="flex" aria-hidden="true">
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}
