@@ -7,6 +7,7 @@ import requests
 import json
 import math
 import time
+import re
 from datetime import datetime, timedelta
 import sys
 import os
@@ -34,6 +35,63 @@ def get_season(month):
         return "가을"
     else:
         return "겨울"
+
+
+# 주요 장소 좌표 사전 (네이버 좌표 형식: WGS84 × 10^7)
+KNOWN_VENUES = {
+    "코엑스": ("1270589070", "375126340"),
+    "올림픽공원": ("1270776060", "375246360"),
+    "예술의전당": ("1270028900", "374820860"),
+    "세종문화회관": ("1269758500", "375727850"),
+    "국립중앙박물관": ("1269820160", "375213590"),
+    "동대문디자인플라자": ("1270091880", "375660570"),
+    "DDP": ("1270091880", "375660570"),
+    "광화문광장": ("1269756380", "375745580"),
+    "서울시청": ("1269784147", "375666805"),
+    "청계광장": ("1269833050", "375694750"),
+    "잠실종합운동장": ("1270734760", "375141330"),
+    "잠실실내체육관": ("1270734760", "375141330"),
+    "롯데월드": ("1270734000", "375117000"),
+    "서울숲": ("1270449360", "375445610"),
+    "남산공원": ("1269899430", "375543070"),
+    "한강공원": ("1269800000", "375200000"),
+    "여의도공원": ("1269358360", "375252980"),
+    "노들섬": ("1269552000", "375105000"),
+    "반포한강공원": ("1269864550", "375034650"),
+    "뚝섬": ("1270570000", "375400000"),
+}
+
+
+def normalize_place_name(place_name: str) -> str:
+    """
+    장소명 정규화 - 검색 성공률 향상
+
+    Args:
+        place_name: 원본 장소명 (예: "코엑스 A홀, C홀 ")
+
+    Returns:
+        정규화된 장소명 (예: "코엑스")
+    """
+    if not place_name:
+        return ""
+
+    # 1. 앞뒤 공백 제거
+    name = place_name.strip()
+
+    # 2. 쉼표가 있으면 첫 번째 장소만 사용
+    if "," in name:
+        name = name.split(",")[0].strip()
+
+    # 3. 괄호 안 내용 제거 (예: "세종문화회관 (대극장)" → "세종문화회관")
+    name = re.sub(r'\s*\([^)]*\)\s*', ' ', name).strip()
+
+    # 4. 홀/관/장/실 정보 제거 (예: "코엑스 A홀" → "코엑스")
+    name = re.sub(r'\s+[A-Za-z0-9가-힣]*홀\s*$', '', name).strip()
+    name = re.sub(r'\s+[A-Za-z0-9가-힣]*관\s*$', '', name).strip()
+    name = re.sub(r'\s+[A-Za-z0-9가-힣]*장\s*$', '', name).strip()
+    name = re.sub(r'\s+[A-Za-z0-9가-힣]*실\s*$', '', name).strip()
+
+    return name
 
 
 def get_venue_cache_key(place_name: str, gu_name: str) -> str:
@@ -91,22 +149,16 @@ def print_coordinate_stats(festivals: list, cache_hits: int, api_calls: int, fil
     print("=" * 50)
 
 
-def get_festival_coordinates(place_name: str, gu_name: str) -> tuple:
+def search_location_api(query: str) -> tuple:
     """
-    네이버 Local Search API로 축제 장소 좌표 수집
+    네이버 Local Search API로 좌표 검색 (내부 헬퍼)
 
     Args:
-        place_name (str): 축제 장소명 (예: "코엑스 A홀")
-        gu_name (str): 자치구명 (예: "강남구")
+        query: 검색 쿼리
 
     Returns:
-        tuple: (mapx, mapy) - 네이버 좌표 형식
+        tuple: (mapx, mapy) 또는 ("", "")
     """
-    if not NAVER_CLIENT_ID or NAVER_CLIENT_ID == "여기에_네이버_클라이언트_ID_입력":
-        return "", ""
-
-    query = f"서울 {gu_name} {place_name}"
-
     headers = {
         "X-Naver-Client-Id": NAVER_CLIENT_ID,
         "X-Naver-Client-Secret": NAVER_CLIENT_SECRET
@@ -126,7 +178,53 @@ def get_festival_coordinates(place_name: str, gu_name: str) -> tuple:
             return item.get("mapx", ""), item.get("mapy", "")
 
     except Exception as e:
-        print(f"  [WARN] 좌표 조회 실패 ({place_name}): {e}")
+        print(f"  [WARN] API 호출 실패 ({query}): {e}")
+
+    return "", ""
+
+
+def get_festival_coordinates(place_name: str, gu_name: str) -> tuple:
+    """
+    네이버 Local Search API로 축제 장소 좌표 수집
+    KNOWN_VENUES 사전과 정규화를 활용한 폴백 검색 지원
+
+    Args:
+        place_name (str): 축제 장소명 (예: "코엑스 A홀")
+        gu_name (str): 자치구명 (예: "강남구")
+
+    Returns:
+        tuple: (mapx, mapy) - 네이버 좌표 형식
+    """
+    if not NAVER_CLIENT_ID or NAVER_CLIENT_ID == "여기에_네이버_클라이언트_ID_입력":
+        return "", ""
+
+    # 1차: KNOWN_VENUES에서 먼저 확인
+    normalized = normalize_place_name(place_name)
+    for venue_name, coords in KNOWN_VENUES.items():
+        if venue_name in place_name or venue_name in normalized:
+            print(f"           → KNOWN_VENUES 적중: {venue_name}")
+            return coords
+
+    # 2차: 원본 장소명으로 API 검색
+    query = f"서울 {gu_name} {place_name.strip()}"
+    mapx, mapy = search_location_api(query)
+    if mapx and mapy:
+        return mapx, mapy
+
+    # 3차: 정규화된 장소명으로 재시도
+    if normalized and normalized != place_name.strip():
+        query = f"서울 {gu_name} {normalized}"
+        print(f"           → 정규화 재시도: {normalized}")
+        mapx, mapy = search_location_api(query)
+        if mapx and mapy:
+            return mapx, mapy
+
+    # 4차: 장소명만으로 검색 (구 정보 제외)
+    if normalized:
+        query = f"서울 {normalized}"
+        mapx, mapy = search_location_api(query)
+        if mapx and mapy:
+            return mapx, mapy
 
     return "", ""
 
