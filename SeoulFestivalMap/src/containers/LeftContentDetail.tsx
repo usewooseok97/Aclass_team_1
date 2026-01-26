@@ -28,7 +28,7 @@ const LeftContentDetail = () => {
       {/* 축제 소개 + 버튼 */}
       <CardLayout>
         <div className="p-4 w-full">
-          <NearbyRestaurants places={nearbyPlaces} />
+          <NearbyRestaurants places={nearbyPlaces} festival={selectedFestival} />
         </div>
       </CardLayout>
     </div>

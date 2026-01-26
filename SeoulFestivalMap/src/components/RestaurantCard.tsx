@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Star } from "lucide-react";
+import { Star, Navigation } from "lucide-react";
 import { Badge } from "@atoms/Badge";
-import type { Place } from "@/types/festival";
+import type { Place, Festival } from "@/types/festival";
 import { getPhotoUrl, getCategoryImage } from "@/utils/googlePlaces";
+import { getNaverMapDirectionsUrl } from "@/utils/naverMap";
 
 interface RestaurantCardProps {
   place: Place;
+  festival?: Festival | null;
 }
 
 const getCategoryVariant = (category: string) => {
@@ -17,7 +19,7 @@ const getCategoryVariant = (category: string) => {
   return "default";
 };
 
-export const RestaurantCard = ({ place }: RestaurantCardProps) => {
+export const RestaurantCard = ({ place, festival }: RestaurantCardProps) => {
   const rating = (Math.random() * 1 + 4).toFixed(1);
   const [imageError, setImageError] = useState(false);
 
@@ -28,13 +30,37 @@ export const RestaurantCard = ({ place }: RestaurantCardProps) => {
   const fallbackImage = getCategoryImage(place.category);
   const imageSource = !imageError && photoUrl ? photoUrl : fallbackImage;
 
+  // 길찾기 URL 생성 (축제 좌표가 있을 때만)
+  const directionsUrl =
+    festival?.mapx && festival?.mapy && place.mapx && place.mapy
+      ? getNaverMapDirectionsUrl(
+          festival.PLACE,
+          festival.mapx,
+          festival.mapy,
+          place.name,
+          place.mapx,
+          place.mapy
+        )
+      : null;
+
+  const CardWrapper = directionsUrl ? "a" : "div";
+  const wrapperProps = directionsUrl
+    ? {
+        href: directionsUrl,
+        target: "_blank",
+        rel: "noopener noreferrer",
+      }
+    : {};
+
   return (
-    <div
-      className="flex items-start gap-3 p-3 rounded-lg"
+    <CardWrapper
+      {...wrapperProps}
+      className="flex items-start gap-3 p-3 rounded-lg hover:opacity-90 transition-opacity"
       style={{
         backgroundColor: "var(--card-bg)",
         borderColor: "var(--card-border)",
         borderWidth: "1px",
+        cursor: directionsUrl ? "pointer" : "default",
       }}
     >
       <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-200 shrink-0">
@@ -87,7 +113,17 @@ export const RestaurantCard = ({ place }: RestaurantCardProps) => {
             {place.telephone}
           </p>
         )}
+
+        {directionsUrl && (
+          <div
+            className="flex items-center gap-1 mt-1 text-xs"
+            style={{ color: "var(--btn-primary)" }}
+          >
+            <Navigation className="w-3 h-3" />
+            길찾기
+          </div>
+        )}
       </div>
-    </div>
+    </CardWrapper>
   );
 };

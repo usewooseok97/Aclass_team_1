@@ -197,6 +197,61 @@ export function createPlaceInfoContent(place: Place): string {
 }
 
 /**
+ * 네이버 지도 검색 URL 생성
+ * @param place 장소명
+ * @param guName 구 이름 (선택)
+ * @param mapx 경도 (선택)
+ * @param mapy 위도 (선택)
+ */
+export function getNaverMapSearchUrl(
+  place: string,
+  guName?: string,
+  mapx?: string,
+  mapy?: string
+): string {
+  const query = guName ? `서울 ${guName} ${place}` : place;
+  const encodedQuery = encodeURIComponent(query);
+
+  // 좌표가 있으면 좌표 기반 URL
+  if (mapx && mapy) {
+    const lat = parseInt(mapy) / 10000000;
+    const lng = parseInt(mapx) / 10000000;
+    return `https://map.naver.com/v5/search/${encodedQuery}?c=${lng},${lat},15,0,0,0,dh`;
+  }
+
+  // 좌표가 없으면 검색 URL
+  return `https://map.naver.com/v5/search/${encodedQuery}`;
+}
+
+/**
+ * 네이버 지도 길찾기 URL 생성
+ * @param startName 출발지 이름
+ * @param startMapx 출발지 경도
+ * @param startMapy 출발지 위도
+ * @param endName 도착지 이름
+ * @param endMapx 도착지 경도
+ * @param endMapy 도착지 위도
+ */
+export function getNaverMapDirectionsUrl(
+  startName: string,
+  startMapx: string,
+  startMapy: string,
+  endName: string,
+  endMapx: string,
+  endMapy: string
+): string {
+  const slng = parseInt(startMapx) / 10000000;
+  const slat = parseInt(startMapy) / 10000000;
+  const dlng = parseInt(endMapx) / 10000000;
+  const dlat = parseInt(endMapy) / 10000000;
+
+  const encodedStart = encodeURIComponent(startName);
+  const encodedEnd = encodeURIComponent(endName);
+
+  return `https://map.naver.com/v5/directions/${slng},${slat},${encodedStart}/${dlng},${dlat},${encodedEnd}/-/transit`;
+}
+
+/**
  * 네이버 지도 스크립트 동적 로드
  */
 export function loadNaverMapScript(clientId: string): Promise<void> {
