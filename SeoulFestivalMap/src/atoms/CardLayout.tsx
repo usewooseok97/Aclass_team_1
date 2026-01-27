@@ -4,7 +4,7 @@ import { cn } from "@lib/utils";
 
 const cardVariants = cva(
   // 기본 스타일
-  "flex flex-col items-center w-full h-[394px] overflow-auto transition-all duration-300 scrollbar-hide",
+  "flex flex-col justify-center items-center w-full h-[394px] overflow-auto transition-all duration-300 scrollbar-hide",
   {
     variants: {
       variant: {

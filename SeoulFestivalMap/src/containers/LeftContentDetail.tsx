@@ -13,7 +13,7 @@ const LeftContentDetail = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full h-full p-4 overflow-y-auto scrollbar-hide">
+    <div className="flex flex-col justify-between w-full h-full overflow-y-auto scrollbar-hide">
       {/* 상세 정보 */}
       <CardLayout>
         <div className="p-4 w-full">

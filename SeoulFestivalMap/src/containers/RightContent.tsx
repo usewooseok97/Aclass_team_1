@@ -30,7 +30,6 @@ const RightContent = () => {
         <ContentsText text={TEXT_LIST.CONTENTS.INTRO} className="mt-12.5" />
         <GridPictures />
         <ContentsText text={TEXT_LIST.CONTENTS.FEATURES} className="mt-10" />
-        <Pictures backgroundImg={seoularea} />
       </>
     );
   }
