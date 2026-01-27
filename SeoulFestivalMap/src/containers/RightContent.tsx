@@ -2,12 +2,10 @@ import { useFestivalContext } from "@hooks/useFestivalContext";
 import { FestivalListContainer } from "@containers/FestivalListContainer";
 import { TitleText } from "@atoms/TitleText";
 import { ContentsText } from "@atoms/ContentsText";
-import { Pictures } from "@atoms/Pictures";
 import { GridPictures } from "@components/GridPictures";
 import { LoadingState, ErrorState } from "@components/LoadingState";
 import { BackButton } from "@atoms/backButton";
 import { TEXT_LIST } from "@constants/textConstants";
-import seoularea from "@assets/seoularea.png";
 
 const RightContent = () => {
   const { selectedDistrict, setSelectedDistrict, isLoading, error } = useFestivalContext();

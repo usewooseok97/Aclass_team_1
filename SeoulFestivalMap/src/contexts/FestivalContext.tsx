@@ -6,6 +6,7 @@ import type {
   Weather,
   FestivalContextValue,
   ViewMode,
+  Season,
 } from '../types/festival';
  
 export const FestivalContext = createContext<FestivalContextValue | undefined>(undefined);
@@ -19,6 +20,7 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const [selectedDistrict, setSelectedDistrictState] = useState<string | null>(null);
   const [selectedFestival, setSelectedFestivalState] = useState<Festival | null>(null);
+  const [selectedSeason, setSelectedSeasonState] = useState<Season>("전체");
   const [viewMode, setViewMode] = useState<ViewMode>('map');
 
   const [isLoading, setIsLoading] = useState(true);
@@ -79,6 +81,10 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
     setSelectedFestivalState(festival);
   };
 
+  const setSelectedSeason = (season: Season) => {
+    setSelectedSeasonState(season);
+  };
+
   const navigateToDetail = (festival: Festival) => {
     setSelectedFestivalState(festival);
     setViewMode('detail');
@@ -96,11 +102,25 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
  
   const filteredFestivals = useMemo(() => {
+    let filtered = allFestivals;
+
+    // 구 필터링
+    if (selectedDistrict) {
+      filtered = filtered.filter((festival) => festival.GUNAME === selectedDistrict);
+    }
+
+    // 계절 필터링
+    if (selectedSeason !== "전체") {
+      filtered = filtered.filter((festival) => festival.season === selectedSeason);
+    }
+
+    // 구가 선택되지 않았으면 빈 배열 반환 (기존 동작 유지)
     if (!selectedDistrict) {
       return [];
     }
-    return allFestivals.filter((festival) => festival.GUNAME === selectedDistrict);
-  }, [selectedDistrict, allFestivals]);
+
+    return filtered;
+  }, [selectedDistrict, selectedSeason, allFestivals]);
 
  
   const nearbyPlaces = useMemo(() => {
@@ -117,6 +137,7 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     selectedDistrict,
     selectedFestival,
+    selectedSeason,
     viewMode,
 
     filteredFestivals,
@@ -124,6 +145,7 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     setSelectedDistrict,
     setSelectedFestival,
+    setSelectedSeason,
     setViewMode,
     navigateToDetail,
     navigateBack,
