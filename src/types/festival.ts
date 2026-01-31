@@ -66,35 +66,39 @@ export interface Weather {
   };
 }
 
-// Context value interface
-export interface FestivalContextValue {
-  // Data
+// Data Context value interface
+export interface DataContextValue {
   allFestivals: Festival[];
   allPlaces: PlaceData;
   weather: Weather | null;
+  isLoading: boolean;
+  error: string | null;
+}
 
-  // Selection state
+// Filter Context value interface
+export interface FilterContextValue {
   selectedDistrict: string | null;
   selectedFestival: Festival | null;
   selectedSeason: Season;
-
-  // View mode
-  viewMode: ViewMode;
-
-  // Computed values
-  filteredFestivals: Festival[];  // Festivals filtered by selectedDistrict
-  nearbyPlaces: Place[];          // Places filtered by selectedFestival
-
-  // Actions
   setSelectedDistrict: (district: string | null) => void;
   setSelectedFestival: (festival: Festival | null) => void;
   setSelectedSeason: (season: Season) => void;
+}
+
+// Navigation Context value interface
+export interface NavigationContextValue {
+  viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
   navigateToDetail: (festival: Festival) => void;
   navigateBack: () => void;
   navigateToNotFound: () => void;
+}
 
-  // Loading/Error state
-  isLoading: boolean;
-  error: string | null;
+// Combined Context value interface (for backward compatibility)
+export interface FestivalContextValue
+  extends DataContextValue,
+    FilterContextValue,
+    NavigationContextValue {
+  filteredFestivals: Festival[];
+  nearbyPlaces: Place[];
 }
