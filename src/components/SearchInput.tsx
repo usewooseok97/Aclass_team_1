@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Search, MapPin, Utensils, X } from "lucide-react";
 import { useFestivalContext } from "@hooks/useFestivalContext";
 import type { Festival, Place } from "@/types/festival";
@@ -19,7 +19,6 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPlaceIndex, setSelectedPlaceIndex] = useState<number | null>(null);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
@@ -27,21 +26,27 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Debounce 0.3초
+  // Debounce 0.3초 + 드롭다운 상태 초기화
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedTerm(searchTerm);
+      // setTimeout 콜백 내에서 상태 업데이트 (비동기)
+      if (searchTerm.trim()) {
+        setIsOpen(true);
+      } else {
+        setIsOpen(false);
+      }
+      setSelectedPlaceIndex(null);
+      setHighlightedIndex(-1);
     }, 300);
 
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  // 검색 로직
-  useEffect(() => {
+  // 검색 로직 (useMemo로 파생 상태 계산)
+  const results = useMemo(() => {
     if (!debouncedTerm.trim()) {
-      setResults([]);
-      setIsOpen(false);
-      return;
+      return [];
     }
 
     const term = debouncedTerm.toLowerCase();
@@ -92,9 +97,7 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
         });
       });
 
-    setResults(searchResults);
-    setIsOpen(searchResults.length > 0);
-    setSelectedPlaceIndex(null);
+    return searchResults;
   }, [debouncedTerm, allFestivals, allPlaces]);
 
   // 외부 클릭 시 닫기
@@ -126,7 +129,6 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
   // 검색 초기화
   const handleClear = () => {
     setSearchTerm("");
-    setResults([]);
     setIsOpen(false);
     setSelectedPlaceIndex(null);
     setHighlightedIndex(-1);
@@ -165,11 +167,6 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
         break;
     }
   };
-
-  // 결과 변경 시 하이라이트 리셋
-  useEffect(() => {
-    setHighlightedIndex(-1);
-  }, [results]);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>

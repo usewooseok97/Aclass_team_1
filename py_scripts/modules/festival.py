@@ -367,10 +367,10 @@ def process_festivals(raw_festivals):
 
     for idx, item in enumerate(raw_festivals, 1):
         try:
-            # 시작 날짜에서 월 추출
+            # 시작 날짜에서 월 추출 (STRTDATE 형식: "2026-07-01 00:00:00.0")
             start_date = item.get("STRTDATE", "")
-            if len(start_date) >= 6:
-                start_month = int(start_date[4:6])
+            if len(start_date) >= 7:
+                start_month = int(start_date[5:7])
             else:
                 start_month = datetime.now().month
 

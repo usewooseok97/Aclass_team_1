@@ -25,15 +25,24 @@ export function useNaverMap({
   festival,
   places,
 }: UseNaverMapOptions): UseNaverMapReturn {
+  // clientId 검증을 hook 최상단에서 처리 (effect 외부)
+  const clientId = import.meta.env.VITE_NAVER_MAP_CLIENT_ID;
+  const isValidClientId = !!(
+    clientId && clientId !== "여기에_NCP_클라이언트_ID_입력"
+  );
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<naver.maps.Map | null>(null);
   const markersRef = useRef<naver.maps.Marker[]>([]);
   const listenersRef = useRef<naver.maps.MapEventListener[]>([]);
   const infoWindowRef = useRef<naver.maps.InfoWindow | null>(null);
 
-  const [isLoading, setIsLoading] = useState(true);
+  // 초기 상태를 검증 결과에 따라 설정
+  const [isLoading, setIsLoading] = useState(isValidClientId);
   const [isReady, setIsReady] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(
+    isValidClientId ? null : "네이버 지도 API 키가 설정되지 않았습니다."
+  );
 
   // 마커 및 이벤트 리스너 초기화
   const clearMarkers = useCallback(() => {
@@ -161,20 +170,12 @@ export function useNaverMap({
     });
 
     setIsReady(true);
-  }, [festival?.mapx, festival?.mapy]);
+  }, [festival]);
 
   // 스크립트 로드 및 지도 초기화
   useEffect(() => {
-    const clientId = import.meta.env.VITE_NAVER_MAP_CLIENT_ID;
-
-    if (!clientId || clientId === "여기에_NCP_클라이언트_ID_입력") {
-      setError("네이버 지도 API 키가 설정되지 않았습니다.");
-      setIsLoading(false);
-      return;
-    }
-
-    setIsLoading(true);
-    setError(null);
+    // 유효하지 않은 clientId는 초기 상태에서 이미 처리됨
+    if (!isValidClientId) return;
 
     loadNaverMapScript(clientId)
       .then(() => {
@@ -191,7 +192,7 @@ export function useNaverMap({
       infoWindowRef.current = null;
       mapRef.current = null;
     };
-  }, [initMap, clearMarkers]);
+  }, [isValidClientId, clientId, initMap, clearMarkers]);
 
   // festival/places 변경 시 마커 갱신
   useEffect(() => {

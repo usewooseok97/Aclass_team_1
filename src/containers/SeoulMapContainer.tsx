@@ -30,7 +30,7 @@ interface TooltipState {
 const SeoulMapContainer = () => {
   const svgRef = useRef<HTMLObjectElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { allFestivals, setSelectedDistrict, navigateToDetail } = useFestivalContext();
+  const { allFestivals, selectedSeason, setSelectedDistrict, navigateToDetail } = useFestivalContext();
 
   // 툴팁 상태
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
@@ -44,8 +44,12 @@ const SeoulMapContainer = () => {
       dataMap[area.name] = { count: 0, festivals: [] };
     });
 
-    // 축제 데이터 집계
-    allFestivals.forEach((festival) => {
+    // 축제 데이터 집계 (계절 필터 적용)
+    const festivalsToShow = selectedSeason === "전체"
+      ? allFestivals
+      : allFestivals.filter(f => f.season === selectedSeason);
+
+    festivalsToShow.forEach((festival) => {
       if (dataMap[festival.GUNAME]) {
         dataMap[festival.GUNAME].count++;
         dataMap[festival.GUNAME].festivals.push(festival);
@@ -74,7 +78,7 @@ const SeoulMapContainer = () => {
         center: center || { x: 0, y: 0 },
       };
     });
-  }, [allFestivals]);
+  }, [allFestivals, selectedSeason]);
 
   // SVG에 배지 추가
   const addBadgeToSvg = useCallback(
@@ -178,7 +182,7 @@ const SeoulMapContainer = () => {
       });
 
       // 호버 시 툴팁 표시
-      g.addEventListener("mouseenter", (e) => {
+      g.addEventListener("mouseenter", () => {
         markerG.style.transform = `translate(${x}px, ${y + 15}px) scale(1.15)`;
         markerG.style.transition = "transform 0.2s ease";
 
