@@ -170,18 +170,17 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App.tsx';
 
+이거 형식으로 하셈
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/:district',
-    element: <App />,
-  },
-  {
-    path: '/:district/:festivalTitle',
-    element: <App />,
+    path: "/",
+    element: <Layout />, // 부모 Layout 컴포넌트
+    errorElement: <NotFoundPage />, // 404 에러 처리
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/about", element: <About /> },
+      // 정의되지 않은 모든 경로가 NotFoundPage로 렌더링됨
+    ],
   },
 ]);
 
@@ -262,4 +261,4 @@ onClick={() => navigateToDetail(festival)}
    - 뒤로가기 버튼 → 이전 URL로 복귀
    - 브라우저 새로고침 → 현재 URL 상태 유지
    - 직접 URL 입력 → 해당 페이지로 이동 (딥링크)
-   - 잘못된 지역구 URL → 홈으로 리다이렉트
+   - 잘못된 지역구 URL → 404페이지로 이동

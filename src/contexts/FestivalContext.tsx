@@ -97,7 +97,13 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
       setSelectedDistrictState(null);
       setSelectedFestivalState(null);
       setViewMode('map');
+    } else if (viewMode === 'notfound') {
+      setViewMode('map');
     }
+  };
+
+  const navigateToNotFound = () => {
+    setViewMode('notfound');
   };
 
  
@@ -149,6 +155,7 @@ export const FestivalProvider: React.FC<{ children: ReactNode }> = ({ children }
     setViewMode,
     navigateToDetail,
     navigateBack,
+    navigateToNotFound,
 
     isLoading,
     error,

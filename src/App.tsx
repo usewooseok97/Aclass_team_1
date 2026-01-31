@@ -11,14 +11,14 @@ import { SearchInput } from "@components/SearchInput";
 import img from "@assets/mainBackground.png";
 import { LanguageButton } from "@atoms/LanguageButton";
 import { FooterText } from "@atoms/FooterText";
-import { FestivalProvider } from "@contexts/FestivalContext";
 import { useFestivalContext } from "@hooks/useFestivalContext";
+import { useUrlSync } from "@hooks/useUrlSync";
 import RightContent from "@containers/RightContent";
 import LeftContent from "@containers/LeftContent";
 import { FullWidthCard } from "@atoms/FullWidthCard";
 import { getGradient, getThemeColors } from "@utils/theme";
-import { ErrorBoundary } from "@components/ErrorBoundary";
 import { LoadingState } from "@components/LoadingState";
+import { NotFoundPage } from "@pages/NotFoundPage/NotFoundPage";
 
 // 코드 스플리팅: 상세 페이지 컴포넌트 지연 로딩
 const LeftContentDetail = lazy(() => import("./containers/LeftContentDetail"));
@@ -32,6 +32,14 @@ const FestivalLocationMap = lazy(() =>
 const AppContent = () => {
   const { viewMode, selectedFestival } = useFestivalContext();
   const { phase } = useTimePhase();
+
+  // URL 동기화
+  useUrlSync();
+
+  // 404 페이지는 별도 레이아웃
+  if (viewMode === "notfound") {
+    return <NotFoundPage />;
+  }
 
   return (
     <div className="relative w-full min-h-screen" style={getThemeColors(phase)}>
@@ -92,13 +100,7 @@ const AppContent = () => {
 };
 
 function App() {
-  return (
-    <ErrorBoundary>
-      <FestivalProvider>
-        <AppContent />
-      </FestivalProvider>
-    </ErrorBoundary>
-  );
+  return <AppContent />;
 }
 
 export default App;

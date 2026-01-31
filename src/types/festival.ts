@@ -1,5 +1,5 @@
 // View mode type for page navigation
-export type ViewMode = 'map' | 'list' | 'detail';
+export type ViewMode = 'map' | 'list' | 'detail' | 'notfound';
 
 // Season type for filtering
 export type Season = "전체" | "봄" | "여름" | "가을" | "겨울";
@@ -92,6 +92,7 @@ export interface FestivalContextValue {
   setViewMode: (mode: ViewMode) => void;
   navigateToDetail: (festival: Festival) => void;
   navigateBack: () => void;
+  navigateToNotFound: () => void;
 
   // Loading/Error state
   isLoading: boolean;
