@@ -1,12 +1,14 @@
+import { memo } from "react";
 import { useFestivalContext } from "@hooks/useFestivalContext";
 import { CardLayout } from "@atoms/CardLayout";
 import { SeoulMapContainer } from "@containers/SeoulMapContainer";
 import { SeasonButton } from "@atoms/SeasonButton";
 import { GridButtonGroup } from "@components/GridButtonGroup";
-import { BackButton } from "@atoms/backButton";
+import { BackButton } from "@atoms/BackButton";
+import { calculateRating } from "@/utils/rating";
 import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 
-const LeftContent = () => {
+const LeftContent = memo(() => {
   const { selectedFestival, setSelectedFestival, nearbyPlaces, navigateToDetail } = useFestivalContext();
 
   // 카드 클릭 안했으면 기존 지도/버튼 화면
@@ -25,9 +27,7 @@ const LeftContent = () => {
   }
 
   // 평점 계산
-  const rating = (selectedFestival.buzz_score / 20).toFixed(1);
-  const fullStars = Math.floor(Number(rating));
-  const hasHalfStar = Number(rating) - fullStars >= 0.5;
+  const { rating, fullStars, hasHalfStar } = calculateRating(selectedFestival.buzz_score);
 
   // 대표 먹거리
   const representativePlace = nearbyPlaces.length > 0 ? nearbyPlaces[0] : null;
@@ -139,6 +139,8 @@ const LeftContent = () => {
       </CardLayout>
     </>
   );
-};
+});
+
+LeftContent.displayName = "LeftContent";
 
 export default LeftContent;

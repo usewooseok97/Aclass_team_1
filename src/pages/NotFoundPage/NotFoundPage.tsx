@@ -5,6 +5,8 @@ import { LanguageButton } from "@atoms/LanguageButton";
 import { FooterText } from "@atoms/FooterText";
 import { getGradient, getThemeColors } from "@utils/theme";
 import img from "@assets/mainBackground.png";
+import { FooterContainer } from "@/containers/FooterContainer";
+import { TEXT_LIST } from "@/constants/textConstants";
 
 const NotFoundPage = () => {
   const { setViewMode } = useFestivalContext();
@@ -86,14 +88,10 @@ const NotFoundPage = () => {
           </motion.button>
         </motion.div>
       </main>
-
-      {/* 푸터 */}
-      <footer className="relative z-10 w-full h-12 lg:h-25 px-4 flex flex-row justify-between items-center">
-        <div className="hidden lg:contents">
-          <LanguageButton />
-          <FooterText text="Copyright @ 2025 Made by Seoul.Hub" />
-        </div>
-      </footer>
+      <FooterContainer>
+        <LanguageButton />
+        <FooterText text={TEXT_LIST.FOOTER} />
+      </FooterContainer>
     </div>
   );
 };

@@ -1,13 +1,14 @@
+import { memo } from "react";
 import { useFestivalContext } from "@hooks/useFestivalContext";
 import { FestivalListContainer } from "@containers/FestivalListContainer";
 import { TitleText } from "@atoms/TitleText";
 import { ContentsText } from "@atoms/ContentsText";
 import { GridPictures } from "@components/GridPictures";
 import { LoadingState, ErrorState } from "@components/LoadingState";
-import { BackButton } from "@atoms/backButton";
+import { BackButton } from "@atoms/BackButton";
 import { TEXT_LIST } from "@constants/textConstants";
 
-const RightContent = () => {
+const RightContent = memo(() => {
   const { selectedDistrict, setSelectedDistrict, isLoading, error } = useFestivalContext();
 
   // Show loading state
@@ -42,6 +43,8 @@ const RightContent = () => {
       </div>
     </>
   );
-};
+});
+
+RightContent.displayName = "RightContent";
 
 export default RightContent;

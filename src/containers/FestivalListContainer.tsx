@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { motion } from "motion/react";
 import { useFestivalContext } from "../hooks/useFestivalContext";
 import { FestivalCard } from "../components/FestivalCard";
@@ -41,13 +42,14 @@ const FestivalListContainer = () => {
   }
 
   // Sort festivals by buzz_score (highest first)
-  const sortedFestivals = [...filteredFestivals].sort(
-    (a, b) => b.buzz_score - a.buzz_score
+  const sortedFestivals = useMemo(
+    () => [...filteredFestivals].sort((a, b) => b.buzz_score - a.buzz_score),
+    [filteredFestivals]
   );
 
   return (
     <div className="w-full">
-      <div className="flex flex-col items-center gap-4 max-h-150 overflow-y-auto scrollbar-hide pr-2">
+      <div className="flex flex-col items-center gap-4 max-h-[600px] overflow-y-auto scrollbar-hide pr-2">
         {sortedFestivals.map((festival, index) => (
           <motion.div
             key={`${festival.TITLE}-${festival.STRTDATE}`}

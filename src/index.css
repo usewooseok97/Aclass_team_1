@@ -58,19 +58,6 @@ input:focus-visible {
     outline-offset: 2px;
 }
 
-.ellipsis {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; /* 요소의 크기를 넘친 텍스트를 말줄임 처리합니다. */
-}
-
-.multi-ellipsis {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-}
-
 /* 스크롤바 숨기기 (Tailwind v4 방식) */
 @utility scrollbar-hide {
   -ms-overflow-style: none;

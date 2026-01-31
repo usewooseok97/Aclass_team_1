@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { motion } from "motion/react";
 import { type Festival } from "../types/festival";
+import { calculateRating } from "@/utils/rating";
 import { PartyPopper, Star } from "lucide-react";
 
 interface FestivalCardProps {
@@ -10,9 +11,7 @@ interface FestivalCardProps {
 
 const FestivalCard = memo(({ festival, onClick }: FestivalCardProps) => {
   // Convert buzz_score (0-100) to star rating (0-5)
-  const rating = (festival.buzz_score / 20).toFixed(1);
-  const fullStars = Math.floor(Number(rating));
-  const hasHalfStar = Number(rating) - fullStars >= 0.5;
+  const { rating, fullStars, hasHalfStar } = calculateRating(festival.buzz_score);
 
   return (
     <motion.div

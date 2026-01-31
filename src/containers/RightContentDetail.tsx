@@ -1,5 +1,5 @@
 import { useFestivalContext } from "@hooks/useFestivalContext";
-import { BackButton } from "@atoms/backButton";
+import { BackButton } from "@atoms/BackButton";
 import { Badge } from "@atoms/Badge";
 import { StarRating } from "@atoms/StarRating";
 import { FestivalImageGallery } from "@pages/FestivalDetailPage/FestivalImageGallery";

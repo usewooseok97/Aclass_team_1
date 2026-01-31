@@ -330,7 +330,7 @@ const SeoulMapContainer = () => {
   }, [setSelectedDistrict, districtData, addBadgeToSvg, addMarkerToSvg, clearOverlays]);
 
   return (
-    <div ref={containerRef} className="relative w-[60%] h-full max-w-[995px] max-h-[834px]">
+    <div ref={containerRef} className="relative w-full md:w-[60%] h-full max-w-[995px] max-h-[834px]">
       {/* SVG 지도 */}
       <object
         ref={svgRef}

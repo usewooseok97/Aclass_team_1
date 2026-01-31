@@ -5,8 +5,8 @@ interface LoadingStateProps {
 const LoadingState = ({ message = "데이터를 불러오는 중..." }: LoadingStateProps) => {
   return (
     <div className="flex flex-col items-center justify-center py-20">
-      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600 mb-4"></div>
-      <p className="text-gray-600">{message}</p>
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-theme-btn-primary mb-4"></div>
+      <p className="text-theme-text-secondary">{message}</p>
     </div>
   );
 };
