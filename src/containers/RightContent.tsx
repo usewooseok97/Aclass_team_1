@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useGeolocation } from "@uidotdev/usehooks";
 import { useFestivalContext } from "@hooks/useFestivalContext";
 import { FestivalListContainer } from "@containers/FestivalListContainer";
 import { TitleText } from "@atoms/TitleText";
@@ -17,9 +18,14 @@ const RightContent = memo(() => {
     setDateFilter,
     showFavoritesOnly,
     setShowFavoritesOnly,
+    sortBy,
+    setSortBy,
     isLoading,
     error,
   } = useFestivalContext();
+
+  const geolocation = useGeolocation();
+  const isLocationAvailable = !!(geolocation.latitude && geolocation.longitude);
 
   // Show loading state
   if (isLoading) {
@@ -56,6 +62,9 @@ const RightContent = memo(() => {
           onDateFilterChange={setDateFilter}
           showFavoritesOnly={showFavoritesOnly}
           onToggleFavorites={() => setShowFavoritesOnly(!showFavoritesOnly)}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+          isLocationAvailable={isLocationAvailable}
         />
       </div>
 

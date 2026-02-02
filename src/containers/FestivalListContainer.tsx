@@ -1,11 +1,14 @@
 import { useMemo } from "react";
 import { motion } from "motion/react";
+import { useGeolocation } from "@uidotdev/usehooks";
 import { useFestivalContext } from "../hooks/useFestivalContext";
 import { FestivalCard } from "../components/FestivalCard";
+import { calculateFestivalDistance, formatDistance } from "@/utils/distance";
 
 const FestivalListContainer = () => {
-  const { filteredFestivals, setSelectedFestival, selectedDistrict, favoriteFestivals, toggleFavorite } =
+  const { filteredFestivals, setSelectedFestival, selectedDistrict, favoriteFestivals, toggleFavorite, sortBy } =
     useFestivalContext();
+  const geolocation = useGeolocation();
 
   if (!selectedDistrict) {
     return null;
@@ -41,16 +44,43 @@ const FestivalListContainer = () => {
     );
   }
 
-  // Sort festivals by buzz_score (highest first)
-  const sortedFestivals = useMemo(
-    () => [...filteredFestivals].sort((a, b) => b.buzz_score - a.buzz_score),
-    [filteredFestivals]
-  );
+  // 사용자 위치 정보
+  const userLocation = useMemo(() => {
+    if (geolocation.latitude && geolocation.longitude) {
+      return { latitude: geolocation.latitude, longitude: geolocation.longitude };
+    }
+    return null;
+  }, [geolocation.latitude, geolocation.longitude]);
+
+  // 축제별 거리 계산
+  const festivalsWithDistance = useMemo(() => {
+    return filteredFestivals.map((festival) => {
+      const distance = userLocation
+        ? calculateFestivalDistance(userLocation, festival)
+        : null;
+      return { festival, distance };
+    });
+  }, [filteredFestivals, userLocation]);
+
+  // 정렬 로직
+  const sortedFestivals = useMemo(() => {
+    const sorted = [...festivalsWithDistance];
+    if (sortBy === 'distance' && userLocation) {
+      sorted.sort((a, b) => {
+        if (a.distance === null) return 1;
+        if (b.distance === null) return -1;
+        return a.distance - b.distance;
+      });
+    } else {
+      sorted.sort((a, b) => b.festival.buzz_score - a.festival.buzz_score);
+    }
+    return sorted;
+  }, [festivalsWithDistance, sortBy, userLocation]);
 
   return (
     <div className="w-full">
       <div className="flex flex-col items-center gap-4 max-h-[600px] overflow-y-auto scrollbar-hide pr-2">
-        {sortedFestivals.map((festival, index) => (
+        {sortedFestivals.map(({ festival, distance }, index) => (
           <motion.div
             key={`${festival.TITLE}-${festival.STRTDATE}`}
             initial={{ opacity: 0, y: 20 }}
@@ -62,6 +92,7 @@ const FestivalListContainer = () => {
               onClick={() => setSelectedFestival(festival)}
               isFavorite={festival.CODENAME ? favoriteFestivals.has(festival.CODENAME) : false}
               onToggleFavorite={toggleFavorite}
+              distance={distance !== null ? formatDistance(distance) : undefined}
             />
           </motion.div>
         ))}

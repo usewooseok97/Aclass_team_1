@@ -2,16 +2,17 @@ import { memo } from "react";
 import { motion } from "motion/react";
 import { type Festival } from "../types/festival";
 import { calculateRating } from "@/utils/rating";
-import { PartyPopper, Star, Heart } from "lucide-react";
+import { PartyPopper, Star, Heart, MapPin } from "lucide-react";
 
 interface FestivalCardProps {
   festival: Festival;
   onClick: () => void;
   isFavorite?: boolean;
   onToggleFavorite?: (festivalId: string) => void;
+  distance?: string;
 }
 
-const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavorite }: FestivalCardProps) => {
+const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavorite, distance }: FestivalCardProps) => {
   // Convert buzz_score (0-100) to star rating (0-5)
   const { rating, fullStars, hasHalfStar } = calculateRating(festival.buzz_score);
 
@@ -74,6 +75,14 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
       <span className="flex-1 text-sm font-medium truncate" style={{ color: 'var(--text-primary)' }}>
         {festival.TITLE}
       </span>
+
+      {/* Distance */}
+      {distance && (
+        <div className="flex items-center gap-1 mr-3" style={{ color: 'var(--text-secondary)' }}>
+          <MapPin className="w-3.5 h-3.5" />
+          <span className="text-xs">{distance}</span>
+        </div>
+      )}
 
       {/* Rating */}
       <div

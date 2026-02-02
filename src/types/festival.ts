@@ -7,6 +7,24 @@ export type Season = "전체" | "봄" | "여름" | "가을" | "겨울";
 // Date filter type
 export type DateFilterType = 'all' | 'upcoming' | 'ongoing';
 
+// Sort option type
+export type SortOption = 'buzz_score' | 'distance';
+
+// Festival review type (extends ChalkboardComment)
+export interface FestivalReview {
+  id: string;
+  festivalId: string;
+  text: string;
+  rating: number;
+  userName?: string;
+  x: number;
+  y: number;
+  fontSize: number;
+  rotate: number;
+  color: string;
+  createdAt: string;
+}
+
 // Festival data interface matching Python script output
 export interface Festival {
   CODENAME: string | undefined;
@@ -87,12 +105,14 @@ export interface FilterContextValue {
   dateFilter: DateFilterType;
   favoriteFestivals: Set<string>;
   showFavoritesOnly: boolean;
+  sortBy: SortOption;
   setSelectedDistrict: (district: string | null) => void;
   setSelectedFestival: (festival: Festival | null) => void;
   setSelectedSeason: (season: Season) => void;
   setDateFilter: (filter: DateFilterType) => void;
   toggleFavorite: (festivalId: string) => void;
   setShowFavoritesOnly: (show: boolean) => void;
+  setSortBy: (option: SortOption) => void;
 }
 
 // Navigation Context value interface

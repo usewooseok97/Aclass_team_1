@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useCallback, type ReactNode } from 'react';
-import type { Festival, Season, DateFilterType, FilterContextValue } from '../types/festival';
+import type { Festival, Season, DateFilterType, SortOption, FilterContextValue } from '../types/festival';
 
 const FilterContext = createContext<FilterContextValue | undefined>(undefined);
 
@@ -39,6 +39,7 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
   const [dateFilter, setDateFilterState] = useState<DateFilterType>('all');
   const [favoriteFestivals, setFavoriteFestivalsState] = useState<Set<string>>(() => loadFavorites());
   const [showFavoritesOnly, setShowFavoritesOnlyState] = useState(false);
+  const [sortBy, setSortByState] = useState<SortOption>('buzz_score');
 
   const setSelectedDistrict = useCallback(
     (district: string | null) => {
@@ -81,6 +82,10 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
     setShowFavoritesOnlyState(show);
   }, []);
 
+  const setSortBy = useCallback((option: SortOption) => {
+    setSortByState(option);
+  }, []);
+
   const value: FilterContextValue = {
     selectedDistrict,
     selectedFestival,
@@ -88,12 +93,14 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
     dateFilter,
     favoriteFestivals,
     showFavoritesOnly,
+    sortBy,
     setSelectedDistrict,
     setSelectedFestival,
     setSelectedSeason,
     setDateFilter,
     toggleFavorite,
     setShowFavoritesOnly,
+    setSortBy,
   };
 
   return <FilterContext.Provider value={value}>{children}</FilterContext.Provider>;
