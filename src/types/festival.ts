@@ -4,6 +4,9 @@ export type ViewMode = 'map' | 'list' | 'detail' | 'notfound';
 // Season type for filtering
 export type Season = "전체" | "봄" | "여름" | "가을" | "겨울";
 
+// Date filter type
+export type DateFilterType = 'all' | 'upcoming' | 'ongoing';
+
 // Festival data interface matching Python script output
 export interface Festival {
   CODENAME: string | undefined;
@@ -81,9 +84,15 @@ export interface FilterContextValue {
   selectedDistrict: string | null;
   selectedFestival: Festival | null;
   selectedSeason: Season;
+  dateFilter: DateFilterType;
+  favoriteFestivals: Set<string>;
+  showFavoritesOnly: boolean;
   setSelectedDistrict: (district: string | null) => void;
   setSelectedFestival: (festival: Festival | null) => void;
   setSelectedSeason: (season: Season) => void;
+  setDateFilter: (filter: DateFilterType) => void;
+  toggleFavorite: (festivalId: string) => void;
+  setShowFavoritesOnly: (show: boolean) => void;
 }
 
 // Navigation Context value interface

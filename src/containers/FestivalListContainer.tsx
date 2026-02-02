@@ -4,7 +4,7 @@ import { useFestivalContext } from "../hooks/useFestivalContext";
 import { FestivalCard } from "../components/FestivalCard";
 
 const FestivalListContainer = () => {
-  const { filteredFestivals, setSelectedFestival, selectedDistrict } =
+  const { filteredFestivals, setSelectedFestival, selectedDistrict, favoriteFestivals, toggleFavorite } =
     useFestivalContext();
 
   if (!selectedDistrict) {
@@ -60,6 +60,8 @@ const FestivalListContainer = () => {
             <FestivalCard
               festival={festival}
               onClick={() => setSelectedFestival(festival)}
+              isFavorite={festival.CODENAME ? favoriteFestivals.has(festival.CODENAME) : false}
+              onToggleFavorite={toggleFavorite}
             />
           </motion.div>
         ))}

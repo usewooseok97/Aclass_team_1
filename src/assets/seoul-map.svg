@@ -1,44 +1,5 @@
 <svg width="995" height="834" viewBox="0 0 995 834" fill="none" xmlns="http://www.w3.org/2000/svg">
     <style>
-    #seoul-map {
-        filter: drop-shadow(0 0 5px black);
-    }
-    [id^="Vector"]:hover {
-        transition: all 0.3s ease; /* 부드러운 전환 효과 */
-        cursor: pointer;
-        fill: #e63946; /* 강조 색상 */
-        filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
-        background-color:black;
-    }
-
-    /* 데이터 기반 색상 - 구로구를 예시로 레인보우 색상 적용 */
-    #guro[id^="Vector"] {
-        fill: #FF6B6B; /* 레인보우 색상 (빨강) */
-        filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.8));
-        animation: rainbow-pulse 3s ease-in-out infinite;
-    }
-
-    #guro[id^="Vector"]:hover {
-        fill: #FF5252;
-        filter: drop-shadow(0 0 12px rgba(255, 107, 107, 1));
-    }
-
-    /* 레인보우 펄스 애니메이션 */
-    @keyframes rainbow-pulse {
-        0%, 100% { fill: #FF6B6B; } /* 빨강 */
-        16% { fill: #FFA500; } /* 주황 */
-        33% { fill: #FFD700; } /* 노랑 */
-        50% { fill: #4ECB71; } /* 초록 */
-        66% { fill: #1E90FF; } /* 파랑 */
-        83% { fill: #9370DB; } /* 보라 */
-    }
-
-    /* 데이터 기반 하이라이트 클래스 (향후 동적 적용용) */
-    .district-highlight[id^="Vector"] {
-        fill: var(--highlight-color, #FF6B6B);
-        filter: drop-shadow(0 0 8px var(--highlight-shadow, rgba(255, 107, 107, 0.8)));
-        animation: rainbow-pulse 3s ease-in-out infinite;
-    }
 
 </style>
 <metadata>

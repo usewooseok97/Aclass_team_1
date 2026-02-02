@@ -62,7 +62,7 @@ export const addBadgeToSvg = ({
   text.setAttribute('fill', 'white');
   text.setAttribute('font-size', '12');
   text.setAttribute('font-weight', 'bold');
-  text.setAttribute('font-family', 'Arial, sans-serif');
+
   text.textContent = String(count);
 
   g.appendChild(circle);
@@ -145,25 +145,24 @@ export const addMarkerToSvg = ({
 
   seoulMap.appendChild(g);
 };
-
 export const getSvgMapStyles = (): string => `
-  #seoul-map {
-    filter: drop-shadow(0 0 5px black);
-  }
 
-  [k_id] {
+
+  [k_id]:not(#hangang):not([k_id="한강"]) {
     cursor: pointer;
     transition: transform 0.2s ease, filter 0.2s ease;
     transform-origin: center;
     transform-box: fill-box;
   }
 
-  [k_id]:hover {
+  /* Hover effect exclusions */
+  [k_id]:not(#hangang):not([k_id="한강"]):hover {
     transform: scale(1.1);
     filter: drop-shadow(0 0 8px rgba(100, 100, 100, 0.5));
   }
 
-  [k_id].selected {
+  /* Selected state exclusions */
+  [k_id]:not(#hangang):not([k_id="한강"]).selected {
     filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
   }
 

@@ -6,10 +6,20 @@ import { ContentsText } from "@atoms/ContentsText";
 import { GridPictures } from "@components/GridPictures";
 import { LoadingState, ErrorState } from "@components/LoadingState";
 import { BackButton } from "@atoms/BackButton";
+import { FilterButtons } from "@components/FilterButtons";
 import { TEXT_LIST } from "@constants/textConstants";
 
 const RightContent = memo(() => {
-  const { selectedDistrict, setSelectedDistrict, isLoading, error } = useFestivalContext();
+  const {
+    selectedDistrict,
+    setSelectedDistrict,
+    dateFilter,
+    setDateFilter,
+    showFavoritesOnly,
+    setShowFavoritesOnly,
+    isLoading,
+    error,
+  } = useFestivalContext();
 
   // Show loading state
   if (isLoading) {
@@ -38,6 +48,17 @@ const RightContent = memo(() => {
     <>
       <BackButton onClick={() => setSelectedDistrict(null)} className="mb-4" />
       <TitleText text={selectedDistrict} />
+
+      {/* 필터 버튼들 */}
+      <div className="mt-4 w-full">
+        <FilterButtons
+          dateFilter={dateFilter}
+          onDateFilterChange={setDateFilter}
+          showFavoritesOnly={showFavoritesOnly}
+          onToggleFavorites={() => setShowFavoritesOnly(!showFavoritesOnly)}
+        />
+      </div>
+
       <div className="mt-6 w-full">
         <FestivalListContainer />
       </div>

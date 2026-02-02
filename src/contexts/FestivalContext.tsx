@@ -1,9 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useMemo, useCallback, type ReactNode } from 'react';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
 import type { Festival, FestivalContextValue } from '../types/festival';
 import { DataProvider, useData } from './DataContext';
 import { FilterProvider, useFilter } from './FilterContext';
 import { NavigationProvider, useNavigation } from './NavigationContext';
+
+dayjs.extend(isBetween);
 
 export const FestivalContext = createContext<FestivalContextValue | undefined>(undefined);
 
@@ -24,8 +28,34 @@ const FestivalContextCombiner: React.FC<{ children: ReactNode }> = ({ children }
       filtered = filtered.filter((festival) => festival.season === filter.selectedSeason);
     }
 
+    // 날짜 필터링
+    const today = dayjs();
+
+    if (filter.dateFilter === 'ongoing') {
+      // 현재 진행중 (오늘이 시작일~종료일 사이)
+      filtered = filtered.filter((festival) => {
+        const start = dayjs(festival.STRTDATE, 'YYYYMMDD');
+        const end = dayjs(festival.END_DATE, 'YYYYMMDD');
+        return today.isBetween(start, end, 'day', '[]');
+      });
+    }
+
+    // 찜하기 필터링
+    if (filter.showFavoritesOnly) {
+      filtered = filtered.filter((festival) =>
+        festival.CODENAME ? filter.favoriteFestivals.has(festival.CODENAME) : false
+      );
+    }
+
     return filtered;
-  }, [filter.selectedDistrict, filter.selectedSeason, data.allFestivals]);
+  }, [
+    filter.selectedDistrict,
+    filter.selectedSeason,
+    filter.dateFilter,
+    filter.showFavoritesOnly,
+    filter.favoriteFestivals,
+    data.allFestivals,
+  ]);
 
   const nearbyPlaces = useMemo(() => {
     if (!filter.selectedFestival) return [];

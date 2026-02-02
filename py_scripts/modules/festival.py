@@ -405,8 +405,17 @@ def process_festivals(raw_festivals):
                 else:
                     print(f"           → 좌표 없음")
 
+            # CODENAME 생성 (원본 API에 있으면 사용, 없으면 생성)
+            codename = item.get("CODENAME", "")
+            if not codename:
+                # TITLE + STRTDATE 기반 고유 ID 생성
+                import hashlib
+                unique_str = f"{title}_{start_date}"
+                codename = hashlib.md5(unique_str.encode()).hexdigest()[:16]
+
             # 데이터 정제
             processed.append({
+                "CODENAME": codename,
                 "season": season,
                 "GUNAME": gu_name,
                 "TITLE": title,
