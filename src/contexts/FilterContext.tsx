@@ -1,5 +1,7 @@
-import React, { createContext, useState, useContext, useCallback, type ReactNode } from 'react';
+import React, { createContext, useState, useContext, useCallback, useEffect, type ReactNode } from 'react';
 import type { Festival, Season, DateFilterType, SortOption, FilterContextValue } from '../types/festival';
+import { favoritesApi } from '../lib/api';
+import { useAuth } from './AuthContext';
 
 const FilterContext = createContext<FilterContextValue | undefined>(undefined);
 
@@ -11,7 +13,7 @@ interface FilterProviderProps {
 const FAVORITES_STORAGE_KEY = 'festival_favorites';
 
 // LocalStorage에서 찜하기 목록 불러오기
-const loadFavorites = (): Set<string> => {
+const loadLocalFavorites = (): Set<string> => {
   try {
     const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
     if (stored) {
@@ -24,7 +26,7 @@ const loadFavorites = (): Set<string> => {
 };
 
 // LocalStorage에 찜하기 목록 저장
-const saveFavorites = (favorites: Set<string>) => {
+const saveLocalFavorites = (favorites: Set<string>) => {
   try {
     localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(Array.from(favorites)));
   } catch (error) {
@@ -33,13 +35,33 @@ const saveFavorites = (favorites: Set<string>) => {
 };
 
 export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDistrictChange }) => {
+  const { token, isAuthenticated, isLoading: authLoading } = useAuth();
+
   const [selectedDistrict, setSelectedDistrictState] = useState<string | null>(null);
   const [selectedFestival, setSelectedFestivalState] = useState<Festival | null>(null);
   const [selectedSeason, setSelectedSeasonState] = useState<Season>('전체');
   const [dateFilter, setDateFilterState] = useState<DateFilterType>('all');
-  const [favoriteFestivals, setFavoriteFestivalsState] = useState<Set<string>>(() => loadFavorites());
+  const [favoriteFestivals, setFavoriteFestivalsState] = useState<Set<string>>(() => loadLocalFavorites());
   const [showFavoritesOnly, setShowFavoritesOnlyState] = useState(false);
   const [sortBy, setSortByState] = useState<SortOption>('buzz_score');
+
+  // 로그인 시 서버에서 찜하기 목록 동기화
+  useEffect(() => {
+    const syncFavorites = async () => {
+      if (isAuthenticated && token && !authLoading) {
+        try {
+          const { favorites } = await favoritesApi.getAll(token);
+          const serverFavorites = new Set(favorites.map(f => f.festivalId));
+          setFavoriteFestivalsState(serverFavorites);
+          // 로컬 스토리지도 업데이트
+          saveLocalFavorites(serverFavorites);
+        } catch (error) {
+          console.error('Failed to sync favorites from server:', error);
+        }
+      }
+    };
+    syncFavorites();
+  }, [isAuthenticated, token, authLoading]);
 
   const setSelectedDistrict = useCallback(
     (district: string | null) => {
@@ -62,21 +84,51 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
     setDateFilterState(filter);
   }, []);
 
-  const toggleFavorite = useCallback((festivalId: string) => {
+  const toggleFavorite = useCallback(async (festivalId: string) => {
     console.log('🔄 toggleFavorite 호출:', festivalId);
+
+    const isFavorite = favoriteFestivals.has(festivalId);
+    const action = isFavorite ? '삭제' : '추가';
+
+    // 낙관적 업데이트
     setFavoriteFestivalsState((prev) => {
       const newSet = new Set(prev);
-      const action = newSet.has(festivalId) ? '삭제' : '추가';
-      if (newSet.has(festivalId)) {
+      if (isFavorite) {
         newSet.delete(festivalId);
       } else {
         newSet.add(festivalId);
       }
-      console.log(`✅ 찜하기 ${action} 완료. 현재 찜 목록:`, Array.from(newSet));
-      saveFavorites(newSet);
+      saveLocalFavorites(newSet);
       return newSet;
     });
-  }, []);
+
+    // 로그인 상태면 서버에도 동기화
+    if (isAuthenticated && token) {
+      try {
+        if (isFavorite) {
+          await favoritesApi.remove(festivalId, token);
+        } else {
+          await favoritesApi.add(festivalId, token);
+        }
+        console.log(`✅ 찜하기 ${action} 서버 동기화 완료`);
+      } catch (error) {
+        console.error(`Failed to ${action} favorite on server:`, error);
+        // 서버 실패 시 롤백
+        setFavoriteFestivalsState((prev) => {
+          const newSet = new Set(prev);
+          if (isFavorite) {
+            newSet.add(festivalId);
+          } else {
+            newSet.delete(festivalId);
+          }
+          saveLocalFavorites(newSet);
+          return newSet;
+        });
+      }
+    } else {
+      console.log(`✅ 찜하기 ${action} 완료 (로컬)`);
+    }
+  }, [favoriteFestivals, isAuthenticated, token]);
 
   const setShowFavoritesOnly = useCallback((show: boolean) => {
     setShowFavoritesOnlyState(show);

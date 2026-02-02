@@ -20,6 +20,8 @@ export interface ChalkboardComment {
   color: string;
   /** 생성 시간 (ISO 8601 문자열) */
   createdAt: string;
+  /** 작성자 이름 (서버 리뷰용) */
+  userName?: string;
 }
 
 /**

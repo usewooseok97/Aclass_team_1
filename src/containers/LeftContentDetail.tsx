@@ -36,7 +36,10 @@ const LeftContentDetail = () => {
       {/* 축제 리뷰 섹션 */}
       {selectedFestival.CODENAME && (
         <CardLayout>
-          <FestivalReviewSection festivalId={selectedFestival.CODENAME} />
+          <FestivalReviewSection
+            festivalId={selectedFestival.CODENAME}
+            festivalEndDate={selectedFestival.END_DATE}
+          />
         </CardLayout>
       )}
     </div>

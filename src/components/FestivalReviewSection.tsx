@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChalkboardComment } from '@/atoms/ChalkboardComment';
 import { ChalkboardInput } from '@/components/ChalkboardInput';
 import { CHALK_COLORS } from '@/types/chalkboard';
@@ -6,6 +6,8 @@ import type {
   ChalkboardComment as ChalkboardCommentType,
   ChalkboardFormData,
 } from '@/types/chalkboard';
+import { useAuth } from '@/contexts/AuthContext';
+import { reviewsApi, type Review } from '@/lib/api';
 
 const getRandomPosition = (): { x: number; y: number } => ({
   x: Math.random() * 80 + 10,
@@ -25,38 +27,79 @@ const getRandomColor = (): string => {
   return CHALK_COLORS[randomIndex];
 };
 
+// 서버 리뷰를 ChalkboardComment 형식으로 변환
+const convertServerReview = (review: Review): ChalkboardCommentType => ({
+  id: `server-${review.id}`,
+  text: review.text,
+  rating: review.rating,
+  x: review.x,
+  y: review.y,
+  fontSize: review.fontSize,
+  rotate: review.rotate,
+  color: review.color,
+  createdAt: review.createdAt,
+  userName: review.userName,
+});
+
 interface FestivalReviewSectionProps {
   festivalId: string;
-  reviews?: ChalkboardCommentType[];
-  onSubmit?: (formData: ChalkboardFormData) => void | Promise<void>;
-  isLoading?: boolean;
+  festivalEndDate?: string; // YYYYMMDD 형식
 }
 
 export const FestivalReviewSection = ({
   festivalId,
-  reviews = [],
-  onSubmit,
-  isLoading = false,
+  festivalEndDate,
 }: FestivalReviewSectionProps) => {
-  const storageKey = `festival_reviews_${festivalId}`;
+  const { isAuthenticated, token } = useAuth();
+  const [reviews, setReviews] = useState<ChalkboardCommentType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const loadLocalReviews = (): ChalkboardCommentType[] => {
-    try {
-      const stored = localStorage.getItem(storageKey);
-      if (stored) {
-        return JSON.parse(stored);
+  // 서버에서 리뷰 불러오기
+  useEffect(() => {
+    const fetchReviews = async () => {
+      setIsLoading(true);
+      try {
+        const { reviews: serverReviews } = await reviewsApi.getByFestival(festivalId);
+        setReviews(serverReviews.map(convertServerReview));
+      } catch (err) {
+        console.error('Failed to fetch reviews:', err);
+        // 서버 실패 시 로컬스토리지 폴백
+        const storageKey = `festival_reviews_${festivalId}`;
+        try {
+          const stored = localStorage.getItem(storageKey);
+          if (stored) {
+            setReviews(JSON.parse(stored));
+          }
+        } catch {
+          // ignore
+        }
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error('Failed to load reviews from localStorage:', error);
-    }
-    return [];
-  };
-
-  const [localReviews, setLocalReviews] = useState<ChalkboardCommentType[]>(() => loadLocalReviews());
+    };
+    fetchReviews();
+  }, [festivalId]);
 
   const handleSubmit = async (formData: ChalkboardFormData) => {
-    const newReview: ChalkboardCommentType = {
-      id: `review-${Date.now()}-${Math.random()}`,
+    setError(null);
+
+    // 로그인 체크
+    if (!isAuthenticated || !token) {
+      setError('리뷰를 작성하려면 로그인이 필요합니다.');
+      return;
+    }
+
+    // 축제 종료일 체크
+    if (!festivalEndDate) {
+      setError('축제 정보를 불러올 수 없습니다.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const reviewData = {
       text: formData.text,
       rating: formData.rating,
       x: getRandomPosition().x,
@@ -64,23 +107,25 @@ export const FestivalReviewSection = ({
       fontSize: getRandomFontSize(),
       rotate: getRandomRotation(),
       color: getRandomColor(),
-      createdAt: new Date().toISOString(),
+      festivalEndDate,
     };
 
-    if (onSubmit) {
-      await onSubmit(formData);
-    } else {
-      const updatedReviews = [...localReviews, newReview];
-      setLocalReviews(updatedReviews);
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(updatedReviews));
-      } catch (error) {
-        console.error('Failed to save reviews to localStorage:', error);
+    try {
+      await reviewsApi.create(festivalId, reviewData, token);
+
+      // 리뷰 목록 새로고침
+      const { reviews: serverReviews } = await reviewsApi.getByFestival(festivalId);
+      setReviews(serverReviews.map(convertServerReview));
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('리뷰 작성에 실패했습니다.');
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
-  const displayReviews = reviews.length > 0 ? reviews : localReviews;
 
   return (
     <div className="relative w-full min-h-97.5 overflow-hidden bg-[#1a2e1a] flex flex-col rounded-lg">
@@ -101,7 +146,9 @@ export const FestivalReviewSection = ({
           축제 리뷰
         </h2>
         <p className="text-white/70 text-sm">
-          이 축제에 대한 후기를 남겨주세요!
+          {isAuthenticated
+            ? '이 축제에 대한 후기를 남겨주세요!'
+            : '로그인하면 리뷰를 작성할 수 있습니다.'}
         </p>
       </div>
 
@@ -115,21 +162,30 @@ export const FestivalReviewSection = ({
               Loading...
             </p>
           </div>
-        ) : displayReviews.length === 0 ? (
+        ) : reviews.length === 0 ? (
           <div className="flex items-center justify-center h-32">
             <p className="text-white/50 text-lg">
               아직 리뷰가 없습니다. 첫 번째 리뷰를 작성해보세요!
             </p>
           </div>
         ) : (
-          displayReviews.map((review) => (
+          reviews.map((review) => (
             <ChalkboardComment key={review.id} comment={review} />
           ))
         )}
       </div>
 
+      {error && (
+        <div className="relative z-10 px-4 py-2 mx-4 mb-2 bg-red-500/20 border border-red-500/50 rounded text-red-200 text-sm text-center">
+          {error}
+        </div>
+      )}
+
       <div className="relative z-10 mt-auto">
-        <ChalkboardInput onSubmit={handleSubmit} />
+        <ChalkboardInput
+          onSubmit={handleSubmit}
+          disabled={!isAuthenticated || isSubmitting}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Calendar, Heart, MapPin } from "lucide-react";
 import type { DateFilterType, SortOption } from "@/types/festival";
+import { FilterButton } from "@/atoms/FilterButton";
 
 interface FilterButtonsProps {
   dateFilter: DateFilterType;
@@ -24,72 +25,44 @@ export const FilterButtons = ({
   onSortChange,
   isLocationAvailable,
 }: FilterButtonsProps) => {
-  // 공통 버튼 스타일 함수
-  const getButtonClass = (isActive: boolean) =>
-    `px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
-      isActive
-        ? 'bg-purple-600 text-white shadow-md'
-        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-    }`;
-
   return (
     <div className="flex gap-2 flex-wrap">
       {/* 전체 버튼 */}
-      <button
+      <FilterButton
         onClick={() => onDateFilterChange('all')}
-        className={getButtonClass(dateFilter === 'all')}
-        style={{
-          ...(dateFilter === 'all' && {
-            backgroundColor: 'var(--btn-primary)',
-          }),
-        }}
+        isActive={dateFilter === 'all'}
       >
         전체
-      </button>
+      </FilterButton>
 
       {/* 현재 진행중 버튼 */}
-      <button
+      <FilterButton
         onClick={() => onDateFilterChange('ongoing')}
-        className={getButtonClass(dateFilter === 'ongoing')}
-        style={{
-          ...(dateFilter === 'ongoing' && {
-            backgroundColor: 'var(--btn-primary)',
-          }),
-        }}
+        isActive={dateFilter === 'ongoing'}
       >
         <Calendar className="w-4 h-4" />
         현재 진행중
-      </button>
+      </FilterButton>
 
       {/* 찜한 축제만 보기 버튼 */}
-      <button
+      <FilterButton
         onClick={onToggleFavorites}
-        className={getButtonClass(showFavoritesOnly)}
-        style={{
-          ...(showFavoritesOnly && {
-            backgroundColor: 'var(--btn-primary)',
-          }),
-        }}
+        isActive={showFavoritesOnly}
       >
         <Heart className={`w-4 h-4 ${showFavoritesOnly ? 'fill-white' : ''}`} />
         찜한 축제만 보기
-      </button>
+      </FilterButton>
 
       {/* 가까운 순 버튼 */}
-      <button
+      <FilterButton
         onClick={() => onSortChange('distance')}
-        className={`${getButtonClass(sortBy === 'distance')} ${!isLocationAvailable ? 'opacity-50 cursor-not-allowed' : ''}`}
-        style={{
-          ...(sortBy === 'distance' && isLocationAvailable && {
-            backgroundColor: 'var(--btn-primary)',
-          }),
-        }}
+        isActive={sortBy === 'distance' && isLocationAvailable}
         disabled={!isLocationAvailable}
         title={!isLocationAvailable ? '위치 권한이 필요합니다' : ''}
       >
         <MapPin className="w-4 h-4" />
         가까운 순
-      </button>
+      </FilterButton>
     </div>
   );
 };

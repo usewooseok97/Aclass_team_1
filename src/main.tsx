@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import { NotFoundPage } from '@pages/NotFoundPage/NotFoundPage'
 import { FestivalProvider } from '@contexts/FestivalContext'
+import { AuthProvider } from '@contexts/AuthContext'
 import { ErrorBoundary } from '@components/ErrorBoundary'
 
 const router = createBrowserRouter([
@@ -12,16 +13,20 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <ErrorBoundary>
-        <FestivalProvider>
-          <App />
-        </FestivalProvider>
+        <AuthProvider>
+          <FestivalProvider>
+            <App />
+          </FestivalProvider>
+        </AuthProvider>
       </ErrorBoundary>
     ),
     errorElement: (
       <ErrorBoundary>
-        <FestivalProvider>
-          <NotFoundPage />
-        </FestivalProvider>
+        <AuthProvider>
+          <FestivalProvider>
+            <NotFoundPage />
+          </FestivalProvider>
+        </AuthProvider>
       </ErrorBoundary>
     ),
     children: [
@@ -34,9 +39,11 @@ const router = createBrowserRouter([
     path: "*",
     element: (
       <ErrorBoundary>
-        <FestivalProvider>
-          <NotFoundPage />
-        </FestivalProvider>
+        <AuthProvider>
+          <FestivalProvider>
+            <NotFoundPage />
+          </FestivalProvider>
+        </AuthProvider>
       </ErrorBoundary>
     ),
   },

@@ -8,6 +8,7 @@ import { TimetoScrolling } from "@components/TimetoScrolling";
 import { useTimePhase } from "@hooks/useTimePhase";
 import { WeatherLocation } from "@components/WeatherLocation";
 import { SearchInput } from "@components/SearchInput";
+import { AuthButton } from "@components/AuthButton";
 import img from "@assets/mainBackground.png";
 import { LanguageButton } from "@atoms/LanguageButton";
 import { FooterText } from "@atoms/FooterText";
@@ -55,6 +56,7 @@ const AppContent = () => {
         <HeaderContainer backgroundElement={<TimetoScrolling />}>
           <WeatherLocation />
           <SearchInput />
+          <AuthButton />
         </HeaderContainer>
         <main className="flex flex-row flex-wrap justify-center gap-20 w-full">
           <LeftSectionContainer>
@@ -100,7 +102,11 @@ const AppContent = () => {
 };
 
 function App() {
-  return <AppContent />;
+  return (
+
+      <AppContent />
+
+  );
 }
 
 export default App;
