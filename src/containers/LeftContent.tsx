@@ -5,6 +5,7 @@ import { SeoulMapContainer } from "@containers/SeoulMapContainer";
 import { SeasonButton } from "@atoms/SeasonButton";
 import { GridButtonGroup } from "@components/GridButtonGroup";
 import { BackButton } from "@atoms/BackButton";
+import { ChalkboardCommentSection } from "@components/ChalkboardCommentSection";
 import { calculateRating } from "@/utils/rating";
 import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 
@@ -105,37 +106,9 @@ const LeftContent = memo(() => {
         </div>
       </CardLayout>
 
-      {/* 주변 먹거리 카드 */}
+      {/* 칠판 댓글 카드 */}
       <CardLayout>
-        <div className="flex flex-col p-4 w-full h-full overflow-y-auto scrollbar-hide">
-          <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
-            <Utensils className="w-5 h-5" style={{ color: 'var(--btn-primary)' }} />
-            주변 먹거리
-          </h3>
-          {nearbyPlaces.length > 0 ? (
-            <div className="flex flex-col gap-3">
-              {nearbyPlaces.map((place, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-between p-3 rounded-lg"
-                  style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)', borderWidth: '1px' }}
-                >
-                  <div className="flex flex-col">
-                    <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{place.name}</span>
-                    <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{place.category}</span>
-                  </div>
-                  {place.telephone && (
-                    <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{place.telephone}</span>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-center" style={{ color: 'var(--text-secondary)' }}>
-              주변 먹거리 정보가 없습니다.
-            </p>
-          )}
-        </div>
+        <ChalkboardCommentSection festivalId={selectedFestival.CODENAME} />
       </CardLayout>
     </>
   );

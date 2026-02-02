@@ -6,6 +6,7 @@ export type Season = "전체" | "봄" | "여름" | "가을" | "겨울";
 
 // Festival data interface matching Python script output
 export interface Festival {
+  CODENAME: string | undefined;
   season: "봄" | "여름" | "가을" | "겨울";
   GUNAME: string;           // District name: "종로구", "강남구", etc.
   TITLE: string;            // Festival title
