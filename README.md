@@ -14,6 +14,7 @@
 - [화면 설계](#화면-설계)
 - [최적화 사항](#최적화-사항)
 - [에러와 에러 해결](#에러와-에러-해결)
+- [개발 진행도](#개발-진행도)
 - [추후 개발 사항](#추후-개발-사항)
 
 ---
@@ -52,6 +53,8 @@ npm run build
 
 ## 기술 스택
 
+### 프론트엔드
+
 | 분야 | 기술 |
 |------|------|
 | **프레임워크** | React 19 |
@@ -63,7 +66,17 @@ npm run build
 | **상태관리** | React Context API |
 | **지도 API** | Naver Maps API |
 | **장소 API** | Google Places API |
-| **유틸리티** | clsx, tailwind-merge, class-variance-authority |
+| **거리 계산** | geolib |
+| **유틸리티** | clsx, tailwind-merge, class-variance-authority, dayjs |
+
+### 백엔드
+
+| 분야 | 기술 |
+|------|------|
+| **런타임** | Vercel Serverless Functions |
+| **프레임워크** | Express.js (TypeScript) |
+| **데이터베이스** | Supabase (PostgreSQL) |
+| **인증** | JWT + bcryptjs |
 
 ---
 
@@ -97,6 +110,28 @@ npm run build
 ### 날씨 정보
 - 현재 온도 및 날씨 상태
 - 최고/최저 기온 예보
+
+### 사용자 인증
+- 전화번호 + 비밀번호 로그인
+- 회원가입 (닉네임, 전화번호, 비밀번호)
+- 회원 탈퇴
+- JWT 토큰 기반 인증
+
+### 찜하기 기능
+- 축제 카드 하트 아이콘
+- 로그인 시 서버 동기화
+- 비로그인 시 LocalStorage 저장
+- "찜한 축제만 보기" 필터
+
+### 축제 리뷰
+- 칠판 스타일 리뷰 UI
+- 별점 (1-5점) + 짧은 후기 (10자)
+- 로그인 사용자만 작성 가능
+- 축제 기간 동안만 유효
+
+### 정렬/필터
+- 날짜 필터 (전체/현재 진행중)
+- 거리순 정렬 (위치 권한 필요)
 
 ---
 
@@ -164,11 +199,31 @@ SeoulFestivalMap/
 ├── package.json
 ├── pnpm-lock.yaml
 ├── vite.config.ts
+├── vercel.json                # Vercel 배포 설정
 ├── tsconfig.json
 ├── tsconfig.app.json
 ├── tsconfig.node.json
 ├── tailwind.config.js
 ├── eslint.config.js
+│
+├── api/                       # 백엔드 API (Vercel Serverless)
+│   ├── lib/
+│   │   ├── supabase.ts        # Supabase 클라이언트
+│   │   └── auth.ts            # JWT/bcrypt 유틸리티
+│   ├── schema.sql             # DB 스키마
+│   ├── auth/
+│   │   ├── signup.ts          # 회원가입
+│   │   ├── login.ts           # 로그인
+│   │   ├── logout.ts          # 로그아웃
+│   │   ├── me.ts              # 현재 사용자 정보
+│   │   └── withdraw.ts        # 회원 탈퇴
+│   ├── favorites/
+│   │   ├── index.ts           # 찜 목록 조회
+│   │   └── [festivalId].ts    # 찜 추가/삭제
+│   └── reviews/
+│       ├── [festivalId].ts    # 리뷰 조회/작성
+│       └── delete/
+│           └── [reviewId].ts  # 리뷰 삭제
 │
 ├── public/
 │   ├── robots.txt
@@ -190,7 +245,9 @@ SeoulFestivalMap/
     ├── atoms/                    # 기본 UI 컴포넌트
     │   ├── Badge.tsx
     │   ├── CardLayout.tsx
+    │   ├── ChalkboardComment.tsx # 칠판 댓글 표시
     │   ├── ContentsText.tsx
+    │   ├── FilterButton.tsx      # 필터 버튼 원자 컴포넌트
     │   ├── FooterText.tsx
     │   ├── FullWidthCard.tsx
     │   ├── IconText.tsx
@@ -200,17 +257,25 @@ SeoulFestivalMap/
     │   ├── PlaceCard.tsx
     │   ├── SeasonButton.tsx
     │   ├── StarRating.tsx
+    │   ├── TextLink.tsx          # 텍스트 링크 컴포넌트
     │   ├── TitleText.tsx
     │   └── backButton.tsx
     │
     ├── components/               # 합성 컴포넌트
+    │   ├── AuthButton.tsx        # 헤더 로그인 버튼
+    │   ├── AuthModal.tsx         # 로그인/회원가입 모달
+    │   ├── ChalkboardInput.tsx   # 칠판 입력 폼
     │   ├── ErrorBoundary.tsx
     │   ├── FestivalCard.tsx
+    │   ├── FestivalReviewSection.tsx # 축제 리뷰 섹션
+    │   ├── FilterButtons.tsx     # 필터 버튼 그룹
     │   ├── GridButtonGroup.tsx
     │   ├── GridPictures.tsx
     │   ├── LoadingState.tsx
+    │   ├── LoginForm.tsx         # 로그인 폼
     │   ├── RestaurantCard.tsx
     │   ├── SearchInput.tsx
+    │   ├── SignupForm.tsx        # 회원가입 폼
     │   ├── TimetoScrolling.tsx
     │   └── WeatherLocation.tsx
     │
@@ -228,6 +293,8 @@ SeoulFestivalMap/
     │   └── SeoulMapContainer.tsx
     │
     ├── pages/
+    │   ├── NotFoundPage/
+    │   │   └── NotFoundPage.tsx
     │   └── FestivalDetailPage/
     │       ├── DetailPageHeader.tsx
     │       ├── FestivalActionButtons.tsx
@@ -240,14 +307,20 @@ SeoulFestivalMap/
     │       └── NearbyRestaurants.tsx
     │
     ├── contexts/
-    │   └── FestivalContext.tsx
+    │   ├── AuthContext.tsx       # 인증 상태 관리
+    │   ├── DataContext.tsx       # 데이터 로딩
+    │   ├── FestivalContext.tsx   # 축제 컨텍스트 통합
+    │   ├── FilterContext.tsx     # 필터/찜하기 상태
+    │   └── NavigationContext.tsx # 네비게이션 상태
     │
     ├── hooks/
     │   ├── useFestivalContext.ts
     │   ├── useNaverMap.ts
-    │   └── useTimePhase.ts
+    │   ├── useTimePhase.ts
+    │   └── useUrlSync.ts
     │
     ├── utils/
+    │   ├── distance.ts           # 거리 계산 유틸리티
     │   ├── googlePlaces.ts
     │   ├── naverMap.ts
     │   ├── styles.ts
@@ -259,10 +332,12 @@ SeoulFestivalMap/
     │   └── WeatherIcons.ts
     │
     ├── types/
+    │   ├── chalkboard.ts         # 칠판 댓글 타입
     │   ├── festival.ts
     │   └── naverMap.d.ts
     │
     └── lib/
+        ├── api.ts                # API 클라이언트
         └── utils.ts
 ```
 
@@ -279,14 +354,22 @@ SeoulFestivalMap/
 | `Pictures` | 이미지 컴포넌트 | `backgroundImg`, `alt` |
 | `LazyImage` | 지연 로딩 이미지 | `src`, `alt`, `placeholder` |
 | `IconText` | 아이콘 + 텍스트 | `icon`, `text` |
+| `FilterButton` | 필터 버튼 | `isActive`, `onClick`, `disabled` |
+| `TextLink` | 텍스트 링크 | `onClick`, `children` |
+| `ChalkboardComment` | 칠판 댓글 | `comment` |
 
 ### Components (합성 컴포넌트)
 
 | 컴포넌트 | 설명 |
 |----------|------|
-| `FestivalCard` | 축제 카드 (제목, 평점, 호버 애니메이션) |
+| `FestivalCard` | 축제 카드 (제목, 평점, 찜하기, 호버 애니메이션) |
 | `RestaurantCard` | 음식점 카드 (이미지, 카테고리, 길찾기) |
 | `SearchInput` | 검색 입력 (드롭다운, 키보드 네비게이션, ARIA) |
+| `FilterButtons` | 필터 버튼 그룹 (날짜, 찜하기, 정렬) |
+| `AuthButton` | 헤더 로그인/사용자 버튼 |
+| `AuthModal` | 로그인/회원가입 모달 |
+| `FestivalReviewSection` | 축제 리뷰 섹션 (칠판 스타일) |
+| `ChalkboardInput` | 칠판 입력 폼 |
 | `ErrorBoundary` | 에러 바운더리 |
 | `LoadingState` | 로딩 스피너 |
 | `WeatherLocation` | 날씨 정보 표시 |
@@ -296,9 +379,9 @@ SeoulFestivalMap/
 | 컴포넌트 | 설명 |
 |----------|------|
 | `SeoulMapContainer` | 서울 SVG 지도 (25개 자치구 인터랙션) |
-| `FestivalListContainer` | 축제 목록 컨테이너 |
+| `FestivalListContainer` | 축제 목록 컨테이너 (거리 계산, 정렬) |
 | `GuButtonContainer` | 자치구 선택 버튼 |
-| `HeaderContainer` | 헤더 (날씨, 검색, 시간 배경) |
+| `HeaderContainer` | 헤더 (날씨, 검색, 로그인, 시간 배경) |
 | `LeftContent` / `RightContent` | 메인 콘텐츠 영역 |
 | `LeftContentDetail` / `RightContentDetail` | 상세 페이지 콘텐츠 |
 
@@ -313,7 +396,10 @@ interface Festival {
   season: "봄" | "여름" | "가을" | "겨울";
   GUNAME: string;           // 자치구명 (예: "강남구")
   TITLE: string;            // 축제명
+  CODENAME: string;         // 축제 ID
   DATE: string;             // 기간
+  STRTDATE: string;         // 시작일 (YYYYMMDD)
+  END_DATE: string;         // 종료일 (YYYYMMDD)
   PLACE: string;            // 개최 장소
   ORG_NAME: string;         // 주최자
   USE_TRGT: string;         // 이용대상
@@ -363,6 +449,34 @@ interface Weather {
 }
 ```
 
+### User (사용자)
+
+```typescript
+interface User {
+  id: number;               // 고유번호 (SERIAL)
+  nickname: string;         // 닉네임
+  phone: string;            // 전화번호 (로그인 ID)
+  createdAt?: string;       // 가입일
+}
+```
+
+### Review (리뷰)
+
+```typescript
+interface Review {
+  id: number;               // 리뷰 ID
+  text: string;             // 내용 (최대 10자)
+  rating: number;           // 별점 (1-5)
+  x: number;                // 칠판 X 좌표
+  y: number;                // 칠판 Y 좌표
+  fontSize: number;         // 폰트 크기
+  rotate: number;           // 회전 각도
+  color: string;            // 분필 색상
+  createdAt: string;        // 작성일
+  userName: string;         // 작성자 닉네임
+}
+```
+
 ---
 
 ## Architecture
@@ -370,23 +484,25 @@ interface Weather {
 ### 데이터 흐름
 
 ```
-App.tsx (root)
+main.tsx (root)
   └─ ErrorBoundary
-      └─ FestivalProvider (Context)
-          ├─ Load: festival_data.json, place_data.json, weather_data.json
-          └─ AppContent
-              ├─ HeaderContainer
-              │   ├─ TimetoScrolling (시간대별 배경)
-              │   ├─ WeatherLocation
-              │   └─ SearchInput
-              ├─ LeftSectionContainer
-              │   ├─ LeftContent (지도 + 축제 정보)
-              │   └─ LeftContentDetail (상세 페이지)
-              ├─ RightSectionContainer
-              │   ├─ RightContent (축제 목록)
-              │   └─ RightContentDetail (상세 정보)
-              ├─ FestivalLocationMap (네이버 지도)
-              └─ FooterContainer
+      └─ AuthProvider (인증 상태)
+          └─ FestivalProvider (축제 데이터 + 필터 + 네비게이션)
+              └─ App
+                  └─ AppContent
+                      ├─ HeaderContainer
+                      │   ├─ TimetoScrolling (시간대별 배경)
+                      │   ├─ WeatherLocation
+                      │   ├─ SearchInput
+                      │   └─ AuthButton
+                      ├─ LeftSectionContainer
+                      │   ├─ LeftContent (지도 + 축제 정보)
+                      │   └─ LeftContentDetail (상세 + 리뷰)
+                      ├─ RightSectionContainer
+                      │   ├─ RightContent (축제 목록 + 필터)
+                      │   └─ RightContentDetail (상세 정보)
+                      ├─ FestivalLocationMap (네이버 지도)
+                      └─ FooterContainer
 ```
 
 ### 상호작용 흐름
@@ -397,6 +513,33 @@ App.tsx (root)
 3. 축제 카드 클릭 → FestivalCard → navigateToDetail() → viewMode: 'detail'
 4. 뒤로가기 → BackButton → navigateBack() → viewMode: 이전 상태
 5. 시간 변경 → useTimePhase() → 테마/배경 자동 변경
+6. 로그인 → AuthButton → AuthModal → AuthContext → 서버 동기화
+7. 찜하기 → FestivalCard → FilterContext → API/localStorage
+8. 리뷰 작성 → FestivalReviewSection → API
+```
+
+### 백엔드 아키텍처
+
+```
+┌─────────────────────────────────────────────────────┐
+│                    Vercel                           │
+│  ┌─────────────────┐  ┌─────────────────────────┐  │
+│  │  React + Vite   │  │  Express.js (Serverless)│  │
+│  │  (Static)       │  │  /api/auth/*            │  │
+│  │                 │  │  /api/favorites/*       │  │
+│  │                 │  │  /api/reviews/*         │  │
+│  └─────────────────┘  └───────────┬─────────────┘  │
+└───────────────────────────────────┼─────────────────┘
+                                    │
+                    ┌───────────────▼───────────────┐
+                    │         Supabase              │
+                    │  ┌─────────────────────────┐  │
+                    │  │      PostgreSQL         │  │
+                    │  │  - users (전화번호 인증) │  │
+                    │  │  - favorites            │  │
+                    │  │  - reviews              │  │
+                    │  └─────────────────────────┘  │
+                    └───────────────────────────────┘
 ```
 
 ---
@@ -490,21 +633,76 @@ App.tsx (root)
 
 ---
 
+## 개발 진행도
+
+### 2026년 1월 (초기 개발)
+
+| 날짜 | 작업 내용 |
+|------|----------|
+| 1월 5일 | 프로젝트 초기 설정, 컨테이너 구조 설계 |
+| 1월 6-7일 | 헤더, 카드, 그리드 컴포넌트 구현 |
+| 1월 8일 | 시간대별 테마 시스템 구현 (아침/낮/석양/밤) |
+| 1월 10일 | 날씨/검색/스크롤링 컴포넌트 |
+| 1월 11일 | 프로젝트 문서화 |
+| 1월 12일 | FestivalContext 전역 상태 관리, App.tsx 대규모 리팩토링 |
+| 1월 14일 | 로딩 상태 구현 |
+| 1월 19일 | 프로젝트 구조 마이그레이션 |
+| 1월 20-22일 | 다이내믹 헤더, 상세페이지 구현, CardLayout 작업 |
+
+### 2026년 2월 (기능 확장)
+
+#### Phase 1: 핵심 기능 ✅ 완료
+- [x] 날짜 필터 기능 (전체/현재 진행중)
+- [x] 찜하기/위시리스트 기능 (LocalStorage)
+
+#### Phase 2: 추가 기능 ✅ 완료
+- [x] 거리 표시 기능 (geolib + useGeolocation)
+- [x] 사용자 평가/후기 기능 (칠판 스타일)
+
+#### Phase 3-5: 백엔드 연동 ✅ 완료
+- [x] Express.js + Vercel Serverless Functions 설정
+- [x] Supabase PostgreSQL 데이터베이스 스키마
+- [x] 사용자 인증 API (전화번호 + 비밀번호)
+  - signup, login, logout, me, withdraw
+- [x] 찜하기 API 연동
+  - GET/POST/DELETE /api/favorites
+- [x] 리뷰 API 연동
+  - GET/POST /api/reviews, DELETE /api/reviews/delete
+- [x] 프론트엔드 AuthContext 구현
+- [x] 프론트엔드 인증 UI (모달 방식)
+- [x] FilterContext 서버 동기화
+- [x] FestivalReviewSection 서버 연동
+
+#### Phase 6: 배포 ⏳ 대기
+- [ ] Vercel 환경변수 설정
+- [ ] Supabase 프로덕션 설정
+- [ ] 프로덕션 배포
+
+---
+
 ## 추후 개발 사항
 
-- [ ] 축제 즐겨찾기 기능
-- [ ] 사용자 리뷰 기능
+### 완료된 기능
+- [x] 축제 즐겨찾기 기능 (찜하기)
+- [x] 사용자 리뷰 기능
+- [x] 필터링 기능 (날짜, 찜하기)
+- [x] 거리 기반 정렬 (가까운 순)
+- [x] 사용자 인증 (회원가입/로그인/탈퇴)
+
+### 예정된 기능
 - [ ] 다국어 지원 (영어, 중국어, 일본어)
 - [ ] PWA 지원 (오프라인 모드)
 - [ ] 축제 알림 기능
 - [ ] 소셜 공유 기능 확장
 - [ ] 축제 캘린더 뷰
-- [ ] 필터링 기능 (계절, 무료/유료, 카테고리)
+- [ ] 계절/무료/유료 필터 추가
+- [ ] 리뷰 수정 기능
+- [ ] 프로필 수정 기능
 
 ---
 
 ## 라이센스
 
-Copyright © 2025 Seoul Festival Map
+Copyright © 2026 Seoul Festival Map
 
 ---
