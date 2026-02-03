@@ -45,7 +45,7 @@ interface ChalkboardCommentSectionProps {
  * 백엔드 연동을 위한 Props 인터페이스를 제공합니다.
  */
 export const ChalkboardCommentSection = ({
-  festivalId,
+  festivalId: _festivalId,
   comments = [],
   onSubmit,
   isLoading = false,

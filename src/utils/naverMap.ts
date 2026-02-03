@@ -38,7 +38,7 @@ export function toLatLng(
 /**
  * 축제 마커 아이콘 (보라색)
  */
-export function createFestivalMarkerIcon(): naver.maps.MarkerIcon {
+export function createFestivalMarkerIcon() {
   return {
     content: `
       <div style="
@@ -65,7 +65,7 @@ export function createFestivalMarkerIcon(): naver.maps.MarkerIcon {
 /**
  * 맛집 마커 아이콘 (주황색)
  */
-export function createPlaceMarkerIcon(): naver.maps.MarkerIcon {
+export function createPlaceMarkerIcon() {
   return {
     content: `
       <div style="
