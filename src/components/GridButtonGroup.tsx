@@ -1,10 +1,10 @@
 import { GuButtonContainer } from '@/containers/GuButtonContainer';
-import seoulMapData from '@/constants/guData';
+import seoulMapData, { type SeoulDistrict } from '@/constants/guData';
 
 const GridButtonGroup = () => {
     return (
         <div className="grid grid-cols-5 gap-4 p-1 justify-items-center">
-            {seoulMapData.areas.map((district) => (
+            {seoulMapData.areas.map((district: SeoulDistrict) => (
                 <GuButtonContainer key={district.id} guName={district.name} />
             ))}
         </div>

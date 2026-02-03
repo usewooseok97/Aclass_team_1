@@ -8,7 +8,7 @@ import {
   getBadgeColor,
   getSvgMapStyles,
 } from '@/utils/svgMapUtils';
-import seoulMapData, { getDistrictCenter } from '@/constants/guData';
+import seoulMapData, { getDistrictCenter, type SeoulDistrict } from '@/constants/guData';
 
 export interface DistrictFestivalData {
   name: string;
@@ -40,7 +40,7 @@ export const useSvgMapOverlays = ({
   const districtData = useMemo((): DistrictFestivalData[] => {
     const dataMap: { [key: string]: { count: number; festivals: Festival[] } } = {};
 
-    seoulMapData.areas.forEach((area) => {
+    seoulMapData.areas.forEach((area: SeoulDistrict) => {
       dataMap[area.name] = { count: 0, festivals: [] };
     });
 
@@ -56,7 +56,7 @@ export const useSvgMapOverlays = ({
       }
     });
 
-    return seoulMapData.areas.map((area) => {
+    return seoulMapData.areas.map((area: SeoulDistrict) => {
       const center = getDistrictCenter(area.name);
       const festivals = dataMap[area.name]?.festivals || [];
 

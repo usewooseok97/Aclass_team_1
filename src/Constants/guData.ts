@@ -1,10 +1,10 @@
-interface SeoulDistrict {
+export interface SeoulDistrict {
   id: string;
   name: string;
   center: { x: number; y: number }; // SVG 좌표계 기준 중심점
 }
 
-interface SeoulMapData {
+export interface SeoulMapData {
   name: string;
   areas: SeoulDistrict[];
 }
