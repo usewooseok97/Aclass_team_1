@@ -1,7 +1,7 @@
 import { MapPin, AlertCircle, Loader2, ExternalLink } from "lucide-react";
-import { useNaverMap } from "@hooks/useNaverMap";
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { getNaverMapSearchUrl } from "@utils/naverMap";
+import { useNaverMap } from "@/hooks/useNaverMap";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { getNaverMapSearchUrl } from "@/utils/naverMap";
 
 export const FestivalLocationMap = () => {
   const { selectedFestival, nearbyPlaces } = useFestivalContext();

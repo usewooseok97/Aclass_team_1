@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Search, MapPin, Utensils, X } from "lucide-react";
-import { useFestivalContext } from "@hooks/useFestivalContext";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
 import type { Festival, Place } from "@/types/festival";
 
 interface SearchInputProps {

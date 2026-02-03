@@ -1,5 +1,5 @@
-import { GuButtonContainer } from '@containers/GuButtonContainer';
-import seoulMapData from '@constants/guData';
+import { GuButtonContainer } from '@/containers/GuButtonContainer';
+import seoulMapData from '@/constants/guData';
 
 const GridButtonGroup = () => {
     return (

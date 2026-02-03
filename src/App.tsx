@@ -1,31 +1,31 @@
 import { lazy, Suspense } from "react";
-import { LeftSectionContainer } from "@containers/LeftSectionContainer";
-import { RightSectionContainer } from "@containers/RightSectionContainer";
-import { HeaderContainer } from "@containers/HeaderContainer";
-import { FooterContainer } from "@containers/FooterContainer";
-import { TEXT_LIST } from "@constants/textConstants";
-import { TimetoScrolling } from "@components/TimetoScrolling";
-import { useTimePhase } from "@hooks/useTimePhase";
-import { WeatherLocation } from "@components/WeatherLocation";
-import { SearchInput } from "@components/SearchInput";
-import { AuthButton } from "@components/AuthButton";
-import img from "@assets/mainBackground.png";
-import { LanguageButton } from "@atoms/LanguageButton";
-import { FooterText } from "@atoms/FooterText";
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { useUrlSync } from "@hooks/useUrlSync";
-import RightContent from "@containers/RightContent";
-import LeftContent from "@containers/LeftContent";
-import { FullWidthCard } from "@atoms/FullWidthCard";
-import { getGradient, getThemeColors } from "@utils/theme";
-import { LoadingState } from "@components/LoadingState";
-import { NotFoundPage } from "@pages/NotFoundPage/NotFoundPage";
+import { LeftSectionContainer } from "@/containers/LeftSectionContainer";
+import { RightSectionContainer } from "@/containers/RightSectionContainer";
+import { HeaderContainer } from "@/containers/HeaderContainer";
+import { FooterContainer } from "@/containers/FooterContainer";
+import { TEXT_LIST } from "@/constants/textConstants";
+import { TimetoScrolling } from "@/components/TimetoScrolling";
+import { useTimePhase } from "@/hooks/useTimePhase";
+import { WeatherLocation } from "@/components/WeatherLocation";
+import { SearchInput } from "@/components/SearchInput";
+import { AuthButton } from "@/components/AuthButton";
+import img from "@/assets/mainBackground.png";
+import { LanguageButton } from "@/atoms/LanguageButton";
+import { FooterText } from "@/atoms/FooterText";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { useUrlSync } from "@/hooks/useUrlSync";
+import RightContent from "@/containers/RightContent";
+import LeftContent from "@/containers/LeftContent";
+import { FullWidthCard } from "@/atoms/FullWidthCard";
+import { getGradient, getThemeColors } from "@/utils/theme";
+import { LoadingState } from "@/components/LoadingState";
+import { NotFoundPage } from "@/pages/NotFoundPage/NotFoundPage";
 
 // 코드 스플리팅: 상세 페이지 컴포넌트 지연 로딩
 const LeftContentDetail = lazy(() => import("./containers/LeftContentDetail"));
 const RightContentDetail = lazy(() => import("./containers/RightContentDetail"));
 const FestivalLocationMap = lazy(() =>
-  import("@pages/FestivalDetailPage/FestivalLocationMap").then((m) => ({
+  import("@/pages/FestivalDetailPage/FestivalLocationMap").then((m) => ({
     default: m.FestivalLocationMap,
   }))
 );

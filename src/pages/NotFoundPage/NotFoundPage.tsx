@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { useTimePhase } from "@hooks/useTimePhase";
-import { LanguageButton } from "@atoms/LanguageButton";
-import { FooterText } from "@atoms/FooterText";
-import { getGradient, getThemeColors } from "@utils/theme";
-import img from "@assets/mainBackground.png";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { useTimePhase } from "@/hooks/useTimePhase";
+import { LanguageButton } from "@/atoms/LanguageButton";
+import { FooterText } from "@/atoms/FooterText";
+import { getGradient, getThemeColors } from "@/utils/theme";
+import img from "@/assets/mainBackground.png";
 import { FooterContainer } from "@/containers/FooterContainer";
 import { TEXT_LIST } from "@/constants/textConstants";
 

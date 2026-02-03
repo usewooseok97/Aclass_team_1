@@ -7,7 +7,7 @@ import {
   createFestivalInfoContent,
   createPlaceInfoContent,
   loadNaverMapScript,
-} from "@utils/naverMap";
+} from "@/utils/naverMap";
 
 interface UseNaverMapOptions {
   festival: Festival | null;

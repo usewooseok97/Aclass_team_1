@@ -1,14 +1,14 @@
 import { useCallback, useMemo, type RefObject } from 'react';
 import type { Festival } from '@/types/festival';
-import type { TooltipState } from '@components/MapTooltip';
+import type { TooltipState } from '@/components/MapTooltip';
 import {
   addBadgeToSvg,
   addMarkerToSvg,
   clearOverlays,
   getBadgeColor,
   getSvgMapStyles,
-} from '@utils/svgMapUtils';
-import seoulMapData, { getDistrictCenter } from '@constants/guData';
+} from '@/utils/svgMapUtils';
+import seoulMapData, { getDistrictCenter } from '@/constants/guData';
 
 export interface DistrictFestivalData {
   name: string;

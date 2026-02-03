@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { Navigation } from "lucide-react";
-import { Badge } from "@atoms/Badge";
+import { Badge } from "@/atoms/Badge";
 import type { Place, Festival } from "@/types/festival";
 import { getPhotoUrl, getCategoryImage } from "@/utils/googlePlaces";
 import { getNaverMapDirectionsUrl } from "@/utils/naverMap";

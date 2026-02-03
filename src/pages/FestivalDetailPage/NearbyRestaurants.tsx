@@ -1,5 +1,5 @@
 import { Utensils } from "lucide-react";
-import { RestaurantCard } from "@components/RestaurantCard";
+import { RestaurantCard } from "@/components/RestaurantCard";
 import type { Place, Festival } from "@/types/festival";
 
 interface NearbyRestaurantsProps {

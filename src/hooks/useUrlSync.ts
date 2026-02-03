@@ -7,7 +7,7 @@ import {
   encodeDistrict,
   encodeFestivalTitle,
   isValidDistrict
-} from '@utils/urlUtils';
+} from '@/utils/urlUtils';
 
 export const useUrlSync = () => {
   const { district, festivalTitle } = useParams<{

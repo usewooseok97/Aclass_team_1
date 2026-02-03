@@ -1,11 +1,11 @@
 import { memo } from "react";
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { CardLayout } from "@atoms/CardLayout";
-import { SeoulMapContainer } from "@containers/SeoulMapContainer";
-import { SeasonButton } from "@atoms/SeasonButton";
-import { GridButtonGroup } from "@components/GridButtonGroup";
-import { BackButton } from "@atoms/BackButton";
-import { ChalkboardCommentSection } from "@components/ChalkboardCommentSection";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { CardLayout } from "@/atoms/CardLayout";
+import { SeoulMapContainer } from "@/containers/SeoulMapContainer";
+import { SeasonButton } from "@/atoms/SeasonButton";
+import { GridButtonGroup } from "@/components/GridButtonGroup";
+import { BackButton } from "@/atoms/BackButton";
+import { ChalkboardCommentSection } from "@/components/ChalkboardCommentSection";
 import { calculateRating } from "@/utils/rating";
 import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 

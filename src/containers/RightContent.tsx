@@ -1,14 +1,14 @@
 import { memo } from "react";
 import { useGeolocation } from "@uidotdev/usehooks";
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { FestivalListContainer } from "@containers/FestivalListContainer";
-import { TitleText } from "@atoms/TitleText";
-import { ContentsText } from "@atoms/ContentsText";
-import { GridPictures } from "@components/GridPictures";
-import { LoadingState, ErrorState } from "@components/LoadingState";
-import { BackButton } from "@atoms/BackButton";
-import { FilterButtons } from "@components/FilterButtons";
-import { TEXT_LIST } from "@constants/textConstants";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { FestivalListContainer } from "@/containers/FestivalListContainer";
+import { TitleText } from "@/atoms/TitleText";
+import { ContentsText } from "@/atoms/ContentsText";
+import { GridPictures } from "@/components/GridPictures";
+import { LoadingState, ErrorState } from "@/components/LoadingState";
+import { BackButton } from "@/atoms/BackButton";
+import { FilterButtons } from "@/components/FilterButtons";
+import { TEXT_LIST } from "@/constants/textConstants";
 
 const RightContent = memo(() => {
   const {

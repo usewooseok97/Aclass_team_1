@@ -1,8 +1,8 @@
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { CardLayout } from "@atoms/CardLayout";
-import { FestivalDetailInfo } from "@pages/FestivalDetailPage/FestivalDetailInfo";
-import { FestivalDescription } from "@pages/FestivalDetailPage/FestivalDescription";
-import { FestivalActionButtons } from "@pages/FestivalDetailPage/FestivalActionButtons";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { CardLayout } from "@/atoms/CardLayout";
+import { FestivalDetailInfo } from "@/pages/FestivalDetailPage/FestivalDetailInfo";
+import { FestivalDescription } from "@/pages/FestivalDetailPage/FestivalDescription";
+import { FestivalActionButtons } from "@/pages/FestivalDetailPage/FestivalActionButtons";
 import { NearbyRestaurants } from "@/pages/FestivalDetailPage/NearbyRestaurants";
 import { FestivalReviewSection } from "@/components/FestivalReviewSection";
 

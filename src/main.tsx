@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
-import { NotFoundPage } from '@pages/NotFoundPage/NotFoundPage'
-import { FestivalProvider } from '@contexts/FestivalContext'
-import { AuthProvider } from '@contexts/AuthContext'
-import { ErrorBoundary } from '@components/ErrorBoundary'
+import { NotFoundPage } from '@/pages/NotFoundPage/NotFoundPage'
+import { FestivalProvider } from '@/contexts/FestivalContext'
+import { AuthProvider } from '@/contexts/AuthContext'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 
 const router = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
 import { MapPin, Calendar, Users } from "lucide-react";
-import { IconText } from "@atoms/IconText";
+import { IconText } from "@/atoms/IconText";
 import type { Festival } from "@/types/festival";
 
 interface FestivalBasicInfoProps {

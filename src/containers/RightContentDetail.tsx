@@ -1,9 +1,9 @@
-import { useFestivalContext } from "@hooks/useFestivalContext";
-import { BackButton } from "@atoms/BackButton";
-import { Badge } from "@atoms/Badge";
-import { StarRating } from "@atoms/StarRating";
-import { FestivalImageGallery } from "@pages/FestivalDetailPage/FestivalImageGallery";
-import { FestivalBasicInfo } from "@pages/FestivalDetailPage/FestivalBasicInfo";
+import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { BackButton } from "@/atoms/BackButton";
+import { Badge } from "@/atoms/Badge";
+import { StarRating } from "@/atoms/StarRating";
+import { FestivalImageGallery } from "@/pages/FestivalDetailPage/FestivalImageGallery";
+import { FestivalBasicInfo } from "@/pages/FestivalDetailPage/FestivalBasicInfo";
 
 const RightContentDetail = () => {
   const { selectedFestival , navigateBack } = useFestivalContext();

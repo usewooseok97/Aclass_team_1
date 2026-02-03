@@ -1,6 +1,6 @@
-import { BackButton } from "@atoms/BackButton";
-import { Badge } from "@atoms/Badge";
-import { StarRating } from "@atoms/StarRating";
+import { BackButton } from "@/atoms/BackButton";
+import { Badge } from "@/atoms/Badge";
+import { StarRating } from "@/atoms/StarRating";
 import type { Festival } from "@/types/festival";
 
 interface DetailPageHeaderProps {
