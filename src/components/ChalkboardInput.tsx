@@ -4,14 +4,13 @@ import type { ChalkboardFormData } from '@/types/chalkboard';
 
 interface ChalkboardInputProps {
   onSubmit: (formData: ChalkboardFormData) => void;
-  disabled?: boolean;
 }
 
 /**
  * 칠판 댓글 입력 폼 컴포넌트
  * 화면 하단에 고정되어 있으며, 텍스트 입력과 별점 선택이 가능합니다.
  */
-export const ChalkboardInput = ({ onSubmit, disabled = false }: ChalkboardInputProps) => {
+export const ChalkboardInput = ({ onSubmit }: ChalkboardInputProps) => {
   const [text, setText] = useState('');
   const [rating, setRating] = useState(5);
   const [hoveredRating, setHoveredRating] = useState<number | null>(null);
@@ -45,10 +44,9 @@ export const ChalkboardInput = ({ onSubmit, disabled = false }: ChalkboardInputP
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder={disabled ? "로그인 후 이용 가능합니다" : "칠판에 메시지를 남겨주세요 (최대 10자)"}
+            placeholder="칠판에 메시지를 남겨주세요 (최대 10자)"
             maxLength={10}
-            disabled={disabled}
-            className={`flex-1 px-3 py-2 bg-[#1a2e1a] text-white placeholder-gray-400 border-2 border-[#2a3a2a] rounded-lg focus:outline-none focus:border-[#4a5a4a] transition-colors text-sm ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className="flex-1 px-3 py-2 bg-[#1a2e1a] text-white placeholder-gray-400 border-2 border-[#2a3a2a] rounded-lg focus:outline-none focus:border-[#4a5a4a] transition-colors text-sm"
             style={{ fontFamily: "'Schoolbell', cursive" }}
           />
 
@@ -75,8 +73,7 @@ export const ChalkboardInput = ({ onSubmit, disabled = false }: ChalkboardInputP
           {/* 등록 버튼 */}
           <button
             type="submit"
-            disabled={disabled}
-            className={`px-4 py-2 bg-[#2a4a2a] text-white font-bold rounded-lg hover:bg-[#3a5a3a] transition-colors border-2 border-[#3a5a3a] text-sm ${disabled ? 'opacity-50 cursor-not-allowed hover:bg-[#2a4a2a]' : ''}`}
+            className="px-4 py-2 bg-[#2a4a2a] text-white font-bold rounded-lg hover:bg-[#3a5a3a] transition-colors border-2 border-[#3a5a3a] text-sm"
             style={{ fontFamily: "'Schoolbell', cursive" }}
           >
             등록

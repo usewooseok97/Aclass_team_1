@@ -2,12 +2,14 @@ import { useMemo } from "react";
 import { motion } from "motion/react";
 import { useGeolocation } from "@uidotdev/usehooks";
 import { useFestivalContext } from "../hooks/useFestivalContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { FestivalCard } from "../components/FestivalCard";
 import { calculateFestivalDistance, formatDistance } from "@/utils/distance";
 
 const FestivalListContainer = () => {
   const { filteredFestivals, setSelectedFestival, selectedDistrict, favoriteFestivals, toggleFavorite, sortBy } =
     useFestivalContext();
+  const { isAuthenticated } = useAuth();
   const geolocation = useGeolocation();
 
   if (!selectedDistrict) {
@@ -91,7 +93,7 @@ const FestivalListContainer = () => {
               festival={festival}
               onClick={() => setSelectedFestival(festival)}
               isFavorite={festival.CODENAME ? favoriteFestivals.has(festival.CODENAME) : false}
-              onToggleFavorite={toggleFavorite}
+              onToggleFavorite={isAuthenticated ? toggleFavorite : undefined}
               distance={distance !== null ? formatDistance(distance) : undefined}
             />
           </motion.div>

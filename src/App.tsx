@@ -9,10 +9,12 @@ import { useTimePhase } from "@/hooks/useTimePhase";
 import { WeatherLocation } from "@/components/WeatherLocation";
 import { SearchInput } from "@/components/SearchInput";
 import { AuthButton } from "@/components/AuthButton";
+import { AuthModal } from "@/components/AuthModal";
 import img from "@/assets/mainBackground.png";
 import { LanguageButton } from "@/atoms/LanguageButton";
 import { FooterText } from "@/atoms/FooterText";
 import { useFestivalContext } from "@/hooks/useFestivalContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { useUrlSync } from "@/hooks/useUrlSync";
 import RightContent from "@/containers/RightContent";
 import LeftContent from "@/containers/LeftContent";
@@ -33,6 +35,7 @@ const FestivalLocationMap = lazy(() =>
 const AppContent = () => {
   const { viewMode, selectedFestival } = useFestivalContext();
   const { phase } = useTimePhase();
+  const { isAuthModalOpen, closeAuthModal } = useAuth();
 
   // URL 동기화
   useUrlSync();
@@ -97,6 +100,9 @@ const AppContent = () => {
           <FooterText text={TEXT_LIST.FOOTER} />
         </FooterContainer>
       </div>
+
+      {/* 전역 로그인 모달 */}
+      <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChalkboardComment } from '@/atoms/ChalkboardComment';
 import { ChalkboardInput } from '@/components/ChalkboardInput';
+import { useAuth } from '@/contexts/AuthContext';
 import { CHALK_COLORS } from '@/types/chalkboard';
 import type {
   ChalkboardComment as ChalkboardCommentType,
@@ -50,11 +51,18 @@ export const ChalkboardCommentSection = ({
   onSubmit,
   isLoading = false,
 }: ChalkboardCommentSectionProps) => {
+  const { isAuthenticated, openAuthModal } = useAuth();
   // 임시 로컬 상태 (백엔드 연동 전까지 사용)
   const [localComments, setLocalComments] = useState<ChalkboardCommentType[]>(comments);
 
   // 댓글 등록 처리
   const handleSubmit = async (formData: ChalkboardFormData) => {
+    // 로그인 체크: 비로그인 시 로그인 모달 열기
+    if (!isAuthenticated) {
+      openAuthModal();
+      return;
+    }
+
     const newComment: ChalkboardCommentType = {
       id: `comment-${Date.now()}-${Math.random()}`,
       text: formData.text,
