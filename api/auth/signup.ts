@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabase } from '../lib/supabase';
-import { hashPassword, generateToken } from '../lib/auth';
+import { supabase } from '../lib/supabase.js';
+import { hashPassword, generateToken } from '../lib/auth.js';
 
 interface SignupBody {
   nickname: string;

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabase } from '../lib/supabase';
-import { verifyPassword, generateToken } from '../lib/auth';
+import { supabase } from '../lib/supabase.js';
+import { verifyPassword, generateToken } from '../lib/auth.js';
 
 interface LoginBody {
   phone: string;
