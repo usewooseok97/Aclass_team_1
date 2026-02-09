@@ -82,10 +82,10 @@ const NavigationWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const handleFestivalSelect = useCallback(
     (festival: Festival | null) => {
-      filter.setSelectedFestival(festival);
       if (festival) {
         filter.setSelectedDistrict(festival.GUNAME);
       }
+      filter.setSelectedFestival(festival);
     },
     [filter]
   );

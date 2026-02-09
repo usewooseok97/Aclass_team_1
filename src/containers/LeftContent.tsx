@@ -18,7 +18,9 @@ const LeftContent = memo(() => {
       <>
         <CardLayout>
           <SeoulMapContainer />
-          <SeasonButton />
+          <div className="order-first md:order-0 w-full">
+            <SeasonButton />
+          </div>
         </CardLayout>
         <CardLayout>
           <GridButtonGroup />
