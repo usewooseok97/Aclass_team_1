@@ -4,15 +4,15 @@ import { cn } from "@lib/utils";
 
 const cardVariants = cva(
   // 기본 스타일
-  "flex flex-col items-center w-full h-[394px] overflow-auto transition-all duration-300 scrollbar-hide",
+  "flex flex-col items-center w-full h-auto min-h-[300px] md:h-[394px] overflow-auto transition-all duration-300 scrollbar-hide",
   {
     variants: {
       variant: {
-        default: "border border-black/50 rounded-tr-[40px] rounded-br-[40px]",
+        default: "border border-black/50 rounded-[20px] md:rounded-tr-[40px] md:rounded-br-[40px] md:rounded-tl-none md:rounded-bl-none",
         glass:
-          "backdrop-blur-xl bg-white/30 border border-white/20 rounded-tr-[40px] rounded-br-[40px] shadow-lg",
+          "backdrop-blur-xl bg-white/30 border border-white/20 rounded-[20px] md:rounded-tr-[40px] md:rounded-br-[40px] md:rounded-tl-none md:rounded-bl-none shadow-lg",
         solid:
-          "bg-white border border-gray-300 rounded-tr-[40px] rounded-br-[40px] shadow-md",
+          "bg-white border border-gray-300 rounded-[20px] md:rounded-tr-[40px] md:rounded-br-[40px] md:rounded-tl-none md:rounded-bl-none shadow-md",
       },
       hover: {
         none: "",

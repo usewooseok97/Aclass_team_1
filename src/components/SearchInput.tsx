@@ -172,7 +172,7 @@ const SearchInput = ({ className = "" }: SearchInputProps) => {
     <div ref={containerRef} className={`relative ${className}`}>
       {/* 검색 입력 */}
       <article
-        className="flex flex-row items-center p-2 w-[280px] h-9 rounded-[10px]"
+        className="flex flex-row items-center p-2 w-full md:w-[280px] h-9 rounded-[10px]"
         style={{
           backgroundColor: "var(--card-bg)",
           borderColor: "var(--card-border)",

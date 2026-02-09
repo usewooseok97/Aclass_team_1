@@ -53,7 +53,7 @@ const SeoulMapContainer = memo(() => {
   return (
     <div
       ref={containerRef}
-      className="relative w-[60%] h-full max-w-[995px] max-h-[834px]"
+      className="relative w-full md:w-[60%] max-w-none md:max-w-[995px] max-h-[60vh] md:max-h-[834px]"
     >
       <object
         ref={svgRef}

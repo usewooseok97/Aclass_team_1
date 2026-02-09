@@ -11,7 +11,7 @@ const RightSectionContainer = ({ children, className = "" }: ContainerProps) => 
       style={{
         borderColor: 'var(--card-border)',
       }}
-      className={`h-[calc(100vh-200px)] min-h-206 w-[40%] sm:w-[60%] lg:w-[40%] 2xl:max-w-200 min-w-146 flex flex-col items-center border rounded-tl-[40px] rounded-bl-[40px] relative ${className} p-12 scrollbar-hide`}
+      className={`h-auto md:h-[calc(100vh-200px)] min-h-0 md:min-h-206 w-full md:w-[40%] md:min-w-146 2xl:max-w-200 flex flex-col items-center border rounded-none md:rounded-tl-[40px] md:rounded-bl-[40px] relative ${className} p-4 md:p-12 scrollbar-hide`}
     >
       {children}
     </section>
