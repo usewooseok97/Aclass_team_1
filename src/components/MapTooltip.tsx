@@ -21,17 +21,6 @@ export const MapTooltip = ({ tooltip }: MapTooltipProps) => {
       }}
     >
       <div className="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden max-w-[260px]">
-        {/* 축제 이미지 */}
-        {tooltip.festival.MAIN_IMG && (
-          <img
-            src={tooltip.festival.MAIN_IMG}
-            alt={tooltip.festival.TITLE}
-            className="w-full h-[100px] object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
-          />
-        )}
 
         {/* 축제 정보 */}
         <div className="p-3">

@@ -43,10 +43,10 @@ export const addBadgeToSvg = ({
   g.setAttribute('data-district', districtName);
   g.style.cursor = 'pointer';
 
-  // 배지 배경 원
+  // 배지 배경 원 (마커 핀 오른쪽 상단에 배치)
   const circle = svgDoc.createElementNS(SVG_NS, 'circle');
-  circle.setAttribute('cx', String(x + 30));
-  circle.setAttribute('cy', String(y - 30));
+  circle.setAttribute('cx', String(x + 14));
+  circle.setAttribute('cy', String(y - 32));
   circle.setAttribute('r', '14');
   circle.setAttribute('fill', color);
   circle.setAttribute('stroke', 'white');
@@ -55,8 +55,8 @@ export const addBadgeToSvg = ({
 
   // 배지 숫자
   const text = svgDoc.createElementNS(SVG_NS, 'text');
-  text.setAttribute('x', String(x + 30));
-  text.setAttribute('y', String(y - 30));
+  text.setAttribute('x', String(x + 14));
+  text.setAttribute('y', String(y - 32));
   text.setAttribute('text-anchor', 'middle');
   text.setAttribute('dominant-baseline', 'central');
   text.setAttribute('fill', 'white');
@@ -103,9 +103,9 @@ export const addMarkerToSvg = ({
   g.setAttribute('data-festival', festival.TITLE);
   g.style.cursor = 'pointer';
 
-  // 마커 그룹
+  // 마커 그룹 (핀 팁이 구 중심에 위치하도록)
   const markerG = svgDoc.createElementNS(SVG_NS, 'g');
-  markerG.setAttribute('transform', `translate(${x}, ${y + 15})`);
+  markerG.setAttribute('transform', `translate(${x}, ${y})`);
 
   // 핀 모양 배경
   const pin = svgDoc.createElementNS(SVG_NS, 'path');

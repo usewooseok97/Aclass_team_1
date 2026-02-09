@@ -81,7 +81,7 @@ export const useSvgMapOverlays = ({
   // 마커 호버 핸들러
   const handleMarkerMouseEnter = useCallback(
     (festival: Festival, markerG: SVGGElement, x: number, y: number) => {
-      markerG.style.transform = `translate(${x}px, ${y + 15}px) scale(1.15)`;
+      markerG.style.transform = `translate(${x}px, ${y}px) scale(1.15)`;
       markerG.style.transition = 'transform 0.2s ease';
 
       const container = containerRef.current;
@@ -104,7 +104,7 @@ export const useSvgMapOverlays = ({
 
   const handleMarkerMouseLeave = useCallback(
     (markerG: SVGGElement, x: number, y: number) => {
-      markerG.style.transform = `translate(${x}px, ${y + 15}px) scale(1)`;
+      markerG.style.transform = `translate(${x}px, ${y}px) scale(1)`;
       setTooltip(null);
     },
     [setTooltip]

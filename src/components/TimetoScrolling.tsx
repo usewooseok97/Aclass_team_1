@@ -10,27 +10,10 @@ const TimetoScrolling = () => {
     isMoonVisible
   } = useTimePhase();
 
-  // 시간대별 그라데이션
-  const getGradient = (phase: string): string => {
-    switch (phase) {
-      case 'morning':
-        return 'linear-gradient(to right, #fda4af, #fdba74, #fef08a)';
-      case 'day':
-        return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
-      case 'sunset':
-        return 'linear-gradient(to right, #f97316, #db2777, #7c3aed)';
-      case 'night':
-        return 'linear-gradient(to right, #1e1b4b, #312e81, #1e3a5f)';
-      default:
-        return 'linear-gradient(to right, #7dd3fc, #38bdf8, #0ea5e9)';
-    }
-  };
 
   return (
     <div
-      className="absolute inset-0 overflow-hidden transition-all duration-1000"
-      style={{ background: getGradient(phase) }}
-    >
+      className="absolute inset-0 overflow-hidden transition-all duration-1000">
       {/* 구름 (아침/낮) */}
       {(phase === 'morning' || phase === 'day') && (
         <>

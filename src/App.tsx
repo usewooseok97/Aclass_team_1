@@ -1,16 +1,15 @@
 import { lazy, Suspense } from "react";
 import { LeftSectionContainer } from "@/containers/LeftSectionContainer";
 import { RightSectionContainer } from "@/containers/RightSectionContainer";
+import { BackgroundContainer } from "@/containers/BackgroundContainer";
 import { HeaderContainer } from "@/containers/HeaderContainer";
 import { FooterContainer } from "@/containers/FooterContainer";
 import { TEXT_LIST } from "@/constants/textConstants";
 import { TimetoScrolling } from "@/components/TimetoScrolling";
-import { useTimePhase } from "@/hooks/useTimePhase";
 import { WeatherLocation } from "@/components/WeatherLocation";
 import { SearchInput } from "@/components/SearchInput";
 import { AuthButton } from "@/components/AuthButton";
 import { AuthModal } from "@/components/AuthModal";
-import img from "@/assets/mainBackground.png";
 import { LanguageButton } from "@/atoms/LanguageButton";
 import { FooterText } from "@/atoms/FooterText";
 import { useFestivalContext } from "@/hooks/useFestivalContext";
@@ -19,7 +18,6 @@ import { useUrlSync } from "@/hooks/useUrlSync";
 import RightContent from "@/containers/RightContent";
 import LeftContent from "@/containers/LeftContent";
 import { FullWidthCard } from "@/atoms/FullWidthCard";
-import { getGradient, getThemeColors } from "@/utils/theme";
 import { LoadingState } from "@/components/LoadingState";
 import { NotFoundPage } from "@/pages/NotFoundPage/NotFoundPage";
 
@@ -34,7 +32,6 @@ const FestivalLocationMap = lazy(() =>
 
 const AppContent = () => {
   const { viewMode, selectedFestival } = useFestivalContext();
-  const { phase } = useTimePhase();
   const { isAuthModalOpen, closeAuthModal } = useAuth();
 
   // URL 동기화
@@ -46,15 +43,7 @@ const AppContent = () => {
   }
 
   return (
-    <div className="relative w-full min-h-screen" style={getThemeColors(phase)}>
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${img})` }}
-      />
-      <div
-        className="absolute inset-0 transition-all duration-1000"
-        style={{ background: getGradient(phase) }}
-      />
+    <BackgroundContainer>
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col">
         <HeaderContainer backgroundElement={<TimetoScrolling />}>
           <WeatherLocation />
@@ -103,16 +92,12 @@ const AppContent = () => {
 
       {/* 전역 로그인 모달 */}
       <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
-    </div>
+    </BackgroundContainer>
   );
 };
 
 function App() {
-  return (
-
-      <AppContent />
-
-  );
+  return <AppContent />;
 }
 
 export default App;

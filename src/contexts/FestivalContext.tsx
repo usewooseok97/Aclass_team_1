@@ -43,7 +43,7 @@ const FestivalContextCombiner: React.FC<{ children: ReactNode }> = ({ children }
     // 찜하기 필터링
     if (filter.showFavoritesOnly) {
       filtered = filtered.filter((festival) =>
-        festival.CODENAME ? filter.favoriteFestivals.has(festival.CODENAME) : false
+        filter.favoriteFestivals.has(festival.TITLE)
       );
     }
 
@@ -83,6 +83,9 @@ const NavigationWrapper: React.FC<{ children: ReactNode }> = ({ children }) => {
   const handleFestivalSelect = useCallback(
     (festival: Festival | null) => {
       filter.setSelectedFestival(festival);
+      if (festival) {
+        filter.setSelectedDistrict(festival.GUNAME);
+      }
     },
     [filter]
   );

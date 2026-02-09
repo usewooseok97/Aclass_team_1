@@ -35,18 +35,6 @@ const router = createBrowserRouter([
       { path: "/:district/:festivalTitle", element: null },
     ],
   },
-  {
-    path: "*",
-    element: (
-      <ErrorBoundary>
-        <AuthProvider>
-          <FestivalProvider>
-            <NotFoundPage />
-          </FestivalProvider>
-        </AuthProvider>
-      </ErrorBoundary>
-    ),
-  },
 ])
 
 createRoot(document.getElementById('root')!).render(

@@ -85,10 +85,7 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
   }, []);
 
   const toggleFavorite = useCallback(async (festivalId: string) => {
-    console.log('🔄 toggleFavorite 호출:', festivalId);
-
     const isFavorite = favoriteFestivals.has(festivalId);
-    const action = isFavorite ? '삭제' : '추가';
 
     // 낙관적 업데이트
     setFavoriteFestivalsState((prev) => {
@@ -110,9 +107,7 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
         } else {
           await favoritesApi.add(festivalId, token);
         }
-        console.log(`✅ 찜하기 ${action} 서버 동기화 완료`);
-      } catch (error) {
-        console.error(`Failed to ${action} favorite on server:`, error);
+      } catch {
         // 서버 실패 시 롤백
         setFavoriteFestivalsState((prev) => {
           const newSet = new Set(prev);
@@ -125,8 +120,6 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children, onDist
           return newSet;
         });
       }
-    } else {
-      console.log(`✅ 찜하기 ${action} 완료 (로컬)`);
     }
   }, [favoriteFestivals, isAuthenticated, token]);
 

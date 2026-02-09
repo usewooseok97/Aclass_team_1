@@ -92,7 +92,7 @@ const FestivalListContainer = () => {
             <FestivalCard
               festival={festival}
               onClick={() => setSelectedFestival(festival)}
-              isFavorite={festival.CODENAME ? favoriteFestivals.has(festival.CODENAME) : false}
+              isFavorite={favoriteFestivals.has(festival.TITLE)}
               onToggleFavorite={isAuthenticated ? toggleFavorite : undefined}
               distance={distance !== null ? formatDistance(distance) : undefined}
             />

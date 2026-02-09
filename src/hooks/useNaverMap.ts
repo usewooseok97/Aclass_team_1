@@ -145,21 +145,14 @@ export function useNaverMap({
     listenersRef.current.push(mapClickListener);
   }, [festival, places, clearMarkers, getSharedInfoWindow]);
 
-  // 지도 초기화
+  // 지도 초기화 (festival에 의존하지 않음 - 마커 추가 시 중심 이동)
   const initMap = useCallback(() => {
     if (!containerRef.current || !window.naver?.maps) return;
 
-    // 기본 중심: 서울시청
     const defaultCenter = new naver.maps.LatLng(37.5666805, 126.9784147);
 
-    // 축제 좌표가 있으면 해당 위치로
-    const center =
-      festival?.mapx && festival?.mapy
-        ? toLatLng(festival.mapx, festival.mapy) || defaultCenter
-        : defaultCenter;
-
     mapRef.current = new naver.maps.Map(containerRef.current, {
-      center,
+      center: defaultCenter,
       zoom: 16,
       minZoom: 10,
       maxZoom: 19,
@@ -169,12 +162,14 @@ export function useNaverMap({
       },
     });
 
-    setIsReady(true);
-  }, [festival]);
+    // 지도 idle 이벤트 후 ready 상태로 전환 (렌더링 완료 보장)
+    naver.maps.Event.addListenerOnce(mapRef.current, 'idle', () => {
+      setIsReady(true);
+    });
+  }, []);
 
-  // 스크립트 로드 및 지도 초기화
+  // 스크립트 로드 및 지도 초기화 (한 번만 실행)
   useEffect(() => {
-    // 유효하지 않은 clientId는 초기 상태에서 이미 처리됨
     if (!isValidClientId) return;
 
     loadNaverMapScript(clientId)
@@ -192,11 +187,12 @@ export function useNaverMap({
       infoWindowRef.current = null;
       mapRef.current = null;
     };
-  }, [isValidClientId, clientId, initMap, clearMarkers]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isValidClientId, clientId]);
 
   // festival/places 변경 시 마커 갱신
   useEffect(() => {
-    if (isReady && !isLoading) {
+    if (isReady && !isLoading && mapRef.current) {
       addMarkers();
     }
   }, [isReady, isLoading, addMarkers]);

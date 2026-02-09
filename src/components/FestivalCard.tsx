@@ -17,32 +17,17 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
   const { rating, fullStars, hasHalfStar } = calculateRating(festival.buzz_score);
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // 카드 클릭 이벤트 전파 방지
-    e.preventDefault(); // 기본 동작 방지
-    console.log('❤️ 하트 클릭:', festival.TITLE, isFavorite ? '찜 취소' : '찜하기');
-    console.log('📌 CODENAME:', festival.CODENAME, '/ onToggleFavorite:', !!onToggleFavorite);
+    e.stopPropagation();
+    e.preventDefault();
 
-    if (!festival.CODENAME) {
-      console.error('⚠️ CODENAME이 없습니다!');
-      return;
-    }
+    if (!onToggleFavorite) return;
 
-    if (!onToggleFavorite) {
-      console.error('⚠️ onToggleFavorite 함수가 없습니다!');
-      return;
-    }
-
-    onToggleFavorite(festival.CODENAME);
-  };
-
-  const handleCardClick = () => {
-    console.log('🎫 카드 클릭:', festival.TITLE);
-    onClick();
+    onToggleFavorite(festival.TITLE);
   };
 
   return (
     <motion.div
-      onClick={handleCardClick}
+      onClick={onClick}
       whileHover={{ scale: 1.02, y: -3 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}
