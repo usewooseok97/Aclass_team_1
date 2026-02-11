@@ -5,7 +5,7 @@ import { SeoulMapContainer } from "@/containers/SeoulMapContainer";
 import { SeasonButton } from "@/atoms/SeasonButton";
 import { GridButtonGroup } from "@/components/GridButtonGroup";
 import { BackButton } from "@/atoms/BackButton";
-import { ChalkboardCommentSection } from "@/components/ChalkboardCommentSection";
+import { FestivalReviewSection } from "@/components/FestivalReviewSection";
 import { calculateRating } from "@/utils/rating";
 import { MapPin, Calendar, Utensils, Star } from "lucide-react";
 
@@ -110,7 +110,7 @@ const LeftContent = memo(() => {
 
       {/* 칠판 댓글 카드 */}
       <CardLayout>
-        <ChalkboardCommentSection festivalId={selectedFestival.CODENAME} />
+        <FestivalReviewSection festivalId={selectedFestival.TITLE} readOnly />
       </CardLayout>
     </>
   );

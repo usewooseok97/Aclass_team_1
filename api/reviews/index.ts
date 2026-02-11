@@ -33,8 +33,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(400).json({ error: '축제 ID가 필요합니다.' });
       }
 
-      const today = new Date().toISOString().split('T')[0];
-
       const { data: reviews, error } = await supabase
         .from('reviews')
         .select(`
@@ -50,7 +48,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           users!inner(nickname)
         `)
         .eq('festival_id', festivalId)
-        .gte('festival_end_date', today)
         .order('created_at', { ascending: false });
 
       if (error) {
@@ -93,15 +90,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       if (!rating || rating < 1 || rating > 5) {
         return res.status(400).json({ error: '별점은 1~5 사이로 입력해주세요.' });
-      }
-
-      if (!festivalEndDate) {
-        return res.status(400).json({ error: '축제 종료일이 필요합니다.' });
-      }
-
-      const today = new Date().toISOString().split('T')[0];
-      if (festivalEndDate < today) {
-        return res.status(400).json({ error: '종료된 축제에는 리뷰를 작성할 수 없습니다.' });
       }
 
       const { data: newReview, error } = await supabase

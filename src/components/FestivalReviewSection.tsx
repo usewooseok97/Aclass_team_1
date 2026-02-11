@@ -44,16 +44,18 @@ const convertServerReview = (review: Review): ChalkboardCommentType => ({
 interface FestivalReviewSectionProps {
   festivalId: string;
   festivalEndDate?: string; // YYYYMMDD 형식
+  readOnly?: boolean;
 }
 
 export const FestivalReviewSection = ({
   festivalId,
   festivalEndDate,
+  readOnly = false,
 }: FestivalReviewSectionProps) => {
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated, token, user } = useAuth();
   const [reviews, setReviews] = useState<ChalkboardCommentType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // 서버에서 리뷰 불러오기
@@ -63,9 +65,14 @@ export const FestivalReviewSection = ({
       try {
         const { reviews: serverReviews } = await reviewsApi.getByFestival(festivalId);
         setReviews(serverReviews.map(convertServerReview));
+
+        // 현재 유저가 이미 리뷰를 작성했는지 확인
+        if (user) {
+          const myReview = serverReviews.find(r => r.userName === user.nickname);
+          setHasSubmitted(!!myReview);
+        }
       } catch (err) {
         console.error('Failed to fetch reviews:', err);
-        // 서버 실패 시 로컬스토리지 폴백
         const storageKey = `festival_reviews_${festivalId}`;
         try {
           const stored = localStorage.getItem(storageKey);
@@ -80,29 +87,20 @@ export const FestivalReviewSection = ({
       }
     };
     fetchReviews();
-  }, [festivalId]);
+  }, [festivalId, user]);
 
   const handleSubmit = async (formData: ChalkboardFormData) => {
     setError(null);
 
-    // 로그인 체크
     if (!isAuthenticated || !token) {
       setError('리뷰를 작성하려면 로그인이 필요합니다.');
       return;
     }
 
-    // 축제 종료일 체크
-    if (!festivalEndDate) {
-      setError('축제 정보를 불러올 수 없습니다.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
     // YYYYMMDD → YYYY-MM-DD 변환 (서버 API 형식)
-    const formattedEndDate = festivalEndDate.length === 8
+    const formattedEndDate = festivalEndDate && festivalEndDate.length === 8
       ? `${festivalEndDate.slice(0, 4)}-${festivalEndDate.slice(4, 6)}-${festivalEndDate.slice(6, 8)}`
-      : festivalEndDate;
+      : festivalEndDate || '2099-12-31';
 
     const reviewData = {
       text: formData.text,
@@ -121,6 +119,7 @@ export const FestivalReviewSection = ({
       // 리뷰 목록 새로고침
       const { reviews: serverReviews } = await reviewsApi.getByFestival(festivalId);
       setReviews(serverReviews.map(convertServerReview));
+      setHasSubmitted(true);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -128,9 +127,11 @@ export const FestivalReviewSection = ({
         setError('리뷰 작성에 실패했습니다.');
       }
     } finally {
-      setIsSubmitting(false);
+      // submit 완료
     }
   };
+
+  const showInput = !readOnly && !hasSubmitted && isAuthenticated;
 
   return (
     <div className="relative w-full min-h-97.5 overflow-hidden bg-[#1a2e1a] flex flex-col rounded-lg">
@@ -151,7 +152,11 @@ export const FestivalReviewSection = ({
           축제 리뷰
         </h2>
         <p className="text-white/70 text-sm">
-          {isAuthenticated
+          {readOnly
+            ? '상세 페이지에서 리뷰를 작성할 수 있습니다.'
+            : hasSubmitted
+            ? '리뷰를 작성해주셔서 감사합니다!'
+            : isAuthenticated
             ? '이 축제에 대한 후기를 남겨주세요!'
             : '로그인하면 리뷰를 작성할 수 있습니다.'}
         </p>
@@ -186,12 +191,13 @@ export const FestivalReviewSection = ({
         </div>
       )}
 
-      <div className="relative z-10 mt-auto">
-        <ChalkboardInput
-          onSubmit={handleSubmit}
-          disabled={!isAuthenticated || isSubmitting}
-        />
-      </div>
+      {showInput && (
+        <div className="relative z-10 mt-auto">
+          <ChalkboardInput
+            onSubmit={handleSubmit}
+          />
+        </div>
+      )}
     </div>
   );
 };

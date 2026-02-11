@@ -9,8 +9,13 @@ interface ChalkboardCommentProps {
  * 칠판에 표시되는 개별 댓글 컴포넌트
  * 랜덤한 위치, 크기, 각도, 색상으로 표시됩니다.
  */
+const maskNickname = (name: string): string => {
+  if (name.length <= 4) return name;
+  return name.slice(0, 4) + '**';
+};
+
 export const ChalkboardComment = ({ comment }: ChalkboardCommentProps) => {
-  const { text, rating, x, y, fontSize, rotate, color } = comment;
+  const { text, rating, x, y, fontSize, rotate, color, userName } = comment;
 
   return (
     <div
@@ -40,6 +45,11 @@ export const ChalkboardComment = ({ comment }: ChalkboardCommentProps) => {
 
       {/* 댓글 텍스트 */}
       <div className="font-bold">{text}</div>
+
+      {/* 닉네임 */}
+      {userName && (
+        <div className="text-xs opacity-70 mt-0.5">- {maskNickname(userName)}</div>
+      )}
     </div>
   );
 };
