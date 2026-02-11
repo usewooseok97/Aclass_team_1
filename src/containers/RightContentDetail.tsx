@@ -4,6 +4,9 @@ import { Badge } from "@/atoms/Badge";
 import { StarRating } from "@/atoms/StarRating";
 import { FestivalImageGallery } from "@/pages/FestivalDetailPage/FestivalImageGallery";
 import { FestivalBasicInfo } from "@/pages/FestivalDetailPage/FestivalBasicInfo";
+import { FestivalDetailInfo } from "@/pages/FestivalDetailPage/FestivalDetailInfo";
+import { FestivalDescription } from "@/pages/FestivalDetailPage/FestivalDescription";
+import { FestivalActionButtons } from "@/pages/FestivalDetailPage/FestivalActionButtons";
 
 const RightContentDetail = () => {
   const { selectedFestival , navigateBack } = useFestivalContext();
@@ -51,8 +54,10 @@ const RightContentDetail = () => {
             title={selectedFestival.TITLE}
           />
           <FestivalBasicInfo festival={selectedFestival} />
+          <FestivalDetailInfo festival={selectedFestival} />
+          <FestivalDescription program={selectedFestival.PROGRAM} />
+          <FestivalActionButtons homepageUrl={selectedFestival.HMPG_ADDR} />
         </div>
-
     </div>
   );
 };
