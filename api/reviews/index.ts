@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase.js';
 import { getUserFromRequest } from '../lib/auth.js';
 
 interface ReviewBody {
+  festivalId: string;
   text: string;
   rating: number;
   x: number;
@@ -23,15 +24,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).end();
   }
 
-  const { festivalId } = req.query;
-
-  if (!festivalId || typeof festivalId !== 'string') {
-    return res.status(400).json({ error: '축제 ID가 필요합니다.' });
-  }
-
   try {
+    // GET: 리뷰 조회 (query에서 festivalId 가져옴)
     if (req.method === 'GET') {
-      // 리뷰 조회 (축제 종료일이 지나지 않은 것만)
+      const festivalId = req.query.festivalId as string;
+
+      if (!festivalId) {
+        return res.status(400).json({ error: '축제 ID가 필요합니다.' });
+      }
+
       const today = new Date().toISOString().split('T')[0];
 
       const { data: reviews, error } = await supabase
@@ -73,16 +74,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
+    // POST: 리뷰 작성 (body에서 festivalId 가져옴)
     if (req.method === 'POST') {
-      // 로그인 필수
       const tokenUser = getUserFromRequest(req);
       if (!tokenUser) {
         return res.status(401).json({ error: '로그인이 필요합니다.' });
       }
 
-      const { text, rating, x, y, fontSize, rotate, color, festivalEndDate } = req.body as ReviewBody;
+      const { festivalId, text, rating, x, y, fontSize, rotate, color, festivalEndDate } = req.body as ReviewBody;
 
-      // 유효성 검사
+      if (!festivalId || typeof festivalId !== 'string') {
+        return res.status(400).json({ error: '축제 ID가 필요합니다.' });
+      }
+
       if (!text || text.length > 10) {
         return res.status(400).json({ error: '리뷰는 1~10자로 입력해주세요.' });
       }
@@ -95,13 +99,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(400).json({ error: '축제 종료일이 필요합니다.' });
       }
 
-      // 축제가 이미 종료되었는지 확인
       const today = new Date().toISOString().split('T')[0];
       if (festivalEndDate < today) {
         return res.status(400).json({ error: '종료된 축제에는 리뷰를 작성할 수 없습니다.' });
       }
 
-      // 리뷰 작성
       const { data: newReview, error } = await supabase
         .from('reviews')
         .insert({
@@ -120,7 +122,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         .single();
 
       if (error) {
-        // 중복 에러 처리 (1인 1리뷰)
         if (error.code === '23505') {
           return res.status(409).json({ error: '이미 이 축제에 리뷰를 작성하셨습니다.' });
         }
