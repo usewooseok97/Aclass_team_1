@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://seoulfestivalmap.com/sitemap.xml
+Sitemap: https://seoulfestivalmap.vercel.app/sitemap.xml

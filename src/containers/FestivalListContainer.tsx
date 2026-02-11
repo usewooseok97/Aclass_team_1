@@ -92,7 +92,7 @@ const FestivalListContainer = () => {
             <FestivalCard
               festival={festival}
               onClick={() => {
-                if (window.matchMedia('(max-width: 767px)').matches) {
+                if (window.matchMedia('(max-width: 1279px)').matches) {
                   navigateToDetail(festival);
                 } else {
                   setSelectedFestival(festival);

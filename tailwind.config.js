@@ -5,6 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'md': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         'theme-card-bg': 'var(--card-bg)',

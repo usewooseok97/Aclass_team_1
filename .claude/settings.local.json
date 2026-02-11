@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pnpm add:*)",
       "Bash(ls:*)",
-      "Bash(npx pnpm add:*)"
+      "Bash(npx pnpm add:*)",
+      "WebFetch(domain:devtalk.kakao.com)"
     ]
   }
 }

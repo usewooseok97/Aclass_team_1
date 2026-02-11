@@ -17,7 +17,7 @@ const HeaderContainer = ({ children, backgroundElement }: HeaderProps) => {
       )}
 
       {/* 모바일 헤더: 검색 + 로그인만 표시 */}
-      <div className="flex md:hidden relative z-10 h-full px-3 items-center gap-2 overflow-hidden">
+      <div className="flex md:hidden relative z-10 h-full px-3 items-center gap-2">
         <SearchInput className="flex-1 min-w-0" />
         <AuthButton />
       </div>
