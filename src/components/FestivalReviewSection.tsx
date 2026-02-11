@@ -99,6 +99,11 @@ export const FestivalReviewSection = ({
 
     setIsSubmitting(true);
 
+    // YYYYMMDD → YYYY-MM-DD 변환 (서버 API 형식)
+    const formattedEndDate = festivalEndDate.length === 8
+      ? `${festivalEndDate.slice(0, 4)}-${festivalEndDate.slice(4, 6)}-${festivalEndDate.slice(6, 8)}`
+      : festivalEndDate;
+
     const reviewData = {
       text: formData.text,
       rating: formData.rating,
@@ -107,7 +112,7 @@ export const FestivalReviewSection = ({
       fontSize: getRandomFontSize(),
       rotate: getRandomRotation(),
       color: getRandomColor(),
-      festivalEndDate,
+      festivalEndDate: formattedEndDate,
     };
 
     try {

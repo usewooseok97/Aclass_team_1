@@ -4,6 +4,7 @@ import { FestivalDetailInfo } from "@/pages/FestivalDetailPage/FestivalDetailInf
 import { FestivalDescription } from "@/pages/FestivalDetailPage/FestivalDescription";
 import { FestivalActionButtons } from "@/pages/FestivalDetailPage/FestivalActionButtons";
 import { NearbyRestaurants } from "@/pages/FestivalDetailPage/NearbyRestaurants";
+import { FestivalReviewSection } from "@/components/FestivalReviewSection";
 
 const LeftContentDetail = () => {
   const { selectedFestival , nearbyPlaces } = useFestivalContext();
@@ -25,7 +26,13 @@ const LeftContentDetail = () => {
         </div>
       </CardLayout>
 
-      {/* 축제 소개 + 버튼 */}
+      {/* 축제 리뷰 */}
+      <FestivalReviewSection
+        festivalId={selectedFestival.TITLE}
+        festivalEndDate={selectedFestival.END_DATE}
+      />
+
+      {/* 주변 맛집 */}
       <CardLayout>
         <div className="p-4 w-full">
           <NearbyRestaurants places={nearbyPlaces} festival={selectedFestival} />

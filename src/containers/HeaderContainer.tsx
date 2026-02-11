@@ -16,15 +16,9 @@ const HeaderContainer = ({ children, backgroundElement }: HeaderProps) => {
         </div>
       )}
 
-      {/* 모바일 헤더 */}
-      <div className="flex md:hidden relative z-10 h-full px-3 items-center gap-2">
-        <span
-          className="font-bold text-sm whitespace-nowrap"
-          style={{ color: 'var(--text-primary)' }}
-        >
-          서울 축제지도
-        </span>
-        <SearchInput className="flex-1" />
+      {/* 모바일 헤더: 검색 + 로그인만 표시 */}
+      <div className="flex md:hidden relative z-10 h-full px-3 items-center gap-2 overflow-hidden">
+        <SearchInput className="flex-1 min-w-0" />
         <AuthButton />
       </div>
 

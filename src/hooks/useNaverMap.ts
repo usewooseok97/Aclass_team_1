@@ -163,9 +163,15 @@ export function useNaverMap({
     });
 
     // 지도 idle 이벤트 후 ready 상태로 전환 (렌더링 완료 보장)
-    naver.maps.Event.addListenerOnce(mapRef.current, 'idle', () => {
+    if (typeof naver.maps.Event.addListener === 'function') {
+      naver.maps.Event.addListener(mapRef.current, 'idle', () => {
+        setIsReady(true);
+      });
+    } else {
+      // 스크립트 인증 실패 시 fallback
       setIsReady(true);
-    });
+      setError('네이버 지도 API 인증에 실패했습니다. 도메인 설정을 확인해주세요.');
+    }
   }, []);
 
   // 스크립트 로드 및 지도 초기화 (한 번만 실행)

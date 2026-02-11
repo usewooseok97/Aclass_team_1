@@ -84,10 +84,10 @@ export const favoritesApi = {
     api<{ favorites: Favorite[] }>('/api/favorites', { token }),
 
   add: (festivalId: string, token: string) =>
-    api<{ message: string; festivalId: string }>(`/api/favorites/${festivalId}`, { method: 'POST', token }),
+    api<{ message: string; festivalId: string }>(`/api/favorites/${encodeURIComponent(festivalId)}`, { method: 'POST', token }),
 
   remove: (festivalId: string, token: string) =>
-    api<{ message: string; festivalId: string }>(`/api/favorites/${festivalId}`, { method: 'DELETE', token }),
+    api<{ message: string; festivalId: string }>(`/api/favorites/${encodeURIComponent(festivalId)}`, { method: 'DELETE', token }),
 };
 
 // Reviews API
@@ -117,10 +117,10 @@ export interface ReviewInput {
 
 export const reviewsApi = {
   getByFestival: (festivalId: string) =>
-    api<{ reviews: Review[] }>(`/api/reviews/${festivalId}`),
+    api<{ reviews: Review[] }>(`/api/reviews/${encodeURIComponent(festivalId)}`),
 
   create: (festivalId: string, data: ReviewInput, token: string) =>
-    api<{ message: string; reviewId: number }>(`/api/reviews/${festivalId}`, { method: 'POST', body: data, token }),
+    api<{ message: string; reviewId: number }>(`/api/reviews/${encodeURIComponent(festivalId)}`, { method: 'POST', body: data, token }),
 
   delete: (reviewId: number, token: string) =>
     api<{ message: string }>(`/api/reviews/delete/${reviewId}`, { method: 'DELETE', token }),
