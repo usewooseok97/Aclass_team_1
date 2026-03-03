@@ -23,8 +23,8 @@ export const ChalkboardInput = ({ onSubmit }: ChalkboardInputProps) => {
       return;
     }
 
-    if (text.length > 10) {
-      alert('댓글은 최대 10자까지 입력할 수 있습니다.');
+    if (text.length > 30) {
+      alert('댓글은 최대 30자까지 입력할 수 있습니다.');
       return;
     }
 
@@ -44,8 +44,8 @@ export const ChalkboardInput = ({ onSubmit }: ChalkboardInputProps) => {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="칠판에 메시지를 남겨주세요 (최대 10자)"
-            maxLength={10}
+            placeholder="칠판에 메시지를 남겨주세요 (최대 30자)"
+            maxLength={30}
             className="flex-1 px-3 py-2 bg-[#1a2e1a] text-white placeholder-gray-400 border-2 border-[#2a3a2a] rounded-lg focus:outline-none focus:border-[#4a5a4a] transition-colors text-sm"
             style={{ fontFamily: "'Schoolbell', cursive" }}
           />
@@ -81,7 +81,7 @@ export const ChalkboardInput = ({ onSubmit }: ChalkboardInputProps) => {
 
           {/* 글자 수 표시 */}
           <div className="text-xs text-gray-400 min-w-[3rem]" style={{ fontFamily: "'Schoolbell', cursive" }}>
-            {text.length}/10
+            {text.length}/30
           </div>
         </form>
       </div>

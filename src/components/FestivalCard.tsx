@@ -10,9 +10,10 @@ interface FestivalCardProps {
   isFavorite?: boolean;
   onToggleFavorite?: (festivalId: string) => void;
   distance?: string;
+  isPast?: boolean;
 }
 
-const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavorite, distance }: FestivalCardProps) => {
+const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavorite, distance, isPast = false }: FestivalCardProps) => {
   // Convert buzz_score (0-100) to star rating (0-5)
   const { rating, fullStars, hasHalfStar } = calculateRating(festival.buzz_score);
 
@@ -31,7 +32,7 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
       whileHover={{ scale: 1.02, y: -3 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}
-      className="relative w-114 h-12.5 rounded-[20px] flex items-center px-4 cursor-pointer hover:shadow-lg transition-shadow"
+      className={`relative w-full md:w-114 h-12.5 rounded-[20px] flex items-center px-4 cursor-pointer hover:shadow-lg transition-shadow ${isPast ? 'opacity-60' : ''}`}
       style={{
         backgroundColor: 'var(--card-bg)',
         borderColor: 'var(--card-border)',
@@ -56,6 +57,13 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
       {/* Icon */}
       <PartyPopper className="w-5 h-5 mr-3 ml-6" style={{ color: 'var(--btn-primary)' }} />
 
+      {/* 지난 축제 배지 */}
+      {isPast && (
+        <span className="mr-2 shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded bg-gray-400 text-white whitespace-nowrap">
+          지난 축제
+        </span>
+      )}
+
       {/* Title */}
       <span className="flex-1 text-sm font-medium truncate" style={{ color: 'var(--text-primary)' }}>
         {festival.TITLE}
@@ -63,7 +71,7 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
 
       {/* Distance */}
       {distance && (
-        <div className="flex items-center gap-1 mr-3" style={{ color: 'var(--text-secondary)' }}>
+        <div className="hidden md:flex items-center gap-1 mr-3" style={{ color: 'var(--text-secondary)' }}>
           <MapPin className="w-3.5 h-3.5" />
           <span className="text-xs">{distance}</span>
         </div>
@@ -73,7 +81,8 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
       <div
         className="flex items-center gap-1"
         role="img"
-        aria-label={`평점 ${rating}점`}
+        aria-label={`인기도 ${rating}점`}
+        title="인기도 기준 (buzz score)"
       >
         <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>({rating})</span>
         <div className="flex" aria-hidden="true">
@@ -90,6 +99,7 @@ const FestivalCard = memo(({ festival, onClick, isFavorite = false, onToggleFavo
             />
           ))}
         </div>
+        <span className="text-[10px] ml-0.5" style={{ color: 'var(--text-secondary)' }}>인기도</span>
       </div>
     </motion.div>
   );

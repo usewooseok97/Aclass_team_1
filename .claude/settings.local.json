@@ -4,7 +4,11 @@
       "Bash(pnpm add:*)",
       "Bash(ls:*)",
       "Bash(npx pnpm add:*)",
-      "WebFetch(domain:devtalk.kakao.com)"
+      "WebFetch(domain:devtalk.kakao.com)",
+      "WebFetch(domain:data.kma.go.kr)",
+      "WebFetch(domain:han-joon-hyeok.github.io)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:velog.io)"
     ]
   }
 }

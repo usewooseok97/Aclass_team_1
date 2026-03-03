@@ -43,7 +43,7 @@ const LeftContent = memo(() => {
           {/* 축제 이미지 - 클릭 시 상세 페이지로 이동 */}
           <button
             onClick={() => navigateToDetail(selectedFestival)}
-            className="w-full h-48 rounded-lg overflow-hidden mb-4 cursor-pointer"
+            className="w-full aspect-3/4 max-h-56 rounded-lg overflow-hidden mb-4 cursor-pointer"
           >
             <img
               src={selectedFestival.MAIN_IMG}
@@ -53,24 +53,27 @@ const LeftContent = memo(() => {
           </button>
 
           {/* 제목 + 평점 */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-4 flex-wrap">
             <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
               {selectedFestival.TITLE}
             </h2>
-            <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>({rating})</span>
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-3 h-3 ${
-                    i < fullStars
-                      ? "text-yellow-400 fill-yellow-400"
-                      : i === fullStars && hasHalfStar
-                      ? "text-yellow-400 fill-yellow-400"
-                      : "text-gray-300"
-                  }`}
-                />
-              ))}
+            <div className="flex items-center gap-1" title="인기도 기준 (buzz score)">
+              <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>({rating})</span>
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-3 h-3 ${
+                      i < fullStars
+                        ? "text-yellow-400 fill-yellow-400"
+                        : i === fullStars && hasHalfStar
+                        ? "text-yellow-400 fill-yellow-400"
+                        : "text-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>인기도</span>
             </div>
           </div>
 

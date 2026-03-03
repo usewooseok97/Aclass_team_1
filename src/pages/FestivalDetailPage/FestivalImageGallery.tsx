@@ -13,7 +13,7 @@ export const FestivalImageGallery = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="w-full aspect-video rounded-lg ">
+      <div className="w-full aspect-3/4 max-h-125 rounded-lg overflow-hidden">
         {!imageError ? (
           <img
             src={mainImage}

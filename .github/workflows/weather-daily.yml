@@ -1,0 +1,40 @@
+name: Daily Weather Collection
+
+on:
+  schedule:
+    - cron: '40 21 * * *'  # 매일 21:40 UTC (한국 06:40 KST) - API가 매시 :40에 갱신
+  workflow_dispatch:  # 수동 실행
+
+jobs:
+  collect-weather:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          cd py_scripts
+          pip install -r requirements.txt
+
+      - name: Collect weather data
+        env:
+          KMA_API_KEY: ${{ secrets.KMA_API_KEY }}
+        run: |
+          cd py_scripts
+          python modules/weather.py
+
+      - name: Commit and push weather data
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add public/data/weather_data.json
+          git diff --staged --quiet || git commit -m "Update weather data"
+          git push

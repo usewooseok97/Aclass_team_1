@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useMemo, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
+import dayjs from "dayjs";
 import { useGeolocation } from "@uidotdev/usehooks";
 import { useFestivalContext } from "../hooks/useFestivalContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -79,32 +80,62 @@ const FestivalListContainer = () => {
     return sorted;
   }, [festivalsWithDistance, sortBy, userLocation]);
 
+  const today = dayjs();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    setShowBackToTop((scrollContainerRef.current?.scrollTop ?? 0) > 150);
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    scrollContainerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
-    <div className="w-full">
-      <div className="flex flex-col items-center gap-4 max-h-[600px] overflow-y-auto scrollbar-hide pr-2">
-        {sortedFestivals.map(({ festival, distance }, index) => (
-          <motion.div
-            key={`${festival.TITLE}-${festival.STRTDATE}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.08, duration: 0.3 }}
-          >
-            <FestivalCard
-              festival={festival}
-              onClick={() => {
-                if (window.matchMedia('(max-width: 1279px)').matches) {
-                  navigateToDetail(festival);
-                } else {
-                  setSelectedFestival(festival);
-                }
-              }}
-              isFavorite={favoriteFestivals.has(festival.TITLE)}
-              onToggleFavorite={isAuthenticated ? toggleFavorite : undefined}
-              distance={distance !== null ? formatDistance(distance) : undefined}
-            />
-          </motion.div>
-        ))}
+    <div className="w-full relative">
+      <div
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="flex flex-col items-center gap-4 max-h-150 overflow-y-auto scrollbar-hide pr-2"
+      >
+        {sortedFestivals.map(({ festival, distance }, index) => {
+          const isPast = dayjs(festival.END_DATE, 'YYYYMMDD').isBefore(today, 'day');
+          return (
+            <motion.div
+              key={`${festival.TITLE}-${festival.STRTDATE}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.08, duration: 0.3 }}
+            >
+              <FestivalCard
+                festival={festival}
+                onClick={() => {
+                  if (window.matchMedia('(max-width: 1279px)').matches) {
+                    navigateToDetail(festival);
+                  } else {
+                    setSelectedFestival(festival);
+                  }
+                }}
+                isFavorite={favoriteFestivals.has(festival.TITLE)}
+                onToggleFavorite={isAuthenticated ? toggleFavorite : undefined}
+                distance={distance !== null ? formatDistance(distance) : undefined}
+                isPast={isPast}
+              />
+            </motion.div>
+          );
+        })}
       </div>
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="absolute bottom-3 right-3 z-10 flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full shadow-md transition-all duration-200"
+          style={{ backgroundColor: 'var(--btn-primary)', color: '#fff' }}
+          aria-label="맨 위로"
+        >
+          ↑ 맨 위로
+        </button>
+      )}
     </div>
   );
 };
