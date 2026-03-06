@@ -13,6 +13,49 @@ const FestivalListContainer = () => {
   const { isAuthenticated } = useAuth();
   const geolocation = useGeolocation();
 
+  // 모든 훅은 early return 이전에 선언해야 함 (React Hooks 규칙)
+  const userLocation = useMemo(() => {
+    if (geolocation.latitude && geolocation.longitude) {
+      return { latitude: geolocation.latitude, longitude: geolocation.longitude };
+    }
+    return null;
+  }, [geolocation.latitude, geolocation.longitude]);
+
+  const festivalsWithDistance = useMemo(() => {
+    return filteredFestivals.map((festival) => {
+      const distance = userLocation
+        ? calculateFestivalDistance(userLocation, festival)
+        : null;
+      return { festival, distance };
+    });
+  }, [filteredFestivals, userLocation]);
+
+  const sortedFestivals = useMemo(() => {
+    const sorted = [...festivalsWithDistance];
+    if (sortBy === 'distance' && userLocation) {
+      sorted.sort((a, b) => {
+        if (a.distance === null) return 1;
+        if (b.distance === null) return -1;
+        return a.distance - b.distance;
+      });
+    } else {
+      sorted.sort((a, b) => b.festival.buzz_score - a.festival.buzz_score);
+    }
+    return sorted;
+  }, [festivalsWithDistance, sortBy, userLocation]);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    setShowBackToTop((scrollContainerRef.current?.scrollTop ?? 0) > 150);
+  }, []);
+
+  const scrollToTop = useCallback(() => {
+    scrollContainerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  // 훅 선언 완료 후 early return
   if (!selectedDistrict) {
     return null;
   }
@@ -47,50 +90,7 @@ const FestivalListContainer = () => {
     );
   }
 
-  // 사용자 위치 정보
-  const userLocation = useMemo(() => {
-    if (geolocation.latitude && geolocation.longitude) {
-      return { latitude: geolocation.latitude, longitude: geolocation.longitude };
-    }
-    return null;
-  }, [geolocation.latitude, geolocation.longitude]);
-
-  // 축제별 거리 계산
-  const festivalsWithDistance = useMemo(() => {
-    return filteredFestivals.map((festival) => {
-      const distance = userLocation
-        ? calculateFestivalDistance(userLocation, festival)
-        : null;
-      return { festival, distance };
-    });
-  }, [filteredFestivals, userLocation]);
-
-  // 정렬 로직
-  const sortedFestivals = useMemo(() => {
-    const sorted = [...festivalsWithDistance];
-    if (sortBy === 'distance' && userLocation) {
-      sorted.sort((a, b) => {
-        if (a.distance === null) return 1;
-        if (b.distance === null) return -1;
-        return a.distance - b.distance;
-      });
-    } else {
-      sorted.sort((a, b) => b.festival.buzz_score - a.festival.buzz_score);
-    }
-    return sorted;
-  }, [festivalsWithDistance, sortBy, userLocation]);
-
   const today = dayjs();
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  const handleScroll = useCallback(() => {
-    setShowBackToTop((scrollContainerRef.current?.scrollTop ?? 0) > 150);
-  }, []);
-
-  const scrollToTop = useCallback(() => {
-    scrollContainerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   return (
     <div className="w-full relative">

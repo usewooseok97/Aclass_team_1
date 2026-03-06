@@ -38,15 +38,24 @@ export class ErrorBoundary extends Component<Props, State> {
             className="text-sm mb-4"
             style={{ color: 'var(--text-secondary)' }}
           >
-            페이지를 새로고침해 주세요.
+            페이지를 새로고침하거나 홈으로 돌아가세요.
           </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 rounded-lg text-white transition-opacity hover:opacity-90"
-            style={{ backgroundColor: 'var(--btn-primary)' }}
-          >
-            새로고침
-          </button>
+          <div className="flex gap-2 justify-center">
+            <button
+              onClick={() => { window.location.href = '/'; }}
+              className="px-4 py-2 rounded-lg text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: 'var(--btn-primary)' }}
+            >
+              홈으로 돌아가기
+            </button>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 rounded-lg transition-opacity hover:opacity-90 border"
+              style={{ color: 'var(--text-primary)', borderColor: 'var(--card-border)' }}
+            >
+              새로고침
+            </button>
+          </div>
         </div>
       );
     }

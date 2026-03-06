@@ -16,6 +16,8 @@ const WeatherLocation = () => {
   if (!weather) return null;
 
   const temperature = weather.current.temperature.toFixed(1);
+  const maxTemp = weather.forecast?.maxTemp.toFixed(1);
+  const minTemp = weather.forecast?.minTemp.toFixed(1);
   const iconKey = getWeatherIconKey(weather.current.sky);
   const WeatherIcon = WeatherIconMap[iconKey];
 
@@ -29,11 +31,12 @@ const WeatherLocation = () => {
       <div className="flex items-center gap-1.5 whitespace-nowrap">
         {weather.forecast && (
           <div className="flex flex-row items-center text-xs leading-tight">
-            <span style={{ color: 'var(--text-secondary)' }}>{weather.forecast.maxTemp}°</span>
-            <span style={{ color: 'var(--text-secondary)' }}>{weather.forecast.minTemp}°</span>
+            <span style={{ color: 'var(--text-secondary)' }}>{maxTemp}°</span>
+            <span style={{ color: 'var(--text-secondary)' }}>{minTemp}°</span>
             <span style={{ color: 'var(--text-secondary)' }}>{weather.current.sky}</span>
           </div>
         )}
+        <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{temperature}°</span>
         <span className="font-medium" style={{ color: 'var(--text-primary)' }}>서울시</span>
       </div>
     </article>
