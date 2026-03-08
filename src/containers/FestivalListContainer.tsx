@@ -97,7 +97,7 @@ const FestivalListContainer = () => {
       <div
         ref={scrollContainerRef}
         onScroll={handleScroll}
-        className="flex flex-col items-center gap-4 max-h-150 overflow-y-auto scrollbar-hide pr-2"
+        className="flex flex-col items-center gap-4 max-h-150 overflow-y-auto scrollbar-hide pr-2 w-full"
       >
         {sortedFestivals.map(({ festival, distance }, index) => {
           const isPast = dayjs(festival.END_DATE, 'YYYYMMDD').isBefore(today, 'day');

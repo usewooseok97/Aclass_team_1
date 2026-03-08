@@ -26,7 +26,7 @@ export const FilterButtons = ({
   isLocationAvailable,
 }: FilterButtonsProps) => {
   return (
-    <div className="flex gap-2 flex-wrap">
+    <div className="flex gap-2 flex-wrap w-full">
       {/* 전체 버튼 */}
       <FilterButton
         onClick={() => onDateFilterChange('all')}
