@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-05-07T22:38:31.112254",
+  "lastUpdated": "2026-05-08T22:31:56.428046",
   "current": {
     "pty": 0,
-    "humidity": 88,
-    "temperature": 13.6,
-    "windSpeed": 3.0,
+    "humidity": 47,
+    "temperature": 15.0,
+    "windSpeed": 2.1,
     "sky": "맑음"
   },
   "forecast": {
-    "maxTemp": 16.6,
-    "minTemp": 10.6,
+    "maxTemp": 18.0,
+    "minTemp": 12.0,
     "sky": "맑음"
   }
 }
